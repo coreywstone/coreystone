@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Owl case study from Sr. Product Designer Corey Stone.">
+    <meta name="author" content="Corey Stone">
+    <meta name=“robots” content=“noimageindex,” “nofollow,” “nosnippet”>
+    <title>Chegg Skills case study from Sr. Product Designer Corey Stone</title>
+<!--#include virtual="/includes/head.html" -->
+</head>
+
+<body id="page-top" class="index">
+    
+<!--#include virtual="/includes/header.html" -->
+
+<a href="/index.shtml#projects"><button type="button" class="btn btn-projectnav btn-allprojects hidden-print"><i class="fa fa-home" title="Go to All Projects section of the Home page."></i></button></a>
+
+<a href="#page-top"><button type="button" class="btn btn-projectnav btn-totop hidden-print"><i class="fa fa-arrow-up" title="Go to top."></i></button></a>
+    
+<a href="myact.shtml"><button type="button" class="btn btn-projectnav btn-nextproject hidden-print"><i class="fa fa-arrow-right" title="See the next project."></i></button></a>
+
+<!-- When I started at Chegg’s “Skills” adult learning division (formerly “Thinkful”), both their former designers had left a couple months ago. For my first six months there, I was a UX team of one, designing both the student experience and internal admin tooling 😱. Day 1, what did I choose to focus on? Read on, my friend! -->
+
+<!-- PROJECT -->
+
+<!-- /PROJECT -->
+    
+<!--#include virtual="/includes/footer.html" -->
+<!--#include virtual="/includes/endscripts.html" -->
+</body>
+</html>

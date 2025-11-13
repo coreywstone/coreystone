@@ -1,0 +1,11 @@
+Options +Includes
+AddType text/html .shtml
+AddOutputFilter INCLUDES .shtml
+
+DirectoryIndex index.html index.php index.shtml
+
+<IfModule mod_headers.c>
+Header set Access-Control-Allow-Origin "*"
+</IfModule>
+
+Redirect 301 /ideas/bahavior-design-obesity.shtml /blog/bahavior-design-obesity.shtml

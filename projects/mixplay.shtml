@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Case study of MixPlay iOS app from Sr. Product Designer Corey Stone.">
+    <meta name="author" content="Corey Stone">
+    <meta name=“robots” content=“noimageindex,” “nofollow,” “nosnippet”>
+    <title>Case study of MixPlay iOS app from Sr. Product Designer Corey Stone</title>
+<!--#include virtual="/includes/head.html" -->
+</head>
+
+<body id="page-top" class="index">
+    
+<!--#include virtual="/includes/header.html" -->
+
+<a href="/index.shtml#projects"><button type="button" class="btn btn-projectnav btn-allprojects hidden-print"><i class="fa fa-home" title="Go to All Projects section of the Home page."></i></button></a>
+
+<a href="#page-top"><button type="button" class="btn btn-projectnav btn-totop hidden-print"><i class="fa fa-arrow-up" title="Go to top."></i></button></a>
+    
+<a href="ku.shtml"><button type="button" class="btn btn-projectnav btn-nextproject hidden-print"><i class="fa fa-arrow-right" title="See the next project."></i></button></a>
+    
+<!-- PROJECT -->
+<div class="container" id="project">
+    <div class="row col-md-10 col-md-offset-1">
+        <h1>Founding MixPlay iOS App</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="bigintro" style="text-align: left; margin-top: 40px;">This is another  iOS app that I founded, designed, marketed (building <a href="http://mixplayapp.com" target="_blank">MixPlayApp.com <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a> and managing social media), and managed the contract development.</p>
+            <p class="bigintro" style="text-align: left;">Built in 2015, it's still used and loved by many coaches, and still makes steady sales with no advertising.</p>
+        </div>
+        <div class="col-md-6 project-box">
+            <img src="/img/mixplay/mixplay-inphone-play-edit-anim.gif" class="img-responsive img-centered" style="padding-top: 30px;" alt="MixPlay animated GIF demo." />
+        </div>
+    </div>
+    
+     <div class="row">
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-bomb"></i><br />Problem</h2>
+            <p>Coaching a music-based routine usually involves the annoying process of repeatedly "scrubbing" to find the right part of the routine to play while your team is practicing that part. It's also tedious to get your routine music (usually an mp3 emailed to you) stored locally into your phone's music app.</p>
+        </div>
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-bullseye"></i><br />Goals</h2>
+            <ul>
+                <li>Make it easy to import emailed or URL-linked mp3's onto your iPhone.</li>
+                <li>Make it easy to define sections of the routine.</li>
+                <li>Provide 1-tap play of each music section.</li>
+            </ul>
+        </div>
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-dropbox"></i><br />Constraints</h2>
+            <p>I'm not an iOS developer, so I hired a contract developer. My small budget limited my development hours, so I had to be careful to get it as right as possible the first time.</p>
+        </div>
+        
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-6">
+            <h2><i class="fa fa-child"><br /></i> My Role</h2>
+            <p>As the solopreneur, I did everything but build it:</p>
+            <ul>
+                <li>Product Vision</li>
+                <li>UX Design</li>
+                <li>UI &amp; Visual Design</li>
+                <li>Logo, branding, &amp; marketing</li>
+                <li>Writing all UI text and marketing copy</li>
+                <li>Customer support</li>
+                <li>Managing the developer</li>
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <h2><i class="fa fa-group"></i> The Team</h2>
+            <p>I hired a freelancer from UpWork to build the app. He was from China, and his English was not too good, so we had to rely on written communication. It took quite awhile to convey the concept of running parts of music at cheer/dance practice! However, he wrote good code &mdash; Apple's stats show there are usually zero crashes over the thousands of sessions per month.</p>
+        </div>
+    </div>
+
+ 
+        
+    <div class="row">
+        <h2><i class="fa fa-retweet"></i> Process</h2>
+    </div>
+    <div class="row example">
+        <div class="col-md-6">
+            <p>Since I was coaching the KU Cheerleading team in the evenings, I was the target market so I already understood the needs well. Most of the work was in iterating to achieve:</p>
+        </div>
+        <div class="col-md-6">
+            <ol>
+                <li>a very intuitive design for importing files into MixPlay, including a fallback popup to inform the user to import emailed mp3s by exporting them from the Mail app.</li>
+                <li>a very intuitive design for creating and editing sections (usually done at home).</li>
+                <li>a very efficient design for "Play" mode, often done at harried practices.</li>
+            </ol>
+            </p>
+        </div> 
+    </div>
+        
+   
+        
+    <div class="row">
+        <h2><i class="fa fa-flag"></i> Results</h2>
+    </div>
+        
+    <div class="row example" style="padding-bottom: 0;">
+        <div class="col-md-6">
+            <p>Many coaches love the time-saving app and use it every day at practice. Sales of the $3 app are modest but steady even without advertising.</p>
+            
+            <p>I also translated MixPlay into multiple languages and published it to those countries' App Stores: Deutsche, English, Español, Français, Italiano, Português, Русский, 简体中文, 中國傳統的, 日本語, 한국어.</p>
+            
+            <p>I designed and created a Figma prototype for a MixPlay WatchOS app, but I'm waiting to implement it as a part of FullOut (MixPlay's upcoming fuller-featured replacement).</p> 
+        </div>
+        <div class="col-md-6 project-box">
+            <iframe style="border: 0" width="500" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2F036LYAbNSZU0CrD2jozs2B%2FMixPlay-WatchApp%3Fnode-id%3D0%253A133%26scaling%3Dscale-down" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="row example">
+        <div class="col-md-3">
+            <h3 class="text-center">Easily import your music.</h3>
+            <img src="/img/mixplay/mixplay-import.png" class="img-responsive img-centered" alt="MixPlay animated GIF demo." />
+        </div>
+        <div class="col-md-3">
+            <h3 class="text-center">Name &amp; drag sections.</h3>
+            <img src="/img/mixplay/mixplay-edit.png" class="img-responsive img-centered" alt="MixPlay section editor." />
+        </div>
+        <div class="col-md-3">
+            <h3 class="text-center">Play a section in 1 tap!</h3>
+            <img src="/img/mixplay/mixplay-play.png" class="img-responsive img-centered" alt="MixPlay 1-tap section play control." />
+        </div>
+        <div class="col-md-3">
+            <h3 class="text-center">Auto-repeat or adjust tempo.</h3>
+            <img src="/img/mixplay/mixplay-tempo.png" class="img-responsive img-centered" alt="MixPlay tempo and repeat controls." />
+        </div>
+    </div>        
+    
+    <div class="text-center hidden-print"><a class="btn btn-casestudy fixedwidth" href="/projects/ku.shtml" role="button">Next Project <i class="fa fa-arrow-right"></i></a></div>
+
+    
+</div>
+<!-- /PROJECT -->
+    
+<!--#include virtual="/includes/footer.html" -->
+<!--#include virtual="/includes/endscripts.html" -->
+</body>
+</html>

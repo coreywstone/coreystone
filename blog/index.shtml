@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="UX Design Idea blog of Sr. UX Designer Corey Stone.">
+    <meta name="author" content="Corey Stone">
+    <title>UX Design Blog of Sr. UX Designer Corey Stone</title>
+<!--#include virtual="/includes/head.html" -->
+</head>
+
+<body id="page-top" class="index">
+<!--#include virtual="/includes/header.html" -->
+<script>
+document.getElementById('blogtab').classList.add('active');
+</script>  
+
+    <!-- Ideas -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 sectionheader" id="ideapost">
+                <h1>Blog o' Corey</h1>
+                <p>Just some of my UX and design-related thoughts.</p>
+                
+                <div id="ideathumbs">
+                    <h3><a href="/blog/bahavior-design-obesity.shtml">Using Behavioral Design to Curb the Obesity Epidemic</a></h3>
+                    <!--p class="articlebyline">September 2018</p-->
+
+                    <h3><a href="/blog/product-email-ux.shtml">Don't Ignore Your Product Emails</a></h3>
+                    <!--p class="articlebyline">August 2018</p-->
+                    
+                    <h3><a href="https://medium.com/@coreywstone/failing-on-kickstarter-a-success-story-9a130f82d2c6" target="_blank">Failing on Kickstarter: a Product Hunt Success Story <i class="glyphicon glyphicon-new-window"></i></a></h3>
+                    <!--p class="articlebyline">April 2015 on Medium</p-->
+                    
+                    <h3><a href="https://medium.com/@coreywstone/design-vs-convention-a-journey-c1658faf8d90" target="_blank">Design vs. Convention: a Journey <i class="glyphicon glyphicon-new-window"></i></a></h3>
+                    <!--p class="articlebyline">March 2015 on Medium</p-->
+                    
+                </div>
+            
+
+            </div>
+        </div>
+	</div>
+    <!-- /ARTICLE LINKS -->
+    
+<!--#include virtual="/includes/footer.html" -->
+<!--#include virtual="/includes/endscripts.html" -->
+</body>
+</html>

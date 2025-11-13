@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="UX Design Idea blog of Sr. UX Designer Corey Stone.">
+    <meta name="author" content="Corey Stone">
+    <title>Using Behavioral Design to Curb the Obesity Epidemic</title>
+<!--#include virtual="/includes/head.html" -->
+</head>
+
+<body id="page-top" class="index"> 
+<!--#include virtual="/includes/header.html" -->
+<script>
+document.getElementById('blogtab').classList.add('active');
+</script>    
+
+    <!-- Ideas -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 sectionheader" id="ideapost">
+            <a name="ideas"></a>
+            <h1>Using Behavioral Design to Curb the Obesity Epidemic</h1>
+                <p class="articlebyline">September 2018, Corey Stone</p>
+                
+                <p>You've probably heard the numbers: according to the <a href="https://www.cdc.gov/obesity/data/adult.html" target="_blank">CDC</a>, about 40% of adult Americans are obese, costing about $147 billion annually. And as many of us know firsthand, it's not easy to stay in shape, especially if you're working a desk job in today's busy cash-strapped world. But something has to change, or we'll end up looking like our future selves in WallE.</p>
+                
+                <img src="/img/ideas/walle.jpg" class="img-responsive" alt="Screenshot from the Disney-Pixar movie WALL-E."><p class="imagecredit">&copy; Disney/Pixar</p>
+                
+                <p>But how? While exercise helps, experts say what we eat is the main factor in weight management. Diet plans are easy to find, but they only work if people stick to them, which the obesity stats prove isn't happening enough. So I propose we hack the system with behavioral design to persuade people to eat better, even if they don't really want to.</p>
+                
+                <p><strong>What's behavioral design?</strong> It's designing a product, system, or environment to persuade people to perform an action more (or less) often than they normally would. While it has gotten a bad rap lately for phone and tech addiction, habit experts <a href="https://www.nirandfar.com/" target="_blank">Nir Eyal</a> (author of <a href="https://www.amazon.com/Hooked-How-Build-Habit-Forming-Products/dp/1591847788/?tag=thekerne-20" target="_blank">Hooked</a>) and <a href="https://jamesclear.com/" target="_blank">James Clear</a> (author of <a href="https://www.amazon.com/gp/product/0735211299/" target="_blank">Atomic Habits</a>) teach and advocate using these techniques for good.</p>
+                
+                <h3 class="articletitle"><span class="ideaproblem">Problem:</span> Even if people want to eat right, nutrition labels are confusing, and product labels are misleading.</h3>
+                
+                <h3 class="articletitle"><span class="ideasolution">Solution:</span> The Food Grade system: Have the FDA require a 1&quot; color-coded food grade (eg, <span class="ideasolution">A</span> through <span class="ideaproblem">F</span>) on the <strong><em>FRONT</em></strong> of the package.</h3>
+                
+                <img src="../img/ideas/cereal-boxes-with-food-grades.png" class="img-responsive" alt="Illustration of two cereal boxes with A and D food grade labels on their front lower right corner." style="margin: 30px auto;">
+                
+                <p>While we can't force people to eat well, this would make each food's quality painfully obvious to everyone (including kids and nutrition-ignorant people) both when choosing what food to buy in the store, and when choosing what food to eat at home. No one would need to understand nutrition labels or get tricked by packaging half-truths. Simple diet plans - even ones for kids - could be easily based on them (eg, eat only 1 &quot;C-food&quot; or worse per day). Restaurants could also label their offerings this way. The FDA has a long history of food labeling requirements, so this is not too big of an ask, except that the sugar/junk food lobbies would probably oppose it.</p>
+                <p>Food grading would need to be done with either a mathematical formula (ie something based on sugar / fiber / protein / additives, etc content), or by an unknown (thus bribe-free) panel of government-paid nutrition experts. <a href="http://fooducate.com" target="_blank">Fooducate.com</a> is already doing a great job with grading, but people must discover their app and remember to use it. To impact obesity on a national level, we need to influence everyone's eating habits, whether they want to or not.</p>
+                
+                <h3 class="articletitle"><span class="ideaproblem">Problem:</span> Healthy food often costs more / Junk food is cheaper and/or more convenient.</h3>
+                    
+                <h3 class="articletitle"><span class="ideasolution">Solution:</span> Add a prorated Health Tax.</h3> 
+                <p>For example, &quot;F&quot; foods add 30% tax, D adds 20%, C adds 10%, B &amp; A adds nothing. The additional health tax must be included on the grocery shelf price (rather than &quot;hidden&quot; at checkout) to change purchasing behavior by making healthy foods become cheaper than junk foods. Health Tax revenues could go toward national obesity treatment and education costs, and/or universal health care.  This is similar to the <a href="https://en.wikipedia.org/wiki/Sugary_drink_tax" target="_blank">Sugar Tax</a> that some cities have adopted.</p>
+                
+                <p>Another possible solution is government subsidies for the production of healthier foods (eg wheat and vegetables), and end any subsidies on low-quality food sources like sugar and corn (which becomes corn syrup). Or, ban the &quot;enrichment&quot; process (ie, refining a high-quality fiber-filled wheat grain into a low-quality fiberless white grain, such as with white bread, white rice, and many crackers) to remove those low-quality options from consumers.</p>
+                
+                <p>If the food grade and tax succeeded in decreasing sales of low-quality foods, an additional benefit is that food-makers would probably respond by adjusting their recipes to get higher food grades. Currently, food makers really have no incentive to improve the health of their customers &mdash; if people keep buying Cheetos, they'll keep making them and profiting from it.</p>
+                
+                <h3 class="articletitle"><span class="ideaproblem">Problem:</span> Many people eat more than a single serving size, often without realizing it.</h3>
+                    
+                <h3 class="articletitle"><span class="ideasolution">Solution:</span> This one's a little tougher.</h3>
+                
+                <p>The FDA could require that servings be separated in the package so  people would easily know what one serving size is (eg, if you buy a box of cereal, instead of there being one big plastic bag of it, there'd be, say, 12 individually wrapped single-serving bags). This would probably succeed in informing people of the serving size, but it would increase packaging costs, and increase environmental waste (ie, trash). So, unless we come up with cheaper environment-friendly packaging, probably best to see how Solutions 1 and 2 do first, and backburner this one.</p>
+                
+                <h3 class="articletitle">Conclusion: Food for Thought</h3>
+                
+                <p>Whatever the solution is, this is an important problem to solve. So far, the pure capitalism of our current food system is not solving the problem, so I believe some FDA-mandated tweaks are needed to push people toward healthier eating. But I'm just one man with ideas, if you have feedback or ideas on how to actually get these solutions implemented, <a href="mailto:coreywstone@gmail.com">let me know</a> or comment on <a href="https://medium.com/@coreywstone/using-behavioral-design-to-curb-the-obesity-epidemic-ef51f88614e4" target="_blank">Medium</a>. Thanks! </p>
+    
+                <div class="sharethis-inline-share-buttons"></div>
+                
+                <p class="allideas"><a href="/blog/">&laquo; Blog Home</a></p>               
+            </div>
+        </div>
+    </div>
+
+<!--#include virtual="/includes/footer.html" -->
+<!--#include virtual="/includes/endscripts.html" -->
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="iLoan project from Sr. Product Designer Corey Stone.">
+    <meta name="author" content="Corey Stone">
+    <title>iLoan Project from Sr. Product Designer Corey Stone</title>
+<!--#include virtual="/includes/head.html" -->
+</head>
+
+<body id="page-top" class="index">
+    
+<!--#include virtual="/includes/projectheader.html" -->
+
+<a href="/index.shtml#projects"><button type="button" class="btn btn-projectnav btn-allprojects"><i class="fa fa-th" title="Go to All Projects section of the Home page."></i></button></a>
+    
+<a href="iloan.shtml"><button type="button" class="btn btn-projectnav btn-nextproject"><i class="fa fa-arrow-right" title="See the next project."></i></button></a>
+    
+<!-- PROJECT -->
+<div class="container" id="project">
+    <div class="row">
+
+        <h1>iLoan Loan Advisor</h1>
+
+        <h2>The Setup</h2>
+        
+        <img src="/img/dsi/iLoan.gif" class="img-responsive img-centered" alt="Screenshot of the iLoan Intelligent Loan Advisor." />
+
+        <p>The client came to us with some serious back-end technology and a messy sketch of the information to be presented. The major challenges were to:</p>
+        <ol>
+        <li>understand what the heck they were talking about (Bayesian math!)</li>
+        <li>display the overabundance of data in a non-intimidating manner</li>
+        <li>help users understand what the numbers mean</li>
+        <li>make the whole thing intuitive enough to use without instructions and even seem "game-like."</li>
+        </ol>
+        <p>My solution was to place each variable set in its own color with the entry fields at the top and the resulting data flowing into the bottom. In the middle was the "Click Here to Recalculate!" button, which caused the application to recalculate the results from the current values in the input fields. Even though we had little time to complete the project, the client was very pleased with the ease-of-use and visual appeal of the design.</p>
+
+
+    </div>
+</div>
+<!-- /PROJECT -->
+    
+<!--#include virtual="/includes/footer.html" -->
+<!--#include virtual="/includes/endscripts.html" -->
+</body>
+</html>

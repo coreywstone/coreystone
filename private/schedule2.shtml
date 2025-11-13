@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>KU Cheerleading Private Site: Schedule</title>
+<meta robots="noindex, nofollow">
+<link rel="StyleSheet" href="includes/private_site.css" type="text/css" media="screen">
+<link rel="StyleSheet" href="includes/private_site_print.css" type="text/css" media="print">
+<style type="text/css">
+li { margin-bottom: 10px }
+</style>
+</head>
+
+<body>
+
+<!-- START HEADER -->
+<div class="noprint"><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" background="images/header_tile.gif"><tr>
+<td><img src="images/ku_cheer_private_site.gif" style="margin-left: 10px; margin-right: 10px" width="154" height="31" alt="KU Cheerleading Private Site"></td>
+<td width="100%" align="left" valign="bottom"><table border="0" cellspacing="0" cellpadding="0"><tr>
+	<td class="off_tab"><a href="index.shtml">Home</a></td>
+		<td><img src="images/spacer.gif" width="1" height="1"></td>
+	<td class="on_tab"><a href="schedule.shtml">Schedule</a></td>
+		<td><img src="images/spacer.gif" width="1" height="1"></td>
+	<td class="off_tab"><a href="resources.shtml">Resources</a></td>
+		<td><img src="images/spacer.gif" width="1" height="1"></td>
+	<td class="off_tab"><a href="roles.shtml">Roles</a></td>
+		<td><img src="images/spacer.gif" width="1" height="1"></td>
+	<td class="off_tab"><a href="points.shtml">Points</a></td>
+		<td><img src="images/spacer.gif" width="1" height="1"></td>	
+	<td class="off_tab"><a href="boooks.shtml">Books</a></td>
+</tr></table></td>
+</tr></table></div>
+<!-- END HEADER -->
+<div style="margin: 5px 50px 15px 50px">
+
+<!--b>Practices and Gear</b><br>
+Mon 7:30 am at Anderson wearing White/Black<br>
+Tue 7:30-10:00 pm at G-Force wearing Any Blue Shirt<br>
+Wed 1:00 pm at Anderson wearing Gray/Blue<br>
+Thu 7:30-10:00 pm at G-Force wearing Blue/Red<br>
+<b>Bow Colors:</b><br>
+ Diagonal = White Bow; Red/Blue = White Bow; Whites = Blue Bow; KU Halter = White Bow; Arch Kansas = Red Bow<br-->
+<b>Cat's Office Hours:</b> Monday 12-2:30, 4-5; Wednesday 4-7pm; Friday 12-2:30, 4-5.<br>
+
+
+<iframe src="http://www.google.com/calendar/embed?src=h7pgd56t6fjo6ajkbcdvmt87ig%40group.calendar.google.com&amp;pvttk=f1470df40379aa6cf8f859578c39ed69&amp;chrome=NAVIGATION&amp;epr=4&amp;wkst=2&amp;hl=en&amp;height=588" style="border-width:0" width="100%" frameborder="0" height="588"></iframe>
+
+
+
+
+
+<hr>
+<a name="tv"></a><div style="font-size: 9pt">
+SUN = Sunflower Cablevision (Channel 6 in the Lawrence area) <br>
+METRO = Metro Sports <br>
+FSN = Fox Sports Net <br>
+CSTV = College Sports Television<br>
+JTV = Jayhawk Television Network (usually shown in eastern Kansas)
+</div>
+
+
+</div>
+</body>
+</html>
+
+

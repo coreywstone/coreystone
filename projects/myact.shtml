@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="MyACT case study from Sr. Product Designer Corey Stone.">
+    <meta name="author" content="Corey Stone">
+    <meta name=“robots” content=“noimageindex,” “nofollow,” “nosnippet”>
+    <title>MyACT case study from Sr. Product Designer Corey Stone</title>
+<!--#include virtual="/includes/head.html" -->
+</head>
+
+<body id="page-top" class="index">
+    
+<!--#include virtual="/includes/header.html" -->
+
+<a href="/index.shtml#projects"><button type="button" class="btn btn-projectnav btn-allprojects hidden-print"><i class="fa fa-home" title="Go to All Projects section of the Home page."></i></button></a>
+
+<a href="#page-top"><button type="button" class="btn btn-projectnav btn-totop hidden-print"><i class="fa fa-arrow-up" title="Go to top."></i></button></a>
+    
+<a href="hero.shtml"><button type="button" class="btn btn-projectnav btn-nextproject hidden-print"><i class="fa fa-arrow-right" title="See the next project."></i></button></a>
+    
+<!-- PROJECT -->
+<div class="container" id="project">
+    <div class="row col-md-8 col-md-offset-2">
+        <h1>MyACT Responsive Portal &amp; Test Registration (2018)</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="bigintro" style="text-align: left">MyACT is ACT.org's responsive e-Commerce portal where ~3 million students per year register for the US and Non-US ACT tests, view scores, and explore careers, colleges, and majors. <strong class="highlight">Registration time decreased from 30 to 7 minutes</strong>, user feedback is excellent, and revenue-per-registrant is expected to increase.</p>
+        </div>
+        <div class="col-md-6 project-box">
+            <img src="/img/thumbs/act-registration-thumbnail.png" class="img-responsive" alt="Collage of screenshots and user research tools from the MyACT project." />
+        </div>
+    </div>
+    
+    
+    
+    <div class="row">
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-bomb"></i><br />Problem</h2>
+            <p><strong>ACT's outdated non-responsive 40-minute test registration process</strong> was hurting the brand experience, and the crumbling platform limited future progress.</p>
+        </div>
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-bullseye"></i><br />Goals</h2>
+            <p><strong>Redesign and replatform</strong> it into a modern, efficient, intuitive, <strong>value-adding experience</strong> that helps cross-promote other relevant ACT products and improve our brand.</p>
+        </div>
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-dropbox"></i><br />Constraints</h2>
+            <ul>
+                <li><strong>UX Debt</strong>: I started after a vendor design was poorly partially implemented.</li>
+                <li><strong>Tight launch deadline</strong> for Non-US registration forced us to manage UI change carefully.</li>
+                <li><strong>60 years of business rules and edge cases</strong> in the "MVP." 😳</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-6">
+            <h2><i class="fa fa-child"><br /></i> My Role</h2>
+            <p><strong>I'm the sole designer, working remotely on:</strong></p>
+            <ul>
+                <li>Product Vision</li>
+                <li>UX Design</li>
+                <li>UI &amp; Visual Design in ACT's design system (which I co-manage)</li>
+                <li>Writing all UX copy and email notifications</li>
+                <li>Usability testing</li>
+                <li>Product Management for a few months</li>
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <h2><i class="fa fa-group"></i> The Team</h2>
+            <p><strong>I worked in an <strong>agile process</strong> with:</strong></p>
+            <ul>
+                <li>2 product managers</li>
+                <li>2 product owners</li>
+                <li>3 business analysts</li>
+                <li>1 enterprise architect</li>
+                <li>3 agile scrum teams, each with a scrum master, ~6 developers, and a few testers</li>
+                <li>Various subject matter experts as needed (e.g. Customer Care, Test Accommodations, legacy systems)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <h2><i class="fa fa-retweet"></i> Process</h2>
+    </div>
+    <div class="row example">
+        <div class="col-md-3">
+            <p>First, I <strong>documented the current system</strong> and started learning the many business rules.</p>
+            <p><strong>Our Customer Care agents</strong> and <strong>user surveys</strong> informed me of users' frustration with password resets, the length of registration, and not understanding why ACT collects so much data.</p>
+            <p><strong>Sitting in on support calls</strong> also helped me empathize with the customer by hearing their voice and problems first-hand.</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/act/act-current-system.png" class="img-responsive" alt="Some screenshots of the current system." />
+        </div>
+    </div>
+        
+    <div class="row example">
+        <div class="col-md-3">
+            <p><strong>Competitive analysis</strong> showed that our sub-par system was only somewhat worse than our main competitor's barely-par system. Always nice when the bar is low. <i class="fa fa-smile-o"></i></p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/act/act-competitive-analysis.png" class="img-responsive" alt="Screenshots of a competitive analysis." />
+        </div>
+    </div>
+        
+    <div class="row example">
+        <div class="col-md-3">
+            <p>I reviewed ACT's relevant <strong>existing personas</strong> to get insight on their varying needs and desires.</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/act/act-personas.png" class="img-responsive" alt="Screenshot of a couple personas." />
+        </div>
+    </div>
+        
+    <div class="row example">
+        <div class="col-md-3">
+            <p><strong>An empathy / needs map</strong> that our other designer and I created to delineate both the <strong>business needs</strong> and the <strong>users' needs and feelings</strong>, which helped us explore ways we could meet them.</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/act/act-empathy-map.png" class="img-responsive" alt="An oboarding / empathy / user and business needs map, co-created with our other designer." />
+        </div>
+    </div>
+    <div class="row example">
+        <div class="col-md-3">
+            <p>I <strong>ideated on flows</strong> for various use cases such as requesting test accommodations and registering for various tests with different data-gathering needs.</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/act/act-flow.png" class="img-responsive" alt="Screenshot of user flows." />
+        </div>
+    </div>        
+    <div class="row example">
+        <div class="col-md-3">
+            <p>I <strong>designed interactive prototypes</strong> in Axure RP, iterating based on feedback from PMs, tech leads, and subject matter experts.</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/act/act-axure-prototypes.png" class="img-responsive" alt="Thumbnail view of 8 of the new prototypes created in Axure." />
+        </div>
+    </div>        
+     <div class="row example">
+        <div class="col-md-3">
+            <p>I <strong>conducted unmoderated usability tests</strong> on Validately.com (shown here), which helped me tweak labels for intuitiveness and reduce visual noise.</p>
+            <p>I assisted our user researcher with <strong>moderated usability testing</strong>, which confirmed we were on the right track! <i class="fa fa-thumbs-up"></i> </p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/act/act-usability-testing.png" class="img-responsive screenshot" alt="Screenshot of usability test done in Validately.com, with a user quote of 'I like the way this is laid out. It's very easy to figure out what you're doing.'" />
+        </div>
+    </div>    
+
+        
+    <div class="row">
+        <h2><i class="fa fa-flag"></i> Results</h2>
+    </div>
+     <div class="row example">
+        <div class="col-md-3">
+            <p>I designed a <strong>new Cognito-based user account system</strong> for login, verification, and forgot/resets. Other than lots of nitty-gritty UX details, I added <strong>aspirational imagery</strong> to remind students of their purpose for engaging with ACT.</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/act/act-login.jpg" class="img-responsive" alt="Screenshot of the old and new versions of user sign in." />
+        </div>
+    </div>  
+     <div class="row example">
+        <div class="col-md-3">
+            <p>I <strong>wrote all UI text</strong> for MyACT, including <strong>tricky user migration</strong> from User ID to email login, with 'Forgot User ID' still in the old system. Ugh. Also, non-US testers used the new accounts a year before US testers, so we had to fork traffic appropriately from the public site.</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/act/act-login-tooltip.png" class="img-responsive screenshot" alt="Screenshot of the Forgot User ID tooltip." />
+        </div>
+    </div>  
+     <div class="row example">
+        <div class="col-md-3">
+            <p><strong>Test option selection</strong> was spread out awkwardly across several pages in the old system. The new intuitive responsive one-page design reveals questions one by one, flexing based on each answer. I usability tested and iterated this design quite a few times and it is working well.</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/act/act-test-selection-withnotes.png" class="img-responsive" alt="Annoted screenshot of the ACT test selection page." />
+         </div>
+    </div> 
+<div class="row example">
+    <div class="col-md-3">
+        <p><strong>I added some delight with an animated alpaca</strong> that leaps closer to the far-right 'peak' at each step in the process, then sits and looks at the user. Unfortunately it got scoped out of the MVP launch, but users (and our staff) really liked it.</p>
+    </div> 
+    <div class="col-md-9 project-box">
+        <img src="/img/act/act-alpaca-wizard.gif" class="img-responsive" alt="Screen recording of the animated alpaca wizard." />
+     </div>
+</div> 
+     <div class="row example">
+        <div class="col-md-3">
+            <p><strong>Course grade entry's</strong> 60 questions are the most tedious part of registration. I couldn't remove any questions, so I made entry faster by using bigger buttons and reducing finger/mouse travel by displaying grade entry just below the "Took or Taking" button (<a href="https://en.wikipedia.org/wiki/Fitts%27s_law" target="_blank">Fitts' Law <i class="fa fa-external-link" style="font-size: 16px;"></i></a>). Header images were eye candy to improve user perception of the tedious process.</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/act/act-course-entry.png" class="img-responsive" alt="Annoted screenshot of the ACT course entry page." />
+         </div>
+    </div>         
+     <div class="row example">
+        <div class="col-md-3">
+            <p>The <strong>72-question career-interest survey</strong> was another tedious process for users, so I made it more fun with animated emoji buttons. I mocked up the animation in Axure RP, and it looks much smoother than this choppy dithered GIF screen recording.</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/act/act-interests-top.png" class="img-responsive" alt="Screenshot of the top of the career-interest survey." /><br />
+            <img src="/img/act/act-interest-inventory-motion.gif" class="img-responsive img-centered" alt="Animation of answering a question in the career-interest survey." />
+         </div>
+    </div> 
+    <div class="row example">
+        <div class="col-md-3">
+            <p><strong>College selection</strong> in the old system was a cumbersome multi-step process with 8 different look-ups to find a college or agency, so I redesigned it as a single federated search box with overlaid results. The interactive prototype was made in Axure RP.</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/act/act-score-recipients-short.gif" class="img-responsive screenshot" alt="Screen recording of the college selection process." />
+         </div>
+    </div> 
+    <div class="row example">
+        <div class="col-md-3">
+            <p><strong>The "extras" (up-sell) page</strong> design has been iterated a lot based on usability testing and PM feedback. My plan is to do A-B testing soon after it goes live.</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/act/act-extras.png" class="img-responsive" alt="Several different iterations of the Extras page." />
+         </div>
+    </div> 
+    <div class="row example">
+        <div class="col-md-3">
+            <p>Although most of the work was on the long registration process, <strong>it's still an e-Commerce site</strong> that sells multiple products and has the usual complexities of terms agreement, taxes, shipping (for some products), and payment.</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/act/act-checkout.png" class="img-responsive screenshot" alt="Screenshot of the checkout page." />
+         </div>
+    </div> 
+    <div class="row example">
+        <div class="col-md-3">
+            <p><strong>After registering, a persistent To-Do-ish status widget</strong> appears on the user's dashboard (aka Home) so they can clearly see their test status and easily perform any necessary actions, which should reduce support call volumes. </p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/act/act-upcoming-test.png" class="img-responsive" alt="Screenshot of the ACT test widget on the user's dashboard." />
+         </div>
+    </div> 
+    <div class="row example">
+        <div class="col-md-3">
+            <p>I <strong>redesigned and rewrote all transactional emails</strong> to improve their tone, clarity, and brevity. The mockup also lets our Developers, BAs, and reviewers easily see each email and when it occurs by clicking it in the timeline view to the right of the email.</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/act/act-emails.png" class="img-responsive" alt="One of the emails shown alongside the email timeline." />
+         </div>
+    </div>         
+     <div class="row example">
+        <div class="col-md-3">
+            <p><strong>The printer-friendly HTML test admission ticket</strong> sorely needed a redesign, so I chunked and rewrote the content for easier reading and faster visual processing for test proctors.</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/act/act-admission-ticket.png" class="img-responsive" alt="Screenshot of the new and old test admission ticket." />
+         </div>
+    </div>     
+        <div class="row">
+            <h2><i class="fa fa-book"></i> Learnin'</h2>
+       </div>     
+            
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">        
+            <p>This was a big, long, ongoing project that didn't start well. They didn't have a user/design-centric process or culture, and when developers needed UX guidance, they went to the BA who had been designing mockups. It <strong>reinforced my belief in the importance of strong relationships between designers and developers</strong>. It took awhile, but eventually the whole team happily came to me for any UI problems or changes needed to my mockups.</p>
+            
+            <p>Working in ACT's SAFe Agile process across multiple teams definitely <strong>improved my skills in Agile, Jira, and product management</strong> (which I did for a few months).</p>
+            
+            <p>My <strong>Axure RP prototyping skills improved</strong> as I learned how to use its variables and adaptive (responsive) views. Axure doesn't get much pub, but it's a pretty good tool!</p>
+            
+            <p>Finally, the tight launch deadlines and 'UX backlog' mentality taught me to know when to be patient with UI changes (or lack thereof) and when to push for the most important UX improvements, all while trying to educate the company on how to move user-centric design earlier in the process to improve coding and implementation efficiency, removing the need for so much rework. As John Wooden says, <strong>"If you don't have time to do it right, when will you have time to do it over?"</strong></p>
+            
+            <p>Related: I co-created and maintained the <strong><a href="/projects/act-style-guide.shtml">ACT Style Guide</a></strong>.</p>
+                
+            <div class="text-center hidden-print"><a class="btn btn-casestudy fixedwidth" href="/projects/hero.shtml" role="button">Next Project <i class="fa fa-arrow-right"></i></a></div>
+
+            </div> 
+        </div>
+    
+</div>
+<!-- /PROJECT -->
+    
+<!--#include virtual="/includes/footer.html" -->
+<!--#include virtual="/includes/endscripts.html" -->
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ACT Style Guide case study from Sr. Product Designer Corey Stone.">
+    <meta name="author" content="Corey Stone">
+    <meta name=“robots” content=“noimageindex,” “nofollow,” “nosnippet”>
+    <title>ACT Style Guide case study from Sr. Product Designer Corey Stone</title>
+<!--#include virtual="/includes/head.html" -->
+</head>
+
+<body id="page-top" class="index">
+    
+<!--#include virtual="/includes/header.html" -->
+
+<a href="/index.shtml#projects"><button type="button" class="btn btn-projectnav btn-allprojects hidden-print"><i class="fa fa-home" title="Go to All Projects section of the Home page."></i></button></a>
+
+<a href="#page-top"><button type="button" class="btn btn-projectnav btn-totop hidden-print"><i class="fa fa-arrow-up" title="Go to top."></i></button></a>
+
+<a href="ku.shtml"><button type="button" class="btn btn-projectnav btn-nextproject hidden-print"><i class="fa fa-arrow-right" title="See the next project."></i></button></a>
+
+<!-- PROJECT -->
+<div class="container" id="project">
+    <div class="row col-md-8 col-md-offset-2">
+        <h1>Co-Creating &amp; Maintaining the ACT Design System</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="bigintro" style="text-align: left;">The ACT Design System ("Style Guide") is used by external vendors and internal staff to keep ACT's website, web apps, mobile apps, social media assets, and printed materials consistent and accessible (WCAG AA) in visual presentation, interaction patterns, and written style. With the new guide, <strong>staff found styles easier and faster</strong>, and the widget library helped our team <strong>prototype faster</strong>.</p>
+        </div>
+        <div class="col-md-6">
+            <img src="/img/act/act-style-guide.gif" class="img-responsive img-centered tight-shadow" style="margin-bottom: 30px;" alt="Screen recording of the ACT Style Guide." />
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-bomb"></i><br />Problem</h2>
+            <p>When I joined ACT, their UX/UI style guidelines were several years old and in need of at least a review. At the time, they were a Sketch file (but our GUI prototyping tool was Axure RP), delivered to staff and vendors as a PDF.</p>
+        </div>
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-bullseye"></i><br />Goals</h2>
+            <ul>
+                <li>Make it easier to update than the PDF</li>
+                <li>Make it a live URL for easier distribution</li>
+                <li>Create a UI widget library to speed GUI design</li>
+            </ul>
+        </div>
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-dropbox"></i><br />Constraints</h2>
+            <ul>
+                <li>Time was our biggest constraint, since this was often back-burnered for actual project work.</li>
+            </ul>
+        </div>
+        
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-6">
+            <h2><i class="fa fa-child"><br /></i> My Role</h2>
+            <ul>
+                <li>Co-reviewing and updating existing styles.</li>
+                <li>Recreating it in an Axure RP file.</li>
+                <li>Designing the UI for navigating the style guide.</li>
+                <li>Rewriting content as needed.</li>
+                <li>Added our Brand department's content, and taught them how to maintain it.</li>
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <h2><i class="fa fa-group"></i> The Team</h2>
+            <p>Reviewing and updating styles was done with our 3 other UX Designers, and initially, a vendor Visual Designer. </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <h2><i class="fa fa-retweet"></i> Process</h2>
+    </div>
+    <div class="row example">
+        <div class="col-md-5">
+            <p>Our UX team of four collaborated in weekly design sessions to review and decide on style updates based on:</p>
+            <ul>
+                <li>Our own experience and opinions</li>
+                <li>Usability research from Nielsen-Norman Group and others</li>
+                <li>WCAG-AA accessibility standards and tools such as color contrast checkers.</li>
+            </ul>
+            <p>We considered using InVision's DSM, so I started creating our style guide in that, but we concluded it wouldn't meet our needs as well as Axure RP.</p>
+        </div> 
+        <div class="col-md-7 project-box">
+            <img src="/img/act/act-design-system-process.png" class="img-responsive" alt="Some screenshots from the ACT style guide update process." />
+        </div>
+    </div>
+
+    <div class="row">
+        <h2><i class="fa fa-flag"></i> Results</h2>
+    </div>
+     <div class="row example">
+        <div class="col-md-3">
+        <p>I theorized users wanted <strong>quick random access</strong> to elements in the site, so I used <strong>persistent mega-menus</strong> as global navigation for the easily updatable site.</p>
+        
+        <p>Each element had:</p>
+        <ul>
+            <li><strong>Usage</strong> guidance</li>
+            <li><strong>Accessibility</strong> guidance in blue callouts.</li>
+            <li><strong>CSS specs</strong> in orange</li>
+        </ul>
+        <p>Previously, UX, Brand, &amp; Editorial guidelines were in separate documents. We combined them into this single style guide to make it easier for staff and vendors to find any style-related data.</p>
+
+        </div> 
+        <div class="col-md-9">
+            <img src="/img/act/act-style-guide.gif" class="img-responsive" alt="Screenshot of ACT Style Guide home page." />
+        </div>
+    </div>  
+     <div class="row example">
+        <div class="col-md-3">
+        <p>I also created an <strong>ACT Widget Library</strong> in Axure RP so the other designers and I could quickly make style-compliant mockups.</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/act/act-widget-library.png" class="img-responsive" alt="Screenshot of using the ACT widget library in Axure RP." />
+        </div>
+    </div>  
+        
+        <div class="row">
+            <h2><i class="fa fa-book"></i> Learnin'</h2>
+       </div>     
+            
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">        
+                <p>Through this project, I learned:</p>
+                <ul>
+                    <li><strong>how to make Team widget libraries in Axure.</strong></li>
+                    <li><strong>InVision's Design System Manager (DSM)</strong>, though it ended up not being flexible enough for what we wanted to do.</li>
+                </ul>
+                
+                <p>Creating our style guide in Axure made a lot of sense because it's our UI prototyping tool, but Axure sites aren't searchable, and our Brand team needed an Axure license to update the site, neither or which were ideal. So the solution wasn't perfect, but I'm not sure there was a better solution out there for our needs.</p>
+                
+                <p>This project was also a nice opportunity for the UX team to collaborate with our Brand team, which hadn't been happening much.</p>
+            </div>
+        </div>
+                
+  
+</div>
+<!-- /PROJECT -->
+    
+<!--#include virtual="/includes/footer.html" -->
+<!--#include virtual="/includes/endscripts.html" -->
+</body>
+</html>

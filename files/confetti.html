@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confetti Animation Tester</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #FBFAFB;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .next-lesson-btn {
+            background: linear-gradient(45deg, #EB7100, #FF8C42);
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 48px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            box-shadow: 0 2px 8px rgba(235, 113, 0, 0.3);
+            position: fixed;
+            bottom: 16px;
+            right: 88px;
+            z-index: 1000;
+        }
+        
+        .next-lesson-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 3px 12px rgba(235, 113, 0, 0.4);
+            filter: brightness(1.05);
+        }
+        
+        .next-lesson-btn:active {
+            transform: scale(0.97);
+            box-shadow: 0 1px 4px rgba(235, 113, 0, 0.3);
+            filter: brightness(0.9);
+            transition: all 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <button class="next-lesson-btn" id="nextLessonBtn">Next lesson</button>
+
+    <script>
+        // Happy emoji list - exact list provided
+        const happyEmojis = [
+            '🥳', '😃', '😍', '🥰', '🤪', '🤓', '😎', '🤩', '🤗', '🤠', '😈', '👹', '🤡', '💩', '👻', '👽', '👾', '🎃', '😺', '😻',
+            '🫶', '🙌', '👏', '👍', '🤟', '💪',
+            '🐶', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🐻‍❄️', '🐨', '🐯', '🦁', '🐮', '🐸', '🐵', '🐒', '🐣', '🐥', '🦇', '🐴', '🦄', '🐝', '🦋', '🐞', '🦎', '🦖', '🦕', '🐙', '🦑', '🪼', '🐡', '🐠', '🐬', '🐳', '🦭', '🦧', '🦚', '🦨', '🐲', '🐦‍🔥',
+            '🌴', '🍀', '🪴', '🍁', '🍄', '🍄‍🟫', '🐚', '🪸', '🪨', '💐', '🌷', '🌹', '🪷', '🌸', '🌺', '🌻', '🌼', '🌝', '🌎', '🪐', '⚡️', '☄️', '💥', '🔥', '🌈', '☀️', '🌞',
+            '🍎', '🍌', '🍉', '🍇', '🍓', '🍒', '🥭', '🍍', '🥨', '🥞', '🧇', '🍔', '🍕', '🌮', '🥗', '🥠', '🍦', '🥧', '🎂', '🍰', '🧁', '🍭', '🍬', '🍿', '🍩', '🍪', '🥜', '🍯', '☕️',
+            '⚽️', '🏀', '🏈', '⚾️', '🎾', '🏐', '🥏', '🎱', '🪀', '🪃', '⛳️', '🛹', '🛼', '🏂', '🪂', '🏄',
+            '🧚', '🧶', '💃', '🕺', '💍', '🎉', '🎊', '✨', '⭐', '🌟', '💫', '🎈', '🎁', '🏵️', '🎀', '💎', '🎟️', '🎲', '🎮', '🧩', '👑', '🥇', '🏅', '🎪', '🎠', '🚀', '🛸', '⛵️', '⛱️', '🏖️', '🏝️', '💡', '🔮', '🪅', '🪭', '🏮', '🪩', '💯',
+            '🩷', '❤️', '🧡', '💖'
+        ];
+
+        function randomInRange(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        function getRandomEmoji() {
+            return happyEmojis[Math.floor(Math.random() * happyEmojis.length)];
+        }
+
+        function createExplosionEffect(button) {
+            const rect = button.getBoundingClientRect();
+            const originX = rect.left + rect.width / 2;
+            const originY = rect.top - 10; // 10px above the top of the button
+            const chosenEmoji = getRandomEmoji();
+
+            // Create particles container
+            const container = document.createElement('div');
+            container.style.position = 'fixed';
+            container.style.top = '0';
+            container.style.left = '0';
+            container.style.width = '100vw';
+            container.style.height = '100vh';
+            container.style.pointerEvents = 'none';
+            container.style.zIndex = '999'; // Behind the button (button is z-index 1000)
+            document.body.appendChild(container);
+
+            // Create MORE orange confetti particles
+            for (let i = 0; i < randomInRange(80, 120); i++) {
+                createOrangeParticle(container, originX, originY);
+            }
+
+            // Create emoji particles with staggered timing - closer together like original
+            setTimeout(() => createEmojiWave(container, originX, originY, chosenEmoji, randomInRange(2, 4), 18, 1.8), 30);
+            setTimeout(() => createEmojiWave(container, originX, originY, chosenEmoji, randomInRange(2, 4), 25, 2.2), 80);
+            setTimeout(() => createEmojiWave(container, originX, originY, chosenEmoji, randomInRange(2, 4), 32, 2.8), 120);
+
+            // Clean up after animation
+            setTimeout(() => {
+                if (container.parentNode) {
+                    container.parentNode.removeChild(container);
+                }
+            }, 4000);
+        }
+
+        function createOrangeParticle(container, x, y) {
+            const particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            particle.style.width = randomInRange(4, 8) + 'px';
+            particle.style.height = randomInRange(4, 8) + 'px';
+            
+            // Three color options: orange, lighter orange, and peach
+            const colors = ['#EB7100', '#FF8C42', '#FFC496'];
+            particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+            
+            // Force all particles upward (60-120 degrees from horizontal)
+            const angle = randomInRange(60, 120) * (Math.PI / 180);
+            const velocity = randomInRange(350, 550);
+            const vx = Math.cos(angle) * velocity;
+            const vy = -Math.abs(Math.sin(angle) * velocity); // Force negative (upward)
+            
+            animateParticle(particle, vx, vy, randomInRange(2000, 3000));
+            container.appendChild(particle);
+        }
+
+        function createEmojiWave(container, x, y, emoji, count, size, scale) {
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.textContent = emoji;
+                particle.style.position = 'absolute';
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                particle.style.fontSize = (size * scale) + 'px';
+                particle.style.lineHeight = '1';
+                particle.style.userSelect = 'none';
+                
+                // Force emojis to shoot higher and more upward
+                const angle = randomInRange(70, 110) * (Math.PI / 180);
+                const velocity = randomInRange(400, 600); // Higher velocity for more height
+                const vx = Math.cos(angle) * velocity;
+                const vy = -Math.abs(Math.sin(angle) * velocity); // Force negative (upward)
+                
+                animateParticle(particle, vx, vy, randomInRange(3000, 4000), true);
+                container.appendChild(particle);
+            }
+        }
+
+        function animateParticle(element, vx, vy, duration, rotate = false) {
+            const startTime = Date.now();
+            const gravity = 800; // Strong gravity
+            const initialX = parseFloat(element.style.left);
+            const initialY = parseFloat(element.style.top);
+            const rotationSpeed = rotate ? randomInRange(-180, 180) : 0; // Degrees per second
+            let lastTime = startTime;
+
+            function update() {
+                const now = Date.now();
+                const elapsed = (now - startTime) / 1000;
+                const deltaTime = (now - lastTime) / 1000;
+                lastTime = now;
+                
+                if (elapsed * 1000 > duration) {
+                    if (element.parentNode) {
+                        element.parentNode.removeChild(element);
+                    }
+                    return;
+                }
+
+                const x = initialX + (vx * elapsed);
+                const y = initialY + (vy * elapsed) + (0.5 * gravity * elapsed * elapsed);
+                
+                if (rotate) {
+                    // Rotation increases at constant rate based on rotationSpeed
+                    const currentRotation = rotationSpeed * elapsed;
+                    element.style.transform = `rotate(${currentRotation}deg)`;
+                }
+                
+                element.style.left = x + 'px';
+                element.style.top = y + 'px';
+
+                // Keep animating if still on screen or moving upward
+                if (y < window.innerHeight + 100) {
+                    requestAnimationFrame(update);
+                } else if (element.parentNode) {
+                    element.parentNode.removeChild(element);
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        // Add click event to button
+        const button = document.getElementById('nextLessonBtn');
+        
+        // Charging particles effect on hover
+        let chargingInterval = null;
+        let chargingParticles = [];
+        
+        button.addEventListener('mouseenter', function() {
+            startChargingEffect(this);
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            stopChargingEffect();
+        });
+        
+        button.addEventListener('click', function() {
+            stopChargingEffect();
+            createExplosionEffect(this);
+        });
+        
+        function startChargingEffect(button) {
+            const rect = button.getBoundingClientRect();
+            const targetX = rect.left + rect.width / 2;
+            const targetY = rect.top + rect.height / 2;
+            
+            chargingInterval = setInterval(() => {
+                createChargingParticle(targetX, targetY);
+            }, 60);
+        }
+        
+        function stopChargingEffect() {
+            if (chargingInterval) {
+                clearInterval(chargingInterval);
+                chargingInterval = null;
+            }
+            // Clean up any remaining charging particles
+            chargingParticles.forEach(particle => {
+                if (particle.parentNode) {
+                    particle.parentNode.removeChild(particle);
+                }
+            });
+            chargingParticles = [];
+        }
+        
+        function createChargingParticle(targetX, targetY) {
+            const particle = document.createElement('div');
+            
+            // Start from random position around the button
+            const angle = Math.random() * Math.PI * 2;
+            const distance = randomInRange(80, 150);
+            const startX = targetX + Math.cos(angle) * distance;
+            const startY = targetY + Math.sin(angle) * distance;
+            
+            particle.style.position = 'fixed';
+            particle.style.left = startX + 'px';
+            particle.style.top = startY + 'px';
+            particle.style.width = randomInRange(2, 5) + 'px';
+            particle.style.height = randomInRange(2, 5) + 'px';
+            particle.style.backgroundColor = Math.random() > 0.5 ? '#EB7100' : '#FF8C42';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '999';
+            particle.style.opacity = '0';
+            particle.style.boxShadow = '0 0 4px rgba(235, 113, 0, 0.6)';
+            
+            document.body.appendChild(particle);
+            chargingParticles.push(particle);
+            
+            // Animate particle moving toward button
+            const startTime = Date.now();
+            const duration = randomInRange(500, 800);
+            
+            function animateToButton() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Ease in cubic for smoother acceleration
+                const easeProgress = progress * progress * progress;
+                
+                const currentX = startX + (targetX - startX) * easeProgress;
+                const currentY = startY + (targetY - startY) * easeProgress;
+                
+                particle.style.left = currentX + 'px';
+                particle.style.top = currentY + 'px';
+                
+                // Fade in first 20%, then fade out last 30%
+                if (progress < 0.2) {
+                    particle.style.opacity = (progress / 0.2) * 0.9;
+                } else if (progress > 0.7) {
+                    particle.style.opacity = 0.9 * (1 - ((progress - 0.7) / 0.3));
+                } else {
+                    particle.style.opacity = '0.9';
+                }
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animateToButton);
+                } else {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                    chargingParticles = chargingParticles.filter(p => p !== particle);
+                }
+            }
+            
+            requestAnimationFrame(animateToButton);
+        }
+    </script>
+</body>
+</html>

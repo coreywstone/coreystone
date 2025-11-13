@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="HERO Keyboard case study from Sr. Product Designer Corey Stone.">
+    <meta name="author" content="Corey Stone">
+    <meta name=“robots” content=“noimageindex,” “nofollow,” “nosnippet”>
+    <title>HERO Keyboard case study from Sr. Product Designer Corey Stone</title>
+<!--#include virtual="/includes/head.html" -->
+</head>
+
+<body id="page-top" class="index">
+    
+<!--#include virtual="/includes/header.html" -->
+
+<a href="/index.shtml#projects"><button type="button" class="btn btn-projectnav btn-allprojects hidden-print"><i class="fa fa-home" title="Go to All Projects section of the Home page."></i></button></a>
+
+<a href="#page-top"><button type="button" class="btn btn-projectnav btn-totop hidden-print"><i class="fa fa-arrow-up" title="Go to top."></i></button></a>
+
+<a href="klf.shtml"><button type="button" class="btn btn-projectnav btn-nextproject hidden-print"><i class="fa fa-arrow-right" title="See the next project."></i></button></a>
+    
+<!-- PROJECT -->
+<div class="container" id="project">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+        <h1>Founding HERO Keyboard</h1>
+        
+        <div style="margin-top: 30px;"><style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/aoHxEXIcmwg?rel=0&amp;showinfo=0' frameborder='0' allowfullscreen></iframe></div></div>
+        
+        <p class="caption text-center">The original promo video that I made in one night. <i class="fa fa-smile-o"></i></p>
+
+        <p class="bigintro">HERO is an iOS app that I conceived, designed, <a href="http://herokeyboard.com" target="_blank">marketed <i class="fa fa-external-link"></i></a>, and managed contract developers to build. In English, just 9 letters are used 80% of the time, so my patented design makes them bigger and centered where your thumb likes to be. The result? <strong>Finger travel is reduced by 35%, or "3 feet per tweet."</strong></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-bomb"></i><br />Problem</h2>
+            <p>One-handed mobile typing is hard and inefficient.</p>
+        </div>
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-bullseye"></i><br />Goals</h2>
+            <p>Redesign the QWERTY key layout but keep it intuitive and easy to learn.</p>
+        </div>
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-dropbox"></i><br />Constraints</h2>
+            <p>I'm not an iOS developer, so I'd need to pay a developer to build it, or partner with one. I ended up hiring contract developers, so my limited money limited my development hours.</p>
+        </div>
+        
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-6">
+            <h2><i class="fa fa-child"><br /></i> My Role</h2>
+            <p>As the solopreneur, I did everything but build it:</p>
+            <ul>
+                <li>Product Vision</li>
+                <li>UX Design</li>
+                <li>UI &amp; Visual Design</li>
+                <li>Logo, branding, &amp; marketing</li>
+                <li>Writing all UI text and marketing copy</li>
+                <li>Customer support</li>
+                <li>Managing the developer</li>
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <h2><i class="fa fa-group"></i> The Team</h2>
+            <p>A couple different freelance developers were used, hired on Upwork.</p>
+          </div>
+    </div>
+    
+    <div class="row">
+        <h2><i class="fa fa-retweet"></i> The story of HERO</h2>
+    </div>
+      
+        <div class="row example">
+          <div class="col-6 col-sm-6 text-center">
+            <img alt="My (rejected) concept for a 1-bit embedded in-truck messaging touchscreen system from 2001." class="img-responsive center-block" src="http://herokeyboard.com/images/story/invehicle-keyboard.gif" data-holder-rendered="true">
+           <p class="projectcaption">My concept from 2001 (pre-smartphone) for an embedded in-truck messaging system.</p>
+          </div>
+          <div class="col-6 col-sm-6">
+              <p>It was <strong>2001</strong> (remember pre-smartphone life? Bring your map!), and I was designing a <strong>small touchscreen keypad for an in-vehicle messaging</strong> system. I'd recently finished my Biomechanics/Ergonomics master's thesis measuring muscle activity on physical keyboards, and after double-checking the anthropometric charts for touch size standards, I realized the <strong>screen was too small to make all keys the recommended size.</strong></p>
+            </div>
+        </div>
+    
+        <div class="row example">
+          <div class="col-6 col-sm-6 text-center">
+            <img alt="Letter frequency chart by Nandhp (public domain)." class="img-responsive center-block" src="http://herokeyboard.com/images/story/keyboard-letter-frequency.png" data-holder-rendered="true"> 
+            <p class="projectcaption">Letter frequency chart by Nandhp (public domain).</p> 
+          </div>
+          <div class="col-6 col-sm-6">
+              <p>Then I thought, <strong>"Why should all the keys be the same size, when we use E waaaay more often than Z, for example?"</strong> So I looked up letter frequencies and found that in English, we use just 9 keys about 80% of the time. Since different-sized keys can't be arranged into a grid very well, I figured I might as well put the most-used keys together, and put the most common letter combinations ("bigrams," like TH and ER) next to each other.</p>
+              <p>I was pretty proud of my solution, but when I presented it to the engineering manager, he was like "WTF?" and implemented a simple QWERTY grid. Sigh. But the seed was planted.</p>
+          </div>
+        </div>  
+
+        <div class="row example">
+          <div class="col-6 col-sm-6">
+            <img src="http://herokeyboard.com/images/story/Early-keyboard-sketches.jpg" alt="Early sketch concepts for what would eventually become HERO." class="img-responsive center-block"  data-holder-rendered="true">
+            <p class="projectcaption">Early sketch concepts for what would eventually become HERO.</p>
+          </div>
+        <div class="col-6 col-sm-6">
+              <p><strong>Several years and four kids later</strong>, I found myself doing a lot of one-thumb baby-holding typing and thought "there must be a better way" (to type, not parent). The old QWERTY layout might work well enough for 10-finger typing (and we've built up a lot of muscle memory for it), but it just doesn't make sense for the less-ingrained one or two-finger mobile typing.</p>
+           </div>
+        </div>
+
+        <div class="row example">
+          <div class="col-6 col-sm-6">
+            <img src="http://herokeyboard.com/images/story/Thumbprint-Keyboard.png" alt="The Thumbprint Keyboard concept, which would soon become HERO." class="img-responsive center-block"  data-holder-rendered="true">
+            <p class="projectcaption">An early version of HERO, which I was calling the "Thumbprint Keyboard" at the time.</p>
+          </div>
+        <div class="col-6 col-sm-6">
+              <p>I sat on the idea for a while, as I too often do, but when Apple finally announced support for 3rd-party keyboards, I knew I had to do it &mdash; <strong>I had to try to make mobile typing better for myself and everyone else.</strong></p>
+              <p>So while my wife baked in the sun on our kid-free vacation, I sat in the nearby shade designing HERO (which I was calling the Thumbprint keyboard at first, because early versions had more of a thumbprint pattern instead of HERO's circular rings).</p>
+           </div>
+        </div>
+
+         <div class="row example">
+          <div class="col-6 col-sm-6">
+            <img src="http://herokeyboard.com/images/story/early-keyboard-tests.png" alt="Cardboard cutouts used for early A-B keyboard speed tests." class="img-responsive center-block" data-holder-rendered="true">
+            <p class="projectcaption">Cardboard phones for early A-B keyboard speed tests.</p>
+          </div>
+          <div class="col-6 col-sm-6">
+              <p><strong>After cardboard usability tests</strong> and finalizing the design, it was time to find a contractor (not many had built an iOS keyboard yet), and learn all about publishing and selling on the App Store.</p>
+          </div>
+        </div>
+    
+
+    <div class="row">
+        <h2><i class="fa fa-flag"></i> Results</h2>
+    </div>
+
+     <div class="row example">
+      <div class="col-6 col-sm-6">
+        <!--img alt="Animated GIF of several views in HERO Keyboard." class="img-responsive center-block" src="/img/HERO-Keyboard-Animation.gif" /-->
+        <img alt="Animated GIF of typing with HERO Keyboard." class="img-responsive center-block" src="http://herokeyboard.com/images/bannerviews/HERO-Keyboard-Demo450.gif" />
+        <p class="projectcaption">Tap HERO v2's center bolt for SPACE, or tap-hold for numbers, symbols, and emojis.</p>
+    </div>
+      <div class="col-6 col-sm-6">
+          <p><strong>Logically, results were great:</strong></p>
+          <ul>
+              <li>Finger travel is reduced by 35%</li>
+              <li>The most-used keys are bigger than on QWERTY</li>
+              <li>More characters (eg, @ # -) are always available</li>
+              <li>Your recently used symbols and emojis are one tap-hold away</li>
+              <li>It was the #7 product when it appeared on Product Hunt.</li>
+          </ul>
+          <p><strong>Financially, I can't call it a success.</strong> After a couple early blog posts generated two $600 sales days, sales have been sparse.</p>
+          </div>
+         
+    </div>
+     <div class="row example">
+      <div class="col-6 col-sm-6">
+        <img alt="Animated GIF of several views in HERO Keyboard." class="img-responsive center-block" src="http://herokeyboard.com/images/features/HERO-Keyboard-Themes.png" />
+        <p class="projectcaption"></p>
+    </div>
+      <div class="col-6 col-sm-6">
+          <p><strong>HERO's circular design allows for some interesting themes.</strong> The app is built so that new themes can be uploaded without republishing the app.</p>
+          </div>
+    </div> 
+    
+    <div class="row">
+        <h2><i class="fa fa-book"></i> Learnin'</h2>
+    </div>     
+    
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">        
+           <p><strong>Launching your own product is an eye-opening experience that I recommend every designer do.</strong> It forces you to think holistically: Will people buy it? How do I build it? How should I position and market it? Should I run ads? How will I maintain and support it?</p>
+            
+            <p>This was the first product I launched, so there was a ton of real-world learning through experience, such as:</p>
+            <ul>
+                <li>Creating an LLC</li>
+                <li>Hiring and managing contract development</li>
+                <li>Creating an Apple Developer account</li>
+                <li>Publishing to the App Store</li>
+                <li>App Store rejections and appeals</li>
+                <li>Creating App Store graphics</li>
+                <li>App Store search optimization</li>
+                <li>Customer support</li>
+                <li>Marketing and publicity</li>
+            </ul>
+            <p>I suspected an alternate keyboard would be a tough sell since people are so used to QWERTY, and it didn't help that Apple's 3rd-party keyboard implementation is a bit buggy, so even well-coded keyboard apps crash too often. Also, because system keyboards are built well, people expect their keyboard to work very well, which is hard to do on a shoestring development budget. I think a better development model is to have a dev-partner whose able to provide continuous improvement.</p>
+
+            <div class="text-center hidden-print"><a class="btn btn-casestudy fixedwidth" href="/projects/klf.shtml" role="button">Next Project <i class="fa fa-arrow-right"></i></a></div>
+
+        </div>
+    </div>
+    
+</div>
+<!-- /PROJECT -->
+    
+<!--#include virtual="/includes/footer.html" -->
+<!--#include virtual="/includes/endscripts.html" -->
+</body>
+</html>

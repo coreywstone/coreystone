@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Owl case study from Sr. Product Designer Corey Stone.">
+    <meta name="author" content="Corey Stone">
+    <meta name=“robots” content=“noimageindex,” “nofollow,” “nosnippet”>
+    <title>SchooLinks case study from Sr. Product Designer Corey Stone</title>
+<!--#include virtual="/includes/head.html" -->
+</head>
+
+<body id="page-top" class="index">
+    
+<!--#include virtual="/includes/header.html" -->
+
+<a href="/index.shtml#projects"><button type="button" class="btn btn-projectnav btn-allprojects hidden-print"><i class="fa fa-home" title="Go to All Projects section of the Home page."></i></button></a>
+
+<a href="#page-top"><button type="button" class="btn btn-projectnav btn-totop hidden-print"><i class="fa fa-arrow-up" title="Go to top."></i></button></a>
+    
+<a href="myact.shtml"><button type="button" class="btn btn-projectnav btn-nextproject hidden-print"><i class="fa fa-arrow-right" title="See the next project."></i></button></a>
+    
+<!-- PROJECT -->
+<div class="container" id="project">
+    <div class="row col-md-8 col-md-offset-2">
+        <h1>Designing for SchooLinks, an EdTech SaaS startup</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <p class="bigintro" style="text-align: left">SchooLinks is a fast-moving EdTech startup whose responsive SaaS is the premier college and career readiness platform for K-12 staff and students.</p>
+        </div>
+        <div class="col-md-8 project-box">
+            <img src="/img/schoolinks/schoolinks-overview.png" class="img-responsive" alt="Sample of SchooLinks work." />
+        </div>
+    </div>
+    
+    
+<!-- START CONTEXT -->
+    <div class="row">
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-bomb"></i><br />Problems</h2>
+            <p>SchooLinks excels at adding features quickly through fast-moving agile development, but much of the early design work was done by a young design team with little to no usability testing or research, so UX debt is a problem in some areas of the large multi-module application. </p>
+        </div>
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-bullseye"></i><br />Goals</h2>
+            <ul>
+                <li><strong>Quickly design intuitive efficient</strong> functionality that fits (or improves upon) the existing design system.</li>
+                <li><strong>Help improve our design system.</strong></li>
+                <li><strong>Improving the UX maturity</strong> of the organization through persona creation, improved design processes, design reviews, and usability testing.</li>
+            </ul>
+        </div>
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-dropbox"></i><br />Constraints</h2>
+            <ul>
+                <li><strong>Lack of Product Managers</strong>: When I started, there were no PMs, so designers took on some of that load.</li>
+                <li><strong>Tight launch deadlines</strong>: We continually evaluate what improvements and functionality are worth the implementation time.</li>
+                <li><strong>UX debt</strong> in some areas of the app can delay improvements that we'd like to make.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-6">
+            <h2><i class="fa fa-child"><br /></i> My Role</h2>
+            <p>As the most experienced designer on a team of 3, I:</p>
+            <ul>
+                <li>Led creation of user personas</li>
+                <li>Journey mapped, task analysis, &amp; wireframed</li>
+                <li>Assisted with product strategy</li>
+                <li>UX, UI, and Visual Design</li>
+                <li>Assisted with Figma design system</li>
+                <li>Wrote UI copy</li>
+                <li>Usability tested</li>
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <h2><i class="fa fa-group"></i> The Team</h2>
+            <p>When I started, the company had 15 people, and I mainly worked with the CTO (who was the de facto PM) and two other designers, one per pod. When I left, it was 50+ people, and I work more with the pod's new PM, collaborating with devs and ops staff.</p>
+            </ul>
+        </div>
+    </div>
+<!-- END CONTEXT -->
+
+<!-- START RESULTS -->        
+        <div class="row">
+            <h2><i class="fa fa-flag"></i> Results: Course Planner</h2>
+        </div>
+        <div class="row example">
+            <div class="col-md-3">
+                <!-- p>Students use the "Course Planner" to select all four years of their high school courses, and the main objective of the redesign was to make it more intuitive (thus less need for teacher help) and efficient (fewer clicks).</p-->
+                <p>As part of the Course Planner project, I decided to improve some deficiencies in the "Before" Plan Summary page:</p>
+                <ul>
+                    <li>It wasn't very clear which courses were completed vs. upcoming, so I used a stronger gray/white contrast.</li>
+                    <li>The star icon was not intuitive, so I converted it to an "Includes 2 more" text link.</li>
+                    <li>The header and footer bars were not space-efficient, and there was no page title, so I combined the header and footer into a single streamlined header, and moved the "Alternate courses" into their respective grade column in the course grid.</li>
+                    <li>The "Additional options" footer button gave little information scent for the History and Secondary Plans hidden in it, so I pulled its functionality out, with the History link at top right, and the Secondary Plans shown in a small bottom bar, each with a status icon.</li>
+                </ul>
+            </div> 
+            <div class="col-md-9 project-box">
+                <h3 style="color: #cc3333;">Before:</h3>
+                <img src="/img/schoolinks/course-plan-summary-old.png" class="img-responsive screenshot" alt="The 'Before' version of the Course Plan Summary page." />
+                <h3 style="color: #cc3333; margin-top: 30px !important;">After:</h3>
+                <img src="/img/schoolinks/course-plan-summary.png" style="margin-bottom: 30px;" class="img-responsive screenshot" alt="The 'After' version of the Course Plan Summary page." />
+                
+                <div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/e897572df1794489aac6a6e68f60d5ee?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+            </div>
+        </div>  
+    
+        <div class="row">
+            <h2><i class="fa fa-flag"></i> Results: Career Assessment</h2>
+        </div>
+        <div class="row example">
+            <div class="col-md-4">
+                <p>During onboarding, students take a "Find your path" career assessment. I felt the existing design had room for improvement:</p>
+                    <p><strong>The icons were counter-intuitive</strong> because they repurposed well known icons for different meanings:</p>
+                        <ul>
+                            <li>Refresh icon = "Back"</li>
+                            <li>X/cancel icon = "Disagree"</li>
+                            <li>Check/submit icon = "Agree"</li>
+                            <li>?/help icon = "Not sure"</li>
+                        </ul>
+                    <p>So I used more standard intuitive icons, moved the seldom-used Back button out, and centered the Not Sure button to help imply it's meaning (and it's smaller because the more it's chosen, the weaker the assessment results, which we also explained in a first-click tooltip).
+                    </p>
+                    <p><strong>The small image wasn't impactful or engaging</strong>, so I made it fill the screen, overlaid the text and buttons, and added a lower gradient to increase readability.</p>
+                    <p><strong>The click-through tutorial</strong> wasn't needed after the redesign, so I pulled the title and progress indicator into our common header bar, and provided an instructional popout from the "?" icon.</p>
+            </div> 
+            <div class="col-md-8 project-box">
+                <h3 style="color: #cc3333;">Before:</h3>
+                <img src="/img/schoolinks/find-your-path-current.png" class="img-responsive screenshot" alt="The 'Before' version of the 'Find your path' career assessment." />
+                <h3 style="color: #cc3333; margin-top: 30px !important;">After:</h3>
+                <img src="/img/schoolinks/find-your-path-new.jpg" class="img-responsive screenshot" alt="The 'After' version of the 'Find your path' career assessment." />
+            </div>
+        </div>  
+     
+     <div class="row">
+         <h2><i class="fa fa-flag"></i> Results: Templated Notes &amp; Analytics</h2>
+     </div>
+     <div class="row example">
+         <div class="col-md-12 project-box">
+            <div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/fafe0bbec6b34f95a97da48a9e3ecc69?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+         </div>
+     </div>  
+<!-- END RESULTS -->
+    
+<!-- START PROCESS -->
+    <div class="row">
+        <h2><i class="fa fa-retweet"></i> Process</h2>
+    </div>
+    <div class="row example">
+        <div class="col-md-6">
+            <p>My process varied based on the size, scope, speed, and complexity of the design task, but whenever possible, we:</p>
+            <ul>
+                <li>Got input from our Ops and Support staff (sometimes in the form of "Suggestion" tickets in Jira)</li>
+                <li>Watched relevant user screen recordings from Fullstory</li>
+            </ul>
+        </div> 
+        <div class="col-md-6">
+            <p></p>
+        </div>
+    </div>
+        
+    <div class="row example">
+        <div class="col-md-3">
+            <p><strong>User personas:</strong> Since not much time was allocated to creating true research-backed user personas, I led the creation of user "proto-personas," which serve the same purpose but are written by our staff members who have enough lived experience with the user type to write a fairly representative persona. I wrote a few myself, and created a template and instructions for our staff to contribute.</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/schoolinks/schoolinks-personas.png" class="img-responsive" alt="A few of the 20 SchooLinks user personas." />
+        </div>
+    </div>
+        
+    <div class="row example">
+        <div class="col-md-3">
+            <p>For member onboarding improvements, I created an <strong>empathy flow map</strong> to help elucidate the user's mindset and resulting design objectives for each step in the process.</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/schoolinks/member-empathy-flow-map.png" class="img-responsive" alt="A flow map showing member onboarding overlaid with their mindset and resulting design objectives." />
+        </div>
+    </div>
+    <div class="row example">
+        <div class="col-md-3">
+            <p>When designing the alumni transcript request process, I created this <strong>flow chart</strong> to help us understand and improve all possible actions – including offline ones – within the process.</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/schoolinks/transcript-flow-chart.png" class="img-responsive" alt="Flow chart of the alumni transcript process." />
+        </div>
+    </div>  
+    <div class="row example">
+        <div class="col-md-3">
+            <p>Early on, sometimes I'll sketch out initial ideas to quickly see what may or may not work. Here are a few from the Course Planner project, when I was considering using a literal wizard. 🧙‍♂️</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/schoolinks/course-planner-sketches.jpg" class="img-responsive" alt="Early sketches from the course planner." />
+        </div>
+    </div>  
+    <div class="row example">
+        <div class="col-md-3">
+            <p>For the student filter designs, I conducted a <strong>moderated remote A-B test</strong> to compare the existing design with my first proposed design, then ran <strong>multiple rounds of usability tests</strong> to assess the intuitiveness of the new designs,  iterating and retesting several times before arriving on the final solution. <i class="fa fa-thumbs-up"></i> </p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <img src="/img/schoolinks/schoolinks-usability-test.png" class="img-responsive" alt="Screenshot of part of the Figma prototype with the test results Google Doc overlaid." />
+        </div>
+    </div>    
+<!-- END PROCESS -->
+
+
+ 
+    <div class="row">
+        <h2><i class="fa fa-book"></i> Learnin'</h2>
+    </div>     
+            
+    <div class="row">
+       <div class="col-md-8 col-md-offset-2">        
+        <p><strong>Speed:</strong> SchooLinks moved very fast, which is generally a good thing, but it required us designers to be very flexible and efficient with process, making sure not to skip what's really needed to produce a good outcome. And as the senior-most designer, I sometimes stepped in to help make sure we were staying focused on the real user needs, and not designing to edge cases thus muddying up the happy path.</p>
+        
+        <p><strong>No PM's = more designer documentation:</strong> For much of my time there, we didn't have Product Managers, so designers' scope included more requirements discovery and documentation.</p>
+        
+        <p><strong>Figma:</strong> I'd used Figma for a few small projects before, but SchooLinks was my first time using it as my primary tool (I'd been using Axure RP – an advanced prototyping tool). So I had to quickly get up to speed on autolayout, components, design library management, plug-ins, and a myriad of little tricks and keyboard shortcuts.</p>
+                
+        <div class="text-center hidden-print"><a class="btn btn-casestudy fixedwidth" href="/projects/myact.shtml" role="button">Next Project <i class="fa fa-arrow-right"></i></a></div>
+
+        </div> 
+    </div>
+    
+</div>
+<!-- /PROJECT -->
+    
+<!--#include virtual="/includes/footer.html" -->
+<!--#include virtual="/includes/endscripts.html" -->
+</body>
+</html>

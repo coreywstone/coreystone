@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ideas &amp; sketches from lead product designer Corey Stone">
+    <meta name="author" content="Corey Stone">
+    <title>Ideas &amp; sketches from lead product designer Corey Stone</title>
+<!--#include virtual="/includes/head.html" -->
+</head>
+
+<body id="page-top" class="index">
+<!--#include virtual="/includes/header.html" -->
+<script>
+document.getElementById('ideastab').classList.add('active');
+</script>  
+
+    <!-- SKETCHBOOK -->
+    <div class="container" id="sketches">
+            <div class="sectionheader">
+                <h1>Idea sketchbook</h1>
+                <p>I like to solve my life's little annoyances, at least theoretically. Sometimes I actually make them into products (I'm working on some new ones now), but the ideas below languish in my sketchbook graveyard. Many are non-digital products (remember I'm an Industrial Design grad) but hopefully they shed some light on how I think. Some are comically old, but still kinda fun.</p>
+            </div>
+
+            <div class="row">            
+                <div class="col-md-4"><a name="scooter"></a>
+                    <h2>Scooter concepts</h2>
+                    <p>I almost did some freelance work for a scooter startup, and these were a few quick preliminary ideas to solve the problems of rider safety, branding in a competitive market, and city bans due to people leaving scooters in the middle of sidewalks.</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/scooters.jpg" alt="Scooter concepts" class="img-responsive" />
+                </div>    
+            </div>
+
+               <div class="row">            
+                <div class="col-md-4"><a name="peanutbutter"></a>
+                    <h2>Peanut butter jar lid with integrated knife</h2>
+                    <p>Pretty self-explanatory. This should really happen.</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/peanut-butter.jpg" alt="Sketch of Peanut Butter Jar Lid with Integrated Knife." class="img-responsive" />
+                </div>    
+            </div>  
+
+            <!--div class="row">            
+                <div class="col-md-4">
+                    <h2>Smart Parking Meters</h2><a name="smartparking"></a>
+                    <p>I sketched this up long ago, and I'm guessing it exists in some form now. It'd be pretty cool if the parking meter data could be pulled into Apple/Google Maps.</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/parking.jpg" alt="Sketch of a smart parking meter concept." class="img-responsive" />
+                </div>    
+            </div-->  
+        
+            <div class="row">            
+                <div class="col-md-4">
+                    <h2>Collapsible snowboard poles</h2><a name="snowboardpoles"></a>
+                    <p>I'm a skier, but the one time I snowboarded, I thought of this to help snowboarders get through flats and lift lines.</p>
+                </div>
+                <div class="col-md-8">                    
+                <img src="../img/sketches/snowboard-poles.jpg" alt="Sketch of collapsible snowboard poles." class="img-responsive" />
+                </div>    
+            </div>
+
+            <div class="row">            
+                <div class="col-md-4">
+                    <h2>Child's riding toys</h2>
+                    <p>This was a fun 2-week project in Industrial Design school which ended in making a rough full-scale model of one design.</p>
+                </div>
+                <div class="col-md-8"> 
+                    <img src="../ku/portpics/toysanim.gif" alt="Child's riding toy sketches" class="img-responsive" style="border: none; box-shadow: none;" />
+                </div>    
+            </div>    
+        
+            <div class="row">            
+                <div class="col-md-4">
+                    <h2>"Sport Lead" dog leash</h2><a name="dogleash"></a>
+                    <p>Our first dog (June) did some dog sports like frisbee and flyball, which means you're often taking your dog on and off the leash (and holding the leash when not using it). "There must be a better way!" I thought, so I designed a retractable collar-mounted leash. <strong>Update:</strong> Somebody ended up making these!</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/sport-lead.jpg" alt="Sketch of a collar-mounted retractable dog leash." class="img-responsive" />
+                </div>    
+            </div>   
+
+            <!--div class="row">            
+                <div class="col-md-4">
+                    <h2>Hotel Alarm Clock</h2><a name="hotealarm"></a>
+                    <p>Remember how we used alarm clocks before iPhone alarms? And sometimes there'd be an AM/PM screw-up or low-volume error so we wouldn't wake up? It was even riskier using a hotel's unfamiliar alarm clock, so I wanted to design an incredibly intuitive version targeted toward hotels. Since this would be a pretty complex and costly product to manufacture, I never followed through with it, but I iterated a lot and was happy with a solution of using explicit (non multi-modal) buttons tied to explicit displays.
+                    </p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/alarm-clock.jpg" alt="Alarm clock concepts" class="img-responsive" />
+                </div>    
+            </div-->  
+
+            <div class="row">            
+                <div class="col-md-4">
+                    <h2>Baby Swaddle</h2><a name="babyswaddle"></a>
+                    <p>When we had our first baby, the usual parenting struggles gave me quite a few ideas! Our first had colic (ie, cries all the time), and the "Happiest Baby on the Block" book taught us that swaddling Christopher should help. Problem was, babies wriggle out of a swaddled blanket, so I designed a simple velcro-based "Cool Swaddle" (basically a baby straight jacket), which worked great. Sadly, I never got the product to market, and eventually someone else did (it's on the stores at WalMart now)...sigh. It's one of my bigger regrets.</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/swaddle.jpg" alt="Baby swaddle sketch" class="img-responsive" />
+                </div>    
+            </div> 
+
+            <div class="row">            
+                <div class="col-md-4">
+                    <h2>Crib-Lift</h2><a name="criblift"></a>
+                    <p>My small post-pregnant wife struggled to lift the baby in and out of the crib, and drop-side cribs don't seem to work that well (and still require you to bend over), so I came up with this fairly simple push-pedal idea to easily raise the mattress.</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/crib-lift.jpg" alt="Crib-lift sketch" class="img-responsive" />
+                </div>    
+            </div> 
+        
+               <div class="row">            
+                <div class="col-md-4">
+                    <h2>Comfy ski boots</h2><a name="skiboots"></a>
+                    <p>Some sketches from my senior Industrial Design project. Basically, the idea was to minimize the rigid shell (which is needed to transfer your weight where you want it on your ski) so it's only in the necessary areas, while the rest of the boot can be a soft comfortable pain-free liner. </p>
+                </div>
+                <div class="col-md-8 project-box">
+                    <img src="../ku/portpics/bootdwgs.gif" alt="Marker-rendered sketches of comfortable ski boot designs." class="img-responsive" style="border: none; box-shadow: none;" />
+                </div>    
+            </div>                           
+
+               <div class="row">            
+                <div class="col-md-4"><a name="modularfurniture"></a>
+                    <h2>Easy-ship, easy-assemble modular furniture</h2>
+                    <p>In my college and post-college days when I moved every year or so, I thought it'd be nice to have furniture that was very easy to disassemble, move or ship, and reassemble. It could also be modular to fit different spaces, with upholstery that removes easily for washing or replacing to change the look. Now, furniture-rental services are gaining popularity to fill the need, but I still like this concept. (But I have no idea what that shape is on the upper right.)</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/modular-furniture.jpg" alt="Modular furniture sketch" class="img-responsive" />
+                </div>    
+            </div>  
+        
+               <div class="row">            
+                <div class="col-md-4">
+                    <h2>In-garage recycling center</h2><a name="recyclingcenter"></a>
+                    <p>In Iowa City, we had to sort our curbside recycling, so I designed and built a simple station on our garage wall that made it all tidy and easy. And kudos to my former self for listing the Goals and Task List on the sketch. 😁</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/recycling-center.jpg" alt="Sketch of in-garage recycling center." class="img-responsive" />
+                </div>    
+            </div>  
+        
+               <div class="row">            
+                <div class="col-md-4">
+                    <h2>Comfy high heels</h2><a name="highheels"></a>
+                    <p>A half-baked idea to make heels less painful. I have no idea how women wear them all day. Really glad I work from home in slippers. 😁</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/heels.jpg" alt="Sketch of comfortable high heels." class="img-responsive" />
+                </div>    
+            </div>  
+        
+            <!--div class="row">            
+                <div class="col-md-4">
+                    <h2>Kid's Room Mural</h2>
+                    <p>You may have seen my mural paintings at the bottom of the Projects page, but here's an old sketch from the first room I did which I can't find photos of.</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/mural.jpg" alt="Sketch of my first kids' room mural." class="img-responsive" />
+                </div>    
+            </div-->  
+        
+            <!--div class="row">            
+                    <div class="col-md-4"><a name="realtorsurveytool"></a>
+                        <h2>Realtor Survey Tool (pre-iPhone)</h2>
+                        <p>It's fun to look at pre-iPhone ideas! I don't think I can draw fingers that well anymore though, which saddens me.</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/realtor-tool.jpg" alt="Sketch of a tool for realtor's surveys." class="img-responsive" />
+                </div>    
+            </div-->  
+        
+               <div class="row">            
+                <div class="col-md-4"><a name="foultracker"></a>
+                    <h2>Basketball ref's foul tracker</h2>
+                    <p>Ever notice how basketball refs have to run to the scorer's table to signal who the foul was on? Why not just have a wristband-mounted tool where they can easily enter it?</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/basketball-ref-tool.jpg" alt="Sketch of a tool for basketball referees." class="img-responsive" />
+                </div>    
+            </div>  
+        
+               <div class="row">            
+                <div class="col-md-4">
+                    <h2>Mouse with tactile output</h2><a name="tactilemouse"></a>
+                    <p>I had this idea while I was in grad school for Biomechanics / Ergonomics. I don't think it's been done, which of course might mean it's a bad idea.</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/tactile-mouse.jpg" alt="Sketch of a tactile mouse concept." class="img-responsive" />
+                </div>    
+            </div>  
+        
+            <!--div class="row">            
+                <div class="col-md-4">
+                    <h2>House Floorplan</h2>
+                    <p>I don't remember why I drew up a house design long ago since we certainly couldn't afford to build a house at the time, but I find home layouts interesting in how they handle and essentially force the movement of people, food, noise, and laundry. And I've always wanted a laundry chute.</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/house.jpg" alt="House sketch" class="img-responsive" />
+                </div>    
+            </div-->  
+        
+               <!--div class="row">            
+                <div class="col-md-4">
+                    <h2>Airplane Seat-back Entertainment</h2>
+                    <p>This 1998 idea was certainly ahead of its time. Now we just need free Wi-Fi on flights and we'll be golden.</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/plane-entertainment.jpg" alt="Sketch of a seatback airplane entertainment system." class="img-responsive" />
+                </div>    
+            </div-->  
+        
+                <div class="row">            
+                    <div class="col-md-4">
+                    <h2>Car hail cover</h2>
+                    <p>This idea came to me when we lived in stormy Iowa with two cars and a one-car garage.</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/hail-cover.jpg" alt="Sketch of a car hail cover." class="img-responsive" />
+                </div>    
+            </div>  
+        
+            <!--div class="row">            
+                <div class="col-md-4">
+                    <h2>Music Player for Skiing</h2>
+                    <p>I had this idea in 1998, well before iPhones and iPods. However, even though the technology is easily available to solve this now, it's still hard to operate music controls in ski gloves, so a glove-friendly controller would be nice even today.</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/ski-music-player.jpg" alt="Sketch of a music player for skiing." class="img-responsive" />
+                </div>    
+            </div-->  
+        
+               <div class="row">            
+                <div class="col-md-4">
+                    <h2>Disposable car corner-bumpers</h2>
+                    <p>When my wife and I visited Taiwan, I noticed that most cars had minor damage on their corner bumpers, so...</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/disposable-bumpers.jpg" alt="Sketch of disposable car bumpers." class="img-responsive" />
+                </div>    
+            </div>  
+        
+               <div class="row">            
+                <div class="col-md-4">
+                    <h2>Periscope basement windows</h2>
+                    <p>Need a window in a fully underground basement? I do!</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/periscope-windows.jpg" alt="Sketch of periscope basement windows." class="img-responsive" />
+                </div>    
+            </div>  
+        
+            <!--div class="row">            
+                <div class="col-md-4">
+                    <h2>Build-a-Coaster Toy</h2>
+                    <p>Another of my late-90's ideas that's probably been done by now.</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/build-a-coaster.jpg" alt="Sketch of toy roller coaster builder." class="img-responsive" />
+                </div>    
+            </div-->  
+        
+            <div class="row"> <a name="reader"></a>           
+                <div class="col-md-4">
+                    <h2>Portable paper-book reader</h2>
+                    <p>We have audiobooks, but wouldn't it be nice to have paper books read to us?</p>
+                </div>
+                <div class="col-md-8">
+                    <img src="../img/sketches/audio-reader.jpg" alt="Sketch of a book audio reader." class="img-responsive" />
+                </div>    
+            </div>  
+
+        </div>
+	</div>
+    
+    
+<!--#include virtual="/includes/footer.html" -->
+<!--#include virtual="/includes/endscripts.html" -->
+</body>
+</html>

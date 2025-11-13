@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="KU.edu case study from Sr. Product Designer Corey Stone.">
+    <meta name="author" content="Corey Stone">
+    <meta name=“robots” content=“noimageindex,” “nofollow,” “nosnippet”>
+    <title>KU.edu case study from Sr. Product Designer Corey Stone</title>
+<!--#include virtual="/includes/head.html" -->
+</head>
+
+<body id="page-top" class="index">
+    
+<!--#include virtual="/includes/header.html" -->
+
+<a href="/index.shtml#projects"><button type="button" class="btn btn-projectnav btn-allprojects hidden-print"><i class="fa fa-home" title="Go to All Projects section of the Home page."></i></button></a>
+
+<a href="#page-top"><button type="button" class="btn btn-projectnav btn-totop hidden-print"><i class="fa fa-arrow-up" title="Go to top."></i></button></a>
+    
+<a href="medical.shtml"><button type="button" class="btn btn-projectnav btn-nextproject hidden-print"><i class="fa fa-arrow-right" title="See the next project."></i></button></a>
+    
+<!-- PROJECT -->
+<div class="container" id="project">
+    <div class="row col-md-8 col-md-offset-2">
+        <h1>Redesigning the KU.edu Responsive Templates, Homepage, &amp; Admission Site</h1>
+        <p class="bigintro">From 2006-2013, I was the lead web designer for the million-page University of Kansas web presence. A few of my main projects are explained below.</p>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-bomb"></i><br />Problem</h2>
+            <p>The KU web presence was a hodge-podge of static non-responsive HTML sites, guided loosely by some suggested templates.</p>
+        </div>
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-bullseye"></i><br />Goals</h2>
+            <p>Design a new responsive template, information architecture, and global navigation system flexible enough for non-tech staff to implement in their new Drupal sites.</p>
+        </div>
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-dropbox"></i><br />Constraints</h2>
+            <p>Limited development resources – we only had a few developers, and they had some other duties in addition to this large project.</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-6">
+            <h2><i class="fa fa-child"><br /></i> My Role</h2>
+            <p><strong>I was the lead and sole UX designer, tasked with:</strong></p>
+            <ul>
+                <li>User research</li>
+                <li>Information architecture &amp; global navigation</li>
+                <li>UX Design</li>
+                <li>Visual Design alongside some in-house graphic designers</li>
+                <li>Usability testing</li>
+                <li>Teaching the new site guidelines to other campus site admins</li>
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <h2><i class="fa fa-group"></i> The Team</h2>
+            <p><strong>I worked with:</p>
+            <ul>
+                <li>An IT lead and several developers</li>
+                <li>Some in-house graphic design staff</li>
+                <li>Various on-campus site admins</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="row">
+        <h2><i class="fa fa-retweet"></i> Processes &amp; Results</h2>
+    </div>
+    <div class="row example">
+        <div class="col-md-4">
+            <h3>Information Architecture</h3>
+            <p>For the new IA, I started by creating a huge spreadsheet where I logged all the main content chunks across hundreds of sites to find the commonalities and patterns. With that data, I identified several site types (eg, academic, support, research, etc), and created a recommended architecture for each.</p>
+            <p>I ended up choosing a two-level horizontal navigation so staff couldn't add tons of top-level categories, which had been a problem. The design also had a top meta nav bar and "KU Directory" pulldown so students and staff could quickly access their myKU, Blackboard, etc. sites.</p>
+        </div> 
+        <div class="col-md-8 project-box">
+            <img src="/img/ku/online-responsive-fullsize.jpg" class="img-responsive" alt="KU.edu template as seen on desktop, tablet, and mobile devices." />
+        </div>
+    </div>
+
+
+
+    <div class="row example">
+        <div class="col-md-4"> 
+            <h3>Degree Viewer</h3>   
+            <p>During the content audit, I noticed that our very important degree-program content was weak and wildly inconsistent. So I created the "Degree Viewer" concept, which provided a nicely formatted structure that would encourage staff to enter all the info that current and prospective students need, displayed in an appealing way to help student recruitment.</p>
+            <p>Once this large project was done, I was the lucky guy who got to reinforce the new site requirements (aka the 'web police'). But I also helped advise and educate staff on best practices, which was much more fun. </p>
+        </div> 
+        <div class="col-md-8 project-box">
+          <img src="/img/ku/ku-degree-viewer.png" class="img-responsive img-centered" alt="An example of the Degree Viewer">
+        </div>
+    </div>
+ 
+     <div class="row example">
+         <div class="col-md-4"> 
+           <h3>KU Homepage</h3>
+           <p>The objective of the 2012 KU.edu home page redesign was to brand KU as a top-tier public university, disseminate the latest KU news, and get users where they want to go. The challenge is that a university home page has many audiences with varying objectives, often quite different from the objectives of the designer's boss's boss. So I created user personas and scenarios to help guide the design and communicate the various user needs. </p>
+           <p>The solution's hero area make's a great first impression with inspiring campus images paired with impactful news, resting on a tray for more news articles (to satisfy said boss's boss). The lower area served as a gateway for each respective audience, with links to their probable content requests. Overall, the response to the redesign was very positive, and the design was used until 2018.</p>    
+         </div>
+         <div class="col-md-8 project-box">
+             <img src="/img/ku/ku-homepage-withdocs.jpg" class="img-responsive img-centered" alt="KU.edu home page.">
+         </div>
+     </div>
+    
+    <div class="row example">
+        <div class="col-md-4"> 
+          <h3>KU Admissions Site</h3>
+          <p>A university's admission site is often the first-touch front door in student recruitment. Students and parents want quick answers (Do they have my major? How much will it cost? Will I get a scholarship?), but may also want to dive into the details, which are sometimes in a shoddily made departmental site. So what should we put in the Admission site and when to link out? What about the slightly different info for Transfer, International, and Grad students? And how to manage it all with very little staff? Aaarrgh! A tough task.</p>
+        
+          <p>For the 2013 redesign, I decided to include all the high-level info, implemented in the CMS as mobile-friendly adaptive content that changed based on audience (ie, incoming freshman, transfer, etc). The hero space gave the "sense of place," while the lower cards gave quick access to answer the common questions, with a major search and costs link. The right side was action-oriented, serving as a quasi checklist to help guide students and parents through the process. The site was well received and earned a CASE.org Gold Award.</p>
+        </div>
+        <div class="col-md-8 project-box">
+          <img src="/img/ku/ku-admissions.jpg" class="img-responsive img-centered" alt="Screenshot of the KU.edu Admission site.">
+        </div>
+    </div>
+    
+    <div class="text-center hidden-print"><a class="btn btn-casestudy fixedwidth" href="/projects/medical.shtml" role="button">Next Project <i class="fa fa-arrow-right"></i></a></div>
+
+</div>
+
+<!-- /PROJECT -->
+    
+<!--#include virtual="/includes/footer.html" -->
+<!--#include virtual="/includes/endscripts.html" -->
+</body>
+</html>

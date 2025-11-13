@@ -1,0 +1,11 @@
+body { background-color: white; font-family: arial }
+
+.noprint { display: none }
+
+.ng { list-style-image: url(../images/ng.gif); color: #3333cc; }
+.fb { list-style-image: url(../images/fb.gif); color: #996600; }
+.mbb { list-style-image: url(../images/mbb.gif); color: #ff6633; }
+.wbb { list-style-image: url(../images/wbb.gif); color: #ff6699; }
+.vb { list-style-image: url(../images/vb.gif); color: #666666; }
+.fyi { list-style-type: square; color: #999999; }
+.break { padding: 3px; color: black }

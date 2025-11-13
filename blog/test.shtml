@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="UX Design Idea blog of Sr. UX Designer Corey Stone.">
+    <meta name="author" content="Corey Stone">
+    <title>UX Design Idea blog of Sr. UX Designer Corey Stone</title>
+<!--#include virtual="/includes/head2.html" -->
+</head>
+
+<body id="page-top" class="index">
+<!--#include virtual="/includes/header2.html" -->
+<script>
+document.getElementById('ideastab').classList.add('active');
+</script>  
+
+    <!-- Ideas -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 sectionheader" id="ideapost">
+                <h1>Idea Blog</h1>
+                <p>Just some UX and design-related thoughts and ideas from yours truly.</p>
+                
+                <div id="ideathumbs">
+                    <h3><a href="/ideas/bahavior-design-obesity.shtml">Using Behavioral Design to Curb the Obesity Epidemic</a></h3>
+                    <p class="articlebyline">September 2018, Corey Stone</p>
+
+                    <h3><a href="/ideas/product-email-ux.shtml">Don't Ignore Your Product Emails</a></h3>
+                    <p class="articlebyline">August 2018, Corey Stone</p>
+                </div>
+            
+
+            </div>
+        </div>
+	</div>
+    <!-- /ARTICLE LINKS -->
+    
+<!--#include virtual="/includes/footer.html" -->
+<!--#include virtual="/includes/endscripts.html" -->
+</body>
+</html>

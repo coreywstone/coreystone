@@ -1,0 +1,111 @@
+<html>
+<head>
+<title>KU Cheerleading Private Site</title>
+<meta robots="noindex, nofollow">
+<link rel="StyleSheet" href="includes/private_site.css" type="text/css" media="screen">
+<link rel="StyleSheet" href="includes/private_site_print.css" type="text/css" media="print">
+<style type="text/css">
+.bigletter { font-weight: bold; font-size: 18px; padding-right: 2px; }
+</style>
+</head>
+
+<body>
+
+<!-- START HEADER -->
+<div class="noprint"><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" background="images/header_tile.gif"><tr>
+<td><img src="images/ku_cheer_private_site.gif" style="margin-left: 10px; margin-right: 10px" width="154" height="31" alt="KU Cheerleading Private Site"></td>
+<td width="100%" align="left" valign="bottom"><table border="0" cellspacing="0" cellpadding="0"><tr>
+	<td class="on_tab"><a href="index.shtml">Home</a></td>
+		<td><img src="images/spacer.gif" width="1" height="1"></td>
+	<td class="off_tab"><a href="schedule.shtml">Schedule</a></td>
+		<td><img src="images/spacer.gif" width="1" height="1"></td>
+	<td class="off_tab"><a href="resources.shtml">Resources</a></td>
+		<td><img src="images/spacer.gif" width="1" height="1"></td>
+	<td class="off_tab"><a href="roles.shtml">Roles</a></td>
+		<td><img src="images/spacer.gif" width="1" height="1"></td>
+	<td class="off_tab"><a href="books.shtml">Books</a></td>
+</tr></table></td>
+</tr></table></div>
+<!-- END HEADER -->
+
+<center>
+<br>
+<table width="760" border="0" cellspacing="10" cellpadding="0" style="font-size: 10pt">
+
+<tr>
+<td colspan="2" style="border-bottom: 1px solid #cccccc; padding-bottom: 10px">
+<h2 style="margin-bottom: 2px; text-align: center">The Vision</h2>
+<i>Preface: It's important for us to all agree on a "vision" of our 'ideal' squad because it means we'll all push the squad in the same direction. If everyone has a different idea of what they want the squad to be, then everyone will work towards something different, and collectively we'll go nowhere. And the only way to get there is for you to WANT it to happen.</i><br><br> 
+
+
+My vision for the squad is that we have fun together and encourage and support one another like family. We treat people how they want to be treated, and when conflicts arise we handle them with open honest communication. Regardless of our talent level, we steadily progress our skills and fitness level by working hard at practice and outside practice, and we go out of our way to help our teammates progress. At games, we believe we can help the team win by leading the crowd, and we'll do it better than anyone in the country. Off the court, we represent ourselves, the squad, and the university in a manner we can all be proud of. We attend all our classes and do the work the teacher asks, which leads to everyone graduating with at least a 3.0 GPA. And when it's time to party, we have fun in a responsible manner, never letting our partying interfere with the squad or our academics. We take pride in everything we do, and we're willing to work hard to make something to be proud of. 
+</td>
+</tr>
+
+<tr>
+<td width="40%" valign="top" style="border-right: 1px solid #cccccc">
+<h2 style="margin-bottom: 2px; text-align: center">Our Values</h2>
+Our vision, mission, and goals may change over the years, but our values should almost never change. These values define how we operate in everything we do. 
+<h3>KU Cheerleaders:</h3>
+
+
+
+<!--
+Our old cheer one: 
+<ol style="margin-top: 3px">
+	<li>Respect everyone</li>
+	<li>Encourage each other</li>
+	<li>Always learn  /Continuous Improvement, Positive solution-oriented thinking</li>
+	<li>Humble confidence</li>
+	<li>Disciplined hard work /Absolute Accountability, Execution ("Git-r-done!") < Disciplined hard work</li>
+	<li>See the 'Big Picture'</li>
+</ol>-->
+
+<p>
+<span class="bigletter">A</span>cademics first<br />
+<span class="bigletter">C</span>are about the program<br />
+<span class="bigletter">H</span>umble confidence<br />
+<span class="bigletter">&nbsp;I</span>mprove F.A.S.T thru disciplined habits<br />
+&nbsp;&nbsp;(<strong>F</strong>itness, <strong>A</strong>cademics, <strong>S</strong>kills, mental<strong>T</strong>oughness)<br />
+<span class="bigletter">E</span>ncourage each other<br />
+<span class="bigletter">V</span>igilant accountability<br />
+<span class="bigletter">E</span>njoy the college cheer experience<br />
+</p>
+
+</td>
+
+<td width="60%" valign="top">
+<h2 style="margin-bottom: 2px; text-align: center">Our Mission</h2>
+
+<div style="text-align: center; margin-top: 5px; margin-bottom: 10px; font-weight: bold">
+<nobr>Together, we will work hard to build the cheer program</nobr>
+<nobr>to best represent the University of Kansas.</nobr>
+</div>
+
+We will build the program by:
+<ul style="margin-top: 3px">
+	<li>Improving our skills &amp; bodies every day</li>
+	<li>Recruiting talented kids</li>
+	<li>Getting good grades (thus staying eligible)</li>
+</ul>
+
+<h2 style="margin-bottom: 2px; text-align: center">Long-Term Goals</h2>
+<ul style="margin-top: 3px">
+	<li>Best game squad in the country</li>
+	<li>Top 5 at nationals every year</li>
+	<li>Everyone graduates with a 3.0+ GPA</li>
+</ul>
+</td>
+</tr>
+
+</table>
+
+<hr style="color: #ccc; width: 600px">
+<span style="color: #666">
+<SCRIPT TYPE="text/javascript" SRC="http://www.brainyquote.com/link/quotebr.js"></SCRIPT>
+</span>
+
+</center>
+
+</body>
+</html>

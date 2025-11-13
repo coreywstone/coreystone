@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="UX Design Idea blog of Sr. UX Designer Corey Stone.">
+    <meta name="author" content="Corey Stone">
+    <title>Don't Ignore your Product's Email UX</title>
+<!--#include virtual="/includes/head.html" -->
+</head>
+
+<body id="page-top" class="index"> 
+<!--#include virtual="/includes/header.html" -->
+<script>
+document.getElementById('blogtab').classList.add('active');
+</script>  
+
+    <!-- Ideas -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 sectionheader" id="ideapost">
+            <h1>Don't ignore your product's email UX</h1>
+                <p class="articlebyline">August 2018, Corey Stone</p>
+    
+    <p>What gets most of the attention of the product designers, manager, and engineers? The actual product, of course – adding features and making improvements. But for many products and industries, little time and effort is spent on a frequent customer touch-point: automated informational (non-marketing) emails.</p>
+                
+    <p>Some are simply transactional, like purchase receipts and shipping notifications, while others are thinks customers have subscribed to, such as payment or account alerts. These often look and read bare-bones, missing an opportunity to provide greater value to the customer.</p>
+                
+    <p>For example, my wife and I pay for almost everything with a credit card, which we pay off every month a few days before the due date. I figured the best way make sure we're not overspending would be to create a daily balance email alert so we always knew our balance and could cut back our spending if needed. My past couple credit cards (Chase and Capital One) allowed me to do this -- but not very well. </p>
+                
+    <p>Capital One says:</p>
+    <div class="simulatedpage">
+        <p>As requested, we're notifying you that as of AUG 04, 2018, your Capital One VISA SIGNATURE account balance is $1773.04. This balance does not reflect pending transactions.</p>
+    </div>
+                
+    <p>For Chase, I had to set it up as a &quot;Balance Threshold Alert&quot; for if my balance is over $1. It says:</p>
+        
+    <div class="simulatedpage">
+        <p>For credit account ending in 5555: Your balance has reached ($ USD) $2,476.01. That exceeds the maximum balance in your Alerts settings.</p>
+    </div>
+                
+    <p>Capital One formatted theirs pretty well and added some appropriate light marketing material, so they seem to have put some thought into it, while Chase's looked and sounded like the work of a hurried programmer. But what's wrong with both of them? Yes, they're technically doing what the customer requested ('Send me my current balance'), but they're omitting the info required to solve the customer's actual problem, which is, &quot;Is my spending on track?&quot; </p>
+                
+    <p>For that, we'd need to know when the billing cycle ends and what the balance is for that billing cycle (because keep in mind, they are showing the TOTAL unpaid balance, so if, like many people, you pay your credit card bill several days before it's due, that total balance may show 5 or 6 weeks of purchases, then you have to remember the past cycle's total and subtract it from the value its showing (all which they could easily code for you, if they'd thought of it and/or cared enough).</p>
+                
+    <p>So, a more helpful daily alert that better solves the user's need might say:</p>
+        <div class="simulatedpage">
+        <p>$2238.56 is your July 16 to Aug. 17 billing cycle balance (as of Aug. 4).</p>
+    <p>That's $118/day, so at that rate, your ending cycle balance would be $3652.</p>
+    <p>$6023.31 is your total unpaid balance.</p>
+        <p>$3784.75, or $84.23 minimum, is due Aug. 9.</p>
+    <p>[It could also include an updated count of any Rewards earned and what they could buy.]</p>
+        </div>
+                
+    <p>Last year, I suggested this to Capital One and Chase, but neither did anything, even though it should be a fairly simple change. Why not do it? Could be:</p>
+        <ol>
+            <li>They don't read the customer feedback, and/or it doesn't get to the right people.</li>
+            <li>They saw it but didn't agree that the change would be beneficial enough to people.</li>
+            <li>They don't want people to track their spending because it might hurt the company's revenue. (Let's hope it's not this, but you never know.)</li>
+        </ol>
+                
+    <p>Whatever the case, as product people, we should be aware of every customer touch point, even automated ones. For each, we should apply the same design thinking that we do for our product: What's this interaction really for? What does the user want to get out of it, and how could we best solve that? Should we piggyback any other messaging on it to help the customer? In my credit card example, those notifications are my daily interaction with their company – a daily reminder to me of how they're not quite meeting my needs. Don't miss easy opportunities to create frequent positive experiences with your customers.</p>          
+    <div class="sharethis-inline-share-buttons"></div>
+
+                <p class="allideas"><a href="/blog/">&laquo; Blog Home</a></p>               
+            </div>
+        </div>
+    </div>
+
+<!--#include virtual="/includes/footer.html" -->
+<!--#include virtual="/includes/endscripts.html" -->
+</body>
+</html>

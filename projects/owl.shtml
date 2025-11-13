@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SchooLinks case study from Sr. Product Designer Corey Stone.">
+    <meta name="author" content="Corey Stone">
+    <meta name=“robots” content=“noimageindex,” “nofollow,” “nosnippet”>
+    <title>Owl case study from Sr. Product Designer Corey Stone</title>
+<!--#include virtual="/includes/head.html" -->
+</head>
+
+<body id="page-top" class="index">
+    
+<!--#include virtual="/includes/header.html" -->
+
+<a href="/index.shtml#projects"><button type="button" class="btn btn-projectnav btn-allprojects hidden-print"><i class="fa fa-home" title="Go to All Projects section of the Home page."></i></button></a>
+
+<a href="#page-top"><button type="button" class="btn btn-projectnav btn-totop hidden-print"><i class="fa fa-arrow-up" title="Go to top."></i></button></a>
+    
+<a href="myact.shtml"><button type="button" class="btn btn-projectnav btn-nextproject hidden-print"><i class="fa fa-arrow-right" title="See the next project."></i></button></a>
+    
+<!-- PROJECT -->
+<div class="container" id="project">
+    <div class="row col-md-8 col-md-offset-2">
+        <h1>Designing for Owl Health, the mental-health-tracking SaaS startup</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="bigintro" style="text-align: left">Owl's SaaS allows mental health clinicians to easily schedule and deliver "measures" (ie, short research-backed assessment tests) to patients so the clinician can monitor their patients' progress. As the sole UX Designer on a small product team, I designed new features, analytics dashboards, and high-fi interactive mockups of future concepts that <strong>helped secure $15M in Series B funding.</strong></p>
+        </div>
+        <div class="col-md-6 project-box">
+            <img src="/img/thumbs/mental-health-thumbnail.png" class="img-responsive" alt="Screenshots from both the clinician portal and responsive patient portal." />
+        </div>
+    </div>
+    
+    
+    
+    <div class="row">
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-bomb"></i><br />Problem</h2>
+            <p><strong>Therapists are busy and overbooked</strong>, so their software needs to be very efficient (to save time) and intuitive (to minimize training). Their lack of time also makes it a challenge to do any usability testing with them!</p>
+        </div>
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-bullseye"></i><br />Goals</h2>
+            <ul>
+                <li>Create a <strong>design system</strong> to speed development</li>
+                <li>Improve the efficiency and intuitiveness of existing functionality</li>
+                <li>Design industry-leading <strong>analytics dashboards &amp; reporting</strong></li>
+                <li>Design and create <strong>advanced prototypes of future concepts</strong> for sales &amp; investor demos</li>
+            </ul>
+        </div>
+        <div class="col-sm-4">        
+            <h2 class="partialwidth"><i class="fa fa-dropbox"></i><br />Constraints</h2>
+            <ul>
+                <li>Limited dev resources (until Series B funding)</li>
+                <li>Some UX debt &amp; tech debt in the previous designs done by a contractor</li>
+                <li>Hard to schedule therapists for usability testing</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-6">
+            <h2><i class="fa fa-child"><br /></i> My Role</h2>
+            <p><strong>I'm the sole designer, working remotely on:</strong></p>
+            <ul>
+                <li>User persona creation</li>
+                <li>UX design and flows</li>
+                <li>Advanced prototyping in Axure</li>
+                <li>Creating &amp; maintaining the design system</li>
+                <li>UI &amp; visual design</li>
+                <li>Writing UI copy</li>
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <h2><i class="fa fa-group"></i> The Team</h2>
+            <p><strong>I worked in an <strong>agile process</strong> with:</strong></p>
+            <ul>
+                <li>VP of product</li>
+                <li>2 product managers</li>
+                <li>Various subject matter experts as needed</li>
+                <li>A small dev team</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <h2><i class="fa fa-flag"></i> Results</h2>
+    </div>
+    
+    <div class="row example">
+       <div class="col-md-3"><a name="chart"></a>
+           <p>My <strong>info-packed digestible chart redesign</strong> allowed clinicians to quickly see the patient’s current status and progress over their treatment history.</p>
+           <p><strong>One problem:</strong> Test results vary by assessment – on some, “up” is good; on others, "down" is good. <strong>Solution:</strong> I added a 'linear' view with color-coded smile/frown icons for patient severity. To draw the eye to the current status, I put it in larger stronger colors. For clinician speed and efficiency, I used tablet-friendly single-click UI elements.</p>
+       </div> 
+       <div class="col-md-9 project-box">
+             <img src="/img/owl/PatientChart.png" class="img-responsive screenshot" alt="Concept design for an improved clinician-facing patient chart." />
+       </div>
+   </div>  
+
+    <div class="row example">
+       <div class="col-md-3">
+           <p>This is the <strong>Triage tab</strong> in a Primary Care Provider’s dashboard where the PCP can easily screen, triage, route, and monitor their patients for any needed mental health treatment.</p>
+           <p>The tabs' count badges are a non-interruptive way to give the user a birds-eye view of anything they may need to act on next in the other tabs.</p>
+           <p>By default, patients are sorted by severity to focus the user's attention where it's most needed, and it can be quickly filtered by other criteria for specific use cases.</p>
+       </div> 
+       <div class="col-md-9 project-box">
+             <img src="/img/owl/PrimaryCare-Dashboard-Triage.png" class="img-responsive screenshot" alt="Concept design for a patient triage interface." />
+       </div>
+   </div>  
+
+    <div class="row example">
+       <div class="col-md-3">
+           <p>The "Triage..." button opens an efficient overlay guides that <strong>guides the clinician</strong> from the assessment results at left to the right ‘action area’ where they see treatment options, a recommendation, and any alerts that may have been triggered.</p>
+       </div> 
+       <div class="col-md-9 project-box">
+             <img src="/img/owl/PrimaryCare-Dashboard-Severe.png" class="img-responsive screenshot" alt="Concept design for a patient triage detail overlay." />
+       </div>
+   </div>  
+
+    <div class="row example">
+       <div class="col-md-3">
+           <p>During treatment, the <strong>"Monitor" tab</strong> shows a filterable patient list.</p>
+           <p>Each patient's most relevant details are clearly shown, including a sparkline-esque treatment-journey diagram.</p>
+           <p>The 'Service' dropdown reveals a Gantt-ish timeline so the clinician can easily see how their prescribed treatments affected the patient's symptom severity.</p>
+           <p>The target success date is also shown to clarify any value-based care payor decisions.</p>
+       </div> 
+       <div class="col-md-9 project-box">
+             <img src="/img/owl/PrimaryCare-Dashboard-Monitor-Mild.png" class="img-responsive screenshot" alt="Concept design for a patient monitoring detail overlay." />
+       </div>
+   </div>     
+   
+   <div class="row example">
+        <div class="col-md-3">
+            <p>To speed design and development, I created and maintained the <strong>Owl Design System</strong> to document the usage and styles of our components and design patterns.</p>
+        </div> 
+        <div class="col-md-9 project-box">
+            <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/df3209ccc9754cb0b6a198657f6f6673?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+        </div>
+    </div>  
+   
+    <div class="row example">
+       <div class="col-md-3">
+           <p>Here's my <strong>advanced prototype of the front-desk Dashboard</strong> built in Axure RP that makes it quick and easy for staff to help arriving patients take their assigned assessments (aka "measures").</p>
+           <p>The design needed to be flexible and forgiving yet efficient in dealing with patients' account invitations, forgotten passwords, outdated contact info, or text vs. email preference, while still maintaining HIPAA-level privacy and security standards.</p>
+       </div> 
+       <div class="col-md-9 project-box">
+           <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/17cd7d29402d462ca1e303d23936c718?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+       </div>
+   </div>  
+ <!-- END RESULTS SECTION -->
+ 
+ 
+  <div class="row">
+      <h2><i class="fa fa-retweet"></i> Process</h2>
+  </div>
+ 
+  <div class="row example">
+      <div class="col-md-3">
+          <p>To help the product and dev teams better understand our many user types, I helped the team create <strong>user personas</strong> in Google Slides for easier multi-user collaboration.</p>
+      </div> 
+      <div class="col-md-9 project-box">
+          <img src="/img/owl/owl-user-personas.png" class="img-responsive" alt="Screenshot of a couple personas." />
+      </div>
+  </div>
+  
+  <div class="row example">
+      <div class="col-md-3">
+          <p>At Owl, the VP liked seeing <strong>lots of design options</strong>, so I'd generate them (eg, A-M) then we'd iterate (eg, 1-10) until reaching a final design, which I built into an advanced prototype for usability testing, stakeholder feedback, dev handoff, and sales demos. Here's a screenshot of design exploration for how staff see and manage patients' account invitation status. </p>
+      </div> 
+      <div class="col-md-9 project-box">
+          <img src="/img/owl/owl-account-ideation.png" class="img-responsive" alt="Screenshot of design exploration of the UI for staff to see and manage patients' account invitation status." />
+      </div>
+  </div>
+      
+  <div class="row example">
+      <div class="col-md-3">
+          <p>Designing our <strong>industry-leading analytics </strong> was challenging because most of our customers never had access to the level of data we could provide, so they couldn't really tell us what they wanted. We had to rely on our own hypotheses plus input from a few of our more data-savvy researchers and advisors. Here's some of the early concept exploration, with the goals and personas pasted at bottom so I could easily reference while designing.</p>
+      </div> 
+      <div class="col-md-9 project-box">
+          <img src="/img/owl/owl-analytics-ideation.png" class="img-responsive" alt="" />
+      </div>
+  </div>
+ 
+  <div class="row example">
+      <div class="col-md-3">
+          <p>For an effort to collaboratively improve the clinician's view of the patient chart, I used a modified virtual <strong>dot voting methodology</strong> to get feedback on multiple ideas in a mockup I developed.</p>
+      </div> 
+      <div class="col-md-9 project-box">
+          <img src="/img/owl/owl-concept-with-comments.png" class="img-responsive screenshot" alt="Screenshot of a design concept with dot voting and comments from the team." />
+      </div>
+  </div>
+  <!-- END PROCESS SECTION -->
+
+    <div class="row">
+        <h2><i class="fa fa-book"></i> Learnin'</h2>
+    </div>     
+            
+    <div class="row">
+            <div class="col-md-8 col-md-offset-2">        
+            <ul style="margin-bottom: 48px;">
+                <li>Owl was the <strong>first startup I worked at</strong>, and now that I've worked at another and founded my own, it's interesting to see how different their culture and workflow can be from each other.</li>
+                <li>I improved my <strong>advanced prototyping</strong> even more, building a very realistic Axure RP prototype that used dynamic date displays (ie, the dates shown in the mockup were based off the current date) and global variables to pass information between pages for a seamless demo experience.</li>
+                <li>In my typical process, I usually self-edit much of my iteration, thus not presenting my self-rejected ideas. At Owl, I learned to preserve all my iterations so others could <strong>collaborate on the iteration</strong>.</li>
+                <li>As the sole designer, I <strong>wore multiple hats</strong>, including designing marketing material and occasional work on the public-facing website.</li>
+            </ul>
+                
+            <div class="text-center hidden-print"><a class="btn btn-casestudy fixedwidth" href="/projects/myact.shtml" role="button">Next Project <i class="fa fa-arrow-right"></i></a></div>
+
+            </div> 
+        </div>
+    
+</div>
+<!-- /PROJECT -->
+    
+<!--#include virtual="/includes/footer.html" -->
+<!--#include virtual="/includes/endscripts.html" -->
+</body>
+</html>
