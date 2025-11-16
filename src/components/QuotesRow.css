@@ -1,0 +1,50 @@
+.quotes-row {
+  width: 100vw;
+  background-color: var(--color-near-black);
+  padding: 4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.quotes-row-container {
+  max-width: 1400px;
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.quotes-row-placeholder {
+  width: 100%;
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--color-near-white);
+  opacity: 0.5;
+}
+
+@media (max-width: 1024px) {
+  .quotes-row-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .quote-box {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .quotes-row {
+    padding: 2rem 1rem;
+    min-height: 50vh;
+  }
+  
+  .quotes-row-container {
+    gap: 2rem;
+  }
+}
+
