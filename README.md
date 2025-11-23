@@ -77,13 +77,20 @@ coreystone/
 ## Design System
 
 ### Colors
-- **Near-black**: `#15171F` (background)
-- **Near-white**: `#D1D3DE` (text)
-- **Blue**: `#225588` (links, buttons, accents)
+- **Blackish**: `#262629` (text and dark backgrounds)
+- **Marble**: `#CED4E0` (some backgrounds)
+- **White-ish/Cream**: `#F5EFE7` (talk bubbles and reverse text)
+- **Blue**: `#8199E9` (links and buttons)
+- **Charcoal**: `#48526B` (dim text, pants)
+- **Slate Blue**: `#4A6B7C` (pants, hover)
+- **Beige**: `#D4B5A0` (occasional fills)
+- **Coral**: `#E07856` (accents)
+- **Golden Flash**: `#FFC654` (highlights)
+- **Green**: `#49C478` (vegetation)
 
 ### Typography
 - **Headers**: Bangers (Google Font)
-- **Body**: Gluten (Google Font)
+- **Body**: Anime Ace (CDN Fonts)
 
 ### Border Radius
 - All elements use `2px` border radius for the comic book aesthetic
