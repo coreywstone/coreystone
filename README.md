@@ -82,7 +82,7 @@ coreystone/
 - **White-ish/Cream**: `#F5EFE7` (talk bubbles and reverse text)
 - **Blue**: `#8199E9` (links and buttons)
 - **Charcoal**: `#48526B` (dim text, pants)
-- **Slate Blue**: `#4A6B7C` (pants, hover)
+- **Slate Blue**: `#4A6BA4` (pants, hover)
 - **Beige**: `#D4B5A0` (occasional fills)
 - **Coral**: `#E07856` (accents)
 - **Golden Flash**: `#FFC654` (highlights)
