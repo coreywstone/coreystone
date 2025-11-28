@@ -1,0 +1,139 @@
+.quote-panel {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  background-color: var(--color-near-black);
+  border: 2px solid var(--color-near-black);
+  overflow: hidden;
+}
+
+.quote-panel {
+  cursor: url('/img/quoters/crosshairs.png') 72 71, auto;
+}
+
+.quote-panel:hover,
+.quote-panel:hover * {
+  cursor: url('/img/quoters/crosshairs.png') 72 71, auto !important;
+}
+
+/* Background */
+.quote-panel-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 1;
+}
+
+.quote-panel-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform, filter;
+  transition: filter 300ms ease-out;
+  transform-origin: center bottom;
+}
+
+.quote-panel:hover .quote-panel-bg img {
+  filter: brightness(0.45);
+}
+
+/* Title */
+.quote-panel-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  opacity: 1;
+}
+
+.quote-panel-title img {
+  display: block;
+  height: auto;
+}
+
+/* Character */
+.quote-panel-character {
+  position: absolute;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
+
+.quote-panel.visible .quote-panel-character {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.quote-panel-character img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Speech Bubbles (words SVGs) */
+.quote-panel-words {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+  bottom: 0;
+}
+
+.quote-panel-words-img {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  transform-origin: center;
+}
+
+.quote-panel-words[style*="left: 0"] .quote-panel-words-img {
+  right: auto;
+  left: 0;
+}
+
+/* First bubble - pop open effect */
+.quote-panel-words-img.first {
+  transform: scale(0.9);
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
+
+.quote-panel-words-img.first.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Overlay bubbles (words2, words3) - fade-in effect */
+.quote-panel-words-img.overlay {
+  transition: opacity 150ms ease-out;
+}
+
+.quote-panel-words-img.overlay.visible {
+  opacity: 1;
+}
+
+
+/* Responsive */
+@media (max-width: 1440px) {
+  .quote-panel {
+    min-width: 480px;
+  }
+}
+
+@media (max-width: 768px) {
+  .quote-panel {
+    min-width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+  
+  .quote-panel-text-overlay {
+    font-size: 0.7rem;
+    padding: 8%;
+  }
+}
+

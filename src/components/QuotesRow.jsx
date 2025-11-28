@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import QuoteBox from './QuoteBox'
+import QuotePanel from './QuotePanel'
 import './QuotesRow.css'
 
 function QuotesRow({ quotes = [] }) {
@@ -16,7 +16,7 @@ function QuotesRow({ quotes = [] }) {
           }
         })
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     )
 
     if (sectionRef.current) {
@@ -45,13 +45,21 @@ function QuotesRow({ quotes = [] }) {
       <div className="quotes-row-container">
         {quotes.length > 0 ? (
           quotes.map((quote, index) => (
-            <QuoteBox
+            <QuotePanel
               key={index}
-              illustration={quote.illustration}
-              quote={quote.quote}
-              author={quote.author}
+              name={quote.name}
+              bgSrc={quote.bgSrc}
+              picSrc={quote.picSrc}
+              titleSrc={quote.titleSrc}
+              words1Src={quote.words1Src}
+              words2Src={quote.words2Src}
+              words3Src={quote.words3Src}
               canStart={canStart(index)}
               onComplete={() => handleQuoteComplete(index)}
+              characterPosition={quote.characterPosition || 'bottom-left'}
+              characterOffsetX={quote.characterOffsetX || 0}
+              characterOffsetY={quote.characterOffsetY || 0}
+              bubblePosition={quote.bubblePosition || 'right'}
             />
           ))
         ) : (

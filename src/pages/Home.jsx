@@ -1,5 +1,5 @@
-import IntroSection from '../components/IntroSection'
 import ProjectRow from '../components/ProjectRow'
+import ProjectPanel from '../components/ProjectPanel'
 import QuotesRow from '../components/QuotesRow'
 import './Home.css'
 
@@ -10,16 +10,47 @@ function Home() {
   ]
 
   const quotes = [
-    // Add quotes here when content is ready
+    {
+      name: 'Todd Cohen',
+      bgSrc: '/img/quoters/todd/todd-bg.svg',
+      picSrc: '/img/quoters/todd/todd-pic.svg',
+      titleSrc: '/img/quoters/todd/todd-title.svg',
+      words1Src: '/img/quoters/todd/todd-words.svg',
+      characterPosition: 'bottom-left',
+      characterOffsetX: 0,
+      characterOffsetY: 0,
+      bubblePosition: 'right'
+    },
+    {
+      name: 'Andrea Baker',
+      bgSrc: '/img/quoters/andrea/andrea-bg.svg',
+      picSrc: '/img/quoters/andrea/andrea-pic.svg',
+      titleSrc: '/img/quoters/andrea/andrea-title.svg',
+      words1Src: '/img/quoters/andrea/andrea-words1.svg',
+      words2Src: '/img/quoters/andrea/andrea-words2.svg',
+      words3Src: '/img/quoters/andrea/andrea-words3.svg',
+      characterPosition: 'bottom-right',
+      characterOffsetX: 0,
+      characterOffsetY: 0,
+      bubblePosition: 'left'
+    },
+    {
+      name: 'Anthony Rezendes',
+      bgSrc: '/img/quoters/anthony/anthony-bg.svg',
+      picSrc: '/img/quoters/anthony/anthony-pic.svg',
+      titleSrc: '/img/quoters/anthony/anthony-title.svg',
+      words1Src: '/img/quoters/anthony/anthony-words1.svg',
+      words2Src: '/img/quoters/anthony/anthony-words2.svg',
+      words3Src: '/img/quoters/anthony/anthony-words3.svg',
+      characterPosition: 'bottom-left',
+      characterOffsetX: 0,
+      characterOffsetY: 0,
+      bubblePosition: 'right'
+    }
   ]
 
   return (
     <div className="home-page">
-      <IntroSection />
-      {projectFrames.length > 0 && <ProjectRow frames={projectFrames} />}
-      {quotes.length > 0 && <QuotesRow quotes={quotes} />}
-      
-      {/* Temporary: Keep existing content structure for now */}
       <section className="about-section">
         <div className="container">
           <div className="about-content">
@@ -48,6 +79,9 @@ function Home() {
           </div>
         </div>
       </section>
+      <ProjectPanel title="Chegg case study." />
+      {quotes.length > 0 && <QuotesRow quotes={quotes} />}
+      <ProjectPanel title="Owl case study." />
     </div>
   )
 }

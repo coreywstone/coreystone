@@ -5,6 +5,7 @@
 .about-section {
   padding: 4rem 0;
   background-color: var(--color-near-black);
+  height: 700px;
 }
 
 .about-content {
