@@ -9,6 +9,7 @@
   /* Primary Colors */
   --color-near-black: #262629; /* Blackish - text and dark backgrounds */
   --color-near-white: #CED4E0; /* Marble - some backgrounds */
+  --color-white: #FFFFFF; /* White - full white */
   --color-white-ish: #F5EFE7; /* White-ish/Cream - talk bubbles and reverse text */
   --color-blue: #8199E9; /* Blue - links and buttons */
   
@@ -17,6 +18,7 @@
   --color-slate-blue: #4A6BA4; /* Slate Blue - pants, hover */
   --color-beige: #D4B5A0; /* Beige - occasional fills */
   --color-coral: #E07856; /* Coral - accents */
+  --color-coral-brighter: #FF8962; /* Coral - brighter for hover states */
   --color-golden-flash: #FFC654; /* Golden Flash - highlights */
   --color-green: #49C478; /* Green - vegetation */
   
@@ -34,6 +36,8 @@
 
 html {
   scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -43,6 +47,8 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
 }
 
 #root {

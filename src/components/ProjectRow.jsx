@@ -1,24 +1,151 @@
-import ProjectFrame from './ProjectFrame'
+import { useEffect, useRef, useState } from 'react'
+import ProjectNav from './ProjectNav'
+import ProjectSection from './ProjectSection'
 import './ProjectRow.css'
 
-function ProjectRow({ frames = [] }) {
+function ProjectRow({ title, sections = [] }) {
+  const [activeSectionId, setActiveSectionId] = useState(sections[0]?.id || null)
+  const [isNavSticky, setIsNavSticky] = useState(false)
+  const scrollContainerRef = useRef(null)
+  const sectionRefs = useRef([])
+  const rowRef = useRef(null)
+
+  // Set up IntersectionObserver to detect when ProjectRow is in view (for sticky nav)
+  useEffect(() => {
+    if (!rowRef.current) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsNavSticky(entry.isIntersecting)
+        })
+      },
+      {
+        threshold: 0,
+        rootMargin: '0px'
+      }
+    )
+
+    observer.observe(rowRef.current)
+
+    return () => {
+      if (rowRef.current) {
+        observer.unobserve(rowRef.current)
+      }
+    }
+  }, [])
+
+  // Set up IntersectionObserver to detect which section is in view
+  useEffect(() => {
+    if (sections.length === 0 || !scrollContainerRef.current) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            setActiveSectionId(entry.target.id)
+          }
+        })
+      },
+      {
+        root: scrollContainerRef.current,
+        threshold: [0, 0.25, 0.5, 0.75, 1.0],
+        rootMargin: '0px'
+      }
+    )
+
+    sectionRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref)
+    })
+
+    return () => {
+      sectionRefs.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref)
+      })
+    }
+  }, [sections])
+
+  // Also listen to scroll events for more responsive updates
+  useEffect(() => {
+    const container = scrollContainerRef.current
+    if (!container) return
+
+    const handleScroll = () => {
+      const containerRect = container.getBoundingClientRect()
+      const containerLeft = containerRect.left
+      const containerWidth = containerRect.width
+      const containerCenter = containerLeft + containerWidth / 2
+
+      let closestSection = null
+      let closestDistance = Infinity
+
+      sectionRefs.current.forEach((ref) => {
+        if (!ref) return
+        const sectionRect = ref.getBoundingClientRect()
+        const sectionCenter = sectionRect.left + sectionRect.width / 2
+        const distance = Math.abs(sectionCenter - containerCenter)
+        const visibilityRatio = Math.min(
+          (sectionRect.right - containerLeft) / containerWidth,
+          (containerLeft + containerWidth - sectionRect.left) / containerWidth
+        )
+
+        if (visibilityRatio >= 0.5 && distance < closestDistance) {
+          closestDistance = distance
+          closestSection = ref.id
+        }
+      })
+
+      if (closestSection) {
+        setActiveSectionId(closestSection)
+      }
+    }
+
+    container.addEventListener('scroll', handleScroll, { passive: true })
+    return () => container.removeEventListener('scroll', handleScroll)
+  }, [sections])
+
+  const handleTabClick = (sectionId, index) => {
+    const sectionRef = sectionRefs.current[index]
+    if (sectionRef && scrollContainerRef.current) {
+      sectionRef.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'start'
+      })
+      setActiveSectionId(sectionId)
+    }
+  }
+
   return (
-    <section className="project-row">
-      <div className="project-row-container">
-        <div className="project-row-scroll">
-          {frames.length > 0 ? (
-            frames.map((frame, index) => (
-              <ProjectFrame
-                key={index}
-                image={frame.image}
-                imageAlt={frame.imageAlt}
-                text={frame.text}
-                title={frame.title}
-              />
+    <section ref={rowRef} className="project-row">
+      <ProjectNav
+        title={title}
+        sections={sections}
+        activeSectionId={activeSectionId}
+        onTabClick={handleTabClick}
+        scrollContainerRef={scrollContainerRef}
+        isSticky={isNavSticky}
+      />
+      <div ref={scrollContainerRef} className="project-panel-container">
+        <div className="project-panel-scroll">
+          {sections.length > 0 ? (
+            sections.map((section, index) => (
+              <ProjectSection
+                key={section.id}
+                ref={el => sectionRefs.current[index] = el}
+                id={section.id}
+                isLast={index === sections.length - 1}
+              >
+                {section.content || (
+                  <div className="project-section-placeholder">
+                    <p>[ Section {index + 1}: {section.label} ]</p>
+                  </div>
+                )}
+              </ProjectSection>
             ))
           ) : (
-            <div className="project-row-placeholder">
-              <p>Project frames will appear here</p>
+            <div className="project-panel-placeholder">
+              <p>Project content will appear here</p>
             </div>
           )}
         </div>
@@ -28,4 +155,3 @@ function ProjectRow({ frames = [] }) {
 }
 
 export default ProjectRow
-

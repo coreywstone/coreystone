@@ -1,12 +1,20 @@
 import ProjectRow from '../components/ProjectRow'
-import ProjectPanel from '../components/ProjectPanel'
 import QuotesRow from '../components/QuotesRow'
 import './Home.css'
 
 function Home() {
-  // Placeholder data - will be replaced with actual content
-  const projectFrames = [
-    // Add project frames here when content is ready
+  const cheggSections = [
+    { id: 'intro', label: 'INTRO' },
+    { id: 'staffs-ai', label: "STAFF'S AI" },
+    { id: 'nav', label: 'NAV' },
+    { id: 'dashboard', label: 'DASHBOARD' },
+    { id: 'delight', label: 'DELIGHT' }
+  ]
+
+  const owlSections = [
+    { id: 'intro', label: 'INTRO' },
+    { id: 'section-2', label: 'SECTION 2' },
+    { id: 'section-3', label: 'SECTION 3' }
   ]
 
   const quotes = [
@@ -79,9 +87,15 @@ function Home() {
           </div>
         </div>
       </section>
-      <ProjectPanel title="Chegg case study." />
+      <ProjectRow 
+        title="CHEGG'S ADULT LEARNING PLATFORM:" 
+        sections={cheggSections}
+      />
       {quotes.length > 0 && <QuotesRow quotes={quotes} />}
-      <ProjectPanel title="Owl case study." />
+      <ProjectRow 
+        title="Owl case study." 
+        sections={owlSections}
+      />
     </div>
   )
 }
