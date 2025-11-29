@@ -73,7 +73,7 @@
 }
 
 .project-nav-tab:hover:not(.active) {
-  color: var(--color-coral-brighter);
+  color: var(--color-blue);
 }
 
 .project-nav-tab.active {
@@ -83,7 +83,7 @@
 
 .project-nav-indicator {
   position: absolute;
-  background-color: var(--color-coral);
+  background-color: var(--color-blue);
   border-radius: 4px;
   z-index: 1;
   pointer-events: none;

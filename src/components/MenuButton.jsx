@@ -4,7 +4,6 @@ import './MenuButton.css'
 
 function MenuButton() {
   const [isOpen, setIsOpen] = useState(false)
-  const [isShrinking, setIsShrinking] = useState(false)
   const menuRef = useRef(null)
   const buttonRef = useRef(null)
 
@@ -26,31 +25,29 @@ function MenuButton() {
   }, [isOpen])
 
   const handleButtonClick = () => {
-    if (!isOpen) {
-      // Shrink first, then show menu
-      setIsShrinking(true)
-      setTimeout(() => {
-        setIsShrinking(false)
-        setIsOpen(true)
-      }, 150) // Shrink duration
-    } else {
-      setIsOpen(false)
-    }
+    setIsOpen(!isOpen)
   }
 
   return (
     <div className="menu-button-wrapper">
       <button
         ref={buttonRef}
-        className={`menu-button ${isShrinking ? 'shrinking' : ''} ${isOpen ? 'open' : ''}`}
+        className={`menu-button ${isOpen ? 'open' : ''}`}
         onClick={handleButtonClick}
         aria-label="Menu"
       >
-        <img 
-          src="/img/main-menu-nav.svg" 
-          alt="Menu" 
-          className="menu-icon"
-        />
+        <span className="menu-icon-wrapper">
+          <img 
+            src="/img/main-menu-nav.svg" 
+            alt="Menu" 
+            className="menu-icon menu-icon-default"
+          />
+          <img 
+            src="/img/main-menu-nav-hover.svg" 
+            alt="Menu" 
+            className="menu-icon menu-icon-hover"
+          />
+        </span>
       </button>
       
       {isOpen && (

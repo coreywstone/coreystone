@@ -12,6 +12,7 @@
   --color-white: #FFFFFF; /* White - full white */
   --color-white-ish: #F5EFE7; /* White-ish/Cream - talk bubbles and reverse text */
   --color-blue: #8199E9; /* Blue - links and buttons */
+  --color-blue-brighter: #B8C9F4; /* Blue - 50% brighter for hover states */
   
   /* Additional Palette Colors */
   --color-charcoal: #48526B; /* Charcoal - dim text, pants */
@@ -38,6 +39,7 @@ html {
   scroll-behavior: smooth;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 body {
@@ -49,6 +51,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 #root {
@@ -61,6 +64,8 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .main-content {

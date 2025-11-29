@@ -10,35 +10,53 @@
   border: none;
   padding: 0;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   transform-origin: top right;
-  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 200ms ease-out;
   position: relative;
   z-index: 1001;
-}
-
-.menu-button:hover {
-  transform: scale(1.05);
-  transform-origin: top right;
-}
-
-.menu-button.shrinking {
-  transform: scale(0.97);
-  transform-origin: top right;
+  height: 30px;
+  line-height: 0;
 }
 
 .menu-button.open {
   /* SVG handles its own styling */
 }
 
-.menu-icon {
-  width: 205px;
+.menu-icon-wrapper {
+  position: relative;
+  display: inline-block;
   height: 30px;
+  line-height: 0;
+}
+
+.menu-icon {
+  height: 30px;
+  width: auto;
   display: block;
   pointer-events: none;
   object-fit: contain;
+  transition: opacity 200ms ease-out;
+}
+
+.menu-icon-default {
+  opacity: 1;
+  position: relative;
+}
+
+.menu-icon-hover {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.menu-button:hover .menu-icon-default {
+  opacity: 0;
+}
+
+.menu-button:hover .menu-icon-hover {
+  opacity: 1;
 }
 
 .menu-dropdown {
