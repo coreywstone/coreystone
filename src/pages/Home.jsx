@@ -100,7 +100,7 @@ function Home() {
       )}
 
       <ProjectRow 
-        title="CHEGG'S ADULT LEARNING PLATFORM:" 
+        title="Chegg Skills:" 
         sections={cheggSections}
       />
       {quoteRows.length > 1 && quoteRows[1] && (
@@ -108,7 +108,7 @@ function Home() {
       )}
 
       <ProjectRow 
-        title="Owl case study." 
+        title="Owl Health:" 
         sections={owlSections}
       />
       {quoteRows.length > 2 && quoteRows[2] && (
@@ -116,7 +116,7 @@ function Home() {
       )}
 
       <ProjectRow 
-        title="8counts" 
+        title="Founding 8counts:" 
         sections={eightCountsSections}
       />
       {quoteRows.length > 3 && quoteRows[3] && (
@@ -124,7 +124,7 @@ function Home() {
       )}
 
       <ProjectRow 
-        title="ACT" 
+        title="ACT:" 
         sections={actSections}
       />
       {quoteRows.length > 4 && quoteRows[4] && (
@@ -132,7 +132,7 @@ function Home() {
       )}
 
       <ProjectRow 
-        title="HERO Keyboard" 
+        title="Founding HERO Keyboard:" 
         sections={heroKeyboardSections}
       />
       {quoteRows.length > 5 && quoteRows[5] && (
@@ -140,7 +140,7 @@ function Home() {
       )}
 
       <ProjectRow 
-        title="Kleinfelder" 
+        title="Kleinfelder:" 
         sections={kleinfelderSections}
       />
       {quoteRows.length > 6 && quoteRows[6] && (
