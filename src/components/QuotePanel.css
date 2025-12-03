@@ -5,10 +5,13 @@
   width: 600px;
   height: 400px;
   aspect-ratio: 1.5; /* 600:400 = 1.5:1 */
+  max-width: 600px;
+  max-height: 400px;
   background-color: var(--color-near-black);
   border: 2px solid var(--color-near-black);
   overflow: hidden;
   cursor: url('/img/quoters/crosshairs.png') 72 71, auto;
+  box-sizing: border-box;
 }
 
 /* Responsive scaling for viewport >= 1273px */
@@ -158,22 +161,19 @@
 }
 
 
-/* Responsive */
-@media (max-width: 1440px) {
+/* Responsive - maintain aspect ratio on all screen sizes */
+@media (max-width: 1272px) {
   .quote-panel {
-    min-width: 480px;
-  }
-}
-
-@media (max-width: 768px) {
-  .quote-panel {
-    min-width: 100%;
-    aspect-ratio: 16 / 9;
-  }
-  
-  .quote-panel-text-overlay {
-    font-size: 0.7rem;
-    padding: 8%;
+    /* On mobile, panels scroll horizontally, so maintain fixed size */
+    /* The parent flex container sets width: 600px via flex: 0 0 600px */
+    width: 600px;
+    height: 400px;
+    min-width: 600px;
+    min-height: 400px;
+    max-width: 600px;
+    max-height: 400px;
+    aspect-ratio: 1.5; /* Maintain 3:2 aspect ratio */
+    flex-shrink: 0; /* Prevent flex from shrinking the panel */
   }
 }
 
