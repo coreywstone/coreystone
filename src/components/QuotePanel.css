@@ -1,14 +1,24 @@
 .quote-panel {
   position: relative;
+  min-width: 600px;
+  min-height: 400px;
   width: 600px;
   height: 400px;
+  aspect-ratio: 1.5; /* 600:400 = 1.5:1 */
   background-color: var(--color-near-black);
   border: 2px solid var(--color-near-black);
   overflow: hidden;
+  cursor: url('/img/quoters/crosshairs.png') 72 71, auto;
 }
 
-.quote-panel {
-  cursor: url('/img/quoters/crosshairs.png') 72 71, auto;
+/* Responsive scaling for viewport >= 1273px */
+@media (min-width: 1273px) {
+  .quote-panel {
+    width: 100%; /* Fill grid cell */
+    height: auto;
+    aspect-ratio: 1.5;
+    max-width: none; /* Allow scaling */
+  }
 }
 
 .quote-panel:hover,
@@ -30,7 +40,7 @@
 .quote-panel-bg img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill; /* Stretch to fill panel */
   will-change: transform, filter;
   transition: filter 300ms ease-out;
   transform-origin: center bottom;
@@ -47,11 +57,14 @@
   left: 0;
   z-index: 3;
   opacity: 1;
+  transform: none; /* No scaling */
 }
 
 .quote-panel-title img {
   display: block;
+  width: auto;
   height: auto;
+  max-width: none; /* Allow natural size */
 }
 
 /* Character */
@@ -68,11 +81,15 @@
   transform: translateY(0);
 }
 
+.quote-panel-character {
+  transform: translateY(100%);
+}
+
 .quote-panel-character img {
   display: block;
-  width: 100%;
+  width: auto;
   height: auto;
-  max-width: 100%;
+  max-width: none; /* No scaling - natural size */
 }
 
 /* Speech Bubbles (words SVGs) */
@@ -83,18 +100,33 @@
   bottom: 0;
 }
 
+.quote-panel-words-left {
+  left: 0;
+}
+
+.quote-panel-words-right {
+  right: 0;
+}
+
 .quote-panel-words-img {
   display: block;
   position: absolute;
   bottom: 0;
-  right: 0;
+  width: auto;
+  height: auto;
+  max-width: none; /* No scaling - natural size */
   opacity: 0;
   transform-origin: center;
 }
 
-.quote-panel-words[style*="left: 0"] .quote-panel-words-img {
-  right: auto;
+.quote-panel-words-left .quote-panel-words-img {
   left: 0;
+  right: auto;
+}
+
+.quote-panel-words-right .quote-panel-words-img {
+  right: 0;
+  left: auto;
 }
 
 /* First bubble - pop open effect */

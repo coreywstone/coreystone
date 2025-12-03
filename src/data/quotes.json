@@ -1,0 +1,12 @@
+{
+  "rows": [
+    { "quotes": ["todd", "ivy"] },
+    { "quotes": ["elyse", "jordan"] },
+    { "quotes": ["rebekah", "mark"] },
+    { "quotes": ["john", "sri"], "alignments": { "john": "right" } },
+    { "quotes": ["anthony", "derek"] },
+    { "quotes": ["paul", "kaitlynn"], "alignments": { "kaitlynn": "right" } },
+    { "quotes": ["ben", "andrea"], "alignments": { "andrea": "right" } }
+  ]
+}
+

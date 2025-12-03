@@ -1,9 +1,13 @@
 <svg width="189" height="52" viewBox="0 0 189 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="andrea-title">
 <mask id="path-1-inside-1_792_7045" fill="white">
 <path d="M0 0H189V48C189 50.2091 187.209 52 185 52H0V0Z"/>
 </mask>
-<path d="M0 0H189V48C189 50.2091 187.209 52 185 52H0V0Z" fill="#E9B77D"/>
+<path d="M0 0H189V48C189 50.2091 187.209 52 185 52H0V0Z" fill="#75B4E0"/>
 <path d="M0 0H189H0ZM191 48C191 51.3137 188.314 54 185 54H0V50H185C186.105 50 187 49.1046 187 48H191ZM0 52V0V52ZM191 0V48C191 51.3137 188.314 54 185 54V50C186.105 50 187 49.1046 187 48V0H191Z" fill="#262629" mask="url(#path-1-inside-1_792_7045)"/>
+<g id="Andrea Baker VP at Cannon Design">
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="39.7402">VP at Cannon Design</tspan></text>
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7402">Andrea Baker&#10;</tspan></text>
+</g>
+</g>
 </svg>

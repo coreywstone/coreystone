@@ -11,16 +11,18 @@ function QuotePanel({
   words3Src,
   canStart = false,
   onComplete,
-  characterPosition = 'bottom-left',
-  characterOffsetX = 0,
-  characterOffsetY = 0,
-  bubblePosition = 'right'
+  alignment = 'left' // 'left' or 'right'
 }) {
   const [isVisible, setIsVisible] = useState(false)
   const [canStartWords, setCanStartWords] = useState(false)
   const [currentBubble, setCurrentBubble] = useState(-1)
   const [hasStarted, setHasStarted] = useState(false)
   const [parallaxOffset, setParallaxOffset] = useState(1)
+  const [availableWords, setAvailableWords] = useState({
+    words1: !!words1Src,
+    words2: !!words2Src,
+    words3: !!words3Src
+  })
   const panelRef = useRef(null)
   const bgRef = useRef(null)
   const bubbleTimeoutRef = useRef(null)
@@ -105,20 +107,43 @@ function QuotePanel({
     }
   }, [])
 
+  // Check which word images actually exist by trying to load them
+  useEffect(() => {
+    const checkImageExists = (src, key) => {
+      if (!src) {
+        setAvailableWords(prev => ({ ...prev, [key]: false }))
+        return
+      }
+      
+      const img = new Image()
+      img.onload = () => {
+        setAvailableWords(prev => ({ ...prev, [key]: true }))
+      }
+      img.onerror = () => {
+        setAvailableWords(prev => ({ ...prev, [key]: false }))
+      }
+      img.src = src
+    }
+
+    checkImageExists(words1Src, 'words1')
+    checkImageExists(words2Src, 'words2')
+    checkImageExists(words3Src, 'words3')
+  }, [words1Src, words2Src, words3Src])
+
   // Start animation sequence when canStartWords becomes true (only once)
   useEffect(() => {
-    const total = [words1Src, words2Src, words3Src].filter(Boolean).length
+    const total = Object.values(availableWords).filter(Boolean).length
     if (canStartWords && !hasStarted && total > 0) {
       setHasStarted(true)
       startBubbleSequence(0)
     }
-  }, [canStartWords, hasStarted, words1Src, words2Src, words3Src])
+  }, [canStartWords, hasStarted, availableWords])
 
   const startBubbleSequence = (bubbleIndex) => {
-    const sources = [words1Src, words2Src, words3Src].filter(Boolean)
-    const totalBubbles = sources.length
+    // Only count bubbles that actually exist
+    const bubbleCount = [availableWords.words1, availableWords.words2, availableWords.words3].filter(Boolean).length
 
-    if (bubbleIndex >= totalBubbles) {
+    if (bubbleIndex >= bubbleCount) {
       if (onComplete) {
         onComplete()
       }
@@ -148,14 +173,14 @@ function QuotePanel({
 
   const characterStyle = {
     position: 'absolute',
-    bottom: `${characterOffsetY}%`,
-    [characterPosition === 'bottom-left' ? 'left' : 'right']: `${characterOffsetX}%`,
+    bottom: 0,
+    [alignment === 'left' ? 'left' : 'right']: 0,
   }
 
-  const bubbleStyle = {
+  const wordsStyle = {
     position: 'absolute',
     bottom: 0,
-    [bubblePosition === 'right' ? 'right' : 'left']: 0,
+    [alignment === 'left' ? 'left' : 'right']: 0,
   }
 
 
@@ -190,27 +215,39 @@ function QuotePanel({
       )}
 
       {/* Speech Bubbles (words SVGs) */}
-      {(words1Src || words2Src || words3Src) && (
-        <div className="quote-panel-words" style={bubbleStyle}>
-          {words1Src && (
+      {(availableWords.words1 || availableWords.words2 || availableWords.words3) && (
+        <div className={`quote-panel-words quote-panel-words-${alignment}`} style={wordsStyle}>
+          {availableWords.words1 && words1Src && (
             <img
               src={words1Src}
               alt="Quote bubble 1"
               className={`quote-panel-words-img first ${currentBubble >= 0 ? 'visible' : ''}`}
+              onError={(e) => {
+                e.target.style.display = 'none'
+                setAvailableWords(prev => ({ ...prev, words1: false }))
+              }}
             />
           )}
-          {words2Src && (
+          {availableWords.words2 && words2Src && (
             <img
               src={words2Src}
               alt="Quote bubble 2"
               className={`quote-panel-words-img overlay ${currentBubble >= 1 ? 'visible' : ''}`}
+              onError={(e) => {
+                e.target.style.display = 'none'
+                setAvailableWords(prev => ({ ...prev, words2: false }))
+              }}
             />
           )}
-          {words3Src && (
+          {availableWords.words3 && words3Src && (
             <img
               src={words3Src}
               alt="Quote bubble 3"
               className={`quote-panel-words-img overlay ${currentBubble >= 2 ? 'visible' : ''}`}
+              onError={(e) => {
+                e.target.style.display = 'none'
+                setAvailableWords(prev => ({ ...prev, words3: false }))
+              }}
             />
           )}
         </div>

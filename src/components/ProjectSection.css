@@ -10,6 +10,11 @@
   box-sizing: border-box;
   background-color: var(--color-white-ish) !important;
   width: 100vw;
+  color: var(--color-near-black);
+}
+
+.project-section * {
+  color: inherit;
 }
 
 .project-section.last {

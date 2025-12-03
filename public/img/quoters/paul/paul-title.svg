@@ -1,0 +1,14 @@
+<svg width="195" height="52" viewBox="0 0 195 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="paul-title">
+<mask id="path-1-inside-1_892_153029" fill="white">
+<path d="M0 0H195V48C195 50.2091 193.209 52 191 52H0V0Z"/>
+</mask>
+<path d="M0 0H195V48C195 50.2091 193.209 52 191 52H0V0Z" fill="#B0D8E5"/>
+<path d="M0 0H195H0ZM197 48C197 51.3137 194.314 54 191 54H0V50H191C192.105 50 193 49.1046 193 48H197ZM0 52V0V52ZM197 0V48C197 51.3137 194.314 54 191 54V50C192.105 50 193 49.1046 193 48V0H197Z" fill="#262629" mask="url(#path-1-inside-1_892_153029)"/>
+<g id="Paul Williams UX designer at Chegg">
+<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="39.7402">UX</tspan></text>
+<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="29.3906" y="39.7402"> designer at Chegg</tspan></text>
+<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7402">Paul Williams&#10;</tspan></text>
+</g>
+</g>
+</svg>

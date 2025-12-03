@@ -40,9 +40,13 @@ function QuotesRow({ quotes = [] }) {
     return isVisible && completedQuotes.has(index - 1)
   }
 
+  // Check if we have an odd number of quotes (single panel in last row)
+  const hasSinglePanel = quotes.length === 1
+  const containerClassName = `quotes-row-container ${hasSinglePanel ? 'single-panel' : ''}`
+
   return (
     <section ref={sectionRef} className="quotes-row">
-      <div className="quotes-row-container">
+      <div className={containerClassName}>
         {quotes.length > 0 ? (
           quotes.map((quote, index) => (
             <QuotePanel
@@ -54,12 +58,9 @@ function QuotesRow({ quotes = [] }) {
               words1Src={quote.words1Src}
               words2Src={quote.words2Src}
               words3Src={quote.words3Src}
+              alignment={quote.alignment || 'left'}
               canStart={canStart(index)}
               onComplete={() => handleQuoteComplete(index)}
-              characterPosition={quote.characterPosition || 'bottom-left'}
-              characterOffsetX={quote.characterOffsetX || 0}
-              characterOffsetY={quote.characterOffsetY || 0}
-              bubblePosition={quote.bubblePosition || 'right'}
             />
           ))
         ) : (

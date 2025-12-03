@@ -1,5 +1,7 @@
 import ProjectRow from '../components/ProjectRow'
 import QuotesRow from '../components/QuotesRow'
+import quotesConfig from '../data/quotes.json'
+import { getQuoteAssets, getQuoteAlignment } from '../utils/quoteData'
 import './Home.css'
 
 function Home() {
@@ -17,45 +19,49 @@ function Home() {
     { id: 'section-3', label: 'SECTION 3' }
   ]
 
-  const quotes = [
-    {
-      name: 'Todd Cohen',
-      bgSrc: '/img/quoters/todd/todd-bg.svg',
-      picSrc: '/img/quoters/todd/todd-pic.svg',
-      titleSrc: '/img/quoters/todd/todd-title.svg',
-      words1Src: '/img/quoters/todd/todd-words.svg',
-      characterPosition: 'bottom-left',
-      characterOffsetX: 0,
-      characterOffsetY: 0,
-      bubblePosition: 'right'
-    },
-    {
-      name: 'Andrea Baker',
-      bgSrc: '/img/quoters/andrea/andrea-bg.svg',
-      picSrc: '/img/quoters/andrea/andrea-pic.svg',
-      titleSrc: '/img/quoters/andrea/andrea-title.svg',
-      words1Src: '/img/quoters/andrea/andrea-words1.svg',
-      words2Src: '/img/quoters/andrea/andrea-words2.svg',
-      words3Src: '/img/quoters/andrea/andrea-words3.svg',
-      characterPosition: 'bottom-right',
-      characterOffsetX: 0,
-      characterOffsetY: 0,
-      bubblePosition: 'left'
-    },
-    {
-      name: 'Anthony Rezendes',
-      bgSrc: '/img/quoters/anthony/anthony-bg.svg',
-      picSrc: '/img/quoters/anthony/anthony-pic.svg',
-      titleSrc: '/img/quoters/anthony/anthony-title.svg',
-      words1Src: '/img/quoters/anthony/anthony-words1.svg',
-      words2Src: '/img/quoters/anthony/anthony-words2.svg',
-      words3Src: '/img/quoters/anthony/anthony-words3.svg',
-      characterPosition: 'bottom-left',
-      characterOffsetX: 0,
-      characterOffsetY: 0,
-      bubblePosition: 'right'
-    }
+  const eightCountsSections = [
+    { id: 'intro', label: 'INTRO' },
+    { id: 'section-2', label: 'SECTION 2' },
+    { id: 'section-3', label: 'SECTION 3' }
   ]
+
+  const actSections = [
+    { id: 'intro', label: 'INTRO' },
+    { id: 'section-2', label: 'SECTION 2' },
+    { id: 'section-3', label: 'SECTION 3' }
+  ]
+
+  const heroKeyboardSections = [
+    { id: 'intro', label: 'INTRO' },
+    { id: 'section-2', label: 'SECTION 2' },
+    { id: 'section-3', label: 'SECTION 3' }
+  ]
+
+  const kleinfelderSections = [
+    { id: 'intro', label: 'INTRO' },
+    { id: 'section-2', label: 'SECTION 2' },
+    { id: 'section-3', label: 'SECTION 3' }
+  ]
+
+  // Convert quotes config to quote data structure
+  const buildQuotesForRow = (rowConfig) => {
+    return rowConfig.quotes.map(name => {
+      const assets = getQuoteAssets(name)
+      const alignment = getQuoteAlignment(name, rowConfig)
+      
+      return {
+        name: name.charAt(0).toUpperCase() + name.slice(1), // Capitalize name
+        ...assets,
+        alignment: alignment
+      }
+    })
+  }
+
+  // Build all quote rows from config
+  const quoteRows = quotesConfig.rows.map((rowConfig, index) => ({
+    id: `quote-row-${index}`,
+    quotes: buildQuotesForRow(rowConfig)
+  }))
 
   return (
     <div className="home-page">
@@ -87,18 +93,61 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* First QuotesRow after Intro */}
+      {quoteRows.length > 0 && quoteRows[0] && (
+        <QuotesRow key={quoteRows[0].id} quotes={quoteRows[0].quotes} />
+      )}
+
       <ProjectRow 
         title="CHEGG'S ADULT LEARNING PLATFORM:" 
         sections={cheggSections}
       />
-      {quotes.length > 0 && <QuotesRow quotes={quotes} />}
+      {quoteRows.length > 1 && quoteRows[1] && (
+        <QuotesRow key={quoteRows[1].id} quotes={quoteRows[1].quotes} />
+      )}
+
       <ProjectRow 
         title="Owl case study." 
         sections={owlSections}
       />
+      {quoteRows.length > 2 && quoteRows[2] && (
+        <QuotesRow key={quoteRows[2].id} quotes={quoteRows[2].quotes} />
+      )}
+
+      <ProjectRow 
+        title="8counts" 
+        sections={eightCountsSections}
+      />
+      {quoteRows.length > 3 && quoteRows[3] && (
+        <QuotesRow key={quoteRows[3].id} quotes={quoteRows[3].quotes} />
+      )}
+
+      <ProjectRow 
+        title="ACT" 
+        sections={actSections}
+      />
+      {quoteRows.length > 4 && quoteRows[4] && (
+        <QuotesRow key={quoteRows[4].id} quotes={quoteRows[4].quotes} />
+      )}
+
+      <ProjectRow 
+        title="HERO Keyboard" 
+        sections={heroKeyboardSections}
+      />
+      {quoteRows.length > 5 && quoteRows[5] && (
+        <QuotesRow key={quoteRows[5].id} quotes={quoteRows[5].quotes} />
+      )}
+
+      <ProjectRow 
+        title="Kleinfelder" 
+        sections={kleinfelderSections}
+      />
+      {quoteRows.length > 6 && quoteRows[6] && (
+        <QuotesRow key={quoteRows[6].id} quotes={quoteRows[6].quotes} />
+      )}
     </div>
   )
 }
 
 export default Home
-
