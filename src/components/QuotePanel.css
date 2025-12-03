@@ -17,10 +17,13 @@
 /* Responsive scaling for viewport >= 1273px */
 @media (min-width: 1273px) {
   .quote-panel {
-    width: 100%; /* Fill grid cell */
-    height: auto;
-    aspect-ratio: 1.5;
-    max-width: none; /* Allow scaling */
+    width: 100%; /* Fill grid cell (50% of QuotesRow width minus gap) */
+    height: auto; /* Let aspect-ratio calculate height */
+    aspect-ratio: 1.5; /* Maintain 3:2 aspect ratio */
+    max-width: none; /* Allow scaling up */
+    max-height: none; /* Allow scaling up */
+    min-width: 600px; /* Keep minimum size */
+    min-height: 400px; /* Keep minimum size */
   }
 }
 
