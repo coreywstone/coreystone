@@ -1,12 +1,35 @@
 <svg width="190" height="52" viewBox="0 0 190 52" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
-      @import url('https://fonts.cdnfonts.com/css/anime-ace');
       text {
         font-family: 'Anime Ace', sans-serif;
       }
     </style>
-  </defs>
+  
+    <style>
+      @font-face {
+        font-family: 'Anime Ace';
+        src: local('Anime Ace'), url('https://fonts.cdnfonts.com/s/54590/animeace.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Anime Ace';
+        src: local('Anime Ace'), url('https://fonts.cdnfonts.com/s/54590/animeace_i.woff') format('woff');
+        font-weight: normal;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Anime Ace';
+        src: local('Anime Ace'), url('https://fonts.cdnfonts.com/s/54590/animeace_b.woff') format('woff');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+      }
+      text { font-family: 'Anime Ace', sans-serif; }
+    </style></defs>
 
 <g id="kaitlynn-title">
 <mask id="path-1-inside-1_871_126335" fill="white">

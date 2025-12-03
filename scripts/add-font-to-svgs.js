@@ -7,10 +7,30 @@ const __dirname = path.dirname(__filename);
 
 const quotersDir = path.join(__dirname, '../public/img/quoters');
 
-// Font style block to inject
+// Font style block to inject - using @font-face with direct font file URLs
 const fontStyleBlock = `  <defs>
     <style>
-      @import url('https://fonts.cdnfonts.com/css/anime-ace');
+      @font-face {
+        font-family: 'Anime Ace';
+        src: local('Anime Ace'), url('https://fonts.cdnfonts.com/s/54590/animeace.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Anime Ace';
+        src: local('Anime Ace'), url('https://fonts.cdnfonts.com/s/54590/animeace_i.woff') format('woff');
+        font-weight: normal;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Anime Ace';
+        src: local('Anime Ace'), url('https://fonts.cdnfonts.com/s/54590/animeace_b.woff') format('woff');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+      }
       text {
         font-family: 'Anime Ace', sans-serif;
       }
@@ -26,11 +46,17 @@ function processSVGFile(filePath) {
       return false; // Skip files without Anime Ace text
     }
     
-    // Check if font style already exists
-    if (content.includes('@import url(\'https://fonts.cdnfonts.com/css/anime-ace\')') ||
-        content.includes('@import url("https://fonts.cdnfonts.com/css/anime-ace")')) {
+    // Check if font-face already exists
+    if (content.includes('@font-face') && content.includes("font-family: 'Anime Ace'")) {
       console.log(`✓ Already has font: ${path.relative(quotersDir, filePath)}`);
       return false; // Already processed
+    }
+    
+    // Remove old @import if it exists (we're replacing it with @font-face)
+    if (content.includes('@import url(\'https://fonts.cdnfonts.com/css/anime-ace\')') ||
+        content.includes('@import url("https://fonts.cdnfonts.com/css/anime-ace")')) {
+      // Remove the old @import line
+      content = content.replace(/@import url\(['"]https:\/\/fonts\.cdnfonts\.com\/css\/anime-ace['"]\);\s*/g, '');
     }
     
     // Find the opening <svg> tag
@@ -55,11 +81,33 @@ function processSVGFile(filePath) {
         if (defsCloseMatch) {
           const defsCloseIndex = defsEnd + defsCloseMatch.index;
           const existingDefs = content.substring(defsEnd, defsCloseIndex);
-          if (!existingDefs.includes('@import url')) {
+          if (!existingDefs.includes('@font-face') || !existingDefs.includes("font-family: 'Anime Ace'")) {
             // Insert style before closing </defs>
-            content = content.substring(0, defsCloseIndex) + 
-                     '\n    <style>\n      @import url(\'https://fonts.cdnfonts.com/css/anime-ace\');\n      text { font-family: \'Anime Ace\', sans-serif; }\n    </style>' +
-                     content.substring(defsCloseIndex);
+            const fontFaceStyle = `\n    <style>
+      @font-face {
+        font-family: 'Anime Ace';
+        src: local('Anime Ace'), url('https://fonts.cdnfonts.com/s/54590/animeace.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Anime Ace';
+        src: local('Anime Ace'), url('https://fonts.cdnfonts.com/s/54590/animeace_i.woff') format('woff');
+        font-weight: normal;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Anime Ace';
+        src: local('Anime Ace'), url('https://fonts.cdnfonts.com/s/54590/animeace_b.woff') format('woff');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+      }
+      text { font-family: 'Anime Ace', sans-serif; }
+    </style>`;
+            content = content.substring(0, defsCloseIndex) + fontFaceStyle + content.substring(defsCloseIndex);
           }
         }
       }
