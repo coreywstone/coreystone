@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import InlineSVG from './InlineSVG'
 import './QuotePanel.css'
 
 function QuotePanel({ 
@@ -203,7 +204,7 @@ function QuotePanel({
       {/* Title */}
       {titleSrc && (
         <div className="quote-panel-title">
-          <img src={titleSrc} alt={name || 'Quote'} />
+          <InlineSVG src={titleSrc} alt={name || 'Quote'} />
         </div>
       )}
 
@@ -218,36 +219,24 @@ function QuotePanel({
       {(availableWords.words1 || availableWords.words2 || availableWords.words3) && (
         <div className={`quote-panel-words quote-panel-words-${alignment}`} style={wordsStyle}>
           {availableWords.words1 && words1Src && (
-            <img
+            <InlineSVG
               src={words1Src}
               alt="Quote bubble 1"
               className={`quote-panel-words-img first ${currentBubble >= 0 ? 'visible' : ''}`}
-              onError={(e) => {
-                e.target.style.display = 'none'
-                setAvailableWords(prev => ({ ...prev, words1: false }))
-              }}
             />
           )}
           {availableWords.words2 && words2Src && (
-            <img
+            <InlineSVG
               src={words2Src}
               alt="Quote bubble 2"
               className={`quote-panel-words-img overlay ${currentBubble >= 1 ? 'visible' : ''}`}
-              onError={(e) => {
-                e.target.style.display = 'none'
-                setAvailableWords(prev => ({ ...prev, words2: false }))
-              }}
             />
           )}
           {availableWords.words3 && words3Src && (
-            <img
+            <InlineSVG
               src={words3Src}
               alt="Quote bubble 3"
               className={`quote-panel-words-img overlay ${currentBubble >= 2 ? 'visible' : ''}`}
-              onError={(e) => {
-                e.target.style.display = 'none'
-                setAvailableWords(prev => ({ ...prev, words3: false }))
-              }}
             />
           )}
         </div>

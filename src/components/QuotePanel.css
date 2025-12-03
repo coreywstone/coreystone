@@ -60,7 +60,8 @@
   transform: none; /* No scaling */
 }
 
-.quote-panel-title img {
+.quote-panel-title img,
+.quote-panel-title svg {
   display: block;
   width: auto;
   height: auto;
@@ -117,6 +118,13 @@
   max-width: none; /* No scaling - natural size */
   opacity: 0;
   transform-origin: center;
+}
+
+/* Inline SVG - the wrapper div has the className, SVG is inside */
+.quote-panel-words-img svg {
+  display: block;
+  width: auto;
+  height: auto;
 }
 
 .quote-panel-words-left .quote-panel-words-img {

@@ -21,31 +21,32 @@
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_906_196511" result="shape"/>
 </filter>
 
+    
+    
     <style>
-      text { font-family: 'Anime Ace', sans-serif; }
-    </style>
-    <style>
+      
       @font-face {
         font-family: 'Anime Ace';
-        src: local('Anime Ace'), url('https://fonts.cdnfonts.com/s/54590/animeace.woff') format('woff');
+        src: local('Anime Ace'), url('/fonts/animeace.woff') format('woff');
         font-weight: normal;
         font-style: normal;
         font-display: swap;
       }
       @font-face {
         font-family: 'Anime Ace';
-        src: local('Anime Ace'), url('https://fonts.cdnfonts.com/s/54590/animeace_i.woff') format('woff');
+        src: local('Anime Ace'), url('/fonts/animeace_i.woff') format('woff');
         font-weight: normal;
         font-style: italic;
         font-display: swap;
       }
       @font-face {
         font-family: 'Anime Ace';
-        src: local('Anime Ace'), url('https://fonts.cdnfonts.com/s/54590/animeace_b.woff') format('woff');
+        src: local('Anime Ace'), url('/fonts/animeace_b.woff') format('woff');
         font-weight: bold;
         font-style: normal;
         font-display: swap;
       }
       text { font-family: 'Anime Ace', sans-serif; }
+    
     </style></defs>
 </svg>

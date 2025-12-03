@@ -1,41 +1,45 @@
 <svg width="237" height="52" viewBox="0 0 237 52" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
-      text {
-        font-family: 'Anime Ace', sans-serif;
-      }
-    </style>
-  
-    <style>
       @font-face {
         font-family: 'Anime Ace';
-        src: local('Anime Ace'), url('https://fonts.cdnfonts.com/s/54590/animeace.woff') format('woff');
+        src: local('Anime Ace'), url('/fonts/animeace.woff') format('woff');
         font-weight: normal;
         font-style: normal;
         font-display: swap;
       }
       @font-face {
         font-family: 'Anime Ace';
-        src: local('Anime Ace'), url('https://fonts.cdnfonts.com/s/54590/animeace_i.woff') format('woff');
+        src: local('Anime Ace'), url('/fonts/animeace_i.woff') format('woff');
         font-weight: normal;
         font-style: italic;
         font-display: swap;
       }
       @font-face {
         font-family: 'Anime Ace';
-        src: local('Anime Ace'), url('https://fonts.cdnfonts.com/s/54590/animeace_b.woff') format('woff');
+        src: local('Anime Ace'), url('/fonts/animeace_b.woff') format('woff');
         font-weight: bold;
         font-style: normal;
         font-display: swap;
       }
-      text { font-family: 'Anime Ace', sans-serif; }
-    </style></defs>
-
+      text {
+        font-family: 'Anime Ace', sans-serif;
+      }
+      text[id="Todd Cohen"] {
+        font-weight: bold !important;
+      }
+      text[id="Former director at ku.edu"] {
+        font-style: italic !important;
+      }
+    </style>
+  </defs>
+<g id="todd-title">
 <mask id="path-1-inside-1_784_5213" fill="white">
 <path d="M0 0H237V48C237 50.2091 235.209 52 233 52H0V0Z"/>
 </mask>
-<path d="M0 0H237V48C237 50.2091 235.209 52 233 52H0V0Z" fill="#61D6FF"/>
+<path d="M0 0H237V48C237 50.2091 235.209 52 233 52H0V0Z" fill="#8DD6F0"/>
 <path d="M0 0H237H0ZM239 48C239 51.3137 236.314 54 233 54H0V50H233C234.105 50 235 49.1046 235 48H239ZM0 52V0V52ZM239 0V48C239 51.3137 236.314 54 233 54V50C234.105 50 235 49.1046 235 48V0H239Z" fill="#262629" mask="url(#path-1-inside-1_784_5213)"/>
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="39.7402">Former director at ku.edu</tspan></text>
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7402">Todd Cohen&#10;</tspan></text>
+<text id="Todd Cohen" fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7402">Todd Cohen</tspan></text>
+<text id="Former director at ku.edu" fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="39.7402">Former director at ku.edu</tspan></text>
+</g>
 </svg>
