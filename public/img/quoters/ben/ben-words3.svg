@@ -22,5 +22,9 @@
 <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_903_186309"/>
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_903_186309" result="shape"/>
 </filter>
-</defs>
+
+    <style>
+      @import url('https://fonts.cdnfonts.com/css/anime-ace');
+      text { font-family: 'Anime Ace', sans-serif; }
+    </style></defs>
 </svg>

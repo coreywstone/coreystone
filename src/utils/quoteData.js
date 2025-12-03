@@ -12,19 +12,11 @@ export const getQuoteAssets = (name) => {
   }
   
   // Try to detect which word files exist
-  // Special case: todd uses words.svg instead of words1.svg
-  if (name === 'todd') {
-    assets.words1Src = `${basePath}/${name}-words.svg`
-    // Try words2 and words3 as well (they won't exist, but QuotePanel will handle it)
-    assets.words2Src = `${basePath}/${name}-words2.svg`
-    assets.words3Src = `${basePath}/${name}-words3.svg`
-  } else {
-    // For all other quoters, try the standard pattern
-    // QuotePanel will programmatically detect which ones actually exist
-    assets.words1Src = `${basePath}/${name}-words1.svg`
-    assets.words2Src = `${basePath}/${name}-words2.svg`
-    assets.words3Src = `${basePath}/${name}-words3.svg`
-  }
+  // For all quoters, try the standard pattern (words1, words2, words3)
+  // QuotePanel will programmatically detect which ones actually exist
+  assets.words1Src = `${basePath}/${name}-words1.svg`
+  assets.words2Src = `${basePath}/${name}-words2.svg`
+  assets.words3Src = `${basePath}/${name}-words3.svg`
   
   return assets
 }

@@ -1,4 +1,13 @@
 <svg width="195" height="52" viewBox="0 0 195 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.cdnfonts.com/css/anime-ace');
+      text {
+        font-family: 'Anime Ace', sans-serif;
+      }
+    </style>
+  </defs>
+
 <g id="paul-title">
 <mask id="path-1-inside-1_892_153029" fill="white">
 <path d="M0 0H195V48C195 50.2091 193.209 52 191 52H0V0Z"/>
