@@ -12,21 +12,21 @@ const fontStyleBlock = `  <defs>
     <style>
       @font-face {
         font-family: 'Anime Ace';
-        src: local('Anime Ace'), url('/fonts/animeace.woff') format('woff');
+        src: url('/fonts/animeace.woff') format('woff');
         font-weight: normal;
         font-style: normal;
         font-display: swap;
       }
       @font-face {
         font-family: 'Anime Ace';
-        src: local('Anime Ace'), url('/fonts/animeace_i.woff') format('woff');
+        src: url('/fonts/animeace_i.woff') format('woff');
         font-weight: normal;
         font-style: italic;
         font-display: swap;
       }
       @font-face {
         font-family: 'Anime Ace';
-        src: local('Anime Ace'), url('/fonts/animeace_b.woff') format('woff');
+        src: url('/fonts/animeace_b.woff') format('woff');
         font-weight: bold;
         font-style: normal;
         font-display: swap;
@@ -49,6 +49,9 @@ function processSVGFile(filePath) {
     // Check if using old CDN URLs - if so, we need to update to local paths
     const hasOldCDNUrls = content.includes('fonts.cdnfonts.com/s/54590/');
     
+    // Check if using local() declarations - we want to remove these to always use web fonts
+    const hasLocalFont = content.includes("local('Anime Ace')") || content.includes('local("Anime Ace")');
+    
     // Check if font-face already exists with all three variants using local paths
     const hasAllFontFaces = content.includes('@font-face') && 
                            content.includes("font-family: 'Anime Ace'") &&
@@ -63,7 +66,14 @@ function processSVGFile(filePath) {
       content = content.replace(/url\(['"]https:\/\/fonts\.cdnfonts\.com\/s\/54590\/animeace_b\.woff['"]\)/g, "url('/fonts/animeace_b.woff')");
     }
     
-    if (hasAllFontFaces && !hasOldCDNUrls && !content.match(/<style[^>]*>[\s\S]*?<\/style>[\s\S]*?<style[^>]*>[\s\S]*?<\/style>/)) {
+    // Remove local() declarations - we always want to use the web fonts, not system fonts
+    // This ensures consistent rendering across all computers, including those with the font installed
+    if (hasLocalFont) {
+      content = content.replace(/src:\s*local\(['"]Anime Ace['"]\),\s*/g, 'src: ');
+      content = content.replace(/src:\s*local\(["']Anime Ace["']\),\s*/g, 'src: ');
+    }
+    
+    if (hasAllFontFaces && !hasOldCDNUrls && !hasLocalFont && !content.match(/<style[^>]*>[\s\S]*?<\/style>[\s\S]*?<style[^>]*>[\s\S]*?<\/style>/)) {
       // Check if there are duplicate style blocks
       const styleBlocks = content.match(/<style[^>]*>[\s\S]*?<\/style>/g);
       if (styleBlocks && styleBlocks.length === 1) {
@@ -113,21 +123,21 @@ function processSVGFile(filePath) {
       if (!hasFontFace || !mergedStyle.includes('animeace_b.woff')) {
         mergedStyle = `@font-face {
         font-family: 'Anime Ace';
-        src: local('Anime Ace'), url('/fonts/animeace.woff') format('woff');
+        src: url('/fonts/animeace.woff') format('woff');
         font-weight: normal;
         font-style: normal;
         font-display: swap;
       }
       @font-face {
         font-family: 'Anime Ace';
-        src: local('Anime Ace'), url('/fonts/animeace_i.woff') format('woff');
+        src: url('/fonts/animeace_i.woff') format('woff');
         font-weight: normal;
         font-style: italic;
         font-display: swap;
       }
       @font-face {
         font-family: 'Anime Ace';
-        src: local('Anime Ace'), url('/fonts/animeace_b.woff') format('woff');
+        src: url('/fonts/animeace_b.woff') format('woff');
         font-weight: bold;
         font-weight: 700;
         font-style: normal;
@@ -193,21 +203,21 @@ function processSVGFile(filePath) {
                 const fontFaceStyle = `\n    <style>
       @font-face {
         font-family: 'Anime Ace';
-        src: local('Anime Ace'), url('/fonts/animeace.woff') format('woff');
+        src: url('/fonts/animeace.woff') format('woff');
         font-weight: normal;
         font-style: normal;
         font-display: swap;
       }
       @font-face {
         font-family: 'Anime Ace';
-        src: local('Anime Ace'), url('/fonts/animeace_i.woff') format('woff');
+        src: url('/fonts/animeace_i.woff') format('woff');
         font-weight: normal;
         font-style: italic;
         font-display: swap;
       }
       @font-face {
         font-family: 'Anime Ace';
-        src: local('Anime Ace'), url('/fonts/animeace_b.woff') format('woff');
+        src: url('/fonts/animeace_b.woff') format('woff');
         font-weight: bold;
         font-weight: 700;
         font-style: normal;
