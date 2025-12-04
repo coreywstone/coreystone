@@ -475,17 +475,17 @@ function QuotePanel({
       // Start particles immediately (runs for 1750ms)
       setShowParticles(true)
       
-      // Start character flicker fade-in immediately, lasts 1250ms
-      // Character completes at 0ms + 1250ms = 1250ms
+      // Start character flicker fade-in after 500ms delay, lasts 1250ms
+      // Character completes at 500ms + 1250ms = 1750ms
       teleporterTimeoutRef.current = setTimeout(() => {
         setShowCharacter(true)
-      }, 0)
+      }, 500)
       
       // Start words animation 500ms after character completes flicker fade-in
-      // Character completes at 1250ms, so first bubble appears at 1750ms
+      // Character completes at 1750ms, so first bubble appears at 2250ms
       wordsDelayTimeoutRef.current = setTimeout(() => {
         setCanStartWords(true)
-      }, 1750) // 0ms delay + 1250ms flicker + 500ms after completion
+      }, 2250) // 500ms delay + 1250ms flicker + 500ms after completion
     }
   }, [isVisible, hasPlayedEffect])
 
