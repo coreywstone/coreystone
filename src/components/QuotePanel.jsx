@@ -295,18 +295,18 @@ function QuotePanel({
         // Travel time: 150-300ms (randomized per particle)
         this.travelTime = Math.random() * 150 + 150 // 150-300ms
         
-        // Start time: staggered over 2500ms, with more particles between 500ms and 1500ms
-        // Use weighted random distribution to bias toward 500-1500ms window
+        // Start time: staggered over 1750ms, with more particles between 0ms and 750ms
+        // Use weighted random distribution to bias toward 0-750ms window
         const random = Math.random()
         if (random < 0.6) {
-          // 60% of particles in the 500-1500ms window (peak period)
-          this.birthOffset = 500 + Math.random() * 1000 // 500-1500ms
+          // 60% of particles in the 0-750ms window (peak period)
+          this.birthOffset = Math.random() * 750 // 0-750ms
         } else if (random < 0.8) {
-          // 20% of particles in the 0-500ms window
-          this.birthOffset = Math.random() * 500 // 0-500ms
+          // 20% of particles in the 750-1000ms window
+          this.birthOffset = 750 + Math.random() * 250 // 750-1000ms
         } else {
-          // 20% of particles in the 1500-2500ms window
-          this.birthOffset = 1500 + Math.random() * 1000 // 1500-2500ms
+          // 20% of particles in the 1000-1750ms window
+          this.birthOffset = 1000 + Math.random() * 750 // 1000-1750ms
         }
         
         this.baseOpacity = Math.random() * 0.3 + 0.7 // Randomize between 70% and 100%
@@ -325,8 +325,8 @@ function QuotePanel({
       }
       
       update(elapsed) {
-        // Stop updating if effect is complete (2500ms)
-        if (elapsed >= 2500) {
+        // Stop updating if effect is complete (1750ms)
+        if (elapsed >= 1750) {
           this.currentSize = 0
           this.opacity = 0
           return
@@ -343,9 +343,9 @@ function QuotePanel({
           return
         }
         
-        // Opacity fade-out for last 700ms of effect (from 1800ms to 2500ms)
-        if (elapsed >= 1800) {
-          const fadeProgress = (elapsed - 1800) / 700 // 0 to 1 over 700ms
+        // Opacity fade-out for last 700ms of effect (from 1050ms to 1750ms)
+        if (elapsed >= 1050) {
+          const fadeProgress = (elapsed - 1050) / 700 // 0 to 1 over 700ms
           this.opacity = this.baseOpacity * (1 - fadeProgress) // Linear fade to transparent
         } else {
           this.opacity = this.baseOpacity
@@ -425,7 +425,7 @@ function QuotePanel({
     
     let isComplete = false
     
-    // Animation loop - runs once for 2500ms
+    // Animation loop - runs once for 1750ms
     const animate = () => {
       if (!showParticles || isComplete) {
         // Clear canvas when done
@@ -437,8 +437,8 @@ function QuotePanel({
       
       const elapsed = Date.now() - startTime
       
-      // Stop after 2500ms and hide particles
-      if (elapsed >= 2500) {
+      // Stop after 1750ms and hide particles
+      if (elapsed >= 1750) {
         isComplete = true
         setShowParticles(false)
         ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -472,20 +472,20 @@ function QuotePanel({
     if (isVisible && !hasPlayedEffect) {
       setHasPlayedEffect(true) // Mark as played to prevent looping
       
-      // Start particles immediately (runs for 2500ms)
+      // Start particles immediately (runs for 1750ms)
       setShowParticles(true)
       
-      // Start character flicker fade-in after 500ms delay, lasts 2000ms
-      // Character completes at 500ms + 2000ms = 2500ms
+      // Start character flicker fade-in immediately, lasts 1250ms
+      // Character completes at 0ms + 1250ms = 1250ms
       teleporterTimeoutRef.current = setTimeout(() => {
         setShowCharacter(true)
-      }, 500)
+      }, 0)
       
       // Start words animation 500ms after character completes flicker fade-in
-      // Character completes at 2500ms, so first bubble appears at 3000ms
+      // Character completes at 1250ms, so first bubble appears at 1750ms
       wordsDelayTimeoutRef.current = setTimeout(() => {
         setCanStartWords(true)
-      }, 3000) // 500ms delay + 2000ms flicker + 500ms after completion
+      }, 1750) // 0ms delay + 1250ms flicker + 500ms after completion
     }
   }, [isVisible, hasPlayedEffect])
 

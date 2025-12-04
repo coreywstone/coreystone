@@ -104,7 +104,7 @@
 }
 
 .quote-panel-character img.character-materializing {
-  animation: flicker-teleport 2000ms ease-in forwards;
+  animation: flicker-teleport 1250ms ease-in forwards;
 }
 
 @keyframes flicker-teleport {
