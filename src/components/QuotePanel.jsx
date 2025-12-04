@@ -309,13 +309,19 @@ function QuotePanel({
           this.birthOffset = 1500 + Math.random() * 1000 // 1500-2500ms
         }
         
-        this.speedX = (Math.random() - 0.5) * 1.5 // Small horizontal drift
         this.baseOpacity = Math.random() * 0.3 + 0.7 // Randomize between 70% and 100%
         this.opacity = this.baseOpacity
         
         // Calculate constant speed for linear motion
-        const totalDistance = canvas.height + 50 // Top to bottom + buffer
+        // Particles flow fully off bottom to cover character's off-screen legs
+        const totalDistance = canvas.height + 200 // Top to well below bottom
         this.speedY = totalDistance / this.travelTime // Pixels per ms
+        
+        // Zig-zag pattern: 24px side movement for every 144px downward movement
+        // Each particle gets a random phase offset so they don't all zig-zag in sync
+        this.zigzagPhase = Math.random() * Math.PI * 2 // Random phase offset (0 to 2π)
+        this.zigzagAmplitude = 24 // 24px horizontal movement
+        this.zigzagPeriod = 144 // 144px vertical period
       }
       
       update(elapsed) {
@@ -345,32 +351,27 @@ function QuotePanel({
           this.opacity = this.baseOpacity
         }
         
-        // Size animation - grow quickly, stay, then shrink
-        if (particleAge < 50) {
-          // Quick grow to max size
-          const progress = particleAge / 50
-          this.currentSize = this.baseSize + (this.maxSize - this.baseSize) * progress
-        } else if (particleAge < this.travelTime - 50) {
-          // Stay at max size
-          this.currentSize = this.maxSize
-        } else {
-          // Quick shrink at end
-          const shrinkProgress = (particleAge - (this.travelTime - 50)) / 50
-          this.currentSize = this.maxSize * (1 - shrinkProgress)
-        }
+        // Size animation - start small at top, grow to full size at bottom
+        // Linear growth from baseSize to maxSize over the entire travel time
+        const sizeProgress = particleAge / this.travelTime // 0 to 1 over travel time
+        this.currentSize = this.baseSize + (this.maxSize - this.baseSize) * sizeProgress
         
         // Update oval dimensions
         this.width = this.currentSize * 0.67
         this.height = this.currentSize
         
-        // Linear motion (no easing) - constant speed
+        // Linear vertical motion (no easing) - constant speed
         this.y = this.startY + (this.speedY * particleAge)
         
-        // Small horizontal drift
-        this.x = this.startX + this.speedX * particleAge * 0.01
+        // Rounded zig-zag horizontal motion: 24px side movement for every 144px downward
+        // Use sine wave for smooth rounded corners
+        const verticalDistance = this.y - this.startY
+        const zigzagOffset = this.zigzagAmplitude * Math.sin((2 * Math.PI * verticalDistance / this.zigzagPeriod) + this.zigzagPhase)
+        this.x = this.startX + zigzagOffset
         
-        // Particle is done if it goes off bottom
-        if (this.y > canvas.height + 20) {
+        // Particles continue flowing off bottom (covering character's off-screen legs)
+        // Only stop if they've traveled their full distance
+        if (this.y > canvas.height + 200) {
           this.currentSize = 0
           this.opacity = 0
         }
@@ -403,8 +404,8 @@ function QuotePanel({
       }
     }
     
-    // Create particles - double the count (800 total)
-    const particleCount = 800
+    // Create particles - 50% more (1200 total)
+    const particleCount = 1200
     const startTime = Date.now()
     particlesRef.current = []
     
