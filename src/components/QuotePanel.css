@@ -148,32 +148,19 @@
   56% { opacity: 0.95; }
   57.5% { opacity: 0; }
   59% { opacity: 1; }
-  60.5% { opacity: 0; }
-  62% { opacity: 1; }
-  63.5% { opacity: 0; }
+  62% { opacity: 0.9; }
   65% { opacity: 1; }
-  66.5% { opacity: 0; }
-  68% { opacity: 1; }
-  69.5% { opacity: 0; }
+  68% { opacity: 0.95; }
   71% { opacity: 1; }
-  72.5% { opacity: 0; }
-  74% { opacity: 1; }
-  75.5% { opacity: 0; }
+  74% { opacity: 0.98; }
   77% { opacity: 1; }
-  78.5% { opacity: 0; }
-  80% { opacity: 1; }
-  81.5% { opacity: 0; }
+  80% { opacity: 0.99; }
   83% { opacity: 1; }
-  84.5% { opacity: 0; }
   86% { opacity: 1; }
-  87.5% { opacity: 0; }
-  90.5% { opacity: 0; }
+  89% { opacity: 1; }
   92% { opacity: 1; }
-  93.5% { opacity: 0; }
   95% { opacity: 1; }
-  96.5% { opacity: 0; }
   98% { opacity: 1; }
-  99% { opacity: 0; }
   100% { opacity: 1; }
 }
 
