@@ -1,10 +1,12 @@
 .project-row {
   width: 100vw;
-  height: 90vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: var(--color-white-ish);
   overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .project-panel-container {
@@ -41,7 +43,13 @@
   align-items: center;
   justify-content: center;
   color: var(--color-near-black);
-  opacity: 0.5;
+  opacity: 1;
   font-family: var(--font-body);
   font-size: 1.5rem;
+}
+
+.project-panel-placeholder p,
+.project-section-placeholder p {
+  color: var(--color-near-black) !important;
+  opacity: 1 !important;
 }

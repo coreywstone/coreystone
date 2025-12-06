@@ -22,8 +22,7 @@
 .profile-image {
   width: 100%;
   max-width: 256px;
-  border-radius: var(--border-radius);
-  border: 2px solid var(--color-blue);
+  border-radius: 50%;
   display: block;
 }
 

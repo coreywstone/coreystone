@@ -43,6 +43,12 @@ function Home() {
     { id: 'section-3', label: 'SECTION 3' }
   ]
 
+  const sketchesMuralsSections = [
+    { id: 'intro', label: 'INTRO' },
+    { id: 'section-2', label: 'SECTION 2' },
+    { id: 'section-3', label: 'SECTION 3' }
+  ]
+
   // Convert quotes config to quote data structure
   const buildQuotesForRow = (rowConfig) => {
     return rowConfig.quotes.map(name => {
@@ -94,17 +100,12 @@ function Home() {
         </div>
       </section>
 
-      {/* First QuotesRow after Intro */}
-      {quoteRows.length > 0 && quoteRows[0] && (
-        <QuotesRow key={quoteRows[0].id} quotes={quoteRows[0].quotes} />
-      )}
-
       <ProjectRow 
         title="Chegg Skills:" 
         sections={cheggSections}
       />
-      {quoteRows.length > 1 && quoteRows[1] && (
-        <QuotesRow key={quoteRows[1].id} quotes={quoteRows[1].quotes} />
+      {quoteRows.length > 0 && quoteRows[0] && (
+        <QuotesRow key={quoteRows[0].id} quotes={quoteRows[0].quotes} />
       )}
 
       <ProjectRow 
@@ -146,6 +147,11 @@ function Home() {
       {quoteRows.length > 6 && quoteRows[6] && (
         <QuotesRow key={quoteRows[6].id} quotes={quoteRows[6].quotes} />
       )}
+
+      <ProjectRow 
+        title="Sketches & Murals" 
+        sections={sketchesMuralsSections}
+      />
     </div>
   )
 }
