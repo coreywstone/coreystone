@@ -103,6 +103,7 @@ function Home() {
       <ProjectRow 
         title="Chegg Skills:" 
         sections={cheggSections}
+        color="#EB7100"
       />
       {quoteRows.length > 0 && quoteRows[0] && (
         <QuotesRow key={quoteRows[0].id} quotes={quoteRows[0].quotes} />
@@ -111,6 +112,7 @@ function Home() {
       <ProjectRow 
         title="Owl Health:" 
         sections={owlSections}
+        color="#52E2D4"
       />
       {quoteRows.length > 2 && quoteRows[2] && (
         <QuotesRow key={quoteRows[2].id} quotes={quoteRows[2].quotes} />
@@ -119,6 +121,7 @@ function Home() {
       <ProjectRow 
         title="Founding 8counts:" 
         sections={eightCountsSections}
+        color="#FF2A8D"
       />
       {quoteRows.length > 3 && quoteRows[3] && (
         <QuotesRow key={quoteRows[3].id} quotes={quoteRows[3].quotes} />
