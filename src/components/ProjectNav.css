@@ -77,8 +77,7 @@
 }
 
 .project-nav-tab.active {
-  color: var(--color-white);
-  text-shadow: 1px 1px 0 var(--color-charcoal);
+  color: var(--color-near-black);
 }
 
 .project-nav-indicator {

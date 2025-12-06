@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import './ProjectNav.css'
 
-function ProjectNav({ title, sections = [], activeSectionId, onTabClick, scrollContainerRef, isSticky, color = '#F5EFE7' }) {
+function ProjectNav({ title, sections = [], activeSectionId, onTabClick, scrollContainerRef, isSticky, color = '#F5EFE7', showTabs = true }) {
   const [indicatorStyle, setIndicatorStyle] = useState({
     opacity: 0,
     left: '0px',
@@ -86,23 +86,25 @@ function ProjectNav({ title, sections = [], activeSectionId, onTabClick, scrollC
       {title && (
         <h2 className="project-nav-title" style={{ color }}>{title}</h2>
       )}
-      <div ref={tabsContainerRef} className="project-nav-tabs">
-        <div 
-          ref={indicatorRef}
-          className={`project-nav-indicator ${isAnimating ? 'animating' : ''}`}
-          style={{ ...indicatorStyle, backgroundColor: color === '#F5EFE7' ? '#8199E9' : color }}
-        />
-        {sections.map((section, index) => (
-          <button
-            key={section.id}
-            ref={el => tabsRef.current[index] = el}
-            className={`project-nav-tab ${activeSectionId === section.id ? 'active' : ''}`}
-            onClick={() => handleTabClick(section.id, index)}
-          >
-            {section.label}
-          </button>
-        ))}
-      </div>
+      {showTabs && sections.length > 0 && (
+        <div ref={tabsContainerRef} className="project-nav-tabs">
+          <div 
+            ref={indicatorRef}
+            className={`project-nav-indicator ${isAnimating ? 'animating' : ''}`}
+            style={{ ...indicatorStyle, backgroundColor: color }}
+          />
+          {sections.map((section, index) => (
+            <button
+              key={section.id}
+              ref={el => tabsRef.current[index] = el}
+              className={`project-nav-tab ${activeSectionId === section.id ? 'active' : ''}`}
+              onClick={() => handleTabClick(section.id, index)}
+            >
+              {section.label}
+            </button>
+          ))}
+        </div>
+      )}
     </nav>
   )
 }

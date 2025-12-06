@@ -3,9 +3,8 @@
 }
 
 .about-section {
-  padding: 4rem 0;
-  background-color: var(--color-near-black);
-  height: 700px;
+  padding: 48px 0;
+  background-color: var(--color-charcoal);
 }
 
 .about-content {
@@ -22,7 +21,8 @@
 .profile-image {
   width: 100%;
   max-width: 256px;
-  border-radius: 50%;
+  border-radius: 2px;
+  border: 2px solid var(--color-near-black);
   display: block;
 }
 

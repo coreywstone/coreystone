@@ -1,16 +1,21 @@
 .project-section {
   flex: 0 0 auto;
   height: 100%;
-  min-width: 100vw;
+  min-height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0;
   border-right: 12px solid var(--color-near-black);
   box-sizing: border-box;
   background-color: var(--color-white-ish) !important;
-  width: 100vw;
+  width: auto;
   color: var(--color-near-black);
+}
+
+.project-section > * {
+  height: 100%;
+  min-height: 100%;
 }
 
 .project-section * {
@@ -19,5 +24,9 @@
 
 .project-section.last {
   border-right: none;
+}
+
+.project-section.custom-background {
+  background-color: var(--custom-bg-color, var(--color-white-ish)) !important;
 }
 
