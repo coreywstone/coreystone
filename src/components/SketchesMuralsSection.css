@@ -1,0 +1,53 @@
+.sketches-murals-section {
+  flex: 0 0 auto;
+  height: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0;
+  border-right: 12px solid var(--color-near-black);
+  box-sizing: border-box;
+  background-color: var(--color-near-white);
+  width: fit-content;
+  color: var(--color-near-black);
+}
+
+.sketches-murals-section > * {
+  height: 100%;
+  min-height: 100%;
+}
+
+.sketches-murals-section * {
+  color: inherit;
+}
+
+.sketches-murals-section.last {
+  border-right: none;
+}
+
+.sketches-murals-section.custom-background {
+  background-color: var(--custom-bg-color) !important;
+}
+
+/* Remove right padding from image containers within Sketches & Murals panels */
+.sketches-murals-section .textbox-image-pair-image-container {
+  padding-right: 0;
+}
+
+/* Make intro panel text 17px and width 420px */
+.sketches-murals-section#intro {
+  width: 420px !important;
+  color: #F5EFE7;
+}
+
+.sketches-murals-section#intro .textbox-image-pair-textbox {
+  flex: 1 1 100% !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.sketches-murals-section#intro .textbox-image-pair-text {
+  font-size: 17px;
+  color: #F5EFE7 !important;
+}

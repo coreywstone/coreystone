@@ -1,5 +1,8 @@
-import ProjectRow from './ProjectRow'
+import { useEffect, useRef, useState } from 'react'
+import SketchesMuralsNav from './SketchesMuralsNav'
+import SketchesMuralsSection from './SketchesMuralsSection'
 import TextboxImagePair from './TextboxImagePair'
+import './SketchesMuralsRow.css'
 import './TextboxImagePair.css'
 
 function SketchesMuralsRow() {
@@ -199,14 +202,179 @@ function SketchesMuralsRow() {
     }
   ]
 
+  const [activeSectionId, setActiveSectionId] = useState(sketchesMuralsSections[0]?.id || null)
+  const [isNavSticky, setIsNavSticky] = useState(false)
+  const scrollContainerRef = useRef(null)
+  const sectionRefs = useRef([])
+  const rowRef = useRef(null)
+
+  // Background color mapping for specific panels
+  const getBackgroundColor = (sectionId, index) => {
+    // First panel (murals) = White
+    if (index === 0) return "#FFFFFF"
+    
+    // Second panel (intro) = Blackish
+    if (index === 1) return "#262629"
+    
+    // Scooter = Marble
+    if (sectionId === 'scooters') return "#CED4E0"
+    
+    // Cream panels
+    const creamPanels = ['sport-lead', 'swaddle', 'crib-lift']
+    if (creamPanels.includes(sectionId)) return "#F5EFE7"
+    
+    // Beige panels
+    const beigePanels = ['peanut-butter', 'snowboard-poles', 'hail-cover', 'periscope-windows']
+    if (beigePanels.includes(sectionId)) return "#D4B5A0"
+    
+    // Default to Marble for all other panels
+    return "#CED4E0"
+  }
+
+  // Set up IntersectionObserver to detect when SketchesMuralsRow is in view (for sticky nav)
+  useEffect(() => {
+    if (!rowRef.current) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsNavSticky(entry.isIntersecting)
+        })
+      },
+      {
+        threshold: 0,
+        rootMargin: '0px'
+      }
+    )
+
+    observer.observe(rowRef.current)
+
+    return () => {
+      if (rowRef.current) {
+        observer.unobserve(rowRef.current)
+      }
+    }
+  }, [])
+
+  // Set up IntersectionObserver to detect which section is in view
+  useEffect(() => {
+    if (sketchesMuralsSections.length === 0 || !scrollContainerRef.current) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            setActiveSectionId(entry.target.id)
+          }
+        })
+      },
+      {
+        root: scrollContainerRef.current,
+        threshold: [0, 0.25, 0.5, 0.75, 1.0],
+        rootMargin: '0px'
+      }
+    )
+
+    sectionRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref)
+    })
+
+    return () => {
+      sectionRefs.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref)
+      })
+    }
+  }, [sketchesMuralsSections])
+
+  // Also listen to scroll events for more responsive updates
+  useEffect(() => {
+    const container = scrollContainerRef.current
+    if (!container) return
+
+    const handleScroll = () => {
+      const containerRect = container.getBoundingClientRect()
+      const containerLeft = containerRect.left
+      const containerWidth = containerRect.width
+      const containerCenter = containerLeft + containerWidth / 2
+
+      let closestSection = null
+      let closestDistance = Infinity
+
+      sectionRefs.current.forEach((ref) => {
+        if (!ref) return
+        const sectionRect = ref.getBoundingClientRect()
+        const sectionCenter = sectionRect.left + sectionRect.width / 2
+        const distance = Math.abs(sectionCenter - containerCenter)
+        const visibilityRatio = Math.min(
+          (sectionRect.right - containerLeft) / containerWidth,
+          (containerLeft + containerWidth - sectionRect.left) / containerWidth
+        )
+
+        if (visibilityRatio >= 0.5 && distance < closestDistance) {
+          closestDistance = distance
+          closestSection = ref.id
+        }
+      })
+
+      if (closestSection) {
+        setActiveSectionId(closestSection)
+      }
+    }
+
+    container.addEventListener('scroll', handleScroll, { passive: true })
+    return () => container.removeEventListener('scroll', handleScroll)
+  }, [sketchesMuralsSections])
+
+  const handleTabClick = (sectionId, index) => {
+    const sectionRef = sectionRefs.current[index]
+    if (sectionRef && scrollContainerRef.current) {
+      sectionRef.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'start'
+      })
+      setActiveSectionId(sectionId)
+    }
+  }
+
   return (
-    <ProjectRow 
-      title="Murals & Sketches" 
-      sections={sketchesMuralsSections}
-      color="#F5EFE7"
-      showNavTabs={false}
-      backgroundColor="#FFFFFF"
-    />
+    <section ref={rowRef} className="sketches-murals-row">
+      <SketchesMuralsNav
+        title="Murals & Sketches"
+        sections={sketchesMuralsSections}
+        activeSectionId={activeSectionId}
+        onTabClick={handleTabClick}
+        scrollContainerRef={scrollContainerRef}
+        isSticky={isNavSticky}
+        color="#F5EFE7"
+        showTabs={false}
+      />
+      <div ref={scrollContainerRef} className="sketches-murals-panel-container">
+        <div className="sketches-murals-panel-scroll">
+          {sketchesMuralsSections.length > 0 ? (
+            sketchesMuralsSections.map((section, index) => (
+              <SketchesMuralsSection
+                key={section.id}
+                ref={el => sectionRefs.current[index] = el}
+                id={section.id}
+                isLast={index === sketchesMuralsSections.length - 1}
+                backgroundColor={getBackgroundColor(section.id, index)}
+              >
+                {section.content || (
+                  <div className="sketches-murals-section-placeholder">
+                    <p>[ Section {index + 1}: {section.label} ]</p>
+                  </div>
+                )}
+              </SketchesMuralsSection>
+            ))
+          ) : (
+            <div className="sketches-murals-panel-placeholder">
+              <p>Project content will appear here</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
   )
 }
 
