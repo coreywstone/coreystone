@@ -4,13 +4,15 @@
 
 .about-section {
   padding: 48px 0;
-  background-color: var(--color-charcoal);
+  background: linear-gradient(to bottom, var(--color-near-black), var(--color-charcoal));
+  height: auto;
 }
 
 .about-content {
   display: flex;
   gap: 3rem;
   align-items: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -22,13 +24,13 @@
   width: 100%;
   max-width: 256px;
   border-radius: 2px;
-  border: 2px solid var(--color-near-black);
   display: block;
 }
 
 .about-text {
-  flex: 1;
+  flex: 0 1 auto;
   min-width: 300px;
+  max-width: 480px;
 }
 
 .introtext {

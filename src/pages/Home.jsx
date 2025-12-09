@@ -72,8 +72,8 @@ function Home() {
           <div className="about-content">
             <div className="about-image">
               <img 
-                src="/img/CoreyStone-sq2022.jpg" 
-                alt="Photo of Corey Stone"
+                src="/img/me/corey-arms-at-side.svg" 
+                alt="Corey Stone"
                 className="profile-image"
               />
             </div>
@@ -81,6 +81,9 @@ function Home() {
               <p className="introtext">
                 👋 Hello! I'm Corey, an action-biased ambiguity-loving Super-IC Product Designer 
                 and dad of 4 kids and many animals (<a href="https://coreystone.com/bio/">see bio</a> for dog pic).
+              </p>
+              <p className="introtext">
+                I don't really look like this, because the C on my chest stands for Cookies (and not the browser kind 🍪).
               </p>
               <p className="introtext">
                 I'm also a 0-1 thinker with experience at 4 startups plus solo-founding 7 apps, 
