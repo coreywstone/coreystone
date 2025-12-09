@@ -35,6 +35,20 @@
   padding-right: 0;
 }
 
+/* First panel (murals) - Blackish background with White-ish text */
+.sketches-murals-section#murals {
+  color: var(--color-white-ish);
+}
+
+.sketches-murals-section#murals * {
+  color: var(--color-white-ish);
+}
+
+.sketches-murals-section#murals .textbox-image-pair-title,
+.sketches-murals-section#murals .textbox-image-pair-text {
+  color: var(--color-white-ish) !important;
+}
+
 /* Make intro panel text 17px and width 420px */
 .sketches-murals-section#intro {
   width: 420px !important;

@@ -18,7 +18,7 @@ function SketchesMuralsRow() {
           </div>
           <div className="textbox-image-pair-image-container" style={{ flexDirection: 'row', gap: '32px', padding: '0 32px 0 0' }}>
             <img 
-              src="/img/murals/nemo-panorama.jpg" 
+              src="/img/murals/nemo-panorama-upscaled.jpg" 
               alt="Eli's Nemo painted mural room"
               style={{ width: 'auto', height: '100%', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)' }}
             />
@@ -210,8 +210,8 @@ function SketchesMuralsRow() {
 
   // Background color mapping for specific panels
   const getBackgroundColor = (sectionId, index) => {
-    // First panel (murals) = White
-    if (index === 0) return "#FFFFFF"
+    // First panel (murals) = Blackish
+    if (index === 0) return "#262629"
     
     // Second panel (intro) = Blackish
     if (index === 1) return "#262629"
