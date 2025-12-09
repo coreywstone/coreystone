@@ -1,43 +1,12 @@
-<svg width="237" height="52" viewBox="0 0 237 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    
-  
-    
-    <style>
-      
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace_i.woff') format('woff');
-        font-weight: normal;
-        font-style: italic;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace_b.woff') format('woff');
-        font-weight: bold;
-        font-style: normal;
-        font-display: swap;
-      }
-      text { font-family: 'Anime Ace', sans-serif; }
-    
-    </style></defs>
-
+<svg width="173" height="52" viewBox="0 0 173 52" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="derek-title">
 <mask id="path-1-inside-1_845_91427" fill="white">
-<path d="M0 0H237V48C237 50.2091 235.209 52 233 52H0V0Z"/>
+<path d="M0 0H173V48C173 50.2091 171.209 52 169 52H0V0Z"/>
 </mask>
-<path d="M0 0H237V48C237 50.2091 235.209 52 233 52H0V0Z" fill="#E8A9AC"/>
-<path d="M0 0H237H0ZM239 48C239 51.3137 236.314 54 233 54H0V50H233C234.105 50 235 49.1046 235 48H239ZM0 52V0V52ZM239 0V48C239 51.3137 236.314 54 233 54V50C234.105 50 235 49.1046 235 48V0H239Z" fill="#262629" mask="url(#path-1-inside-1_845_91427)"/>
-<g id="Derek Darby Former UX Director at ACT">
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="39.7402">Former UX Director at ACT</tspan></text>
+<path d="M0 0H173V48C173 50.2091 171.209 52 169 52H0V0Z" fill="#E8A9AC"/>
+<path d="M0 0H173H0ZM175 48C175 51.3137 172.314 54 169 54H0V50H169C170.105 50 171 49.1046 171 48H175ZM0 52V0V52ZM175 0V48C175 51.3137 172.314 54 169 54V50C170.105 50 171 49.1046 171 48V0H175Z" fill="#262629" mask="url(#path-1-inside-1_845_91427)"/>
+<g id="Derek Darby UX Director at ACT">
+<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="39.7402">UX Director at ACT</tspan></text>
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7402">Derek </tspan><tspan x="80.1164" y="21.7402">arby&#10;</tspan></text>
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="-0.1em"><tspan x="69.7852" y="21.7402">D</tspan></text>
 </g>

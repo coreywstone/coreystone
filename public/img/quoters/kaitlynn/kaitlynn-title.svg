@@ -1,43 +1,12 @@
-<svg width="190" height="52" viewBox="0 0 190 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    
-  
-    
-    <style>
-      
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace_i.woff') format('woff');
-        font-weight: normal;
-        font-style: italic;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace_b.woff') format('woff');
-        font-weight: bold;
-        font-style: normal;
-        font-display: swap;
-      }
-      text { font-family: 'Anime Ace', sans-serif; }
-    
-    </style></defs>
-
+<svg width="239" height="52" viewBox="0 0 239 52" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="kaitlynn-title">
 <mask id="path-1-inside-1_871_126335" fill="white">
-<path d="M0 0H190V48C190 50.2091 188.209 52 186 52H0V0Z"/>
+<path d="M0 0H239V48C239 50.2091 237.209 52 235 52H0V0Z"/>
 </mask>
-<path d="M0 0H190V48C190 50.2091 188.209 52 186 52H0V0Z" fill="#B0D8E5"/>
-<path d="M0 0H190H0ZM192 48C192 51.3137 189.314 54 186 54H0V50H186C187.105 50 188 49.1046 188 48H192ZM0 52V0V52ZM192 0V48C192 51.3137 189.314 54 186 54V50C187.105 50 188 49.1046 188 48V0H192Z" fill="#262629" mask="url(#path-1-inside-1_871_126335)"/>
-<g id="Kaitlynn Griffith VP at College Board">
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="39.7402">VP at College Board</tspan></text>
+<path d="M0 0H239V48C239 50.2091 237.209 52 235 52H0V0Z" fill="#B0D8E5"/>
+<path d="M0 0H239H0ZM241 48C241 51.3137 238.314 54 235 54H0V50H235C236.105 50 237 49.1046 237 48H241ZM0 52V0V52ZM241 0V48C241 51.3137 238.314 54 235 54V50C236.105 50 237 49.1046 237 48V0H241Z" fill="#262629" mask="url(#path-1-inside-1_871_126335)"/>
+<g id="Kaitlynn Griffith Sr. Dir. of Strategy at ACT">
+<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="39.7402">Sr. Dir. of Strategy at ACT</tspan></text>
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7402">K</tspan><tspan x="58.5211" y="21.7402">y</tspan><tspan x="79.5084" y="21.7402">n G</tspan><tspan x="123.921" y="21.7402">f</tspan><tspan x="158.115" y="21.7402">h&#10;</tspan></text>
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0.1em"><tspan x="21.6562" y="21.7402">ai</tspan><tspan x="48.1805" y="21.7402">l</tspan></text>
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="-0.1em"><tspan x="39.6539" y="21.7402">t</tspan></text>
