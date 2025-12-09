@@ -6,7 +6,6 @@
   align-items: stretch;
   justify-content: flex-start;
   padding: 0;
-  border-right: 12px solid var(--color-near-black);
   box-sizing: border-box;
   background-color: var(--color-near-white);
   width: fit-content;
@@ -20,10 +19,6 @@
 
 .sketches-murals-section * {
   color: inherit;
-}
-
-.sketches-murals-section.last {
-  border-right: none;
 }
 
 .sketches-murals-section.custom-background {

@@ -32,6 +32,11 @@
   font-weight: normal;
   font-style: italic;
   flex-shrink: 0;
+  transition: opacity 0.2s ease;
+}
+
+.sketches-murals-nav-title[style*="cursor: pointer"]:hover {
+  opacity: 0.8;
 }
 
 .sketches-murals-nav-tabs {

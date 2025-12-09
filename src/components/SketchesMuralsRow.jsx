@@ -12,7 +12,7 @@ function SketchesMuralsRow() {
       label: 'MURALS',
       content: (
         <div className="textbox-image-pair">
-          <div className="textbox-image-pair-textbox">
+          <div className="textbox-image-pair-textbox" style={{ paddingLeft: 0 }}>
             <h3 className="textbox-image-pair-title">Kid's room murals</h3>
             <p className="textbox-image-pair-text">Everyone paints floor-to-ceiling murals on their kids' rooms, right? No? Hmmm. Since we moved a couple times, I ended up free-hand painting 4 rooms – here's two:</p>
           </div>
@@ -36,7 +36,7 @@ function SketchesMuralsRow() {
       label: 'INTRO',
       content: (
         <div className="textbox-image-pair">
-          <div className="textbox-image-pair-textbox" style={{ width: '100%', maxWidth: '600px' }}>
+          <div className="textbox-image-pair-textbox" style={{ width: '100%', maxWidth: '600px', paddingLeft: 0 }}>
             <p className="textbox-image-pair-text" style={{ margin: 0 }}>
               I like to solve my life's little annoyances, at least theoretically. Sometimes I actually make them into products (I'm working on some new ones now), but the ideas at right languish in my sketchbook graveyard. Many are non-digital products (remember I'm an Industrial Design grad) but hopefully they shed some light on how I think.
             </p>
@@ -337,6 +337,15 @@ function SketchesMuralsRow() {
     }
   }
 
+  const handleTitleClick = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({
+        left: 0,
+        behavior: 'smooth'
+      })
+    }
+  }
+
   return (
     <section ref={rowRef} className="sketches-murals-row">
       <SketchesMuralsNav
@@ -348,6 +357,7 @@ function SketchesMuralsRow() {
         isSticky={isNavSticky}
         color="#F5EFE7"
         showTabs={false}
+        onTitleClick={handleTitleClick}
       />
       <div ref={scrollContainerRef} className="sketches-murals-panel-container">
         <div className="sketches-murals-panel-scroll">

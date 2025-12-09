@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import './SketchesMuralsNav.css'
 
-function SketchesMuralsNav({ title, sections = [], activeSectionId, onTabClick, scrollContainerRef, isSticky, color = '#F5EFE7', showTabs = true }) {
+function SketchesMuralsNav({ title, sections = [], activeSectionId, onTabClick, scrollContainerRef, isSticky, color = '#F5EFE7', showTabs = true, onTitleClick }) {
   const [indicatorStyle, setIndicatorStyle] = useState({
     opacity: 0,
     left: '0px',
@@ -84,7 +84,13 @@ function SketchesMuralsNav({ title, sections = [], activeSectionId, onTabClick, 
   return (
     <nav ref={navRef} className={`sketches-murals-nav ${isSticky ? 'sticky' : ''}`}>
       {title && (
-        <h2 className="sketches-murals-nav-title" style={{ color }}>{title}</h2>
+        <h2 
+          className="sketches-murals-nav-title" 
+          style={{ color, cursor: onTitleClick ? 'pointer' : 'default' }}
+          onClick={onTitleClick}
+        >
+          {title}
+        </h2>
       )}
       {showTabs && sections.length > 0 && (
         <div ref={tabsContainerRef} className="sketches-murals-nav-tabs">

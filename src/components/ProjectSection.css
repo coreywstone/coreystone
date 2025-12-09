@@ -7,7 +7,6 @@
   align-items: stretch;
   justify-content: flex-start;
   padding: 0;
-  border-right: 12px solid var(--color-near-black);
   box-sizing: border-box;
   background-color: var(--color-white-ish) !important;
   width: auto;
@@ -23,11 +22,6 @@
   color: inherit;
 }
 
-.project-section.last {
-  border-right: none;
-}
-
 .project-section.custom-background {
   background-color: var(--custom-bg-color, var(--color-white-ish)) !important;
 }
-
