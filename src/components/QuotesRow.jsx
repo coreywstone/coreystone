@@ -59,6 +59,7 @@ function QuotesRow({ quotes = [] }) {
               words2Src={quote.words2Src}
               words3Src={quote.words3Src}
               alignment={quote.alignment || 'left'}
+              linkedInUrl={quote.linkedInUrl}
               canStart={canStart(index)}
               onComplete={() => handleQuoteComplete(index)}
             />

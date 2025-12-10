@@ -29,3 +29,25 @@ export const getQuoteAlignment = (name, rowConfig) => {
   return 'left' // default
 }
 
+// Map quote names to LinkedIn URLs
+export const getQuoteLinkedInUrl = (name) => {
+  const linkedInUrls = {
+    // Add LinkedIn URLs here as provided by user
+    // Example: 'kaitlynn': 'https://www.linkedin.com/in/kaitlynn-griffith/',
+    'anthony': 'https://www.linkedin.com/in/arezendes/',
+    'jordan': 'https://www.linkedin.com/in/jordanzurowski',
+    'ivy': 'https://www.linkedin.com/in/ivy-rueb',
+    'elyse': 'https://www.linkedin.com/in/elyse-kolin',
+    'paul': 'https://www.linkedin.com/in/paul-williams-77-design',
+    'john': 'https://www.linkedin.com/in/john-s-norwood-pe-70119741/',
+    'ben': 'https://www.linkedin.com/in/benmossman',
+    'sri': 'https://www.linkedin.com/in/srirao18',
+    'kaitlynn': 'https://www.linkedin.com/in/kaitlynn-griffith/',
+    'andrea': 'https://www.linkedin.com/in/andrea-baker-aec/',
+    'todd': 'https://www.linkedin.com/in/toddcohen1/',
+    'derek': 'https://www.linkedin.com/in/derekdarby/',
+    'rebekah': 'https://www.linkedin.com/in/rebekah-stevens-12259b6/'
+  }
+  
+  return linkedInUrls[name] || null
+}

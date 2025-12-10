@@ -2,7 +2,7 @@ import ProjectRow from '../components/ProjectRow'
 import QuotesRow from '../components/QuotesRow'
 import SketchesMuralsRow from '../components/SketchesMuralsRow'
 import quotesConfig from '../data/quotes.json'
-import { getQuoteAssets, getQuoteAlignment } from '../utils/quoteData'
+import { getQuoteAssets, getQuoteAlignment, getQuoteLinkedInUrl } from '../utils/quoteData'
 import './Home.css'
 
 function Home() {
@@ -50,11 +50,13 @@ function Home() {
     return rowConfig.quotes.map(name => {
       const assets = getQuoteAssets(name)
       const alignment = getQuoteAlignment(name, rowConfig)
+      const linkedInUrl = getQuoteLinkedInUrl(name)
       
       return {
         name: name.charAt(0).toUpperCase() + name.slice(1), // Capitalize name
         ...assets,
-        alignment: alignment
+        alignment: alignment,
+        linkedInUrl: linkedInUrl
       }
     })
   }

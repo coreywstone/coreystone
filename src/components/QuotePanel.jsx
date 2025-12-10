@@ -12,7 +12,8 @@ function QuotePanel({
   words3Src,
   canStart = false,
   onComplete,
-  alignment = 'left' // 'left' or 'right'
+  alignment = 'left', // 'left' or 'right'
+  linkedInUrl = null
 }) {
   const [isVisible, setIsVisible] = useState(false)
   const [canStartWords, setCanStartWords] = useState(false)
@@ -28,6 +29,7 @@ function QuotePanel({
     words2: !!words2Src,
     words3: !!words3Src
   })
+  const [isTitleHovered, setIsTitleHovered] = useState(false)
   const panelRef = useRef(null)
   const bgRef = useRef(null)
   const bubbleTimeoutRef = useRef(null)
@@ -590,8 +592,28 @@ function QuotePanel({
 
       {/* Title */}
       {titleSrc && (
-        <div className="quote-panel-title">
-          <InlineSVG src={titleSrc} alt={name || 'Quote'} />
+        <div 
+          className="quote-panel-title"
+          onMouseEnter={() => linkedInUrl && setIsTitleHovered(true)}
+          onMouseLeave={() => setIsTitleHovered(false)}
+        >
+          {linkedInUrl ? (
+            <a 
+              href={linkedInUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="quote-panel-title-link"
+            >
+              <InlineSVG src={titleSrc} alt={name || 'Quote'} />
+              {isTitleHovered && (
+                <div className="quote-panel-title-tooltip">
+                  View their LinkedIn
+                </div>
+              )}
+            </a>
+          ) : (
+            <InlineSVG src={titleSrc} alt={name || 'Quote'} />
+          )}
         </div>
       )}
 
