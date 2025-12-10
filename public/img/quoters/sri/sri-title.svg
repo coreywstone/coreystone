@@ -1,44 +1,21 @@
-<svg width="249" height="52" viewBox="0 0 249 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    
-  
-    
-    <style>
-      
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace_i.woff') format('woff');
-        font-weight: normal;
-        font-style: italic;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace_b.woff') format('woff');
-        font-weight: bold;
-        font-style: normal;
-        font-display: swap;
-      }
-      text { font-family: 'Anime Ace', sans-serif; }
-    
-    </style></defs>
-
+<svg width="249" height="54" viewBox="0 0 249 54" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="sri-title">
 <mask id="path-1-inside-1_892_142586" fill="white">
-<path d="M0 0H249V48C249 50.2091 247.209 52 245 52H0V0Z"/>
+<path d="M0 0H249V50C249 52.2091 247.209 54 245 54H0V0Z"/>
 </mask>
-<path d="M0 0H249V48C249 50.2091 247.209 52 245 52H0V0Z" fill="#E8BBD2"/>
-<path d="M0 0H249H0ZM251 48C251 51.3137 248.314 54 245 54H0V50H245C246.105 50 247 49.1046 247 48H251ZM0 52V0V52ZM251 0V48C251 51.3137 248.314 54 245 54V50C246.105 50 247 49.1046 247 48V0H251Z" fill="#262629" mask="url(#path-1-inside-1_892_142586)"/>
-<g id="Sri Rao Sr. Business analyst at ACT">
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="39.7402">Sr. Business analyst at ACT</tspan></text>
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7402">Sri Rao&#10;</tspan></text>
+<path d="M0 0H249V50C249 52.2091 247.209 54 245 54H0V0Z" fill="#E8BBD2"/>
+<path d="M0 0H249H0ZM251 50C251 53.3137 248.314 56 245 56H0V52H245C246.105 52 247 51.1046 247 50H251ZM0 54V0V54ZM251 0V50C251 53.3137 248.314 56 245 56V52C246.105 52 247 51.1046 247 50V0H251Z" fill="#262629" mask="url(#path-1-inside-1_892_142586)"/>
+<g id="Frame 4">
+<text id="Sri Rao" fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7402">Sri Rao</tspan></text>
+<g id="linkedin-logo" clip-path="url(#clip0_892_142586)">
+<path id="Vector" d="M223 10C221.897 10 221 10.8969 221 12V22C221 23.1031 221.897 24 223 24H233C234.103 24 235 23.1031 235 22V12C235 10.8969 234.103 10 233 10H223ZM223.156 15.3188H225.234V22H223.156V15.3188ZM225.397 13.2031C225.397 13.8687 224.859 14.4062 224.194 14.4062C223.528 14.4062 222.991 13.8687 222.991 13.2031C222.991 12.5375 223.528 12 224.194 12C224.859 12 225.397 12.5375 225.397 13.2031ZM230.934 22V18.75C230.934 17.975 230.919 16.9781 229.856 16.9781C228.775 16.9781 228.609 17.8219 228.609 18.6938V22H226.534V15.3188H228.525V16.2312H228.553C228.831 15.7062 229.509 15.1531 230.519 15.1531C232.619 15.1531 233.009 16.5375 233.009 18.3375V22H230.934Z" fill="#262629"/>
 </g>
 </g>
+<text id="Sr. Business analyst at ACT" fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="41.7402">Sr. Business analyst at ACT</tspan></text>
+</g>
+<defs>
+<clipPath id="clip0_892_142586">
+<rect width="14" height="14" fill="white" transform="translate(221 10)"/>
+</clipPath>
+</defs>
 </svg>

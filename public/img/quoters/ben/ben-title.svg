@@ -1,45 +1,21 @@
 <svg width="196" height="52" viewBox="0 0 196 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    
-  
-    
-    <style>
-      
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace_i.woff') format('woff');
-        font-weight: normal;
-        font-style: italic;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace_b.woff') format('woff');
-        font-weight: bold;
-        font-style: normal;
-        font-display: swap;
-      }
-      text { font-family: 'Anime Ace', sans-serif; }
-    
-    </style></defs>
-
 <g id="ben-title">
-<mask id="path-1-inside-1_892_158250" fill="white">
-<path d="M0 -0.00732422H196V47.9927C196 50.2018 194.209 51.9927 192 51.9927H0V-0.00732422Z"/>
-</mask>
-<path d="M0 -0.00732422H196V47.9927C196 50.2018 194.209 51.9927 192 51.9927H0V-0.00732422Z" fill="#75B4E0"/>
-<path d="M0 -0.00732422H196H0ZM198 47.9927C198 51.3064 195.314 53.9927 192 53.9927H0V49.9927H192C193.105 49.9927 194 49.0972 194 47.9927H198ZM0 51.9927V-0.00732422V51.9927ZM198 -0.00732422V47.9927C198 51.3064 195.314 53.9927 192 53.9927V49.9927C193.105 49.9927 194 49.0972 194 47.9927V-0.00732422H198Z" fill="#262629" mask="url(#path-1-inside-1_892_158250)"/>
-<g id="Ben Mossman Lead architect at ACT">
+<path d="M195 0.992676V47.9927C195 49.6495 193.657 50.9927 192 50.9927H1V0.992676H195Z" fill="#75B4E0"/>
+<path d="M195 0.992676V47.9927C195 49.6495 193.657 50.9927 192 50.9927H1V0.992676H195Z" stroke="#262629" stroke-width="2"/>
+<g id="Frame 4">
+<text id="Ben Mossman" fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7329">Ben Mossman</tspan></text>
+<g id="linkedin-logo" clip-path="url(#clip0_892_158250)">
+<path id="Vector" d="M170 9.99268C168.897 9.99268 168 10.8896 168 11.9927V21.9927C168 23.0958 168.897 23.9927 170 23.9927H180C181.103 23.9927 182 23.0958 182 21.9927V11.9927C182 10.8896 181.103 9.99268 180 9.99268H170ZM170.156 15.3114H172.234V21.9927H170.156V15.3114ZM172.397 13.1958C172.397 13.8614 171.859 14.3989 171.194 14.3989C170.528 14.3989 169.991 13.8614 169.991 13.1958C169.991 12.5302 170.528 11.9927 171.194 11.9927C171.859 11.9927 172.397 12.5302 172.397 13.1958ZM177.934 21.9927V18.7427C177.934 17.9677 177.919 16.9708 176.856 16.9708C175.775 16.9708 175.609 17.8146 175.609 18.6864V21.9927H173.534V15.3114H175.525V16.2239H175.553C175.831 15.6989 176.509 15.1458 177.519 15.1458C179.619 15.1458 180.009 16.5302 180.009 18.3302V21.9927H177.934Z" fill="#262629"/>
+</g>
+</g>
+<g id="Lead architect at ACT">
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="39.7329">Lead architect</tspan><tspan x="154.863" y="39.7329">ACT</tspan></text>
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="127.277" y="39.7329"> at </tspan></text>
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7329">Ben Mossman&#10;</tspan></text>
 </g>
 </g>
+<defs>
+<clipPath id="clip0_892_158250">
+<rect width="14" height="14" fill="white" transform="translate(168 9.99268)"/>
+</clipPath>
+</defs>
 </svg>

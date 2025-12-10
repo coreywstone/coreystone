@@ -1,45 +1,24 @@
-<svg width="195" height="52" viewBox="0 0 195 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    
-  
-    
-    <style>
-      
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace_i.woff') format('woff');
-        font-weight: normal;
-        font-style: italic;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace_b.woff') format('woff');
-        font-weight: bold;
-        font-style: normal;
-        font-display: swap;
-      }
-      text { font-family: 'Anime Ace', sans-serif; }
-    
-    </style></defs>
-
+<svg width="195" height="54" viewBox="0 0 195 54" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="paul-title">
 <mask id="path-1-inside-1_892_153029" fill="white">
-<path d="M0 0H195V48C195 50.2091 193.209 52 191 52H0V0Z"/>
+<path d="M0 0H195V50C195 52.2091 193.209 54 191 54H0V0Z"/>
 </mask>
-<path d="M0 0H195V48C195 50.2091 193.209 52 191 52H0V0Z" fill="#B0D8E5"/>
-<path d="M0 0H195H0ZM197 48C197 51.3137 194.314 54 191 54H0V50H191C192.105 50 193 49.1046 193 48H197ZM0 52V0V52ZM197 0V48C197 51.3137 194.314 54 191 54V50C192.105 50 193 49.1046 193 48V0H197Z" fill="#262629" mask="url(#path-1-inside-1_892_153029)"/>
-<g id="Paul Williams UX designer at Chegg">
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="39.7402">UX</tspan></text>
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="29.3906" y="39.7402"> designer at Chegg</tspan></text>
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7402">Paul Williams&#10;</tspan></text>
+<path d="M0 0H195V50C195 52.2091 193.209 54 191 54H0V0Z" fill="#B0D8E5"/>
+<path d="M0 0H195H0ZM197 50C197 53.3137 194.314 56 191 56H0V52H191C192.105 52 193 51.1046 193 50H197ZM0 54V0V54ZM197 0V50C197 53.3137 194.314 56 191 56V52C192.105 52 193 51.1046 193 50V0H197Z" fill="#262629" mask="url(#path-1-inside-1_892_153029)"/>
+<g id="Frame 4">
+<text id="Paul Williams" fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7402">Paul Williams</tspan></text>
+<g id="linkedin-logo" clip-path="url(#clip0_892_153029)">
+<path id="Vector" d="M169 10C167.897 10 167 10.8969 167 12V22C167 23.1031 167.897 24 169 24H179C180.103 24 181 23.1031 181 22V12C181 10.8969 180.103 10 179 10H169ZM169.156 15.3188H171.234V22H169.156V15.3188ZM171.397 13.2031C171.397 13.8687 170.859 14.4062 170.194 14.4062C169.528 14.4062 168.991 13.8687 168.991 13.2031C168.991 12.5375 169.528 12 170.194 12C170.859 12 171.397 12.5375 171.397 13.2031ZM176.934 22V18.75C176.934 17.975 176.919 16.9781 175.856 16.9781C174.775 16.9781 174.609 17.8219 174.609 18.6938V22H172.534V15.3188H174.525V16.2312H174.553C174.831 15.7062 175.509 15.1531 176.519 15.1531C178.619 15.1531 179.009 16.5375 179.009 18.3375V22H176.934Z" fill="#262629"/>
 </g>
 </g>
+<g id="UX designer at Chegg">
+<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="41.7402">UX</tspan></text>
+<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="29.3906" y="41.7402"> designer at Chegg</tspan></text>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_892_153029">
+<rect width="14" height="14" fill="white" transform="translate(167 10)"/>
+</clipPath>
+</defs>
 </svg>

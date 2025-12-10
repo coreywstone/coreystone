@@ -1,17 +1,27 @@
-<svg width="239" height="52" viewBox="0 0 239 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="239" height="54" viewBox="0 0 239 54" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="kaitlynn-title">
 <mask id="path-1-inside-1_871_126335" fill="white">
-<path d="M0 0H239V48C239 50.2091 237.209 52 235 52H0V0Z"/>
+<path d="M0 0H239V50C239 52.2091 237.209 54 235 54H0V0Z"/>
 </mask>
-<path d="M0 0H239V48C239 50.2091 237.209 52 235 52H0V0Z" fill="#B0D8E5"/>
-<path d="M0 0H239H0ZM241 48C241 51.3137 238.314 54 235 54H0V50H235C236.105 50 237 49.1046 237 48H241ZM0 52V0V52ZM241 0V48C241 51.3137 238.314 54 235 54V50C236.105 50 237 49.1046 237 48V0H241Z" fill="#262629" mask="url(#path-1-inside-1_871_126335)"/>
-<g id="Kaitlynn Griffith Sr. Dir. of Strategy at ACT">
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="39.7402">Sr. Dir. of Strategy at ACT</tspan></text>
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7402">K</tspan><tspan x="58.5211" y="21.7402">y</tspan><tspan x="79.5084" y="21.7402">n G</tspan><tspan x="123.921" y="21.7402">f</tspan><tspan x="158.115" y="21.7402">h&#10;</tspan></text>
+<path d="M0 0H239V50C239 52.2091 237.209 54 235 54H0V0Z" fill="#B0D8E5"/>
+<path d="M0 0H239H0ZM241 50C241 53.3137 238.314 56 235 56H0V52H235C236.105 52 237 51.1046 237 50H241ZM0 54V0V54ZM241 0V50C241 53.3137 238.314 56 235 56V52C236.105 52 237 51.1046 237 50V0H241Z" fill="#262629" mask="url(#path-1-inside-1_871_126335)"/>
+<g id="Frame 4">
+<g id="Kaitlynn Griffith">
+<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7402">K</tspan><tspan x="58.5211" y="21.7402">y</tspan><tspan x="79.5084" y="21.7402">n G</tspan><tspan x="123.921" y="21.7402">f</tspan><tspan x="158.115" y="21.7402">h</tspan></text>
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0.1em"><tspan x="21.6562" y="21.7402">ai</tspan><tspan x="48.1805" y="21.7402">l</tspan></text>
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="-0.1em"><tspan x="39.6539" y="21.7402">t</tspan></text>
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0.08em"><tspan x="67.8961" y="21.7402">n</tspan><tspan x="107.997" y="21.7402">ri</tspan><tspan x="133.682" y="21.7402">fi</tspan></text>
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="-0.08em"><tspan x="149.348" y="21.7402">t</tspan></text>
 </g>
+<g id="linkedin-logo" clip-path="url(#clip0_871_126335)">
+<path id="Vector" d="M213 10C211.897 10 211 10.8969 211 12V22C211 23.1031 211.897 24 213 24H223C224.103 24 225 23.1031 225 22V12C225 10.8969 224.103 10 223 10H213ZM213.156 15.3188H215.234V22H213.156V15.3188ZM215.397 13.2031C215.397 13.8687 214.859 14.4062 214.194 14.4062C213.528 14.4062 212.991 13.8687 212.991 13.2031C212.991 12.5375 213.528 12 214.194 12C214.859 12 215.397 12.5375 215.397 13.2031ZM220.934 22V18.75C220.934 17.975 220.919 16.9781 219.856 16.9781C218.775 16.9781 218.609 17.8219 218.609 18.6938V22H216.534V15.3188H218.525V16.2312H218.553C218.831 15.7062 219.509 15.1531 220.519 15.1531C222.619 15.1531 223.009 16.5375 223.009 18.3375V22H220.934Z" fill="#262629"/>
 </g>
+</g>
+<text id="Sr. Dir. of Strategy at ACT" fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="41.7402">Sr. Dir. of Strategy at ACT</tspan></text>
+</g>
+<defs>
+<clipPath id="clip0_871_126335">
+<rect width="14" height="14" fill="white" transform="translate(211 10)"/>
+</clipPath>
+</defs>
 </svg>

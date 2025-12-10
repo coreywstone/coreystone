@@ -1,46 +1,22 @@
 <svg width="390" height="52" viewBox="0 0 390 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    
-  
-    
-    <style>
-      
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace_i.woff') format('woff');
-        font-weight: normal;
-        font-style: italic;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace_b.woff') format('woff');
-        font-weight: bold;
-        font-style: normal;
-        font-display: swap;
-      }
-      text { font-family: 'Anime Ace', sans-serif; }
-    
-    </style></defs>
-
 <g id="john-title">
-<mask id="path-1-inside-1_853_114300" fill="white">
-<path d="M0 0H390V52H4C1.79086 52 0 50.2091 0 48V0Z"/>
-</mask>
-<path d="M0 0H390V52H4C1.79086 52 0 50.2091 0 48V0Z" fill="#E8BBD2"/>
-<path d="M0 0H390H0ZM392 54H6C2.68629 54 0 51.3137 0 48C0 49.1046 1.79086 50 4 50H388L392 54ZM0 52V0V52ZM392 0V54L388 50V0H392Z" fill="#262629" mask="url(#path-1-inside-1_853_114300)"/>
-<g id="John Norwood Construction Tech National Mgr at Terracon">
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="39.7402">Construction Tech National Mgr at Terracon</tspan></text>
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7402">Jo</tspan><tspan x="48.0164" y="21.7402">n No</tspan><tspan x="99.7561" y="21.7402">wood&#10;</tspan></text>
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0.13em"><tspan x="88.1766" y="21.7402">r</tspan></text>
+<path d="M389 1V51H4C2.34315 51 1 49.6569 1 48V1H389Z" fill="#E8BBD2"/>
+<path d="M389 1V51H4C2.34315 51 1 49.6569 1 48V1H389Z" stroke="#262629" stroke-width="2"/>
+<g id="Frame 4">
+<g id="John Norwood">
+<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7402">Jo</tspan><tspan x="48.0164" y="21.7402">n No</tspan><tspan x="99.7561" y="21.7402">wood</tspan></text>
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0.1em"><tspan x="36.5391" y="21.7402">h</tspan></text>
+<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0.13em"><tspan x="88.1766" y="21.7402">r</tspan></text>
+</g>
+<g id="linkedin-logo" clip-path="url(#clip0_853_114300)">
+<path id="Vector" d="M364 10C362.897 10 362 10.8969 362 12V22C362 23.1031 362.897 24 364 24H374C375.103 24 376 23.1031 376 22V12C376 10.8969 375.103 10 374 10H364ZM364.156 15.3188H366.234V22H364.156V15.3188ZM366.397 13.2031C366.397 13.8687 365.859 14.4062 365.194 14.4062C364.528 14.4062 363.991 13.8687 363.991 13.2031C363.991 12.5375 364.528 12 365.194 12C365.859 12 366.397 12.5375 366.397 13.2031ZM371.934 22V18.75C371.934 17.975 371.919 16.9781 370.856 16.9781C369.775 16.9781 369.609 17.8219 369.609 18.6938V22H367.534V15.3188H369.525V16.2312H369.553C369.831 15.7062 370.509 15.1531 371.519 15.1531C373.619 15.1531 374.009 16.5375 374.009 18.3375V22H371.934Z" fill="#262629"/>
 </g>
 </g>
+<text id="Construction Tech National Mgr at Terracon" fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="39.7402">Construction Tech National Mgr at Terracon</tspan></text>
+</g>
+<defs>
+<clipPath id="clip0_853_114300">
+<rect width="14" height="14" fill="white" transform="translate(362 10)"/>
+</clipPath>
+</defs>
 </svg>

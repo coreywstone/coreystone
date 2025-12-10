@@ -126,7 +126,8 @@
   color: var(--color-near-black);
   font-family: var(--font-body);
   font-size: 11px;
-  padding: 8px;
+  padding: 6px 8px;
+  border-radius: 2px;
   white-space: nowrap;
   z-index: 12;
   pointer-events: none;
@@ -136,14 +137,14 @@
 .quote-panel-title-tooltip::before {
   content: '';
   position: absolute;
-  top: -4px;
+  top: -8px;
   left: 50%;
   transform: translateX(-50%);
   width: 0;
   height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 16px solid var(--color-white-ish);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 8px solid var(--color-white-ish);
 }
 
 /* Character */

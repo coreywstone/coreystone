@@ -1,13 +1,18 @@
 <svg width="244" height="52" viewBox="0 0 244 52" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="andrea-title">
-<mask id="path-1-inside-1_792_7045" fill="white">
-<path d="M0 0H244V48C244 50.2091 242.209 52 240 52H0V0Z"/>
-</mask>
-<path d="M0 0H244V48C244 50.2091 242.209 52 240 52H0V0Z" fill="#75B4E0"/>
-<path d="M0 0H244H0ZM246 48C246 51.3137 243.314 54 240 54H0V50H240C241.105 50 242 49.1046 242 48H246ZM0 52V0V52ZM246 0V48C246 51.3137 243.314 54 240 54V50C241.105 50 242 49.1046 242 48V0H246Z" fill="#262629" mask="url(#path-1-inside-1_792_7045)"/>
-<g id="Andrea Baker VP of Biz Dev at Kleinfelder">
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="39.7402">VP of Biz Dev at Kleinfelder</tspan></text>
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7402">Andrea Baker&#10;</tspan></text>
+<path d="M243 1V48C243 49.6569 241.657 51 240 51H1V1H243Z" fill="#75B4E0"/>
+<path d="M243 1V48C243 49.6569 241.657 51 240 51H1V1H243Z" stroke="#262629" stroke-width="2"/>
+<g id="Frame 4">
+<text id="Andrea Baker" fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7402">Andrea Baker</tspan></text>
+<g id="linkedin-logo" clip-path="url(#clip0_792_7045)">
+<path id="Vector" d="M218 10C216.897 10 216 10.8969 216 12V22C216 23.1031 216.897 24 218 24H228C229.103 24 230 23.1031 230 22V12C230 10.8969 229.103 10 228 10H218ZM218.156 15.3188H220.234V22H218.156V15.3188ZM220.397 13.2031C220.397 13.8687 219.859 14.4062 219.194 14.4062C218.528 14.4062 217.991 13.8687 217.991 13.2031C217.991 12.5375 218.528 12 219.194 12C219.859 12 220.397 12.5375 220.397 13.2031ZM225.934 22V18.75C225.934 17.975 225.919 16.9781 224.856 16.9781C223.775 16.9781 223.609 17.8219 223.609 18.6938V22H221.534V15.3188H223.525V16.2312H223.553C223.831 15.7062 224.509 15.1531 225.519 15.1531C227.619 15.1531 228.009 16.5375 228.009 18.3375V22H225.934Z" fill="#262629"/>
 </g>
 </g>
+<text id="VP of Biz Dev at Kleinfelder" fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="39.7402">VP of Biz Dev at Kleinfelder</tspan></text>
+</g>
+<defs>
+<clipPath id="clip0_792_7045">
+<rect width="14" height="14" fill="white" transform="translate(216 10)"/>
+</clipPath>
+</defs>
 </svg>

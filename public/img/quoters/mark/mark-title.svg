@@ -1,45 +1,14 @@
-<svg width="264" height="52" viewBox="0 0 264 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    
-  
-    
-    <style>
-      
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace_i.woff') format('woff');
-        font-weight: normal;
-        font-style: italic;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace_b.woff') format('woff');
-        font-weight: bold;
-        font-style: normal;
-        font-display: swap;
-      }
-      text { font-family: 'Anime Ace', sans-serif; }
-    
-    </style></defs>
-
+<svg width="264" height="54" viewBox="0 0 264 54" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="mark-title">
 <mask id="path-1-inside-1_892_147808" fill="white">
-<path d="M0 0H264V48C264 50.2091 262.209 52 260 52H0V0Z"/>
+<path d="M0 0H264V50C264 52.2091 262.209 54 260 54H0V0Z"/>
 </mask>
-<path d="M0 0H264V48C264 50.2091 262.209 52 260 52H0V0Z" fill="#C5E2A1"/>
-<path d="M0 0H264H0ZM266 48C266 51.3137 263.314 54 260 54H0V50H260C261.105 50 262 49.1046 262 48H266ZM0 52V0V52ZM266 0V48C266 51.3137 263.314 54 260 54V50C261.105 50 262 49.1046 262 48V0H266Z" fill="#262629" mask="url(#path-1-inside-1_892_147808)"/>
-<g id="Mark Kopulos Lead Product designer at ACT">
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="39.7402">Lead</tspan><tspan x="222.258" y="39.7402">ACT</tspan></text>
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="48.2109" y="39.7402"> Product designer at </tspan></text>
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7402">Mark Kopulos&#10;</tspan></text>
+<path d="M0 0H264V50C264 52.2091 262.209 54 260 54H0V0Z" fill="#C5E2A1"/>
+<path d="M0 0H264H0ZM266 50C266 53.3137 263.314 56 260 56H0V52H260C261.105 52 262 51.1046 262 50H266ZM0 54V0V54ZM266 0V50C266 53.3137 263.314 56 260 56V52C261.105 52 262 51.1046 262 50V0H266Z" fill="#262629" mask="url(#path-1-inside-1_892_147808)"/>
+<text id="Mark Kopulos" fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7402">Mark Kopulos</tspan></text>
+<g id="Lead Product designer at ACT">
+<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="41.7402">Lead</tspan><tspan x="222.258" y="41.7402">ACT</tspan></text>
+<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="48.2109" y="41.7402"> Product designer at </tspan></text>
 </g>
 </g>
 </svg>

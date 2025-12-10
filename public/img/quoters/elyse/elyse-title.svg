@@ -1,41 +1,25 @@
 <svg width="341" height="52" viewBox="0 0 341 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    
-  
-    
-    <style>
-      
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace_i.woff') format('woff');
-        font-weight: normal;
-        font-style: italic;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'Anime Ace';
-        src: url('/fonts/animeace_b.woff') format('woff');
-        font-weight: bold;
-        font-style: normal;
-        font-display: swap;
-      }
-      text { font-family: 'Anime Ace', sans-serif; }
-    
-    </style></defs>
-
-<mask id="path-1-inside-1_799_18734" fill="white">
-<path d="M0 0H341V48C341 50.2091 339.209 52 337 52H0V0Z"/>
-</mask>
-<path d="M0 0H341V48C341 50.2091 339.209 52 337 52H0V0Z" fill="#7CB0D9"/>
-<path d="M0 0H341H0ZM343 48C343 51.3137 340.314 54 337 54H0V50H337C338.105 50 339 49.1046 339 48H343ZM0 52V0V52ZM343 0V48C343 51.3137 340.314 54 337 54V50C338.105 50 339 49.1046 339 48V0H343Z" fill="#262629" mask="url(#path-1-inside-1_799_18734)"/>
+<g id="elyse-title">
+<path d="M340 1V48C340 49.6569 338.657 51 337 51H1V1H340Z" fill="#9EBED9"/>
+<path d="M340 1V48C340 49.6569 338.657 51 337 51H1V1H340Z" stroke="#262629" stroke-width="2"/>
+<g id="Frame 4">
+<g id="Elyse Kolin">
+<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="33.8419" y="21.7402">yse Ko</tspan><tspan x="109.672" y="21.7402">n</tspan></text>
+<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0.08em"><tspan x="12" y="21.7402">El</tspan></text>
+<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0.1em"><tspan x="94.1466" y="21.7402">li</tspan></text>
+</g>
+<g id="linkedin-logo" clip-path="url(#clip0_799_18734)">
+<path id="Vector" d="M315 10C313.897 10 313 10.8969 313 12V22C313 23.1031 313.897 24 315 24H325C326.103 24 327 23.1031 327 22V12C327 10.8969 326.103 10 325 10H315ZM315.156 15.3188H317.234V22H315.156V15.3188ZM317.397 13.2031C317.397 13.8687 316.859 14.4062 316.194 14.4062C315.528 14.4062 314.991 13.8687 314.991 13.2031C314.991 12.5375 315.528 12 316.194 12C316.859 12 317.397 12.5375 317.397 13.2031ZM322.934 22V18.75C322.934 17.975 322.919 16.9781 321.856 16.9781C320.775 16.9781 320.609 17.8219 320.609 18.6938V22H318.534V15.3188H320.525V16.2312H320.553C320.831 15.7062 321.509 15.1531 322.519 15.1531C324.619 15.1531 325.009 16.5375 325.009 18.3375V22H322.934Z" fill="#262629"/>
+</g>
+</g>
+<g id="Sr. Mgr, Instructional Design at Chegg">
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="39.7402">Sr. Mgr, Instructional Design </tspan></text>
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="255.762" y="39.7402">at Chegg</tspan></text>
-<text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="12" y="21.7402">Elyse Kolin&#10;</tspan></text>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_799_18734">
+<rect width="14" height="14" fill="white" transform="translate(313 10)"/>
+</clipPath>
+</defs>
 </svg>

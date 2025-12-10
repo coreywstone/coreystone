@@ -1,18 +1,25 @@
 <svg width="150" height="52" viewBox="0 0 150 52" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="ivy-title">
-<mask id="path-1-inside-1_847_100030" fill="white">
-<path d="M0 0H150V48C150 50.2091 148.209 52 146 52H0V0Z"/>
-</mask>
-<path d="M0 0H150V48C150 50.2091 148.209 52 146 52H0V0Z" fill="#8DD6F0"/>
-<path d="M0 0H150H0ZM152 48C152 51.3137 149.314 54 146 54H0V50H146C147.105 50 148 49.1046 148 48H152ZM0 52V0V52ZM152 0V48C152 51.3137 149.314 54 146 54V50C147.105 50 148 49.1046 148 48V0H152Z" fill="#262629" mask="url(#path-1-inside-1_847_100030)"/>
+<path d="M149 1V48C149 49.6569 147.657 51 146 51H1V1H149Z" fill="#8DD6F0"/>
+<path d="M149 1V48C149 49.6569 147.657 51 146 51H1V1H149Z" stroke="#262629" stroke-width="2"/>
+<g id="Frame 4">
 <g id="Ivy Reub">
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0.04em"><tspan x="31.0603" y="21.7402">y Reub</tspan></text>
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0.12em"><tspan x="22.1672" y="21.7402">v</tspan></text>
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-weight="bold" letter-spacing="0.15em"><tspan x="12" y="21.7402">I</tspan></text>
+</g>
+<g id="linkedin-logo" clip-path="url(#clip0_847_100030)">
+<path id="Vector" d="M124 10C122.897 10 122 10.8969 122 12V22C122 23.1031 122.897 24 124 24H134C135.103 24 136 23.1031 136 22V12C136 10.8969 135.103 10 134 10H124ZM124.156 15.3188H126.234V22H124.156V15.3188ZM126.397 13.2031C126.397 13.8687 125.859 14.4062 125.194 14.4062C124.528 14.4062 123.991 13.8687 123.991 13.2031C123.991 12.5375 124.528 12 125.194 12C125.859 12 126.397 12.5375 126.397 13.2031ZM131.934 22V18.75C131.934 17.975 131.919 16.9781 130.856 16.9781C129.775 16.9781 129.609 17.8219 129.609 18.6938V22H127.534V15.3188H129.525V16.2312H129.553C129.831 15.7062 130.509 15.1531 131.519 15.1531C133.619 15.1531 134.009 16.5375 134.009 18.3375V22H131.934Z" fill="#262629"/>
+</g>
 </g>
 <g id="Sr. PM at Chegg">
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="12" y="39.7402">Sr. PM</tspan></text>
 <text fill="#262629" xml:space="preserve" style="white-space: pre" font-family="Anime Ace" font-size="12" font-style="italic" letter-spacing="0em"><tspan x="60.2695" y="39.7402"> at Chegg</tspan></text>
 </g>
 </g>
+<defs>
+<clipPath id="clip0_847_100030">
+<rect width="14" height="14" fill="white" transform="translate(122 10)"/>
+</clipPath>
+</defs>
 </svg>
