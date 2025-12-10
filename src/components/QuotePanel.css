@@ -106,8 +106,7 @@
 .quote-panel-title-link:hover img,
 .quote-panel-title-link:hover div {
   opacity: 1 !important;
-  filter: drop-shadow(0 0 6px rgba(245, 239, 231, 0.75)) drop-shadow(0 0 12px rgba(245, 239, 231, 0.75));
-  animation: pulsating-glow 1.5s ease-in-out infinite;
+  animation: pulsating-glow 3s ease-in-out infinite;
 }
 
 .quote-panel-title-link:active {
@@ -123,11 +122,14 @@
 }
 
 @keyframes pulsating-glow {
-  0%, 100% {
-    filter: drop-shadow(0 0 6px rgba(245, 239, 231, 0.75)) drop-shadow(0 0 12px rgba(245, 239, 231, 0.75));
+  0% {
+    filter: drop-shadow(0 0 0px rgba(245, 239, 231, 0)) drop-shadow(0 0 0px rgba(245, 239, 231, 0));
   }
   50% {
     filter: drop-shadow(0 0 12px rgba(245, 239, 231, 0.75)) drop-shadow(0 0 24px rgba(245, 239, 231, 0.75));
+  }
+  100% {
+    filter: drop-shadow(0 0 0px rgba(245, 239, 231, 0)) drop-shadow(0 0 0px rgba(245, 239, 231, 0));
   }
 }
 
