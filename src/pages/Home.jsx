@@ -1,6 +1,7 @@
 import ProjectRow from '../components/ProjectRow'
 import QuotesRow from '../components/QuotesRow'
 import SketchesMuralsRow from '../components/SketchesMuralsRow'
+import StarrySky from '../components/StarrySky'
 import quotesConfig from '../data/quotes.json'
 import { getQuoteAssets, getQuoteAlignment, getQuoteLinkedInUrl } from '../utils/quoteData'
 import './Home.css'
@@ -70,6 +71,10 @@ function Home() {
   return (
     <div className="home-page">
       <section className="about-section">
+        <StarrySky />
+        <div className="alien-planet-bg">
+          <img src="/img/bio/alien-planet.svg" alt="Surface of a random planet." />
+        </div>
         <div className="container">
           <div className="about-content">
             <div className="about-image">
@@ -85,7 +90,7 @@ function Home() {
                 and dad of 4 kids and many animals (<a href="https://coreystone.com/bio/">see bio</a> for dog pic).
               </p>
               <p className="introtext">
-                I don't really look like this, because the C on my chest stands for Cookies (not the browser kind 🍪).
+                I don't really look like this, because the C on my chest stands for 🍪.
               </p>
               <p className="introtext">
                 I'm also a 0-1 thinker with experience at 4 startups plus solo-founding 7 apps, 
