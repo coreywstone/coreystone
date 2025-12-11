@@ -9,6 +9,8 @@ function StarrySky() {
   const shootingStarsRef = useRef([])
   const lastShootingStarRef = useRef(Date.now())
   const containerRef = useRef(null)
+  const particlesRef = useRef([])
+  const mousePosRef = useRef({ x: 0, y: 0, prevX: 0, prevY: 0, prevTime: Date.now() })
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -21,6 +23,8 @@ function StarrySky() {
     let height = 0
     const starColors = ['#FFFFFF', '#B8C9F4', '#8199E9', '#CED4E0']
     const planetColors = ['#B8C9F4', '#8199E9', '#CED4E0']
+    const spaceDustColors = ['#FFFFFF', '#B8C9F4', '#8199E9', '#FFC654']
+    const MAX_PARTICLES = 300
 
     // Initialize canvas size
     const updateCanvasSize = () => {
@@ -209,6 +213,97 @@ function StarrySky() {
       }
     }
 
+    // Create space-dust particles
+    const createSpaceDustParticles = (mouseX, mouseY, speed) => {
+      // Limit particle count to prevent performance issues
+      if (particlesRef.current.length >= MAX_PARTICLES) {
+        return
+      }
+
+      // Calculate number of particles based on speed (1 particle per 5-10px of movement)
+      const numParticles = Math.min(Math.floor(speed / 5), 10)
+      
+      for (let i = 0; i < numParticles; i++) {
+        if (particlesRef.current.length >= MAX_PARTICLES) break
+
+        // Random angle for outward direction (360 degrees)
+        const angle = Math.random() * Math.PI * 2
+        // Velocity magnitude based on mouse speed (20-60px/s scaled)
+        const baseVelocity = 0.3 + (speed / 100) * 0.5
+        const velocity = baseVelocity + Math.random() * 0.3
+
+        const initialOpacity = 0.8 + Math.random() * 0.2
+        particlesRef.current.push({
+          x: mouseX + (Math.random() - 0.5) * 4, // Small random offset
+          y: mouseY + (Math.random() - 0.5) * 4,
+          vx: Math.cos(angle) * velocity,
+          vy: Math.sin(angle) * velocity,
+          size: Math.random() * 2 + 1, // 1-3px
+          color: spaceDustColors[Math.floor(Math.random() * spaceDustColors.length)],
+          opacity: initialOpacity,
+          initialOpacity: initialOpacity,
+          life: 0,
+          maxLife: 0.5 + Math.random() * 1.0 // 0.5-1.5 seconds
+        })
+      }
+    }
+
+    // Update space-dust particles
+    const updateSpaceDustParticles = () => {
+      const deltaTime = 0.016 // ~60fps
+      
+      particlesRef.current = particlesRef.current.filter(particle => {
+        // Update position
+        particle.x += particle.vx
+        particle.y += particle.vy
+        
+        // Update life and opacity
+        particle.life += deltaTime
+        const lifeProgress = particle.life / particle.maxLife
+        particle.opacity = Math.max(0, (1 - lifeProgress) * particle.initialOpacity || particle.opacity)
+        
+        // Remove if faded out or out of bounds
+        if (particle.opacity <= 0 || 
+            particle.x < -50 || particle.x > width + 50 || 
+            particle.y < -50 || particle.y > height + 50) {
+          return false
+        }
+        
+        return true
+      })
+    }
+
+    // Draw space-dust particle
+    const drawSpaceDustParticle = (particle) => {
+      const fadeOpacity = getFadeOpacity(particle.y) * particle.opacity
+      if (fadeOpacity <= 0) return
+
+      ctx.save()
+      ctx.globalAlpha = fadeOpacity
+
+      // Draw sparkly glow effect
+      const gradient = ctx.createRadialGradient(
+        particle.x, particle.y, 0,
+        particle.x, particle.y, particle.size * 2
+      )
+      gradient.addColorStop(0, particle.color)
+      gradient.addColorStop(0.5, particle.color + '80')
+      gradient.addColorStop(1, particle.color + '00')
+      
+      ctx.fillStyle = gradient
+      ctx.beginPath()
+      ctx.arc(particle.x, particle.y, particle.size * 2, 0, Math.PI * 2)
+      ctx.fill()
+
+      // Draw particle core
+      ctx.fillStyle = particle.color
+      ctx.beginPath()
+      ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
+      ctx.fill()
+      
+      ctx.restore()
+    }
+
     // Animation loop
     const animate = () => {
       ctx.clearRect(0, 0, width, height)
@@ -247,6 +342,12 @@ function StarrySky() {
         createShootingStar()
         lastShootingStarRef.current = currentTime
       }
+
+      // Update and draw space-dust particles
+      updateSpaceDustParticles()
+      particlesRef.current.forEach(particle => {
+        drawSpaceDustParticle(particle)
+      })
 
       animationFrameRef.current = requestAnimationFrame(animate)
     }
@@ -290,11 +391,53 @@ function StarrySky() {
     }
     window.addEventListener('resize', resizeHandler)
 
+    // Mouse tracking for space-dust particles
+    const aboutSection = container.closest('.about-section')
+    
+    const handleMouseMove = (e) => {
+      const rect = container.getBoundingClientRect()
+      const mouseX = e.clientX - rect.left
+      const mouseY = e.clientY - rect.top
+
+      // Only emit particles if mouse is within bounds
+      if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
+        const currentTime = Date.now()
+        const mouse = mousePosRef.current
+        
+        // Calculate speed (distance / time)
+        const timeDelta = Math.max(currentTime - mouse.prevTime, 1) // Prevent division by zero
+        const dx = mouseX - mouse.prevX
+        const dy = mouseY - mouse.prevY
+        const distance = Math.sqrt(dx * dx + dy * dy)
+        const speed = distance / timeDelta * 16.67 // Normalize to ~60fps reference
+
+        // Update mouse position and time
+        mouse.x = mouseX
+        mouse.y = mouseY
+        mouse.prevX = mouseX
+        mouse.prevY = mouseY
+        mouse.prevTime = currentTime
+
+        // Create particles based on speed (only if mouse moved)
+        if (speed > 0.1) {
+          createSpaceDustParticles(mouseX, mouseY, speed)
+        }
+      }
+    }
+
+    if (aboutSection) {
+      aboutSection.addEventListener('mousemove', handleMouseMove)
+    }
+
     // Cleanup
     return () => {
       clearTimeout(initTimeout)
       resizeObserver.disconnect()
       window.removeEventListener('resize', resizeHandler)
+      const aboutSectionForCleanup = container?.closest('.about-section')
+      if (aboutSectionForCleanup) {
+        aboutSectionForCleanup.removeEventListener('mousemove', handleMouseMove)
+      }
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current)
       }

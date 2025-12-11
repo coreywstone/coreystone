@@ -40,6 +40,30 @@
   flex-wrap: wrap;
 }
 
+/* Tablet and below - prevent stacking, reduce character size */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .about-content {
+    flex-wrap: nowrap;
+    gap: 24px;
+  }
+  
+  .about-image {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: flex-end;
+  }
+  
+  .profile-image {
+    max-width: 128px;
+    width: 128px;
+  }
+  
+  .about-text {
+    min-width: 220px;
+    flex: 1 1 auto;
+  }
+}
+
 .about-image {
   flex: 0 0 300px;
 }
@@ -69,19 +93,39 @@
   color: var(--color-blue);
 }
 
+/* Mobile specific adjustments */
 @media (max-width: 768px) {
   .about-content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    gap: 24px;
+    justify-content: flex-start;
   }
   
   .about-image {
     flex: 0 0 auto;
+    width: auto;
+    min-width: 0;
+    display: flex;
+    align-items: flex-end;
+  }
+  
+  .profile-image {
+    max-width: 128px;
+    width: 128px;
+    flex-shrink: 0;
   }
   
   .about-text {
     text-align: left;
+    padding-bottom: 100px;
+    min-width: 200px;
+    flex: 1 1 auto;
+  }
+  
+  .introtext {
+    font-size: 12px;
   }
 }
 
