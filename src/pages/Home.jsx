@@ -88,13 +88,11 @@ function Home() {
               <p className="introtext">
                 👋 Hello! I'm Corey, an action-biased ambiguity-loving Super-IC Product Designer 
                 and dad of 4 kids and many animals (<a href="https://coreystone.com/bio/">see bio</a> for dog pic).
-              </p>
-              <p className="introtext">
-                I don't really look like this, because the C on my chest stands for 🍪.
+               I don't really look like this, because the C on my chest stands for 🍪.
               </p>
               <p className="introtext">
                 I'm also a 0-1 thinker with experience at 4 startups plus solo-founding 7 apps, 
-                so I tend to work with a founder's mindset and first-principles problem solving. 
+                so I tend to work with a first-principles approach and founder's mindset. 
                 See my work below or grab my{' '}
                 <a href="/Corey-Stone-Resume.pdf" target="_blank" rel="noopener noreferrer">
                   résumé <i className="fa fa-file-pdf-o"></i>
