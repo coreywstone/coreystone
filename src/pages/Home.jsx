@@ -1,6 +1,7 @@
 import ProjectRow from '../components/ProjectRow'
 import QuotesRow from '../components/QuotesRow'
-import SketchesMuralsRow from '../components/SketchesMuralsRow'
+import SketchesRow from '../components/SketchesRow'
+import MuralsRow from '../components/MuralsRow'
 import StarrySky from '../components/StarrySky'
 import quotesConfig from '../data/quotes.json'
 import { getQuoteAssets, getQuoteAlignment, getQuoteLinkedInUrl } from '../utils/quoteData'
@@ -155,7 +156,8 @@ function Home() {
         <QuotesRow key={quoteRows[6].id} quotes={quoteRows[6].quotes} />
       )}
 
-      <SketchesMuralsRow />
+      <SketchesRow />
+      <MuralsRow />
     </div>
   )
 }
