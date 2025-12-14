@@ -84,7 +84,13 @@ function ProjectNav({ title, sections = [], activeSectionId, onTabClick, scrollC
   return (
     <nav ref={navRef} className={`project-nav ${isSticky ? 'sticky' : ''}`}>
       {title && (
-        <h2 className="project-nav-title" style={{ color }}>{title}</h2>
+        <h2 className="project-nav-title" style={{ color }}>
+          {title === 'Chegg Skills:' ? (
+            <img src="/img/chegg/chegg-logo.svg" alt="Chegg Skills" />
+          ) : (
+            title
+          )}
+        </h2>
       )}
       {showTabs && sections.length > 0 && (
         <div ref={tabsContainerRef} className="project-nav-tabs">

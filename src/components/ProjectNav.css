@@ -3,7 +3,7 @@
   background-color: var(--color-near-black);
   display: flex;
   flex-direction: column;
-  padding: 1rem 2rem;
+  padding: calc(1rem + 4px) 2rem calc(1rem + 4px) 2rem;
   position: relative;
   z-index: 10;
   gap: 1rem;
@@ -26,12 +26,18 @@
 
 .project-nav-title {
   font-family: var(--font-header);
-  font-size: 24px;
+  font-size: 36px;
   color: var(--color-white-ish);
   margin: 0;
   font-weight: normal;
   font-style: italic;
   flex-shrink: 0;
+}
+
+.project-nav-title img {
+  height: 32px;
+  width: auto;
+  display: block;
 }
 
 .project-nav-tabs {
