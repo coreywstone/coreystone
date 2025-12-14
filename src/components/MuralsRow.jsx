@@ -11,9 +11,10 @@ function MuralsRow() {
       label: 'MURALS',
       content: (
         <div className="textbox-image-pair">
-          <div className="textbox-image-pair-textbox" style={{ paddingLeft: 0 }}>
-            <h3 className="textbox-image-pair-title">Kid's room murals</h3>
-            <p className="textbox-image-pair-text">Everyone paints floor-to-ceiling murals on their kids' rooms, right? No? Hmmm. Since we moved a couple times, I ended up free-hand painting 4 rooms – here's two:</p>
+          <div className="textbox-image-pair-textbox murals-intro-textbox" style={{ width: '432px', flex: '0 0 432px', padding: '24px', boxSizing: 'border-box' }}>
+            <p className="textbox-image-pair-text" style={{ margin: 0, fontSize: '17px', color: '#F5EFE7' }}>
+              Everyone paints floor-to-ceiling murals on their kids' rooms, right? No? Hmmm. Since we moved a couple times, I ended up free-hand painting 4 rooms – here's two:
+            </p>
           </div>
           <div className="textbox-image-pair-image-container" style={{ flexDirection: 'row', gap: '32px', padding: '0 32px 0 0' }}>
             <img 

@@ -48,15 +48,29 @@
 .sketches-murals-section#intro {
   width: 420px !important;
   color: #F5EFE7;
+  margin-right: 0 !important;
 }
 
 .sketches-murals-section#intro .textbox-image-pair-textbox {
   flex: 1 1 100% !important;
   width: 100% !important;
   max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .sketches-murals-section#intro .textbox-image-pair-text {
   font-size: 17px;
+  color: #F5EFE7 !important;
+}
+
+/* Murals section with intro-style textbox (432px width = 420px + 12px gap, 17px font, #F5EFE7 color) */
+.sketches-murals-section#murals .textbox-image-pair-textbox.murals-intro-textbox {
+  flex: 0 0 432px !important;
+  width: 432px !important;
+  max-width: 432px !important;
+}
+
+.sketches-murals-section#murals .textbox-image-pair-textbox.murals-intro-textbox .textbox-image-pair-text {
+  font-size: 17px !important;
   color: #F5EFE7 !important;
 }
