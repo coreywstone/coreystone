@@ -40,12 +40,23 @@ function StarrySky() {
     // Create stars
     const createStars = () => {
       const stars = []
-      const numStars = Math.floor((width * height) / 8000) // ~200-300 stars for typical sizes
+      const numStars = Math.floor((width * height) / 5000) // Increased from 8000 to 5000 for more stars
       
       for (let i = 0; i < numStars; i++) {
+        // Bias stars toward the top portion (weighted distribution)
+        // Top 50% gets 60% of stars, bottom 50% gets 40%
+        let y
+        if (Math.random() < 0.6) {
+          // Top half - more stars
+          y = Math.random() * (height * 0.5)
+        } else {
+          // Bottom half - fewer stars
+          y = (height * 0.5) + Math.random() * (height * 0.5)
+        }
+        
         stars.push({
           x: Math.random() * width,
-          y: Math.random() * height,
+          y: y,
           size: Math.random() * 1.5 + 0.5, // 0.5 to 2px
           brightness: Math.random() * 0.4 + 0.6, // 0.6 to 1.0
           twinklePhase: Math.random() * Math.PI * 2,
@@ -66,7 +77,7 @@ function StarrySky() {
         planets.push({
           x: Math.random() * width,
           y: Math.random() * (height * 0.6), // Keep planets in upper portion
-          size: Math.random() * 8 + 4, // 4 to 12px
+          size: Math.random() * 3 + 2, // 2 to 5px (reduced from 4-12px)
           color: planetColors[Math.floor(Math.random() * planetColors.length)],
           glowIntensity: Math.random() * 0.3 + 0.4 // 0.4 to 0.7
         })
