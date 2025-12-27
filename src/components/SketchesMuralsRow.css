@@ -16,7 +16,7 @@
   overflow-y: hidden;
   scroll-behavior: smooth;
   scrollbar-width: none; /* Firefox */
-  padding: 0 24px;
+  padding: 0 2rem;
   border-bottom: 12px solid var(--color-near-black);
   box-sizing: border-box;
   background-color: var(--color-near-black);
