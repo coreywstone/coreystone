@@ -3,7 +3,7 @@ import QuotesRow from '../components/QuotesRow'
 import SketchesRow from '../components/SketchesRow'
 import MuralsRow from '../components/MuralsRow'
 import StarrySky from '../components/StarrySky'
-import Backstory from '../components/Backstory'
+import CheggIntro from '../components/CheggIntro'
 import quotesConfig from '../data/quotes.json'
 import { getQuoteAssets, getQuoteAlignment, getQuoteLinkedInUrl } from '../utils/quoteData'
 import './Home.css'
@@ -13,11 +13,7 @@ function Home() {
     { 
       id: 'intro', 
       label: 'INTRO',
-      content: (
-        <Backstory width="380px">
-          Chegg's "Skills" division (fka Thinkful) has 75 staff and sells a B2B2C async adult upskilling SaaS with human coaches.
-        </Backstory>
-      )
+      content: <CheggIntro />
     },
     { id: 'staffs-ai', label: "STAFF'S AI" },
     { id: 'nav', label: 'NAV' },

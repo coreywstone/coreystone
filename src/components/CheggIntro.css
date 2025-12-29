@@ -1,0 +1,176 @@
+.chegg-intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.chegg-intro-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(258.41deg, #FFFFFF 69.59%, #CED4E0 98.74%);
+  z-index: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Backstory - pinned top left */
+.chegg-intro .backstory {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  margin: 0;
+}
+
+/* Video container - positioned left, width determined by height and aspect ratio */
+.chegg-intro-video-container {
+  position: absolute;
+  top: 0;
+  left: 460px;
+  height: calc(100% - 200px);
+  width: auto;
+  aspect-ratio: 16 / 9;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.chegg-intro-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.chegg-intro-video-controls {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 12px;
+  z-index: 3;
+}
+
+.chegg-video-btn {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: 2px solid white;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chegg-video-btn:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  transform: scale(1.05);
+}
+
+/* Me image - pinned bottom left */
+.chegg-intro-me {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: auto;
+  width: auto;
+  z-index: 2;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 800ms ease-out, opacity 800ms ease-out;
+}
+
+.chegg-intro-me.animate {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Talk bubble - above me, pinned bottom left */
+.chegg-intro-bubble {
+  position: absolute;
+  bottom: 240px;
+  left: 24px;
+  height: auto;
+  width: auto;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms ease-out, transform 600ms ease-out;
+}
+
+.chegg-intro-bubble.animate {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 500ms;
+}
+
+/* 75% burst - explosion animation, to the right of talk bubble */
+.chegg-intro-burst-75 {
+  position: absolute;
+  bottom: 92px;
+  left: 160px;
+  height: auto;
+  width: auto;
+  z-index: 3;
+  transform: scale(0) rotate(var(--initial-rotation, 0deg));
+  opacity: 0;
+  transition: transform 0s, opacity 0s;
+}
+
+.chegg-intro-burst-75.animate {
+  transform: scale(1) rotate(0deg);
+  opacity: 1;
+  transition: transform 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55), 
+              opacity 300ms ease-out;
+  transition-delay: 1000ms;
+}
+
+/* 8% burst - explosion animation, below 75% burst */
+.chegg-intro-burst-8 {
+  position: absolute;
+  bottom: 0px;
+  left: 358px;
+  height: auto;
+  width: auto;
+  z-index: 3;
+  transform: scale(0) rotate(var(--initial-rotation, 0deg));
+  opacity: 0;
+  transition: transform 0s, opacity 0s;
+}
+
+.chegg-intro-burst-8.animate {
+  transform: scale(1) rotate(0deg);
+  opacity: 1;
+  transition: transform 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55), 
+              opacity 300ms ease-out;
+  transition-delay: 2000ms;
+}
+
+/* But-howww image - bottom right area, below video */
+.chegg-intro-but-howww {
+  position: absolute;
+  bottom: 20px;
+  left: 616px;
+  width: auto;
+  height: auto;
+  transform: scale(0.9);
+  z-index: 2;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0s;
+}
+
+.chegg-intro-but-howww.animate {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 1500ms ease-out;
+  transition-delay: 3000ms;
+}
+

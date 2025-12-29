@@ -1,25 +1,33 @@
 .project-row {
   width: 100vw;
   height: 100vh;
+  min-height: 700px;
   display: flex;
   flex-direction: column;
   background-color: var(--color-white-ish);
   overflow: hidden;
   scroll-snap-align: start;
   scroll-snap-stop: always;
+  margin: 0;
+  padding: 0;
 }
 
 .project-panel-container {
-  flex: 1;
+  flex: 1 1 0;
   width: 100%;
+  min-height: 0;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-behavior: smooth;
   scrollbar-width: none; /* Firefox */
-  padding: 0 24px;
+  padding: 0 24px 0 24px;
   border-bottom: 12px solid var(--color-near-black);
   box-sizing: border-box;
   background-color: var(--color-near-black);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  position: relative;
 }
 
 .project-panel-container::-webkit-scrollbar {
@@ -33,6 +41,10 @@
   height: 100%;
   min-width: fit-content;
   gap: 12px;
+  flex: 1 1 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .project-panel-placeholder,

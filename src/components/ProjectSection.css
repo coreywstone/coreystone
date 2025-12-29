@@ -2,21 +2,40 @@
   flex: 0 0 auto;
   height: 100%;
   min-height: 100%;
-  min-width: 1000px;
   display: flex;
   align-items: stretch;
   justify-content: flex-start;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
   background-color: var(--color-white-ish) !important;
   width: auto;
   color: var(--color-near-black);
   position: relative;
+  overflow: hidden;
 }
 
 .project-section > * {
+  width: 100%;
   height: 100%;
   min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.project-section > .chegg-intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* Ensure chegg-intro section is wide enough for the video */
+/* Video is at left: 460px, height: calc(100% - 200px), aspect-ratio: 16/9 */
+/* Section needs to be wide enough: 460px (left position) + video width */
+/* Using viewport height as approximation: video height ≈ (100vh - nav - 200px) */
+.project-section:has(.chegg-intro) {
+  min-width: calc(460px + (100vh - 300px) * 16 / 9);
 }
 
 .project-section * {
