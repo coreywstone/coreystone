@@ -3,13 +3,22 @@ import QuotesRow from '../components/QuotesRow'
 import SketchesRow from '../components/SketchesRow'
 import MuralsRow from '../components/MuralsRow'
 import StarrySky from '../components/StarrySky'
+import Backstory from '../components/Backstory'
 import quotesConfig from '../data/quotes.json'
 import { getQuoteAssets, getQuoteAlignment, getQuoteLinkedInUrl } from '../utils/quoteData'
 import './Home.css'
 
 function Home() {
   const cheggSections = [
-    { id: 'intro', label: 'INTRO' },
+    { 
+      id: 'intro', 
+      label: 'INTRO',
+      content: (
+        <Backstory width="380px">
+          Chegg's "Skills" division (fka Thinkful) has 75 staff and sells a B2B2C async adult upskilling SaaS with human coaches.
+        </Backstory>
+      )
+    },
     { id: 'staffs-ai', label: "STAFF'S AI" },
     { id: 'nav', label: 'NAV' },
     { id: 'dashboard', label: 'DASHBOARD' },
@@ -109,6 +118,7 @@ function Home() {
         title="Chegg Skills:" 
         sections={cheggSections}
         color="#F5EFE7"
+        backstoryBgColor="#FCC192"
       />
       {quoteRows.length > 0 && quoteRows[0] && (
         <QuotesRow key={quoteRows[0].id} quotes={quoteRows[0].quotes} />
@@ -118,6 +128,7 @@ function Home() {
         title="Owl Health:" 
         sections={owlSections}
         color="#F5EFE7"
+        backstoryBgColor="#B2F5EA"
       />
       {quoteRows.length > 2 && quoteRows[2] && (
         <QuotesRow key={quoteRows[2].id} quotes={quoteRows[2].quotes} />

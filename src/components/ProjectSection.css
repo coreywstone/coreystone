@@ -11,6 +11,7 @@
   background-color: var(--color-white-ish) !important;
   width: auto;
   color: var(--color-near-black);
+  position: relative;
 }
 
 .project-section > * {

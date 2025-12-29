@@ -1,0 +1,18 @@
+.backstory {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 320px;
+  padding: 12px;
+  border-right: 2px solid var(--color-near-black);
+  border-bottom: 2px solid var(--color-near-black);
+  border-top: none;
+  border-left: none;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 150%;
+  height: auto !important;
+  min-height: 0 !important;
+  box-sizing: border-box;
+}
+
