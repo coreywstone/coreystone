@@ -6,15 +6,15 @@
   height: 100%;
   overflow: hidden;
   margin: 0;
-  padding: 0;
+  padding: 0 32px 0 0;
 }
 
 .chegg-intro-bg {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  bottom: 0;
   background: linear-gradient(258.41deg, #FFFFFF 69.59%, #CED4E0 98.74%);
   z-index: 0;
   margin: 0;
@@ -33,7 +33,7 @@
 /* Video container - positioned left, width determined by height and aspect ratio */
 .chegg-intro-video-container {
   position: absolute;
-  top: 0;
+  top: 32px;
   left: 460px;
   height: calc(100% - 200px);
   width: auto;
@@ -47,6 +47,8 @@
   height: 100%;
   object-fit: contain;
   display: block;
+  border-radius: 32px;
+  overflow: hidden;
 }
 
 /* Me image - pinned bottom left */
