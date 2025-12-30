@@ -128,20 +128,24 @@ function CheggIntro() {
       />
 
       {/* 75% burst */}
-      <img
-        src="/img/chegg/chegg-75percent-burst.svg"
-        alt="75%"
-        className={`chegg-intro-burst-75 ${isVisible ? 'animate' : ''}`}
-        style={{ '--initial-rotation': `${rotation75}deg` }}
-      />
+      <div className={`chegg-intro-burst-75-container ${isVisible ? 'animate' : ''}`}>
+        <img
+          src="/img/chegg/chegg-75percent-burst.svg"
+          alt="75%"
+          className="chegg-intro-burst-75"
+          style={{ '--initial-rotation': `${rotation75}deg` }}
+        />
+      </div>
 
       {/* 8% burst */}
-      <img
-        src="/img/chegg/chegg-8percent-burst.svg"
-        alt="8%"
-        className={`chegg-intro-burst-8 ${isVisible ? 'animate' : ''}`}
-        style={{ '--initial-rotation': `${rotation8}deg` }}
-      />
+      <div className={`chegg-intro-burst-8-container ${isVisible ? 'animate' : ''}`}>
+        <img
+          src="/img/chegg/chegg-8percent-burst.svg"
+          alt="8%"
+          className="chegg-intro-burst-8"
+          style={{ '--initial-rotation': `${rotation8}deg` }}
+        />
+      </div>
     </div>
   )
 }
