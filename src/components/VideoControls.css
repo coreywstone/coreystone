@@ -1,0 +1,77 @@
+.video-controls {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.video-controls.visible {
+  opacity: 1;
+}
+
+.video-control-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  pointer-events: auto;
+  opacity: 0.4;
+  transform-origin: center;
+  transition: opacity 0.2s ease, transform 0.1s ease-out;
+  filter: drop-shadow(0 0 0 transparent);
+}
+
+.video-control-btn:hover {
+  opacity: 1;
+}
+
+.video-control-btn:active,
+.video-control-btn.active {
+  transform: scale(0.95);
+  opacity: 1;
+}
+
+.droplet-splash {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  pointer-events: none;
+  z-index: 10;
+  animation: dropletEmit 0.6s ease-out forwards;
+  width: 15px; /* 50% larger: 10px * 1.5 = 15px */
+  height: 21px; /* 50% larger: 14px * 1.5 = 21px */
+}
+
+.droplet-splash svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes dropletEmit {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) 
+               translateX(var(--droplet-start-x, 0)) 
+               translateY(var(--droplet-start-y, 0)) 
+               scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) 
+               translateX(var(--droplet-x, 0)) 
+               translateY(var(--droplet-y, 0)) 
+               scale(0.5);
+  }
+}
+
+.video-control-btn svg {
+  display: block;
+}
+

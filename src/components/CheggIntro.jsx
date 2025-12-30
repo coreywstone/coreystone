@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Backstory from './Backstory'
+import VideoControls from './VideoControls'
 import './CheggIntro.css'
 
 function CheggIntro() {
@@ -7,7 +8,6 @@ function CheggIntro() {
   const [isVisible, setIsVisible] = useState(false)
   const [hasAnimated, setHasAnimated] = useState(false)
   const videoRef = useRef(null)
-  const [isPlaying, setIsPlaying] = useState(true)
   const [showControls, setShowControls] = useState(false)
   
   // Random rotations for burst explosions (generated once on mount)
@@ -39,32 +39,15 @@ function CheggIntro() {
   }, [hasAnimated])
 
   const handleVideoClick = (e) => {
-    if (e.target.tagName === 'BUTTON') return // Don't toggle if clicking a button
+    // Don't toggle if clicking a button or controls
+    if (e.target.tagName === 'BUTTON' || e.target.closest('.video-controls')) return
     
-    if (isPlaying) {
-      videoRef.current?.pause()
-      setIsPlaying(false)
-    } else {
-      videoRef.current?.play()
-      setIsPlaying(true)
-    }
-  }
-
-  const handlePlayPause = (e) => {
-    e.stopPropagation()
-    if (isPlaying) {
-      videoRef.current?.pause()
-      setIsPlaying(false)
-    } else {
-      videoRef.current?.play()
-      setIsPlaying(true)
-    }
-  }
-
-  const handleRewind = (e) => {
-    e.stopPropagation()
     if (videoRef.current) {
-      videoRef.current.currentTime = Math.max(0, videoRef.current.currentTime - 7)
+      if (videoRef.current.paused) {
+        videoRef.current.play()
+      } else {
+        videoRef.current.pause()
+      }
     }
   }
 
@@ -94,16 +77,7 @@ function CheggIntro() {
           loop
           playsInline
         />
-        {showControls && (
-          <div className="chegg-intro-video-controls">
-            <button onClick={handlePlayPause} className="chegg-video-btn">
-              {isPlaying ? '⏸' : '▶'}
-            </button>
-            <button onClick={handleRewind} className="chegg-video-btn">
-              ⏪ 7s
-            </button>
-          </div>
-        )}
+        <VideoControls videoRef={videoRef} visible={showControls} />
       </div>
 
       {/* But-howww image below video */}
