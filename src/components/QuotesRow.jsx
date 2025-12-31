@@ -62,6 +62,7 @@ function QuotesRow({ quotes = [] }) {
               linkedInUrl={quote.linkedInUrl}
               canStart={canStart(index)}
               onComplete={() => handleQuoteComplete(index)}
+              panelIndex={index}
             />
           ))
         ) : (

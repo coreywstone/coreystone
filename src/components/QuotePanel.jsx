@@ -14,7 +14,8 @@ function QuotePanel({
   canStart = false,
   onComplete,
   alignment = 'left', // 'left' or 'right'
-  linkedInUrl = null
+  linkedInUrl = null,
+  panelIndex = 0 // 0 for first panel, 1 for second panel
 }) {
   const [isVisible, setIsVisible] = useState(false)
   const [canStartWords, setCanStartWords] = useState(false)
@@ -35,6 +36,12 @@ function QuotePanel({
   const [projectileInFlight, setProjectileInFlight] = useState(false)
   const [projectileData, setProjectileData] = useState(null)
   const [splatData, setSplatData] = useState(null)
+  const [showForceField, setShowForceField] = useState(false)
+  const [showPlasmaGun, setShowPlasmaGun] = useState(false)
+  const [plasmaGunRaised, setPlasmaGunRaised] = useState(false)
+  const [plasmaGunLowering, setPlasmaGunLowering] = useState(false)
+  const [plasmaParticles, setPlasmaParticles] = useState([])
+  const [neonColor, setNeonColor] = useState(null)
   const panelRef = useRef(null)
   const bgRef = useRef(null)
   const bubbleTimeoutRef = useRef(null)
@@ -121,6 +128,66 @@ function QuotePanel({
     }
   }, [])
 
+  // Helper function to create super bright neon version of color
+  const createNeonColor = (hex) => {
+    // Convert hex to RGB
+    const r = parseInt(hex.slice(1, 3), 16)
+    const g = parseInt(hex.slice(3, 5), 16)
+    const b = parseInt(hex.slice(5, 7), 16)
+    
+    // Convert to HSL
+    const rNorm = r / 255
+    const gNorm = g / 255
+    const bNorm = b / 255
+    
+    const max = Math.max(rNorm, gNorm, bNorm)
+    const min = Math.min(rNorm, gNorm, bNorm)
+    let h, s, l = (max + min) / 2
+    
+    if (max === min) {
+      h = s = 0
+    } else {
+      const d = max - min
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
+      
+      switch (max) {
+        case rNorm: h = ((gNorm - bNorm) / d + (gNorm < bNorm ? 6 : 0)) / 6; break
+        case gNorm: h = ((bNorm - rNorm) / d + 2) / 6; break
+        case bNorm: h = ((rNorm - gNorm) / d + 4) / 6; break
+      }
+    }
+    
+    // Make super bright neon: max saturation, high lightness
+    s = 1.0 // Maximum saturation
+    l = 0.85 // High lightness for brightness
+    
+    // Convert back to RGB
+    const c = (1 - Math.abs(2 * l - 1)) * s
+    const x = c * (1 - Math.abs((h * 6) % 2 - 1))
+    const m = l - c / 2
+    
+    let rNew, gNew, bNew
+    if (h < 1/6) {
+      rNew = c; gNew = x; bNew = 0
+    } else if (h < 2/6) {
+      rNew = x; gNew = c; bNew = 0
+    } else if (h < 3/6) {
+      rNew = 0; gNew = c; bNew = x
+    } else if (h < 4/6) {
+      rNew = 0; gNew = x; bNew = c
+    } else if (h < 5/6) {
+      rNew = x; gNew = 0; bNew = c
+    } else {
+      rNew = c; gNew = 0; bNew = x
+    }
+    
+    rNew = Math.round((rNew + m) * 255)
+    gNew = Math.round((gNew + m) * 255)
+    bNew = Math.round((bNew + m) * 255)
+    
+    return `#${rNew.toString(16).padStart(2, '0')}${gNew.toString(16).padStart(2, '0')}${bNew.toString(16).padStart(2, '0')}`
+  }
+
   // Extract color from title SVG and increase saturation
   useEffect(() => {
     if (!titleSrc) return
@@ -143,6 +210,9 @@ function QuotePanel({
             // Increase saturation of the color
             const saturatedColor = increaseSaturation(color)
             setTitleColor(saturatedColor)
+            // Also create and store neon color for plasma particles
+            const neon = createNeonColor(color)
+            setNeonColor(neon)
             break
           }
         }
@@ -209,6 +279,290 @@ function QuotePanel({
     bNew = Math.round((bNew + m) * 255)
     
     return `#${rNew.toString(16).padStart(2, '0')}${gNew.toString(16).padStart(2, '0')}${bNew.toString(16).padStart(2, '0')}`
+  }
+
+  // Start particle emission from plasma gun
+  const startParticleEmission = () => {
+    if (!panelRef.current) return
+
+    // Use neon color if available, otherwise create from title color
+    let particleColor = neonColor
+    if (!particleColor && titleColor) {
+      particleColor = createNeonColor(titleColor)
+      setNeonColor(particleColor)
+    }
+    if (!particleColor) {
+      particleColor = '#00FFFF' // Fallback cyan
+    }
+
+    // Get gun position - center-center of the gun image
+    const panelRect = panelRef.current.getBoundingClientRect()
+    
+    // Find the actual gun image element to get its exact position and size
+    // Use a small delay to ensure the gun is rendered and positioned
+    setTimeout(() => {
+      const gunImage = panelRef.current?.querySelector('.quote-panel-plasma-gun.raised')
+      if (!gunImage) {
+        // Fallback: estimate based on panel and gun size
+        const gunWidth = 300 // max-width
+        const gunHeight = 300 // max-height
+        
+        let gunCenterX
+        if (alignment === 'left') {
+          gunCenterX = panelRect.left + gunWidth / 2
+        } else {
+          gunCenterX = panelRect.right - gunWidth / 2
+        }
+        // 40% from top of gun (gun bottom is at panel bottom, so 40% from top = 60% from bottom)
+        const gunCenterY = panelRect.bottom - gunHeight * 0.6
+        
+        // Start particle emission with estimated position
+        startParticleEmissionWithPosition(gunCenterX, gunCenterY)
+      } else {
+        const gunRect = gunImage.getBoundingClientRect()
+        // Particle emission: left: 50%, top: 40% relative to gun's area
+        const gunCenterX = gunRect.left + gunRect.width / 2 // 50% horizontally
+        const gunCenterY = gunRect.top + gunRect.height * 0.4 // 40% from top
+        
+        // Start particle emission with actual gun position
+        startParticleEmissionWithPosition(gunCenterX, gunCenterY)
+      }
+    }, 50) // Small delay to ensure gun is rendered
+  }
+
+  // Start particle emission with specific gun position
+  const startParticleEmissionWithPosition = (gunCenterX, gunCenterY) => {
+    if (!panelRef.current) return
+
+    // Use neon color if available, otherwise create from title color
+    // Ensure 100% saturation for neon plasma look
+    let particleColor = neonColor
+    if (!particleColor && titleColor) {
+      particleColor = createNeonColor(titleColor)
+      setNeonColor(particleColor)
+    }
+    if (!particleColor) {
+      particleColor = '#00FFFF' // Fallback cyan
+    }
+    
+    // Create neon variant: maximize saturation and brightness/lightness
+    const createNeonVariant = (hex) => {
+      const r = parseInt(hex.slice(1, 3), 16)
+      const g = parseInt(hex.slice(3, 5), 16)
+      const b = parseInt(hex.slice(5, 7), 16)
+      
+      const rNorm = r / 255
+      const gNorm = g / 255
+      const bNorm = b / 255
+      
+      const max = Math.max(rNorm, gNorm, bNorm)
+      const min = Math.min(rNorm, gNorm, bNorm)
+      let h, s, l = (max + min) / 2
+      
+      if (max === min) {
+        h = s = 0
+        // For grayscale, use a bright cyan as fallback
+        h = 0.5 // Cyan hue
+      } else {
+        const d = max - min
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
+        
+        switch (max) {
+          case rNorm: h = ((gNorm - bNorm) / d + (gNorm < bNorm ? 6 : 0)) / 6; break
+          case gNorm: h = ((bNorm - rNorm) / d + 2) / 6; break
+          case bNorm: h = ((rNorm - gNorm) / d + 4) / 6; break
+        }
+      }
+      
+      // Maximize saturation and brightness for neon effect
+      s = 1.0 // Maximum saturation (100%)
+      l = 0.95 // Very high lightness/brightness (95%) for maximum neon glow
+      
+      // Convert back to RGB
+      const c = (1 - Math.abs(2 * l - 1)) * s
+      const x = c * (1 - Math.abs((h * 6) % 2 - 1))
+      const m = l - c / 2
+      
+      let rNew, gNew, bNew
+      if (h < 1/6) {
+        rNew = c; gNew = x; bNew = 0
+      } else if (h < 2/6) {
+        rNew = x; gNew = c; bNew = 0
+      } else if (h < 3/6) {
+        rNew = 0; gNew = c; bNew = x
+      } else if (h < 4/6) {
+        rNew = 0; gNew = x; bNew = c
+      } else if (h < 5/6) {
+        rNew = x; gNew = 0; bNew = c
+      } else {
+        rNew = c; gNew = 0; bNew = x
+      }
+      
+      rNew = Math.round((rNew + m) * 255)
+      gNew = Math.round((gNew + m) * 255)
+      bNew = Math.round((bNew + m) * 255)
+      
+      return `#${rNew.toString(16).padStart(2, '0')}${gNew.toString(16).padStart(2, '0')}${bNew.toString(16).padStart(2, '0')}`
+    }
+    
+    particleColor = createNeonVariant(particleColor)
+
+    // Create 105-210 particles (decreased by 30% from 150-300)
+    const particleCount = Math.floor(Math.random() * 106) + 105 // 105-210 particles
+    const particles = []
+    const startTime = Date.now()
+
+    // Randomize final destination between 10%-90% width and 5%-95% height
+    const minX = window.innerWidth * 0.10
+    const maxX = window.innerWidth * 0.90
+    const minY = window.innerHeight * 0.05
+    const maxY = window.innerHeight * 0.95
+
+    // Stagger launch over 2 seconds (like holding trigger)
+    const staggerDuration = 2000 // 2 seconds
+
+    for (let i = 0; i < particleCount; i++) {
+      // Random target position within specified bounds
+      const targetX = minX + Math.random() * (maxX - minX)
+      const targetY = minY + Math.random() * (maxY - minY)
+      
+      // Random travel time (doubled: 600-1000ms)
+      const travelTime = 600 + Math.random() * 400 // 600-1000ms
+      
+      // Stagger start times over 2 seconds
+      const staggerTime = (i / particleCount) * staggerDuration
+      
+      particles.push({
+        id: `particle-${i}-${startTime}`,
+        startX: gunCenterX, // Center of gun
+        startY: gunCenterY, // Center of gun
+        targetX,
+        targetY,
+        travelTime,
+        startTime: startTime + staggerTime, // Staggered over 2 seconds
+        size: 5, // Start at 5px
+        finalSize: 13 + Math.random() * 117, // End at 13-130px (increased by 30% from 10-100px)
+        stuck: false,
+        sliding: false,
+        currentX: gunCenterX,
+        currentY: gunCenterY,
+        hitTime: null, // When particle hit the screen
+        springOffsetX: 0, // Spring effect offset
+        springOffsetY: 0,
+        springVelocityX: 0, // Spring velocity (will be set on hit)
+        springVelocityY: 0 // Spring velocity (will be set on hit)
+      })
+    }
+
+    setPlasmaParticles(particles)
+    
+    // Animate particles
+    animateParticles(particles, startTime, gunCenterX, gunCenterY)
+  }
+
+  // Animate plasma particles
+  const animateParticles = (initialParticles, startTime, gunViewportX, gunViewportY) => {
+    let particles = [...initialParticles]
+    let gunLowered = false
+    
+    const animate = () => {
+      const elapsed = Date.now() - startTime
+      
+      const updatedParticles = particles.map(particle => {
+        const particleElapsed = elapsed - (particle.startTime - startTime)
+        const progress = Math.min(Math.max(particleElapsed / particle.travelTime, 0), 1)
+        
+        if (progress >= 1 && !particle.stuck) {
+          // Particle has reached screen - stick for 1 second with spring effect
+          particle.stuck = true
+          particle.stuckTime = Date.now()
+          particle.hitTime = Date.now()
+          particle.size = particle.finalSize
+          particle.currentX = particle.targetX
+          particle.currentY = particle.targetY
+          // Initialize spring with random velocity on hit
+          particle.springVelocityX = (Math.random() - 0.5) * 20 // Random velocity -10 to 10
+          particle.springVelocityY = (Math.random() - 0.5) * 20
+        } else if (particle.stuck) {
+          const stuckElapsed = Date.now() - particle.stuckTime
+          
+          // Spring effect: jiggle when hitting screen
+          if (stuckElapsed < 1000) {
+            // Apply spring physics for first second
+            const springStrength = 0.15 // Spring constant
+            const damping = 0.85 // Damping factor
+            
+            // Spring force pulls back to target position
+            const springForceX = -particle.springOffsetX * springStrength
+            const springForceY = -particle.springOffsetY * springStrength
+            
+            // Update velocity with spring force and damping
+            particle.springVelocityX = (particle.springVelocityX + springForceX) * damping
+            particle.springVelocityY = (particle.springVelocityY + springForceY) * damping
+            
+            // Update position
+            particle.springOffsetX += particle.springVelocityX
+            particle.springOffsetY += particle.springVelocityY
+            
+            // Apply offset to current position
+            particle.currentX = particle.targetX + particle.springOffsetX
+            particle.currentY = particle.targetY + particle.springOffsetY
+          }
+          
+          if (stuckElapsed >= 1000 && !particle.sliding) {
+            // Start sliding down after 1 second
+            particle.sliding = true
+            particle.slideStartTime = Date.now()
+            particle.slideStartY = particle.currentY
+            
+            // Start lowering gun when first particle starts sliding
+            if (!gunLowered) {
+              gunLowered = true
+              setPlasmaGunLowering(true)
+            }
+          } else if (particle.sliding) {
+            // Slide down over 2 seconds with ease-in
+            const slideElapsed = Date.now() - particle.slideStartTime
+            const slideProgress = Math.min(slideElapsed / 2000, 1)
+            // Ease-in: progress^2
+            const easedProgress = slideProgress * slideProgress
+            particle.currentY = particle.slideStartY + (window.innerHeight + 100 - particle.slideStartY) * easedProgress
+            // Maintain spring offset during slide
+            particle.currentX = particle.targetX + particle.springOffsetX
+          }
+        } else {
+          // Particle traveling toward screen
+          const easedProgress = progress * progress // Ease-in (progress^2)
+          particle.currentX = particle.startX + (particle.targetX - particle.startX) * easedProgress
+          particle.currentY = particle.startY + (particle.targetY - particle.startY) * easedProgress
+          // Size grows from 5px to finalSize as it approaches
+          particle.size = 5 + (particle.finalSize - 5) * easedProgress
+        }
+        
+        return particle
+      })
+
+      particles = updatedParticles
+      setPlasmaParticles([...particles])
+
+      // Continue animation if particles are still active
+      const hasActiveParticles = particles.some(p => 
+        !p.sliding || (p.sliding && p.currentY < window.innerHeight + 100)
+      )
+
+      if (hasActiveParticles) {
+        requestAnimationFrame(animate)
+      } else {
+        // All particles are done, reset state
+        setPlasmaParticles([])
+        setShowPlasmaGun(false)
+        setPlasmaGunRaised(false)
+        setPlasmaGunLowering(false)
+        setProjectileInFlight(false)
+      }
+    }
+
+    animate()
   }
 
   // Particle system for teleporter effect
@@ -550,20 +904,21 @@ function QuotePanel({
   }
 
   // List of available projectile files (excluding splat)
+  // List of available projectile files (excluding deleted ones like sock)
   const projectileFiles = [
-    'ball.svg', 'bananapeel.svg', 'beachball.svg', 'bomb.svg', 'cake.svg',
-    'carrot.svg', 'cat.svg', 'cupcake.svg', 'donut.svg', 'duster.svg',
+    'bananapeel.svg', 'beachball.svg', 'bomb.svg', 'cake.svg',
+    'cat.svg', 'cupcake.svg', 'donut.svg', 'duster.svg',
     'egg.svg', 'fish.svg', 'flamingo.svg', 'foamfinger.svg', 'frisbee.svg',
     'frog.svg', 'gnome.svg', 'marshmallow.svg', 'monkey.svg', 'octopus.svg',
     'pie.svg', 'pizzaslice.svg', 'rubberchicken.svg', 'rubberduck.svg',
-    'shoe.svg', 'sock.svg', 'spaghetti.svg', 'teddybear.svg', 'toiletpaper.svg',
+    'shoe.svg', 'spaghetti.svg', 'teddybear.svg', 'toiletpaper.svg',
     'tomato.svg', 'volleyball.svg', 'waterballoon.svg'
   ]
 
   // List of projectiles that bounce instead of splatting
   const bouncingProjectiles = [
-    'ball', 'beachball', 'carrot', 'fish', 'flamingo', 'foamfinger', 'frisbee',
-    'rubberchicken', 'rubberduck', 'shoe', 'sock', 'teddybear',
+    'beachball', 'fish', 'flamingo', 'foamfinger', 'frisbee',
+    'rubberchicken', 'rubberduck', 'shoe', 'teddybear',
     'toiletpaper', 'volleyball'
   ]
 
@@ -742,7 +1097,44 @@ function QuotePanel({
         const impactX = targetViewportX
         const impactY = targetViewportY
 
-        if (willBounce) {
+        // Check if this is a character click (defend phase)
+        if (isCharacterClick) {
+          // Character defense: show force field and bounce projectile
+          setShowForceField(true)
+          
+          // Calculate bounce physics (same as regular bounce)
+          hasBounced = true
+          bounceTime = Date.now()
+          bounceX = impactX
+          bounceY = impactY
+
+          const impactVx = (targetViewportX - startX) / t
+          const impactVy = ((targetViewportY - startY) + 0.5 * g * t * t) / t - g * t
+
+          const bounceEnergyLossX = 0.6
+          const bounceEnergyLossY = 0.3
+          bounceVx = impactVx * bounceEnergyLossX
+          bounceVy = -Math.abs(impactVy) * bounceEnergyLossY
+
+          postBounceScale = 0.25 * 1.3
+
+          // Play sound effect with fallback
+          playSoundWithFallback(projectileName, true)
+
+          // Hide force field after 1 second, then show plasma gun
+          setTimeout(() => {
+            setShowForceField(false)
+            // Start plasma gun attack phase
+            setShowPlasmaGun(true)
+            setTimeout(() => {
+              setPlasmaGunRaised(true)
+              // Wait 1 second after gun is fully raised, then start particle emission
+              setTimeout(() => {
+                startParticleEmission()
+              }, 1000) // 1 second delay after gun is raised
+            }, 300) // After gun raise animation completes
+          }, 1000)
+        } else if (willBounce) {
           // Calculate bounce physics
           hasBounced = true
           bounceTime = Date.now()
@@ -1026,6 +1418,60 @@ function QuotePanel({
             console.error('Projectile image failed to load:', projectileData.src, e)
           }}
         />,
+        document.body
+      )}
+
+      {/* Force Field */}
+      {showForceField && picSrc && (
+        <div 
+          className="quote-panel-force-field"
+          style={{
+            [alignment === 'left' ? 'left' : 'right']: 0,
+            bottom: 0
+          }}
+        >
+          <img
+            src="/img/quoters/projectiles/attack/forcefield.svg"
+            alt="Force Field"
+            className={`force-field-flicker ${alignment === 'right' ? 'flipped' : ''}`}
+          />
+        </div>
+      )}
+
+      {/* Plasma Gun */}
+      {showPlasmaGun && characterImageRef.current && (
+        <img
+          src="/img/quoters/projectiles/attack/plasmagun.svg"
+          alt="Plasma Gun"
+          className={`quote-panel-plasma-gun ${plasmaGunRaised ? 'raised' : ''} ${plasmaGunLowering ? 'lowering' : ''} ${panelIndex % 2 === 1 ? 'flipped' : ''}`}
+          style={{
+            [alignment === 'left' ? 'left' : 'right']: 0
+          }}
+        />
+      )}
+
+      {/* Plasma Particles - rendered via portal at page level */}
+      {plasmaParticles.length > 0 && typeof document !== 'undefined' && document.body && createPortal(
+        <div className="plasma-particles-container">
+          {plasmaParticles.map(particle => (
+            <div
+              key={particle.id}
+              className="plasma-particle"
+              style={{
+                position: 'fixed',
+                left: `${particle.currentX}px`,
+                top: `${particle.currentY}px`,
+                width: `${particle.size}px`,
+                height: `${particle.size}px`,
+                backgroundColor: neonColor || titleColor || '#00FFFF',
+                borderRadius: '50%',
+                transform: 'translate(-50%, -50%)',
+                pointerEvents: 'none',
+                boxShadow: `0 0 ${particle.size * 2}px ${neonColor || titleColor || '#00FFFF'}`
+              }}
+            />
+          ))}
+        </div>,
         document.body
       )}
 

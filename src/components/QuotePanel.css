@@ -384,6 +384,140 @@
   }
 }
 
+/* Force Field */
+.quote-panel-force-field {
+  position: absolute;
+  bottom: 0;
+  z-index: 4;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.quote-panel-force-field .force-field-flicker {
+  width: auto;
+  height: auto;
+  max-width: 120%; /* 20% larger */
+  max-height: 120%; /* 20% larger */
+  object-fit: contain;
+  animation: force-field-flicker 1s ease-out forwards;
+}
+
+.force-field-flicker.flipped {
+  transform: scaleX(-1);
+}
+
+@keyframes force-field-flicker {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  6.25% {
+    opacity: 0.9;
+  }
+  12.5% {
+    opacity: 0.4;
+  }
+  18.75% {
+    opacity: 0.9;
+  }
+  25% {
+    opacity: 0.4;
+  }
+  31.25% {
+    opacity: 0.9;
+  }
+  37.5% {
+    opacity: 0.4;
+  }
+  43.75% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  56.25% {
+    opacity: 0.9;
+  }
+  62.5% {
+    opacity: 0.4;
+  }
+  68.75% {
+    opacity: 0.9;
+  }
+  75% {
+    opacity: 0.4;
+  }
+  81.25% {
+    opacity: 0.9;
+  }
+  87.5% {
+    opacity: 0.4;
+  }
+  93.75% {
+    opacity: 0.9;
+  }
+  95% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Plasma Gun */
+.quote-panel-plasma-gun {
+  position: absolute;
+  bottom: -200px; /* Start below panel */
+  z-index: 13; /* Above talk bubbles (z-index 12) */
+  pointer-events: none;
+  width: auto;
+  height: auto;
+  max-width: 300px; /* 50% larger (200px * 1.5) */
+  max-height: 300px; /* 50% larger (200px * 1.5) */
+  transition: bottom 300ms ease-in-out;
+}
+
+.quote-panel-plasma-gun.flipped {
+  transform: scaleX(-1);
+}
+
+.quote-panel-plasma-gun.raised {
+  bottom: 0; /* Fully raised - bottom at panel bottom */
+  transition: bottom 300ms ease-in-out;
+}
+
+.quote-panel-plasma-gun.raised.flipped {
+  transform: scaleX(-1);
+}
+
+.quote-panel-plasma-gun.lowering {
+  bottom: -200px; /* Lower back out of view */
+  transition: bottom 300ms ease-in;
+}
+
+.quote-panel-plasma-gun.lowering.flipped {
+  transform: scaleX(-1);
+}
+
+/* Plasma Particles */
+.plasma-particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9997; /* Below projectiles but above most content */
+}
+
+.plasma-particle {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
 /* Responsive - maintain aspect ratio on all screen sizes */
 @media (max-width: 1272px) {
   .quote-panel {
