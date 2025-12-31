@@ -46,6 +46,8 @@
   height: 100%;
   z-index: 1;
   opacity: 1;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .quote-panel-bg img {
@@ -265,6 +267,8 @@
   z-index: 4;
   pointer-events: none;
   bottom: 0;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .quote-panel-words-left {
@@ -284,6 +288,8 @@
   max-width: none; /* No scaling - natural size */
   opacity: 0;
   transform-origin: center;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 /* Inline SVG - the wrapper div has the className, SVG is inside */
@@ -475,7 +481,7 @@
   height: auto;
   max-width: 300px; /* 50% larger (200px * 1.5) */
   max-height: 300px; /* 50% larger (200px * 1.5) */
-  transition: bottom 300ms ease-in-out;
+  transition: bottom 600ms ease-in-out;
 }
 
 .quote-panel-plasma-gun.flipped {
@@ -484,7 +490,7 @@
 
 .quote-panel-plasma-gun.raised {
   bottom: 0; /* Fully raised - bottom at panel bottom */
-  transition: bottom 300ms ease-in-out;
+  transition: bottom 600ms ease-in-out;
 }
 
 .quote-panel-plasma-gun.raised.flipped {
@@ -509,6 +515,7 @@
   height: 100vh;
   pointer-events: none;
   z-index: 9997; /* Below projectiles but above most content */
+  transform: translateZ(0); /* Force GPU layer */
 }
 
 .plasma-particle {

@@ -47,6 +47,7 @@ function QuotePanel({
   const bubbleTimeoutRef = useRef(null)
   const wordsDelayTimeoutRef = useRef(null)
   const teleporterTimeoutRef = useRef(null)
+  const lastProjectileRef = useRef(null) // Track last selected projectile to avoid repeats
   const canvasRef = useRef(null)
   const animationFrameRef = useRef(null)
   const particlesRef = useRef([])
@@ -951,8 +952,18 @@ function QuotePanel({
       e.target === characterImageRef.current || 
       characterImageRef.current.contains(e.target)
 
-    // Randomly select a projectile
-    const randomProjectile = projectileFiles[Math.floor(Math.random() * projectileFiles.length)]
+    // Randomly select a projectile (excluding the last one to avoid repeats)
+    const availableProjectiles = lastProjectileRef.current 
+      ? projectileFiles.filter(p => p !== lastProjectileRef.current)
+      : projectileFiles
+    
+    // Fallback to all projectiles if only one option (shouldn't happen, but safety check)
+    const projectilesToChooseFrom = availableProjectiles.length > 0 ? availableProjectiles : projectileFiles
+    const randomProjectile = projectilesToChooseFrom[Math.floor(Math.random() * projectilesToChooseFrom.length)]
+    
+    // Store the selected projectile for next time
+    lastProjectileRef.current = randomProjectile
+    
     const projectileSrc = `/img/quoters/projectiles/${randomProjectile}`
 
     // Calculate start position (bottom center of viewport)
@@ -1171,7 +1182,7 @@ function QuotePanel({
                 
                 startParticleEmission()
               }, 1000) // 1 second delay after gun is raised
-            }, 300) // After gun raise animation completes
+            }, 600) // After gun raise animation completes
           }, 1000)
         } else if (willBounce) {
           // Calculate bounce physics
@@ -1506,7 +1517,7 @@ function QuotePanel({
                 borderRadius: '50%',
                 transform: 'translate(-50%, -50%)',
                 pointerEvents: 'none',
-                boxShadow: `0 0 ${particle.size * 2}px ${neonColor || titleColor || '#00FFFF'}`
+                boxShadow: `0 0 ${particle.size}px ${neonColor || titleColor || '#00FFFF'}`
               }}
             />
           ))}
