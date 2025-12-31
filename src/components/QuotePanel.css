@@ -10,7 +10,7 @@
   background-color: var(--color-near-black);
   border: 2px solid var(--color-near-black);
   overflow: hidden;
-  cursor: url('/img/quoters/crosshairs.png') 72 71, auto;
+  cursor: url('/img/ui/crosshairs.png') 72 71, auto;
   box-sizing: border-box;
 }
 
@@ -29,7 +29,7 @@
 
 .quote-panel:hover,
 .quote-panel:hover * {
-  cursor: url('/img/quoters/crosshairs.png') 72 71, auto !important;
+  cursor: url('/img/ui/crosshairs.png') 72 71, auto !important;
 }
 
 .quote-panel:hover .quote-panel-title-link,
@@ -169,6 +169,11 @@
   position: absolute;
   z-index: 2;
   bottom: 0;
+}
+
+.quote-panel-character:hover,
+.quote-panel-character:hover * {
+  cursor: url('/img/ui/crosshairs-red.png') 72 71, auto !important;
 }
 
 /* Teleporter particles effect - canvas */
@@ -318,6 +323,66 @@
   opacity: 1;
 }
 
+
+/* Projectile - rendered at page level via portal */
+.quote-panel-projectile {
+  position: fixed;
+  z-index: 9999; /* Above everything */
+  pointer-events: none;
+  width: 400px;
+  height: 400px;
+  max-width: 400px;
+  max-height: 400px;
+  min-width: 80px;
+  min-height: 80px;
+  will-change: transform;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  object-fit: contain;
+  background: transparent;
+}
+
+/* Splat - rendered at page level via portal */
+.quote-panel-splat {
+  position: fixed;
+  z-index: 9998; /* Above everything except projectiles */
+  pointer-events: none;
+  width: auto;
+  height: auto;
+  max-width: 450px;
+  max-height: 450px;
+  animation: splat-explosion 400ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+             splat-visible 1100ms ease-out 400ms forwards,
+             splat-fadeout 500ms ease-out 1500ms forwards;
+  transform-origin: center center;
+}
+
+@keyframes splat-explosion {
+  0% {
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes splat-visible {
+  0%, 100% {
+    opacity: 1;
+  }
+}
+
+@keyframes splat-fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 
 /* Responsive - maintain aspect ratio on all screen sizes */
 @media (max-width: 1272px) {

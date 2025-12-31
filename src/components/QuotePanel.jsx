@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import InlineSVG from './InlineSVG'
 import './QuotePanel.css'
 
@@ -30,6 +31,10 @@ function QuotePanel({
     words3: !!words3Src
   })
   const [isTitleHovered, setIsTitleHovered] = useState(false)
+  const [isCharacterHovered, setIsCharacterHovered] = useState(false)
+  const [projectileInFlight, setProjectileInFlight] = useState(false)
+  const [projectileData, setProjectileData] = useState(null)
+  const [splatData, setSplatData] = useState(null)
   const panelRef = useRef(null)
   const bgRef = useRef(null)
   const bubbleTimeoutRef = useRef(null)
@@ -38,6 +43,8 @@ function QuotePanel({
   const canvasRef = useRef(null)
   const animationFrameRef = useRef(null)
   const particlesRef = useRef([])
+  const projectileAnimationRef = useRef(null)
+  const characterImageRef = useRef(null)
 
   // Intersection Observer for scroll-triggered animations (vertical only)
   useEffect(() => {
@@ -542,6 +549,339 @@ function QuotePanel({
     }, 500)
   }
 
+  // List of available projectile files (excluding splat)
+  const projectileFiles = [
+    'ball.svg', 'bananapeel.svg', 'beachball.svg', 'bomb.svg', 'cake.svg',
+    'carrot.svg', 'cat.svg', 'cupcake.svg', 'donut.svg', 'duster.svg',
+    'egg.svg', 'fish.svg', 'flamingo.svg', 'foamfinger.svg', 'frisbee.svg',
+    'frog.svg', 'gnome.svg', 'marshmallow.svg', 'monkey.svg', 'octopus.svg',
+    'pie.svg', 'pizzaslice.svg', 'rubberchicken.svg', 'rubberduck.svg',
+    'shoe.svg', 'sock.svg', 'spaghetti.svg', 'teddybear.svg', 'toiletpaper.svg',
+    'tomato.svg', 'volleyball.svg', 'waterballoon.svg'
+  ]
+
+  // List of projectiles that bounce instead of splatting
+  const bouncingProjectiles = [
+    'ball', 'beachball', 'carrot', 'fish', 'flamingo', 'foamfinger', 'frisbee',
+    'rubberchicken', 'rubberduck', 'shoe', 'sock', 'teddybear',
+    'toiletpaper', 'volleyball'
+  ]
+
+  // Helper function to extract projectile name from file path
+  const getProjectileName = (filePath) => {
+    const fileName = filePath.split('/').pop()
+    return fileName.replace('.svg', '')
+  }
+
+  // Helper function to check if projectile should bounce
+  const shouldBounce = (projectileName) => {
+    return bouncingProjectiles.includes(projectileName)
+  }
+
+  // Handle click on panel
+  const handlePanelClick = (e) => {
+    // Prevent firing if projectile is already in flight
+    if (projectileInFlight) return
+
+    // Don't fire if clicking on title link
+    if (e.target.closest('.quote-panel-title-link')) return
+
+    // Get click coordinates relative to panel
+    const panelRect = panelRef.current.getBoundingClientRect()
+    const clickX = e.clientX - panelRect.left
+    const clickY = e.clientY - panelRect.top
+
+    // Check if click is on character image (for future feature)
+    const isCharacterClick = characterImageRef.current && 
+      e.target === characterImageRef.current || 
+      characterImageRef.current.contains(e.target)
+
+    // Randomly select a projectile
+    const randomProjectile = projectileFiles[Math.floor(Math.random() * projectileFiles.length)]
+    const projectileSrc = `/img/quoters/projectiles/${randomProjectile}`
+
+    // Calculate start position (bottom center of viewport)
+    // Top-center of projectile should spawn just below bottom center of viewport
+    const viewportCenterX = window.innerWidth / 2
+    // Since projectile is 400px tall and we use translate(-50%, -50%) for center alignment,
+    // to have top-center just below viewport, position center at: viewport bottom + half height + offset
+    const projectileHeight = 400
+    const viewportBottomY = window.innerHeight + (projectileHeight / 2) + 10 // Center position for top-center to be just below
+
+    // Calculate target position (click point relative to panel)
+    const targetX = clickX
+    const targetY = clickY
+
+    // Launch projectile immediately
+    setProjectileInFlight(true)
+    launchProjectile({
+      projectileSrc,
+      startX: viewportCenterX,
+      startY: viewportBottomY,
+      targetX: targetX + panelRect.left, // Convert to viewport coordinates
+      targetY: targetY + panelRect.top,   // Convert to viewport coordinates
+      panelRect,
+      isCharacterClick
+    })
+  }
+
+  // Launch projectile with physics-based animation
+  const launchProjectile = ({ projectileSrc, startX, startY, targetX, targetY, panelRect: initialPanelRect, isCharacterClick }) => {
+    const flightDuration = 1000 // 1 second (reduced from 1.5 seconds)
+    const startTime = Date.now()
+
+    // Extract projectile name and check if it should bounce
+    const projectileName = getProjectileName(projectileSrc)
+    const willBounce = shouldBounce(projectileName)
+
+    // Store initial target in viewport coordinates
+    const targetViewportX = targetX
+    const targetViewportY = targetY
+
+    // Calculate initial velocity components to hit target in 1 second
+    // Using physics: x(t) = x₀ + v₀ₓ * t, y(t) = y₀ + v₀ᵧ * t - 0.5 * g * t²
+    const g = 9.8 * 400 // Gravity scaled for pixels (adjust as needed)
+    const t = flightDuration / 1000 // Convert to seconds
+    
+    // Calculate velocities for ease-out trajectory
+    // Since we're using ease-out, we need to account for the easing in velocity calculation
+    // For ease-out, the final position should still be the target
+    const v0x = (targetViewportX - startX) / t
+    const v0y = ((targetViewportY - startY) + 0.5 * g * t * t) / t
+
+    // Random rotation direction and speed
+    const rotationDirection = Math.random() < 0.5 ? 1 : -1
+    const rotationSpeed = (Math.random() * 180 + 90) * rotationDirection // 90-270 degrees over 2s
+
+    // Deformation parameters - oscillating with damping
+    const deformationFreqX = Math.random() * 3 + 2 // 2-5 Hz
+    const deformationFreqY = Math.random() * 3 + 2 // 2-5 Hz
+    const deformationPhaseX = Math.random() * Math.PI * 2
+    const deformationPhaseY = Math.random() * Math.PI * 2
+    const deformationAmplitudeX = 0.15 // 15% deformation
+    const deformationAmplitudeY = 0.15 // 15% deformation
+
+    // Bounce state
+    let hasBounced = false
+    let bounceTime = null
+    let bounceX = null
+    let bounceY = null
+    let bounceVx = null
+    let bounceVy = null
+    let postBounceScale = 1
+
+    // Helper function to play sound effect
+    const playSound = (soundPath) => {
+      try {
+        const audio = new Audio(soundPath)
+        audio.play().catch(err => {
+          console.log('Sound playback failed:', err)
+        })
+      } catch (err) {
+        console.log('Sound loading failed:', err)
+      }
+    }
+
+    // Helper function to play bounce sound
+    const playBounceSound = () => {
+      const bounceSounds = ['boing-1.mp3', 'boing-2.mp3', 'boing-3.mp3', 'boing-4.mp3', 'boing-5.mp3', 'boing-6.mp3', 'boing-7.mp3']
+      const randomBounce = bounceSounds[Math.floor(Math.random() * bounceSounds.length)]
+      const bouncePath = `/img/quoters/projectiles/sounds/${randomBounce}`
+      const bounceAudio = new Audio(bouncePath)
+      bounceAudio.volume = 1.0
+      bounceAudio.play().catch((err) => {
+        console.log('Bounce sound failed:', bouncePath, err)
+        // Try another bounce sound if first fails
+        const remainingSounds = bounceSounds.filter(s => s !== randomBounce)
+        if (remainingSounds.length > 0) {
+          const anotherBounce = remainingSounds[Math.floor(Math.random() * remainingSounds.length)]
+          const anotherAudio = new Audio(`/img/quoters/projectiles/sounds/${anotherBounce}`)
+          anotherAudio.volume = 1.0
+          anotherAudio.play().catch(() => {
+            // Silently fail if all bounce sounds fail
+          })
+        }
+      })
+    }
+
+    // Helper function to play sound with fallback
+    const playSoundWithFallback = (projName, isBouncing) => {
+      if (isBouncing) {
+        // For bouncing projectiles, always try to play a bounce sound
+        // Also try specific sound if it exists
+        const specificSound = `/img/quoters/projectiles/sounds/${projName}.mp3`
+        const audio = new Audio(specificSound)
+        audio.volume = 1.0
+        
+        // Try to play specific sound
+        audio.play().catch(() => {
+          // Specific sound doesn't exist or failed - that's ok, we'll use bounce sound
+        })
+        
+        // Always play bounce sound (will play even if specific sound also plays)
+        // Use small delay to ensure bounce sound plays if specific doesn't
+        setTimeout(() => {
+          playBounceSound()
+        }, 50)
+      } else {
+        // Non-bouncing projectile - play specific sound
+        const soundPath = `/img/quoters/projectiles/sounds/${projName}.mp3`
+        playSound(soundPath)
+      }
+    }
+
+    // Start animation immediately
+    const animate = () => {
+      const elapsed = Date.now() - startTime
+      const currentPanelRect = panelRef.current?.getBoundingClientRect() || initialPanelRect
+
+      let viewportX, viewportY, scale, rotation, scaleX, scaleY
+
+      if (!hasBounced && elapsed >= flightDuration) {
+        // Projectile has reached target - handle impact
+        const impactX = targetViewportX
+        const impactY = targetViewportY
+
+        if (willBounce) {
+          // Calculate bounce physics
+          hasBounced = true
+          bounceTime = Date.now()
+          bounceX = impactX
+          bounceY = impactY
+
+          // Calculate velocity at impact
+          // At impact, we've traveled from startX to targetX in time t
+          // The x-velocity is approximately constant (maintained)
+          const impactVx = (targetViewportX - startX) / t
+          
+          // For y-velocity at impact, we calculate from the trajectory
+          // At impact: y = startY + v0y*t - 0.5*g*t² = targetY
+          // So: v0y = (targetY - startY + 0.5*g*t²) / t
+          // At impact time t, the y-velocity is: v0y - g*t
+          const impactVy = ((targetViewportY - startY) + 0.5 * g * t * t) / t - g * t
+
+          // Bounce: maintain x-velocity, reverse and significantly reduce y-velocity
+          // More realistic bounce: less vertical bounce, more horizontal movement
+          const bounceEnergyLossX = 0.6 // 60% of x-velocity maintained
+          const bounceEnergyLossY = 0.3 // Only 30% of y-velocity for realistic bounce (much less vertical)
+          bounceVx = impactVx * bounceEnergyLossX // Maintain x-direction, slightly reduced
+          // Reverse y-velocity and reduce it significantly for realistic bounce
+          // The bounce should be much smaller vertically - like a real object bouncing
+          bounceVy = -Math.abs(impactVy) * bounceEnergyLossY // Much smaller vertical bounce
+
+          // Grow by 30% after bounce (scale was 25% at impact, grow to 32.5%)
+          postBounceScale = 0.25 * 1.3
+
+          // Play sound effect with fallback
+          playSoundWithFallback(projectileName, true)
+        } else {
+          // Show splat for non-bouncing projectiles
+          setProjectileData(null)
+          
+          // Try custom splat first, fallback to default
+          const customSplatPath = `/img/quoters/projectiles/splats/${projectileName}.svg`
+          const defaultSplatPath = `/img/quoters/projectiles/splats/projectile-splat.svg`
+          
+          // Show splat at target position
+          // Store both panel-relative (for reference) and viewport coordinates (for portal rendering)
+          const splatX = impactX - currentPanelRect.left
+          const splatY = impactY - currentPanelRect.top
+          setSplatData({
+            x: splatX, // Panel-relative (for reference)
+            y: splatY, // Panel-relative (for reference)
+            viewportX: impactX, // Viewport coordinates for portal rendering
+            viewportY: impactY, // Viewport coordinates for portal rendering
+            isCharacterClick,
+            splatSrc: customSplatPath // Will try custom, fallback handled in render
+          })
+
+          // Play sound effect
+          playSoundWithFallback(projectileName, false)
+
+          // Hide splat after 1.5 seconds visible + 500ms fade-out = 2000ms total
+          setTimeout(() => {
+            setSplatData(null)
+            setProjectileInFlight(false)
+          }, 2000)
+
+          return
+        }
+      }
+
+      if (hasBounced) {
+        // Post-bounce animation
+        const bounceElapsed = (Date.now() - bounceTime) / 1000 // Time since bounce in seconds
+        
+        // Calculate position after bounce using physics
+        viewportX = bounceX + bounceVx * bounceElapsed
+        viewportY = bounceY + bounceVy * bounceElapsed + 0.5 * g * bounceElapsed * bounceElapsed
+
+        // Scale grows slightly after bounce (30% larger)
+        scale = postBounceScale
+
+        // Continue rotation
+        rotation = rotationSpeed + (rotationSpeed * 0.1 * bounceElapsed)
+
+        // No deformation after bounce
+        scaleX = 1
+        scaleY = 1
+
+        // Check if projectile has exited viewport
+        if (viewportY > window.innerHeight + 200) {
+          // Projectile has fallen off screen
+          setProjectileData(null)
+          setProjectileInFlight(false)
+          return
+        }
+      } else {
+        // Pre-bounce animation (original flight)
+        const progress = Math.min(elapsed / flightDuration, 1)
+
+        // Calculate position using physics (in viewport coordinates)
+        // Apply ease-out easing to progress for smoother deceleration
+        const easeOutProgress = 1 - Math.pow(1 - progress, 3) // Cubic ease-out
+        // Use eased progress to interpolate between start and target
+        // This gives ease-out motion while maintaining parabolic trajectory
+        viewportX = startX + (targetViewportX - startX) * easeOutProgress
+        viewportY = startY + (targetViewportY - startY) * easeOutProgress
+        // Add parabolic arc effect using the eased progress
+        const arcHeight = 200 // Maximum arc height in pixels
+        const arcProgress = 4 * easeOutProgress * (1 - easeOutProgress) // Creates arc shape
+        const viewportYWithArc = viewportY - (arcHeight * arcProgress)
+        
+        // At the end (progress = 1), ensure we land exactly at target (no arc offset)
+        viewportY = progress >= 0.99 ? targetViewportY : viewportYWithArc
+
+        // Calculate scale (100% to 25%)
+        scale = 1 - (progress * 0.75)
+
+        // Calculate rotation
+        rotation = rotationSpeed * progress
+
+        // No deformation (temporarily disabled)
+        scaleX = 1
+        scaleY = 1
+      }
+
+      // Store viewport coordinates for portal rendering
+      setProjectileData({
+        src: projectileSrc,
+        x: viewportX,
+        y: viewportY,
+        scale,
+        rotation,
+        scaleX,
+        scaleY,
+        panelRect: currentPanelRect
+      })
+
+      projectileAnimationRef.current = requestAnimationFrame(animate)
+    }
+
+    // Start animation immediately
+    animate()
+  }
+
 
   // Cleanup on unmount
   useEffect(() => {
@@ -557,6 +897,9 @@ function QuotePanel({
       }
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current)
+      }
+      if (projectileAnimationRef.current) {
+        cancelAnimationFrame(projectileAnimationRef.current)
       }
     }
   }, [])
@@ -578,6 +921,7 @@ function QuotePanel({
     <div 
       ref={panelRef}
       className={`quote-panel ${isVisible ? 'visible' : ''}`}
+      onClick={handlePanelClick}
     >
       {/* Background */}
       {bgSrc && (
@@ -627,13 +971,84 @@ function QuotePanel({
 
       {/* Character */}
       {picSrc && (
-        <div className="quote-panel-character" style={characterStyle}>
+        <div 
+          className="quote-panel-character" 
+          style={characterStyle}
+          onMouseEnter={() => setIsCharacterHovered(true)}
+          onMouseLeave={() => setIsCharacterHovered(false)}
+        >
           <img 
+            ref={characterImageRef}
             src={picSrc} 
             alt={name || 'Character'}
             className={showCharacter ? 'character-materializing' : ''}
           />
         </div>
+      )}
+
+      {/* Projectile - rendered via portal at page level */}
+      {projectileData && typeof document !== 'undefined' && document.body && createPortal(
+        <img
+          src={projectileData.src}
+          alt="Projectile"
+          className="quote-panel-projectile"
+          style={{
+            position: 'fixed',
+            left: `${projectileData.x}px`,
+            top: `${projectileData.y}px`,
+            transform: `translate(-50%, -50%) scale(${projectileData.scale}) scaleX(${projectileData.scaleX}) scaleY(${projectileData.scaleY}) rotate(${projectileData.rotation}deg)`,
+            transformOrigin: 'center center',
+            display: 'block',
+            opacity: 1,
+            visibility: 'visible',
+            zIndex: 9999,
+            width: '400px',
+            height: '400px',
+            objectFit: 'contain',
+          }}
+          onLoad={(e) => {
+            const img = e.target
+            console.log('Projectile image loaded successfully:', projectileData.src)
+            console.log('Image position:', { x: projectileData.x, y: projectileData.y })
+            console.log('Image computed style:', {
+              display: window.getComputedStyle(img).display,
+              visibility: window.getComputedStyle(img).visibility,
+              opacity: window.getComputedStyle(img).opacity,
+              zIndex: window.getComputedStyle(img).zIndex,
+              position: window.getComputedStyle(img).position,
+              width: window.getComputedStyle(img).width,
+              height: window.getComputedStyle(img).height,
+              transform: window.getComputedStyle(img).transform
+            })
+            console.log('Image bounding rect:', img.getBoundingClientRect())
+          }}
+          onError={(e) => {
+            console.error('Projectile image failed to load:', projectileData.src, e)
+          }}
+        />,
+        document.body
+      )}
+
+      {/* Splat - rendered via portal at page level to avoid clipping */}
+      {splatData && typeof document !== 'undefined' && document.body && createPortal(
+        <img
+          src={splatData.splatSrc || "/img/quoters/projectiles/splats/projectile-splat.svg"}
+          alt="Splat"
+          className="quote-panel-splat"
+          style={{
+            position: 'fixed',
+            left: `${splatData.viewportX || splatData.x}px`,
+            top: `${splatData.viewportY || splatData.y}px`,
+            transform: 'translate(-50%, -50%)'
+          }}
+          onError={(e) => {
+            // Fallback to default splat if custom splat doesn't exist
+            if (e.target.src !== "/img/quoters/projectiles/splats/projectile-splat.svg") {
+              e.target.src = "/img/quoters/projectiles/splats/projectile-splat.svg"
+            }
+          }}
+        />,
+        document.body
       )}
 
       {/* Speech Bubbles (words SVGs) */}
