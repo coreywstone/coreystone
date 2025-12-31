@@ -917,7 +917,7 @@ function QuotePanel({
 
   // List of projectiles that bounce instead of splatting
   const bouncingProjectiles = [
-    'beachball', 'fish', 'flamingo', 'foamfinger', 'frisbee',
+    'beachball', 'flamingo', 'foamfinger', 'frisbee',
     'rubberchicken', 'rubberduck', 'shoe', 'teddybear',
     'toiletpaper', 'volleyball'
   ]
@@ -1062,22 +1062,47 @@ function QuotePanel({
     // Helper function to play sound with fallback
     const playSoundWithFallback = (projName, isBouncing) => {
       if (isBouncing) {
-        // For bouncing projectiles, always try to play a bounce sound
-        // Also try specific sound if it exists
-        const specificSound = `/img/quoters/projectiles/sounds/${projName}.mp3`
-        const audio = new Audio(specificSound)
+        // For bouncing projectiles, try to play specific sound first
+        // Only play boing if specific sound doesn't exist
+        const specificSoundPath = `/img/quoters/projectiles/sounds/${projName}.mp3`
+        const audio = new Audio(specificSoundPath)
         audio.volume = 1.0
         
-        // Try to play specific sound
-        audio.play().catch(() => {
-          // Specific sound doesn't exist or failed - that's ok, we'll use bounce sound
+        let specificSoundPlayed = false
+        let boingPlayed = false
+        
+        // Check if audio file exists by listening for error event
+        audio.addEventListener('error', () => {
+          // Sound file doesn't exist - play boing
+          if (!specificSoundPlayed && !boingPlayed) {
+            boingPlayed = true
+            playBounceSound()
+          }
         })
         
-        // Always play bounce sound (will play even if specific sound also plays)
-        // Use small delay to ensure bounce sound plays if specific doesn't
-        setTimeout(() => {
-          playBounceSound()
-        }, 50)
+        // Try to play specific sound
+        audio.play()
+          .then(() => {
+            // Specific sound played successfully - don't play boing
+            specificSoundPlayed = true
+          })
+          .catch(() => {
+            // Play promise rejected - check if file exists
+            // If readyState is 0, file likely doesn't exist (error event will fire)
+            // If readyState > 0, file exists but play() was rejected (e.g., autoplay policy)
+            // In that case, we still don't want to play boing since the file exists
+            if (audio.readyState === 0) {
+              // File doesn't exist - error event will trigger boing
+              // But add a small delay to ensure error event fires first
+              setTimeout(() => {
+                if (!specificSoundPlayed && !boingPlayed) {
+                  boingPlayed = true
+                  playBounceSound()
+                }
+              }, 100)
+            }
+            // If readyState > 0, file exists but couldn't play - don't play boing
+          })
       } else {
         // Non-bouncing projectile - play specific sound
         const soundPath = `/img/quoters/projectiles/sounds/${projName}.mp3`
@@ -1101,6 +1126,13 @@ function QuotePanel({
         if (isCharacterClick) {
           // Character defense: show force field and bounce projectile
           setShowForceField(true)
+          
+          // Play force field sound
+          const forceFieldSound = new Audio('/img/quoters/projectiles/sounds/forcefield.mp3')
+          forceFieldSound.volume = 1.0
+          forceFieldSound.play().catch(err => {
+            console.log('Force field sound failed to play:', err)
+          })
           
           // Calculate bounce physics (same as regular bounce)
           hasBounced = true
@@ -1130,6 +1162,13 @@ function QuotePanel({
               setPlasmaGunRaised(true)
               // Wait 1 second after gun is fully raised, then start particle emission
               setTimeout(() => {
+                // Play plasma gun sound
+                const plasmaGunSound = new Audio('/img/quoters/projectiles/sounds/plasmagun.mp3')
+                plasmaGunSound.volume = 1.0
+                plasmaGunSound.play().catch(err => {
+                  console.log('Plasma gun sound failed to play:', err)
+                })
+                
                 startParticleEmission()
               }, 1000) // 1 second delay after gun is raised
             }, 300) // After gun raise animation completes
