@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import InlineSVG from './InlineSVG'
 import './VideoControls.css'
 
@@ -6,6 +6,26 @@ function VideoControls({ videoRef, visible = false }) {
   const [isPlaying, setIsPlaying] = useState(true)
   const [activeButton, setActiveButton] = useState(null)
   const [splashData, setSplashData] = useState(null) // { buttonId, droplets: [{ id, x, y }] }
+  const buttonClickSound = useRef(null)
+  const rewindSound = useRef(null)
+
+  // Initialize audio objects
+  useEffect(() => {
+    buttonClickSound.current = new Audio('/img/ui/buttonclick.mp3')
+    rewindSound.current = new Audio('/img/ui/rewind.mp3')
+    
+    return () => {
+      // Cleanup
+      if (buttonClickSound.current) {
+        buttonClickSound.current.pause()
+        buttonClickSound.current = null
+      }
+      if (rewindSound.current) {
+        rewindSound.current.pause()
+        rewindSound.current = null
+      }
+    }
+  }, [])
 
   // Sync playing state with video events
   useEffect(() => {
@@ -89,6 +109,13 @@ function VideoControls({ videoRef, visible = false }) {
         videoRef.current.currentTime = 0
       }
     })
+    // Play button click sound
+    if (buttonClickSound.current) {
+      buttonClickSound.current.currentTime = 0
+      buttonClickSound.current.play().catch(() => {
+        // Ignore play() errors (e.g., if user hasn't interacted with page yet)
+      })
+    }
   }
 
   const handleRewind = (e) => {
@@ -98,6 +125,13 @@ function VideoControls({ videoRef, visible = false }) {
         videoRef.current.currentTime = Math.max(0, videoRef.current.currentTime - 7)
       }
     })
+    // Play rewind sound
+    if (rewindSound.current) {
+      rewindSound.current.currentTime = 0
+      rewindSound.current.play().catch(() => {
+        // Ignore play() errors (e.g., if user hasn't interacted with page yet)
+      })
+    }
   }
 
   const handlePlayPause = (e) => {
@@ -111,6 +145,13 @@ function VideoControls({ videoRef, visible = false }) {
         }
       }
     })
+    // Play button click sound
+    if (buttonClickSound.current) {
+      buttonClickSound.current.currentTime = 0
+      buttonClickSound.current.play().catch(() => {
+        // Ignore play() errors (e.g., if user hasn't interacted with page yet)
+      })
+    }
   }
 
   return (
