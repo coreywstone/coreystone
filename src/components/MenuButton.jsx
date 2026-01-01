@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import './MenuButton.css'
 
 function MenuButton() {
@@ -104,13 +105,13 @@ function MenuButton() {
             ref={menuRef}
             className="menu-dropdown"
           >
-            <a 
-              href="/bio" 
+            <Link 
+              to="/bio" 
               className="menu-item"
               onClick={() => setIsOpen(false)}
             >
               Bio
-            </a>
+            </Link>
             <a 
               href="mailto:coreywstone@gmail.com" 
               className="menu-item"
