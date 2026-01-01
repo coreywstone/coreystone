@@ -13,6 +13,7 @@
   --color-white-ish: #F5EFE7; /* White-ish/Cream - talk bubbles and reverse text */
   --color-blue: #8199E9; /* Blue - links and buttons */
   --color-blue-brighter: #B8C9F4; /* Blue - 50% brighter for hover states */
+  --color-link-hover: #3160FD; /* Link hover color */
   
   /* Additional Palette Colors */
   --color-charcoal: #48526B; /* Charcoal - dim text, pants */

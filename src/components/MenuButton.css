@@ -233,7 +233,7 @@
 }
 
 .modal-text-container a:hover {
-  color: var(--color-coral);
+  color: var(--color-link-hover);
   text-decoration: underline;
 }
 
