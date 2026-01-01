@@ -6,6 +6,14 @@ function Footer() {
   const currentYear = new Date().getFullYear()
   const location = useLocation()
 
+  const playButtonSound = () => {
+    const audio = new Audio('/img/ui/buttonclick.mp3')
+    audio.play().catch(err => {
+      // Ignore audio play errors (user interaction may be required)
+      console.log('Audio play failed:', err)
+    })
+  }
+
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -25,17 +33,17 @@ function Footer() {
         
         <ul className="footer-social">
           <li>
-            <a href="https://www.linkedin.com/in/coreywstone/" className="btn-social" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/coreywstone/" className="btn-social" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" onClick={playButtonSound}>
               <InlineSVG src="/img/ui/linkedin-icon.svg" alt="LinkedIn" />
             </a>
           </li>
           <li>
-            <a href="mailto:coreywstone@gmail.com" className="btn-social" target="_blank" rel="noopener noreferrer" aria-label="Email">
+            <a href="mailto:coreywstone@gmail.com" className="btn-social" target="_blank" rel="noopener noreferrer" aria-label="Email" onClick={playButtonSound}>
               <InlineSVG src="/img/ui/mail-icon.svg" alt="Email" />
             </a>
           </li>
           <li>
-            <a href="https://www.facebook.com/coreywstone" className="btn-social" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <a href="https://www.facebook.com/coreywstone" className="btn-social" target="_blank" rel="noopener noreferrer" aria-label="Facebook" onClick={playButtonSound}>
               <InlineSVG src="/img/ui/facebook-icon.svg" alt="Facebook" />
             </a>
           </li>
