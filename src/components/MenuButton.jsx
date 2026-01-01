@@ -139,7 +139,7 @@ function MenuButton() {
       </div>
 
       {isModalOpen && (
-        <div className="modal-overlay">
+        <div className={`modal-overlay ${isModalClosing ? 'closing' : ''}`}>
           <div 
             ref={modalRef}
             className={`modal-content ${isModalClosing ? 'closing' : ''}`}
@@ -152,7 +152,7 @@ function MenuButton() {
               <InlineSVG src="/img/ui/close.svg" alt="Close" />
             </button>
             <div className="modal-text-container">
-              <p>I wondered, how might I make my portfolio engaging and easy to read? Comics! And no more hand-coding HTML/CSS, so I vibe-coded it in <a href="https://cursor.sh" target="_blank" rel="noopener noreferrer">Cursor</a>, used <a href="https://recraft.ai" target="_blank" rel="noopener noreferrer">Recraft.ai</a> for imagery, and <a href="https://perplexity.ai" target="_blank" rel="noopener noreferrer">Perplexity</a> for research and how-to's. It's been fun!</p>
+              <p>I wondered, how might I make my portfolio engaging and easy to read? Comics! And after years of hand-coding HTML/CSS, I built this in <a href="https://cursor.sh" target="_blank" rel="noopener noreferrer">Cursor</a>, used <a href="https://recraft.ai" target="_blank" rel="noopener noreferrer">Recraft.ai</a> for image gen, <a href="https://getsoundly.com/" target="_blank" rel="noopener noreferrer">Soundly</a>, and <a href="https://perplexity.ai" target="_blank" rel="noopener noreferrer">Perplexity</a> for research. It's been fun! 🤠</p>
             </div>
             <div className="modal-image-container">
               <img src="/img/me/about-this-site-bg-50.jpg" alt="" />
