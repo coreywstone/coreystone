@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import InlineSVG from './InlineSVG'
 import './MenuButton.css'
 
 function MenuButton() {
@@ -42,7 +43,7 @@ function MenuButton() {
         setTimeout(() => {
           setIsModalOpen(false)
           setIsModalClosing(false)
-        }, 300) // Match animation duration
+        }, 250) // Match closing animation duration
       }
     }
 
@@ -69,12 +70,11 @@ function MenuButton() {
   }
 
   const handleCloseModal = () => {
-    playButtonSound()
     setIsModalClosing(true)
     setTimeout(() => {
       setIsModalOpen(false)
       setIsModalClosing(false)
-    }, 300) // Match animation duration
+    }, 250) // Match closing animation duration
   }
 
   return (
@@ -144,15 +144,19 @@ function MenuButton() {
             ref={modalRef}
             className={`modal-content ${isModalClosing ? 'closing' : ''}`}
           >
+            <button
+              className="modal-close-icon-button"
+              onClick={handleCloseModal}
+              aria-label="Close"
+            >
+              <InlineSVG src="/img/ui/close.svg" alt="Close" />
+            </button>
             <div className="modal-text-container">
               <p>I wondered, how might I make my portfolio engaging and easy to read? Comics! And no more hand-coding HTML/CSS, so I vibe-coded it in <a href="https://cursor.sh" target="_blank" rel="noopener noreferrer">Cursor</a>, used <a href="https://recraft.ai" target="_blank" rel="noopener noreferrer">Recraft.ai</a> for imagery, and <a href="https://perplexity.ai" target="_blank" rel="noopener noreferrer">Perplexity</a> for research and how-to's. It's been fun!</p>
             </div>
-            <button
-              className="modal-close-button"
-              onClick={handleCloseModal}
-            >
-              Close
-            </button>
+            <div className="modal-image-container">
+              <img src="/img/me/about-this-site-bg-50.jpg" alt="" />
+            </div>
           </div>
         </div>
       )}
