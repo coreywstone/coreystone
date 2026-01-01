@@ -93,7 +93,7 @@ function Home() {
             <div className="about-text">
               <p className="introtext">
                 👋 Hello! I'm Corey, an action-biased ambiguity-loving Super-IC Product Designer 
-                and dad of 4 kids and many animals (<a href="https://coreystone.com/bio/">see bio</a> for dog pic).
+                and dad of 4 kids and many animals (<a href="/bio">see bio</a> for dog pic).
                I don't really look like this, because the C on my chest stands for 🍪.
               </p>
               <p className="introtext">

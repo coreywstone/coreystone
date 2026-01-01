@@ -105,7 +105,7 @@ function MenuButton() {
             className="menu-dropdown"
           >
             <a 
-              href="https://coreystone.com/bio/" 
+              href="/bio" 
               className="menu-item"
               onClick={() => setIsOpen(false)}
             >
