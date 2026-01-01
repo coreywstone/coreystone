@@ -4,7 +4,7 @@
 
 .bio-section {
   padding: 4rem 0;
-  background-color: var(--color-near-black);
+  background-color: var(--color-charcoal);
 }
 
 .bio-title {
@@ -22,7 +22,7 @@
 }
 
 .bio-text {
-  flex: 1;
+  flex: 1 1 calc(50% - 1.5rem);
   min-width: 300px;
 }
 
@@ -46,17 +46,17 @@
 }
 
 .bio-image {
-  flex: 0 0 300px;
+  flex: 1 1 calc(50% - 1.5rem);
   display: flex;
   justify-content: center;
 }
 
 .polaroid {
-  background-color: var(--color-near-white);
+  background-color: var(--color-white-ish);
   padding: 1rem 1rem 3rem 1rem;
   border-radius: var(--border-radius);
-  border: 2px solid var(--color-blue);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: none;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   max-width: 100%;
 }
 
@@ -86,6 +86,7 @@
   .bio-text {
     order: 2;
     text-align: left;
+    flex: 0 0 auto;
   }
   
   .bio-image {
