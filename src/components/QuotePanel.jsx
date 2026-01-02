@@ -3,6 +3,9 @@ import { createPortal } from 'react-dom'
 import InlineSVG from './InlineSVG'
 import './QuotePanel.css'
 
+// Shared across all QuotePanel instances to prevent same projectile twice in a row globally
+const globalLastProjectileRef = { current: null }
+
 function QuotePanel({ 
   name,
   bgSrc,
@@ -47,7 +50,6 @@ function QuotePanel({
   const bubbleTimeoutRef = useRef(null)
   const wordsDelayTimeoutRef = useRef(null)
   const teleporterTimeoutRef = useRef(null)
-  const lastProjectileRef = useRef(null) // Track last selected projectile to avoid repeats
   const canvasRef = useRef(null)
   const animationFrameRef = useRef(null)
   const particlesRef = useRef([])
@@ -952,17 +954,17 @@ function QuotePanel({
       e.target === characterImageRef.current || 
       characterImageRef.current.contains(e.target)
 
-    // Randomly select a projectile (excluding the last one to avoid repeats)
-    const availableProjectiles = lastProjectileRef.current 
-      ? projectileFiles.filter(p => p !== lastProjectileRef.current)
+    // Randomly select a projectile (excluding the last one to avoid repeats across all panels)
+    const availableProjectiles = globalLastProjectileRef.current 
+      ? projectileFiles.filter(p => p !== globalLastProjectileRef.current)
       : projectileFiles
     
     // Fallback to all projectiles if only one option (shouldn't happen, but safety check)
     const projectilesToChooseFrom = availableProjectiles.length > 0 ? availableProjectiles : projectileFiles
     const randomProjectile = projectilesToChooseFrom[Math.floor(Math.random() * projectilesToChooseFrom.length)]
     
-    // Store the selected projectile for next time
-    lastProjectileRef.current = randomProjectile
+    // Store the selected projectile for next time (globally, across all panels)
+    globalLastProjectileRef.current = randomProjectile
     
     const projectileSrc = `/img/quoters/projectiles/${randomProjectile}`
 
