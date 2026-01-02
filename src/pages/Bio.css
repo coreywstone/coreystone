@@ -1,16 +1,18 @@
 .bio-page {
   width: 100%;
+  background-color: var(--color-near-white);
+  min-height: 100vh;
 }
 
 .bio-section {
   padding: 4rem 0;
-  background-color: var(--color-charcoal);
+  background-color: var(--color-near-white);
 }
 
 .bio-title {
   text-align: center;
   margin-bottom: 3rem;
-  color: var(--color-near-white);
+  color: var(--color-near-black);
 }
 
 .bio-row {
@@ -28,6 +30,7 @@
 
 .bio-text p {
   margin-bottom: 1.5rem;
+  color: var(--color-near-black);
 }
 
 .bio-text ul {
@@ -38,7 +41,7 @@
 .bio-text li {
   margin-bottom: 0.75rem;
   font-family: var(--font-body);
-  color: var(--color-near-white);
+  color: var(--color-near-black);
 }
 
 .bio-text a {
@@ -54,9 +57,9 @@
 .polaroid {
   background-color: var(--color-white-ish);
   padding: 1rem 1rem 3rem 1rem;
-  border-radius: var(--border-radius);
-  border: none;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  border: 2px solid var(--color-near-black);
+  box-shadow: 2px 6px 0 var(--color-charcoal);
   max-width: 100%;
 }
 

@@ -10,7 +10,8 @@
   --color-near-black: #262629; /* Blackish - text and dark backgrounds */
   --color-near-white: #CED4E0; /* Marble - some backgrounds */
   --color-white: #FFFFFF; /* White - full white */
-  --color-white-ish: #F5EFE7; /* White-ish/Cream - talk bubbles and reverse text */
+  --color-cream: #F5EFE7; /* Cream - some backgrounds */
+  --color-white-ish: #FAFCFF; /* White-ish - talk bubbles and reverse text */
   --color-blue: #8199E9; /* Blue - links and buttons */
   --color-blue-brighter: #B8C9F4; /* Blue - 50% brighter for hover states */
   --color-link-hover: #3160FD; /* Link hover color */

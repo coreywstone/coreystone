@@ -106,6 +106,13 @@ function MenuButton() {
             className="menu-dropdown"
           >
             <Link 
+              to="/" 
+              className="menu-item"
+              onClick={() => setIsOpen(false)}
+            >
+              Home
+            </Link>
+            <Link 
               to="/bio" 
               className="menu-item"
               onClick={() => setIsOpen(false)}
