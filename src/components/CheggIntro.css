@@ -61,6 +61,7 @@
   cursor: pointer;
   background-color: white;
   padding: 0;
+  overflow: visible;
 }
 
 .chegg-intro-video {
