@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow: visible;
   margin: 0;
   padding: 0;
 }
@@ -105,8 +105,8 @@
 /* But-howww image - bottom right area, below video */
 .chegg-intro-but-howww {
   position: absolute;
-  bottom: 20px;
-  left: 616px;
+  bottom: 12px;
+  right: -180px;
   width: auto;
   height: auto;
   transform: scale(0.9);
