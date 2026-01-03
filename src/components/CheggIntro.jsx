@@ -134,6 +134,13 @@ function CheggIntro() {
         alt="Words 3"
         className={`chegg-intro-words chegg-intro-words3 ${currentWord >= 2 ? 'visible' : ''}`}
       />
+
+      {/* Skills used image */}
+      <img
+        src="/img/chegg/chegg-skills-used.svg"
+        alt="Skills used"
+        className="chegg-intro-skills-used"
+      />
     </div>
   )
 }

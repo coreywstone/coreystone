@@ -121,4 +121,14 @@
   transition-delay: 3000ms;
 }
 
+/* Skills used image - bottom left */
+.chegg-intro-skills-used {
+  position: absolute;
+  bottom: 12px;
+  left: 0px;
+  width: auto;
+  height: auto;
+  z-index: 2;
+}
+
 
