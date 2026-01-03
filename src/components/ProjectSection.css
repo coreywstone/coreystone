@@ -27,15 +27,19 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  right: 24px;
 }
 
 /* Ensure chegg-intro section is wide enough for the video */
-/* Video is at left: 460px, height: calc(100% - 200px), aspect-ratio: 16/9 */
-/* Section needs to be wide enough: 460px (left position) + video width */
-/* Using viewport height as approximation: video height ≈ (100vh - nav - 200px) */
+/* Video is at left: 400px, height determined by top: 32px and bottom: 124px, aspect-ratio: 16/9 */
+/* Video height = 100vh - 32px - 124px = 100vh - 156px */
+/* Video width = (100vh - 156px) * 16/9 */
+/* Section needs total width: 400px (left position) + video width + 24px (right gap) */
+/* chegg-intro uses right: 24px to create the gap, so section width = video right edge + 24px */
 .project-section:has(.chegg-intro) {
-  min-width: calc(460px + (100vh - 300px) * 16 / 9);
+  width: calc(400px + (100vh - 156px) * 16 / 9 + 24px);
+  min-width: calc(400px + (100vh - 156px) * 16 / 9 + 24px);
+  max-width: calc(400px + (100vh - 156px) * 16 / 9 + 24px);
 }
 
 .project-section * {

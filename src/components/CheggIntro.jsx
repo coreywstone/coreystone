@@ -82,7 +82,7 @@ function CheggIntro() {
       <div className="chegg-intro-bg" />
       
       {/* Backstory */}
-      <Backstory width="380px">
+      <Backstory width="340px">
         Chegg's "Skills" division (fka Thinkful) has 75 staff and sells a B2B2C async adult upskilling SaaS with human coaches.
       </Backstory>
 

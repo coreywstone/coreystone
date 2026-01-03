@@ -6,7 +6,7 @@
   height: 100%;
   overflow: hidden;
   margin: 0;
-  padding: 0 32px 0 0;
+  padding: 0;
 }
 
 .chegg-intro-bg {
@@ -15,7 +15,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(258.41deg, #FFFFFF 69.59%, #CED4E0 98.74%);
+  background-color: #DDE0E7;
+  background-image: url('/img/chegg/chegg-intro-bg.svg');
+  background-position: bottom left;
+  background-size: auto;
+  background-repeat: no-repeat;
   z-index: 0;
   margin: 0;
   padding: 0;
@@ -34,12 +38,14 @@
 .chegg-intro-video-container {
   position: absolute;
   top: 32px;
-  left: 460px;
-  height: calc(100% - 200px);
+  bottom: 124px;
+  left: 400px;
   width: auto;
   aspect-ratio: 16 / 9;
   z-index: 2;
   cursor: pointer;
+  background-color: white;
+  padding: 0;
 }
 
 .chegg-intro-video {
@@ -47,7 +53,9 @@
   height: 100%;
   object-fit: contain;
   display: block;
-  border-radius: 32px;
+  border: 8px solid var(--color-charcoal);
+  border-radius: 2px;
+  box-shadow: 4px 6px 0 rgba(72, 82, 107, 0.35);
   overflow: hidden;
 }
 
