@@ -9,10 +9,19 @@ function CheggIntro() {
   const [hasAnimated, setHasAnimated] = useState(false)
   const videoRef = useRef(null)
   const [showControls, setShowControls] = useState(false)
-  
-  // Random rotations for burst explosions (generated once on mount)
-  const [rotation75, setRotation75] = useState(() => Math.random() * 40 - 20) // -20 to 20
-  const [rotation8, setRotation8] = useState(() => Math.random() * 40 - 20) // -20 to 20
+  const [currentWord, setCurrentWord] = useState(-1)
+  const bubbleTimeoutRef = useRef(null)
+
+  const startWordSequence = (wordIndex) => {
+    if (wordIndex >= 3) {
+      return
+    }
+
+    setCurrentWord(wordIndex)
+    bubbleTimeoutRef.current = setTimeout(() => {
+      startWordSequence(wordIndex + 1)
+    }, 500)
+  }
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -21,10 +30,23 @@ function CheggIntro() {
           if (entry.isIntersecting && !hasAnimated) {
             setIsVisible(true)
             setHasAnimated(true)
+            
+            // Start video playback
+            if (videoRef.current) {
+              videoRef.current.play().catch((error) => {
+                // Ignore autoplay errors (user interaction may be required)
+                console.log('Video autoplay prevented:', error)
+              })
+            }
+            
+            // Start word sequence after me image transition (200ms)
+            setTimeout(() => {
+              startWordSequence(0)
+            }, 200)
           }
         })
       },
-      { threshold: 0.2 }
+      { threshold: 0.67 }
     )
 
     if (containerRef.current) {
@@ -34,6 +56,9 @@ function CheggIntro() {
     return () => {
       if (containerRef.current) {
         observer.unobserve(containerRef.current)
+      }
+      if (bubbleTimeoutRef.current) {
+        clearTimeout(bubbleTimeoutRef.current)
       }
     }
   }, [hasAnimated])
@@ -72,7 +97,6 @@ function CheggIntro() {
           ref={videoRef}
           className="chegg-intro-video"
           src="/img/chegg/chegg-sizzle-reel-rect720p.mp4"
-          autoPlay
           muted
           loop
           playsInline
@@ -94,32 +118,22 @@ function CheggIntro() {
         className={`chegg-intro-me ${isVisible ? 'animate' : ''}`}
       />
 
-      {/* Talk bubble */}
+      {/* Words - revealed sequentially */}
       <img
-        src="/img/chegg/chegg-intro-bubble.svg"
-        alt="Talk bubble"
-        className={`chegg-intro-bubble ${isVisible ? 'animate' : ''}`}
+        src="/img/chegg/chegg-intro-words1.svg"
+        alt="Words 1"
+        className={`chegg-intro-words chegg-intro-words1 ${currentWord >= 0 ? 'visible' : ''}`}
       />
-
-      {/* 75% burst */}
-      <div className={`chegg-intro-burst-75-container ${isVisible ? 'animate' : ''}`}>
-        <img
-          src="/img/chegg/chegg-75percent-burst.svg"
-          alt="75%"
-          className="chegg-intro-burst-75"
-          style={{ '--initial-rotation': `${rotation75}deg` }}
-        />
-      </div>
-
-      {/* 8% burst */}
-      <div className={`chegg-intro-burst-8-container ${isVisible ? 'animate' : ''}`}>
-        <img
-          src="/img/chegg/chegg-8percent-burst.svg"
-          alt="8%"
-          className="chegg-intro-burst-8"
-          style={{ '--initial-rotation': `${rotation8}deg` }}
-        />
-      </div>
+      <img
+        src="/img/chegg/chegg-intro-words2.svg"
+        alt="Words 2"
+        className={`chegg-intro-words chegg-intro-words2 ${currentWord >= 1 ? 'visible' : ''}`}
+      />
+      <img
+        src="/img/chegg/chegg-intro-words3.svg"
+        alt="Words 3"
+        className={`chegg-intro-words chegg-intro-words3 ${currentWord >= 2 ? 'visible' : ''}`}
+      />
     </div>
   )
 }

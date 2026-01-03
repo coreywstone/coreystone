@@ -58,10 +58,10 @@
   left: 0;
   height: auto;
   width: auto;
-  z-index: 2;
+  z-index: 1;
   transform: translateY(100%);
   opacity: 0;
-  transition: transform 800ms ease-out, opacity 800ms ease-out;
+  transition: transform 200ms ease-out, opacity 200ms ease-out;
 }
 
 .chegg-intro-me.animate {
@@ -69,90 +69,29 @@
   opacity: 1;
 }
 
-/* Talk bubble - above me, pinned bottom left */
-.chegg-intro-bubble {
+/* Words - positioned at bottom left, revealed sequentially */
+.chegg-intro-words {
   position: absolute;
-  bottom: 240px;
-  left: 24px;
+  bottom: 0;
+  left: 0;
   height: auto;
   width: auto;
   z-index: 2;
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 600ms ease-out, transform 600ms ease-out;
+  transition: opacity 150ms ease-out;
+  pointer-events: none;
 }
 
-.chegg-intro-bubble.animate {
+.chegg-intro-words.visible {
   opacity: 1;
-  transform: translateY(0);
-  transition-delay: 500ms;
 }
 
-/* 75% burst - explosion animation, to the right of talk bubble */
-.chegg-intro-burst-75-container {
-  position: absolute;
-  bottom: 92px;
-  left: 160px;
-  height: auto;
-  width: auto;
+.chegg-intro-words2 {
   z-index: 3;
 }
 
-.chegg-intro-burst-75 {
-  height: auto;
-  width: auto;
-  display: block;
-  transform: scale(0) rotate(var(--initial-rotation, 0deg));
-  opacity: 0;
-  transition: transform 0s, opacity 0s;
-}
-
-.chegg-intro-burst-75-container.animate .chegg-intro-burst-75 {
-  transform: scale(1) rotate(0deg);
-  opacity: 1;
-  transition: transform 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55), 
-              opacity 300ms ease-out;
-  transition-delay: 1000ms;
-  transform-origin: center;
-}
-
-/* Hover effect: grow to 102% */
-.chegg-intro-burst-75-container.animate:hover .chegg-intro-burst-75 {
-  transform: scale(1.02) rotate(0deg);
-}
-
-
-/* 8% burst - explosion animation, below 75% burst */
-.chegg-intro-burst-8-container {
-  position: absolute;
-  bottom: 0px;
-  left: 358px;
-  height: auto;
-  width: auto;
-  z-index: 3;
-}
-
-.chegg-intro-burst-8 {
-  height: auto;
-  width: auto;
-  display: block;
-  transform: scale(0) rotate(var(--initial-rotation, 0deg));
-  opacity: 0;
-  transition: transform 0s, opacity 0s;
-}
-
-.chegg-intro-burst-8-container.animate .chegg-intro-burst-8 {
-  transform: scale(1) rotate(0deg);
-  opacity: 1;
-  transition: transform 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55), 
-              opacity 300ms ease-out;
-  transition-delay: 2000ms;
-  transform-origin: center;
-}
-
-/* Hover effect: grow to 102% */
-.chegg-intro-burst-8-container.animate:hover .chegg-intro-burst-8 {
-  transform: scale(1.02) rotate(0deg);
+.chegg-intro-words3 {
+  z-index: 4;
 }
 
 /* But-howww image - bottom right area, below video */
