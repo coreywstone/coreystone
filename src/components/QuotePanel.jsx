@@ -466,7 +466,6 @@ function QuotePanel({
   // Animate plasma particles
   const animateParticles = (initialParticles, startTime, gunViewportX, gunViewportY) => {
     let particles = [...initialParticles]
-    let gunLowered = false
     
     const animate = () => {
       const elapsed = Date.now() - startTime
@@ -517,12 +516,6 @@ function QuotePanel({
             particle.sliding = true
             particle.slideStartTime = Date.now()
             particle.slideStartY = particle.currentY
-            
-            // Start lowering gun when first particle starts sliding
-            if (!gunLowered) {
-              gunLowered = true
-              setPlasmaGunLowering(true)
-            }
           } else if (particle.sliding) {
             // Slide down over 2 seconds with ease-in
             const slideElapsed = Date.now() - particle.slideStartTime
@@ -556,12 +549,17 @@ function QuotePanel({
       if (hasActiveParticles) {
         requestAnimationFrame(animate)
       } else {
-        // All particles are done, reset state
-        setPlasmaParticles([])
-        setShowPlasmaGun(false)
-        setPlasmaGunRaised(false)
-        setPlasmaGunLowering(false)
-        setProjectileInFlight(false)
+        // All particles have slid off screen - now lower the gun
+        setPlasmaGunLowering(true)
+        
+        // After gun finishes lowering, reset state
+        setTimeout(() => {
+          setPlasmaParticles([])
+          setShowPlasmaGun(false)
+          setPlasmaGunRaised(false)
+          setPlasmaGunLowering(false)
+          setProjectileInFlight(false)
+        }, 1500) // Wait for 1500ms gun lowering animation
       }
     }
 

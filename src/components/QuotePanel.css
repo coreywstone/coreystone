@@ -499,7 +499,7 @@
 
 .quote-panel-plasma-gun.lowering {
   bottom: -200px; /* Lower back out of view */
-  transition: bottom 300ms ease-in;
+  transition: bottom 1500ms ease-in;
 }
 
 .quote-panel-plasma-gun.lowering.flipped {
