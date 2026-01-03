@@ -78,8 +78,20 @@ function CheggIntro() {
 
   return (
     <div ref={containerRef} className="chegg-intro">
-      {/* Background gradient */}
+      {/* Background */}
       <div className="chegg-intro-bg" />
+      
+      {/* Background images */}
+      <img
+        src="/img/chegg/chegg-sanfran-window.svg"
+        alt=""
+        className="chegg-intro-bg-image chegg-intro-bg-sanfran"
+      />
+      <img
+        src="/img/chegg/chegg-video-outlet.svg"
+        alt=""
+        className="chegg-intro-bg-image chegg-intro-bg-outlet"
+      />
       
       {/* Backstory */}
       <Backstory width="340px">

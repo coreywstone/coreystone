@@ -16,13 +16,28 @@
   right: 0;
   bottom: 0;
   background-color: #DDE0E7;
-  background-image: url('/img/chegg/chegg-intro-bg.svg');
-  background-position: bottom left;
-  background-size: auto;
-  background-repeat: no-repeat;
   z-index: 0;
   margin: 0;
   padding: 0;
+}
+
+/* Background images */
+.chegg-intro-bg-image {
+  position: absolute;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.chegg-intro-bg-sanfran {
+  left: 0;
+  bottom: 124px;
+}
+
+.chegg-intro-bg-outlet {
+  left: 456px;
+  bottom: 0;
 }
 
 /* Backstory - pinned top left */
