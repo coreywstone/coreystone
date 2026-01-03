@@ -43,7 +43,7 @@
   left: 50%;
   transform-origin: center;
   pointer-events: none;
-  z-index: 10;
+  z-index: 9999;
   animation: dropletEmit 0.6s ease-out forwards;
   width: 15px; /* 50% larger: 10px * 1.5 = 15px */
   height: 21px; /* 50% larger: 14px * 1.5 = 21px */

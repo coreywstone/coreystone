@@ -8,6 +8,7 @@ function VideoControls({ videoRef, visible = false }) {
   const [splashData, setSplashData] = useState(null) // { buttonId, droplets: [{ id, x, y }] }
   const buttonClickSound = useRef(null)
   const rewindSound = useRef(null)
+  const splashCounterRef = useRef(0)
 
   // Initialize audio objects
   useEffect(() => {
@@ -81,24 +82,34 @@ function VideoControls({ videoRef, visible = false }) {
     // Execute the action
     action()
     // Trigger splash effect on release (for trackpad light tap)
+    splashCounterRef.current += 1
+    const splashId = splashCounterRef.current
     const dropletCount = Math.floor(Math.random() * 7) + 5 // 5-11 droplets
     const buttonRadius = 32 // Button is ~64px diameter, so radius is ~32px
+    const timestamp = Date.now()
     const droplets = Array.from({ length: dropletCount }, (_, i) => {
       const angle = (i / dropletCount) * Math.PI * 2 // Distribute evenly around circle
       const startDistance = buttonRadius // Start at button edge
       const travelDistance = (40 + Math.random() * 20) * 0.6 // Random travel distance 24-36px (60% of 40-60px)
       const totalDistance = startDistance + travelDistance
       return {
-        id: `${buttonId}-${Date.now()}-${i}`,
+        id: `${buttonId}-${splashId}-${i}-${timestamp}-${Math.random()}`,
         x: Math.cos(angle) * totalDistance,
         y: Math.sin(angle) * totalDistance,
         startX: Math.cos(angle) * startDistance,
         startY: Math.sin(angle) * startDistance
       }
     })
-    setSplashData({ buttonId, droplets })
+    // Always create new splash data to ensure animation triggers
+    setSplashData({ buttonId, droplets, splashId })
     setTimeout(() => {
-      setSplashData(null)
+      setSplashData(prev => {
+        // Only clear if this is still the current splash
+        if (prev && prev.splashId === splashId) {
+          return null
+        }
+        return prev
+      })
     }, 600) // Match animation duration
   }
 
