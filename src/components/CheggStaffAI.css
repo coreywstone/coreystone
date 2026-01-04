@@ -43,7 +43,7 @@
 .chegg-staff-ai-me-on-wire.animate {
   opacity: 1;
   transform-origin: top center;
-  animation: wire-descent 1000ms ease-in forwards, wire-bounce 600ms ease-out 1000ms forwards, wire-swing-dampen 8s ease-in-out 1600ms forwards, wire-swing-forever 3s ease-in-out 9600ms infinite;
+  animation: wire-descent 1000ms ease-in forwards, wire-bounce 600ms ease-out 1000ms forwards, wire-swing-forever 3s ease-in-out 1600ms infinite;
 }
 
 @keyframes wire-descent {
@@ -74,7 +74,7 @@
     transform: translateY(2px) rotate(1deg);
   }
   100% {
-    transform: translateY(0) rotate(1deg);
+    transform: translateY(0) rotate(0.2deg);
   }
 }
 
@@ -98,13 +98,13 @@
     transform: translateY(0) rotate(0.5deg);
   }
   75% {
-    transform: translateY(0) rotate(0.8deg);
-  }
-  87.5% {
     transform: translateY(0) rotate(0.4deg);
   }
+  87.5% {
+    transform: translateY(0) rotate(0.1deg);
+  }
   95% {
-    transform: translateY(0) rotate(0.2deg);
+    transform: translateY(0) rotate(0.15deg);
   }
   100% {
     transform: translateY(0) rotate(0.2deg);
