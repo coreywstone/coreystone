@@ -2,23 +2,24 @@
   width: 100%;
 }
 
-.project-section {
+/* Scope to only apply within .project-page to avoid conflicts with component sections */
+.project-page .project-section {
   padding: 4rem 0;
   background-color: var(--color-near-black);
   min-height: 60vh;
 }
 
-.project-section h1 {
+.project-page .project-section h1 {
   margin-bottom: 2rem;
   color: var(--color-near-white);
 }
 
-.project-section p {
+.project-page .project-section p {
   color: var(--color-near-white);
   margin-bottom: 1rem;
 }
 
-.project-section a {
+.project-page .project-section a {
   color: var(--color-blue);
 }
 

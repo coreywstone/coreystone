@@ -104,6 +104,39 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
     return () => container.removeEventListener('scroll', handleScroll)
   }, [sections])
 
+  // Calculate and set section heights based on viewport
+  useEffect(() => {
+    const calculateSectionHeight = () => {
+      const viewportHeight = window.innerHeight
+      const sectionHeight = viewportHeight - 84 // 72px nav + 12px border
+      return sectionHeight
+    }
+
+    const setSectionHeights = () => {
+      const height = calculateSectionHeight()
+      // Use setTimeout to ensure refs are populated after render
+      setTimeout(() => {
+        sectionRefs.current.forEach((ref) => {
+          if (ref) {
+            ref.style.setProperty('height', `${height}px`, 'important')
+            ref.style.setProperty('min-height', `${height}px`, 'important')
+          }
+        })
+      }, 0)
+    }
+
+    // Set initial height
+    setSectionHeights()
+
+    // Handle resize
+    const handleResize = () => {
+      setSectionHeights()
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [sections])
+
   const handleTabClick = (sectionId, index) => {
     const sectionRef = sectionRefs.current[index]
     if (sectionRef && scrollContainerRef.current) {

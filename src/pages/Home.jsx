@@ -4,6 +4,7 @@ import SketchesRow from '../components/SketchesRow'
 import MuralsRow from '../components/MuralsRow'
 import StarrySky from '../components/StarrySky'
 import CheggIntro from '../components/CheggIntro'
+import CheggStaffAI from '../components/CheggStaffAI'
 import quotesConfig from '../data/quotes.json'
 import { getQuoteAssets, getQuoteAlignment, getQuoteLinkedInUrl } from '../utils/quoteData'
 import './Home.css'
@@ -15,7 +16,11 @@ function Home() {
       label: 'INTRO',
       content: <CheggIntro />
     },
-    { id: 'staffs-ai', label: "STAFF'S AI" },
+    { 
+      id: 'staffs-ai', 
+      label: "STAFF'S AI",
+      content: <CheggStaffAI />
+    },
     { id: 'nav', label: 'NAV' },
     { id: 'dashboard', label: 'DASHBOARD' },
     { id: 'delight', label: 'DELIGHT' }
