@@ -23,5 +23,116 @@
   flex-shrink: 0;
   flex-grow: 0;
   box-sizing: border-box;
+  position: relative;
+}
+
+.chegg-staff-ai-me-on-wire {
+  position: absolute;
+  left: 100px;
+  bottom: 72px;
+  width: auto;
+  height: auto;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(-100vh);
+  transform-origin: top center;
+  transition: none;
+  pointer-events: none;
+}
+
+.chegg-staff-ai-me-on-wire.animate {
+  opacity: 1;
+  transform-origin: top center;
+  animation: wire-descent 1000ms ease-in forwards, wire-bounce 600ms ease-out 1000ms forwards, wire-swing-dampen 8s ease-in-out 1600ms forwards, wire-swing-forever 3s ease-in-out 9600ms infinite;
+}
+
+@keyframes wire-descent {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) rotate(1deg);
+    opacity: 1;
+  }
+}
+
+@keyframes wire-bounce {
+  0% {
+    transform: translateY(0) rotate(1deg);
+  }
+  30% {
+    transform: translateY(-15px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(8px) rotate(1deg);
+  }
+  70% {
+    transform: translateY(-4px) rotate(1deg);
+  }
+  85% {
+    transform: translateY(2px) rotate(1deg);
+  }
+  100% {
+    transform: translateY(0) rotate(1deg);
+  }
+}
+
+@keyframes wire-swing-dampen {
+  0% {
+    transform: translateY(0) rotate(1deg);
+  }
+  12.5% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(0) rotate(2deg);
+  }
+  37.5% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(0) rotate(1deg);
+  }
+  62.5% {
+    transform: translateY(0) rotate(0.5deg);
+  }
+  75% {
+    transform: translateY(0) rotate(0.8deg);
+  }
+  87.5% {
+    transform: translateY(0) rotate(0.4deg);
+  }
+  95% {
+    transform: translateY(0) rotate(0.2deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0.2deg);
+  }
+}
+
+@keyframes wire-swing-forever {
+  0%, 100% {
+    transform: translateY(0) rotate(0.2deg);
+  }
+  50% {
+    transform: translateY(0) rotate(-0.2deg);
+  }
+}
+
+.chegg-staff-ai-wire-words {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  opacity: 0;
+  transition: opacity 150ms ease-out;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.chegg-staff-ai-wire-words.visible {
+  opacity: 1;
 }
 
