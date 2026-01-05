@@ -5,6 +5,8 @@ function CheggStaffAI() {
   const wireRef = useRef(null)
   const [isVisible, setIsVisible] = useState(false)
   const [showWords, setShowWords] = useState(false)
+  const [showAsk, setShowAsk] = useState(false)
+  const [showHmm, setShowHmm] = useState(false)
 
   useEffect(() => {
     const wireElement = wireRef.current
@@ -61,6 +63,26 @@ function CheggStaffAI() {
     }
   }, [isVisible])
 
+  // Show ask image after 3 seconds
+  useEffect(() => {
+    if (isVisible) {
+      const timer = setTimeout(() => {
+        setShowAsk(true)
+      }, 3000)
+      return () => clearTimeout(timer)
+    }
+  }, [isVisible])
+
+  // Show hmm image at 5 seconds
+  useEffect(() => {
+    if (isVisible) {
+      const timer = setTimeout(() => {
+        setShowHmm(true)
+      }, 5000)
+      return () => clearTimeout(timer)
+    }
+  }, [isVisible])
+
   return (
     <div className="chegg-staff-ai-panel">
       <div ref={wireRef} className="chegg-staff-ai-wire">
@@ -74,6 +96,16 @@ function CheggStaffAI() {
           src="/img/chegg/chegg-wire-words.svg"
           alt=""
           className={`chegg-staff-ai-wire-words ${showWords ? 'visible' : ''}`}
+        />
+        <img
+          src="/img/chegg/chegg-wire-ask.svg"
+          alt=""
+          className={`chegg-staff-ai-wire-ask ${showAsk ? 'visible' : ''}`}
+        />
+        <img
+          src="/img/chegg/chegg-hmm-get-up-to-speed.svg"
+          alt=""
+          className={`chegg-staff-ai-hmm ${showHmm ? 'visible' : ''}`}
         />
       </div>
     </div>

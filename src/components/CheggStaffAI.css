@@ -136,3 +136,39 @@
   opacity: 1;
 }
 
+.chegg-staff-ai-wire-ask {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 300ms ease-out, opacity 300ms ease-out;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.chegg-staff-ai-wire-ask.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.chegg-staff-ai-hmm {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: auto;
+  height: auto;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 300ms ease-out, opacity 300ms ease-out;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.chegg-staff-ai-hmm.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
