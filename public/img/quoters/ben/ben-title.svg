@@ -17,5 +17,30 @@
 <clipPath id="clip0_892_158250">
 <rect width="14" height="14" fill="white" transform="translate(168 9.99268)"/>
 </clipPath>
-</defs>
+
+    <style>
+      @font-face {
+        font-family: 'Anime Ace';
+        src: url('/fonts/animeace.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Anime Ace';
+        src: url('/fonts/animeace_i.woff') format('woff');
+        font-weight: normal;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Anime Ace';
+        src: url('/fonts/animeace_b.woff') format('woff');
+        font-weight: bold;
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      text { font-family: 'Anime Ace', sans-serif; }
+    </style></defs>
 </svg>

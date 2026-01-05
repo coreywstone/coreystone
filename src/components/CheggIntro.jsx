@@ -24,6 +24,10 @@ function CheggIntro() {
   }
 
   useEffect(() => {
+    // Lower threshold on mobile for better visibility detection
+    const isMobile = window.innerWidth <= 768
+    const threshold = isMobile ? 0.1 : 0.67
+    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -46,7 +50,7 @@ function CheggIntro() {
           }
         })
       },
-      { threshold: 0.67 }
+      { threshold }
     )
 
     if (containerRef.current) {

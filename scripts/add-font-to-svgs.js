@@ -6,6 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const quotersDir = path.join(__dirname, '../public/img/quoters');
+const cheggDir = path.join(__dirname, '../public/img/chegg');
 
 // Font style block to inject - using @font-face with direct font file URLs
 const fontStyleBlock = `  <defs>
@@ -275,5 +276,8 @@ function processDirectory(dir) {
 
 // Run the script
 console.log('Adding Anime Ace font to SVG files...\n');
+console.log('Processing quoters directory...');
 processDirectory(quotersDir);
+console.log('\nProcessing chegg directory...');
+processDirectory(cheggDir);
 

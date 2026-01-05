@@ -147,4 +147,43 @@
   z-index: 2;
 }
 
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .chegg-intro-video-container {
+    top: 16px;
+    bottom: 80px;
+    left: 16px;
+    right: 16px;
+    width: auto;
+  }
+
+  .chegg-intro-me {
+    max-width: 40%;
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+  }
+
+  .chegg-intro-me.animate {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+  }
+
+  .chegg-intro-words {
+    max-width: 80%;
+    opacity: 1 !important;
+  }
+
+  .chegg-intro-words.visible {
+    opacity: 1 !important;
+  }
+
+  .chegg-intro-bg-sanfran {
+    bottom: 80px;
+  }
+
+  .chegg-intro-bg-outlet {
+    left: 16px;
+  }
+}
+
 

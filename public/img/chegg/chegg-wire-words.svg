@@ -20,5 +20,30 @@
 <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1225_66396"/>
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1225_66396" result="shape"/>
 </filter>
-</defs>
+
+    <style>
+      @font-face {
+        font-family: 'Anime Ace';
+        src: url('/fonts/animeace.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Anime Ace';
+        src: url('/fonts/animeace_i.woff') format('woff');
+        font-weight: normal;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Anime Ace';
+        src: url('/fonts/animeace_b.woff') format('woff');
+        font-weight: bold;
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      text { font-family: 'Anime Ace', sans-serif; }
+    </style></defs>
 </svg>
