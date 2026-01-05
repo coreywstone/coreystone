@@ -24,6 +24,7 @@
   flex-grow: 0;
   box-sizing: border-box;
   position: relative;
+  overflow: hidden;
 }
 
 .chegg-staff-ai-me-on-wire {
@@ -143,7 +144,7 @@
   width: auto;
   height: auto;
   opacity: 0;
-  transform: translateX(100%);
+  transform: translateX(200px);
   transition: transform 300ms ease-out, opacity 300ms ease-out;
   pointer-events: none;
   z-index: 5;
