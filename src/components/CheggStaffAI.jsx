@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import Backstory from './Backstory'
 import './CheggStaffAI.css'
 
 function CheggStaffAI() {
@@ -107,6 +108,11 @@ function CheggStaffAI() {
           alt=""
           className={`chegg-staff-ai-hmm ${showHmm ? 'visible' : ''}`}
         />
+      </div>
+      <div className="chegg-staff-ai-personas">
+        <Backstory>
+          To learn about our business processes and problems, I interviewed our student success coaches, tutors, mentors, and Admission reps.
+        </Backstory>
       </div>
     </div>
   )
