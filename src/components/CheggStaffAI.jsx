@@ -8,6 +8,9 @@ function CheggStaffAI() {
   const [showWords, setShowWords] = useState(false)
   const [showAsk, setShowAsk] = useState(false)
   const [showHmm, setShowHmm] = useState(false)
+  const [currentPersona, setCurrentPersona] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const personaCarouselRef = useRef(null)
 
   useEffect(() => {
     const wireElement = wireRef.current
@@ -84,6 +87,25 @@ function CheggStaffAI() {
     }
   }, [isVisible])
 
+  // Persona carousel auto-scroll
+  useEffect(() => {
+    if (isPaused) return
+
+    const interval = setInterval(() => {
+      setCurrentPersona((prev) => (prev + 1) % 4)
+    }, 4000)
+
+    return () => clearInterval(interval)
+  }, [isPaused])
+
+  const handleCarouselClick = () => {
+    setCurrentPersona((prev) => (prev + 1) % 4)
+  }
+
+  const handleDotClick = (index) => {
+    setCurrentPersona(index)
+  }
+
   return (
     <div className="chegg-staff-ai-panel">
       <div ref={wireRef} className="chegg-staff-ai-wire">
@@ -113,6 +135,45 @@ function CheggStaffAI() {
         <Backstory>
           To learn about our business processes and problems, I interviewed our student success coaches, tutors, mentors, and Admission reps.
         </Backstory>
+        <div className="chegg-staff-ai-persona-carousel-container">
+          <div className="chegg-staff-ai-persona-carousel-header">
+            Staff personas I created:
+          </div>
+          <div 
+            ref={personaCarouselRef}
+            className="chegg-staff-ai-persona-carousel"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onClick={handleCarouselClick}
+          >
+            <div 
+              className="chegg-staff-ai-persona-carousel-inner"
+              style={{ 
+                transform: `translateY(calc(-8px - ${currentPersona} * 356px))` 
+              }}
+            >
+              <img src="/img/chegg/chegg-persona1.jpg" alt="Persona 1" />
+              <img src="/img/chegg/chegg-persona2.jpg" alt="Persona 2" />
+              <img src="/img/chegg/chegg-persona3.jpg" alt="Persona 3" />
+              <img src="/img/chegg/chegg-persona4.jpg" alt="Persona 4" />
+            </div>
+            <div className="chegg-staff-ai-persona-carousel-dots">
+              {[0, 1, 2, 3].map((index) => (
+                <div
+                  key={index}
+                  className={`chegg-staff-ai-persona-carousel-dot ${currentPersona === index ? 'active' : ''}`}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    handleDotClick(index)
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+          <div className="chegg-staff-ai-persona-carousel-footer">
+            <span className="chegg-staff-ai-persona-carousel-footer-learned">I LEARNED:</span> STAFF-FACING INFO IS SPREAD ACROSS MANY INEFFICIENT SILOED TOOLS, RESULTING IN COSTLY WASTED TIME.
+          </div>
+        </div>
       </div>
     </div>
   )
