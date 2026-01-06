@@ -217,7 +217,7 @@ function CheggStaffAI() {
       <div ref={resultsPanelRef} className="chegg-staff-ai-results">
         <img 
           ref={resultsSvgRef}
-          src="/img/chegg/chegg-staff-ai-result.svg" 
+          src="/img/chegg/chegg-staff-ai-result.png" 
           alt="AI result" 
           className="chegg-staff-ai-results-bg"
         />
