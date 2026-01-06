@@ -175,6 +175,23 @@ function CheggStaffAI() {
           </div>
         </div>
       </div>
+      <div className="chegg-staff-ai-results">
+        <img 
+          src="/img/chegg/chegg-staff-ai-result.svg" 
+          alt="AI result" 
+          className="chegg-staff-ai-results-bg"
+        />
+        <div className="chegg-staff-ai-results-container">
+          <Backstory top={0} left={0}>
+            So, I worked with PM Jordan and two of our AI-savvy data analysts (Ben & Victor) to create this AI-powered consolidated student detail page...
+          </Backstory>
+          <img 
+            src="/img/chegg/chegg-staff-ai-team.jpg" 
+            alt="AI team" 
+            className="chegg-staff-ai-results-image"
+          />
+        </div>
+      </div>
     </div>
   )
 }
