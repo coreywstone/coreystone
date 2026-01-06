@@ -11,6 +11,8 @@ function CheggStaffAI() {
   const [currentPersona, setCurrentPersona] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const personaCarouselRef = useRef(null)
+  const resultsPanelRef = useRef(null)
+  const resultsSvgRef = useRef(null)
 
   useEffect(() => {
     const wireElement = wireRef.current
@@ -106,6 +108,43 @@ function CheggStaffAI() {
     setCurrentPersona(index)
   }
 
+  // Calculate results panel width based on SVG dimensions
+  useEffect(() => {
+    const panel = resultsPanelRef.current
+    const svg = resultsSvgRef.current
+    if (!panel || !svg) return
+
+    const calculateWidth = () => {
+      const panelHeight = panel.offsetHeight
+      const svgScaledHeight = panelHeight * 0.9 // 90% of panel height
+      
+      // Wait for SVG to load to get its natural dimensions
+      if (svg.complete && svg.naturalWidth && svg.naturalHeight) {
+        const aspectRatio = svg.naturalWidth / svg.naturalHeight
+        const svgScaledWidth = svgScaledHeight * aspectRatio
+        const requiredWidth = 48 + svgScaledWidth + 12 // left offset + SVG width + right border
+        panel.style.width = `${Math.max(440, requiredWidth)}px`
+      } else {
+        // If SVG not loaded yet, set a default width
+        panel.style.width = '440px'
+      }
+    }
+
+    // Calculate on load and resize
+    if (svg.complete) {
+      calculateWidth()
+    } else {
+      svg.addEventListener('load', calculateWidth)
+    }
+    
+    window.addEventListener('resize', calculateWidth)
+    
+    return () => {
+      svg.removeEventListener('load', calculateWidth)
+      window.removeEventListener('resize', calculateWidth)
+    }
+  }, [])
+
   return (
     <div className="chegg-staff-ai-panel">
       <div ref={wireRef} className="chegg-staff-ai-wire">
@@ -175,14 +214,20 @@ function CheggStaffAI() {
           </div>
         </div>
       </div>
-      <div className="chegg-staff-ai-results">
+      <div ref={resultsPanelRef} className="chegg-staff-ai-results">
         <img 
+          ref={resultsSvgRef}
           src="/img/chegg/chegg-staff-ai-result.svg" 
           alt="AI result" 
           className="chegg-staff-ai-results-bg"
         />
+        <img 
+          src="/img/chegg/chegg-staffai-result-burst.svg" 
+          alt="Burst" 
+          className="chegg-staff-ai-results-burst"
+        />
         <div className="chegg-staff-ai-results-container">
-          <Backstory top={0} left={0}>
+          <Backstory top={0} left={0} backgroundColor="#262629">
             So, I worked with PM Jordan and two of our AI-savvy data analysts (Ben & Victor) to create this AI-powered consolidated student detail page...
           </Backstory>
           <img 

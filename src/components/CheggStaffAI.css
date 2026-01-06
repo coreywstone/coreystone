@@ -195,7 +195,7 @@
 
 .chegg-staff-ai-persona-carousel-container {
   position: absolute;
-  top: 58px;
+  top: 36px;
   right: 32px;
   width: 472px;
   border-radius: 2px;
@@ -284,23 +284,38 @@
 }
 
 .chegg-staff-ai-results {
-  width: 400px;
-  min-width: 400px;
-  max-width: 400px;
+  width: 440px;
+  min-width: 440px;
   height: 100%;
+  background-color: var(--color-near-white);
   flex-shrink: 0;
   flex-grow: 0;
   box-sizing: border-box;
   position: relative;
+  padding-right: 0;
+  overflow: visible;
 }
 
 .chegg-staff-ai-results-bg {
   position: absolute;
   left: 48px;
-  bottom: 48px;
+  bottom: 32px;
+  width: auto;
+  height: 90%;
+  z-index: 1;
+  pointer-events: none;
+  object-fit: contain;
+  object-position: left bottom;
+  max-width: none;
+}
+
+.chegg-staff-ai-results-burst {
+  position: absolute;
+  right: 0;
+  bottom: 0;
   width: auto;
   height: auto;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -308,7 +323,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 440px;
   height: auto;
   border-top: 12px solid var(--color-near-black);
   border-right: 12px solid var(--color-near-black);
@@ -326,7 +341,8 @@
   top: auto;
   left: auto;
   border: none;
-  border-bottom: 2px solid var(--color-near-black);
+  background-color: var(--color-near-black) !important;
+  color: var(--color-white-ish) !important;
   font-family: 'Anime Ace', sans-serif;
   font-size: 12px;
   line-height: 130%;
