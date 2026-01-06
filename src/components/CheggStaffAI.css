@@ -9,14 +9,14 @@
 }
 
 .chegg-staff-ai-wire {
-  width: 954px;
-  min-width: 954px;
-  max-width: 954px;
+  width: 1340px;
+  min-width: 1340px;
+  max-width: 1340px;
   height: 100%;
   background-color: var(--color-white-ish);
-  background-image: url('/img/chegg/chegg-wire-bg.svg');
+  background-image: url('/img/chegg/chegg-wire-bg-1340.svg');
   background-position: bottom left;
-  background-size: cover;
+  background-size: auto;
   background-repeat: no-repeat;
   padding: 0;
   border-right: 12px solid var(--color-near-black);
@@ -29,7 +29,7 @@
 
 .chegg-staff-ai-me-on-wire {
   position: absolute;
-  left: 100px;
+  left: 110px;
   bottom: 72px;
   width: auto;
   height: auto;
@@ -174,9 +174,9 @@
 }
 
 .chegg-staff-ai-personas {
-  width: 1060px;
-  min-width: 1060px;
-  max-width: 1060px;
+  width: 1160px;
+  min-width: 1160px;
+  max-width: 1160px;
   height: 100%;
   background-color: #ECF1F3;
   background-image: url('/img/chegg/chegg-persona-bg-32.jpg');
@@ -194,8 +194,8 @@
 
 .chegg-staff-ai-persona-carousel-container {
   position: absolute;
-  bottom: 32px;
-  right: 32px;
+  bottom: 40px;
+  right: 0;
   width: 472px;
   border-radius: 2px;
   overflow: hidden;
