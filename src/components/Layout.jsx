@@ -1,8 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect, useLayoutEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
 
 function Layout({ children }) {
+  const location = useLocation()
+
   useEffect(() => {
     // Load Font Awesome
     const link = document.createElement('link')
@@ -19,6 +22,11 @@ function Layout({ children }) {
       // Cleanup if needed
     }
   }, [])
+
+  // Scroll to top on route change
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location.pathname])
 
   return (
     <div id="page-top" className="app">

@@ -77,6 +77,13 @@ function MenuButton() {
     }, 250) // Match closing animation duration
   }
 
+  const handleNavLinkClick = () => {
+    setIsOpen(false)
+    // Scroll to top immediately before navigation
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+  }
+
   return (
     <>
       <div className="menu-button-wrapper">
@@ -108,14 +115,14 @@ function MenuButton() {
             <Link 
               to="/" 
               className="menu-item"
-              onClick={() => setIsOpen(false)}
+              onClick={handleNavLinkClick}
             >
               Home
             </Link>
             <Link 
               to="/bio" 
               className="menu-item"
-              onClick={() => setIsOpen(false)}
+              onClick={handleNavLinkClick}
             >
               Bio
             </Link>

@@ -39,10 +39,15 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; removed - causing unwanted smooth scroll on route navigation */
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+}
+
+/* Apply smooth scrolling only to anchor links */
+a[href^="#"] {
+  scroll-behavior: smooth;
 }
 
 body {

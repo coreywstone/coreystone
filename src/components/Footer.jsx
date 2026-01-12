@@ -14,18 +14,24 @@ function Footer() {
     })
   }
 
+  const handleNavLinkClick = () => {
+    // Scroll to top immediately before navigation
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+  }
+
   return (
     <footer className="footer">
       <div className="footer-container">
         <ul className="footer-links">
           <li><a href="#page-top">Top</a></li>
           <li>
-            <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
+            <Link to="/" className={location.pathname === '/' ? 'active' : ''} onClick={handleNavLinkClick}>
               Home
             </Link>
           </li>
           <li>
-            <Link to="/bio" className={location.pathname === '/bio' ? 'active' : ''}>
+            <Link to="/bio" className={location.pathname === '/bio' ? 'active' : ''} onClick={handleNavLinkClick}>
               Bio
             </Link>
           </li>
