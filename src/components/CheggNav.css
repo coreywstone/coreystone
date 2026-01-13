@@ -1,0 +1,45 @@
+.chegg-nav-panel {
+  position: relative;
+  width: auto;
+  min-width: 400px;
+  height: 100%;
+  min-height: 600px;
+  background-color: var(--color-white-ish);
+  overflow: visible;
+}
+
+.chegg-nav-andrew {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  z-index: 1;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 500ms ease-out, opacity 500ms ease-out;
+  pointer-events: none;
+  display: block;
+}
+
+.chegg-nav-andrew.animate {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.chegg-nav-words {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 150ms ease-out;
+  pointer-events: none;
+  display: block;
+}
+
+.chegg-nav-words.visible {
+  opacity: 1;
+}
