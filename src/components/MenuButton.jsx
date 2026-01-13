@@ -148,6 +148,13 @@ function MenuButton() {
             >
               About this site
             </button>
+            <a
+              href="https://coreystone.com"
+              className="menu-item"
+              onClick={() => setIsOpen(false)}
+            >
+              <i className="fa fa-arrow-left"></i> Serious version
+            </a>
           </div>
         )}
       </div>

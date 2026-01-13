@@ -1,0 +1,18 @@
+/* Serious/Professional Theme Styles - Empty page with gray background */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Body styles - matching coreystone.com exactly */
+body.serious-theme {
+  overflow-x: hidden;
+  background-color: #eeeef3;
+  background: linear-gradient(#eeeef3, #dddde9);
+  background-attachment: fixed;
+  scroll-behavior: smooth;
+}
+
+.serious-home {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
