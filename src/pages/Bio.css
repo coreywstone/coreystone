@@ -45,7 +45,9 @@
 }
 
 .bio-text a {
-  color: var(--color-blue);
+  color: var(--color-slate-blue);
+  text-decoration: underline;
+  text-shadow: 0 0 3px white;
 }
 
 .bio-image {
