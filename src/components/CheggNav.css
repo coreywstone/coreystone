@@ -1,7 +1,7 @@
 .chegg-nav-panel {
   position: relative;
-  width: auto;
-  min-width: 400px;
+  width: 1000px;
+  min-width: 1000px;
   height: 100%;
   min-height: 600px;
   background-color: var(--color-white-ish);
@@ -15,16 +15,8 @@
   width: auto;
   height: auto;
   z-index: 1;
-  transform: translateX(-100%);
-  opacity: 0;
-  transition: transform 500ms ease-out, opacity 500ms ease-out;
   pointer-events: none;
   display: block;
-}
-
-.chegg-nav-andrew.animate {
-  transform: translateX(0);
-  opacity: 1;
 }
 
 .chegg-nav-words {
@@ -42,4 +34,41 @@
 
 .chegg-nav-words.visible {
   opacity: 1;
+}
+
+.chegg-nav-ambiguous {
+  position: absolute;
+  left: 450px;
+  bottom: 48px;
+  width: auto;
+  height: auto;
+  z-index: 3;
+  opacity: 0;
+  transform: translate(-100%, 100%);
+  transition: none;
+  pointer-events: none;
+  display: block;
+}
+
+.chegg-nav-ambiguous.animate {
+  opacity: 1;
+  animation: jump-in-from-lower-left 800ms ease-out forwards;
+}
+
+@keyframes jump-in-from-lower-left {
+  0% {
+    transform: translate(-100%, 100%);
+    opacity: 0;
+  }
+  60% {
+    transform: translate(0, -20px);
+    opacity: 1;
+  }
+  80% {
+    transform: translate(0, 5px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
 }

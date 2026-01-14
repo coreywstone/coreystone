@@ -8,6 +8,7 @@ function CheggNav() {
   const [hasAnimated, setHasAnimated] = useState(false)
   const [showWords, setShowWords] = useState(false)
   const andrewImageRef = useRef(null)
+  const ambiguousImageRef = useRef(null)
 
   useEffect(() => {
     const containerElement = containerRef.current
@@ -59,39 +60,116 @@ function CheggNav() {
     }
   }, [hasAnimated])
 
-  // Set image height to 400px and panel width
+  // Set image heights and calculate panel width to fit all content
   useEffect(() => {
-    const img = andrewImageRef.current
+    const andrewImg = andrewImageRef.current
+    const ambiguousImg = ambiguousImageRef.current
     const panel = containerRef.current
-    if (!img || !panel) return
+    if (!andrewImg || !panel) return
 
-    const setImageHeight = () => {
+    const calculatePanelWidth = () => {
+      // Set Andrew image height to 400px
       const targetHeight = 400
-      img.style.height = `${targetHeight}px`
-      img.style.width = 'auto'
+      andrewImg.style.height = `${targetHeight}px`
+      andrewImg.style.width = 'auto'
       
-      // Set panel width based on image width (maintain aspect ratio)
-      if (img.naturalWidth && img.naturalHeight > 0) {
-        const aspectRatio = img.naturalWidth / img.naturalHeight
-        const targetWidth = targetHeight * aspectRatio
-        panel.style.width = `${targetWidth}px`
+      // Wait a bit for images to render, then calculate
+      setTimeout(() => {
+        requestAnimationFrame(() => {
+          let requiredWidth = 450 // minimum for ambiguous image position at left: 450px
+          
+          // Calculate width needed for ambiguous image (450px left + image width + 12px border)
+          if (ambiguousImg) {
+            // Try multiple methods to get the image width
+            const ambiguousRect = ambiguousImg.getBoundingClientRect()
+            let ambiguousWidth = 0
+            
+            if (ambiguousRect.width > 0) {
+              ambiguousWidth = ambiguousRect.width
+            } else if (ambiguousImg.offsetWidth > 0) {
+              ambiguousWidth = ambiguousImg.offsetWidth
+            } else if (ambiguousImg.naturalWidth && ambiguousImg.naturalWidth > 0) {
+              // For SVG, naturalWidth might be the viewBox width
+              ambiguousWidth = ambiguousImg.naturalWidth
+            } else {
+              // Fallback: try to get dimensions from the SVG element itself
+              const svgElement = ambiguousImg.querySelector ? ambiguousImg.querySelector('svg') : null
+              if (svgElement) {
+                const svgRect = svgElement.getBoundingClientRect()
+                if (svgRect.width > 0) {
+                  ambiguousWidth = svgRect.width
+                } else if (svgElement.viewBox && svgElement.viewBox.baseVal) {
+                  ambiguousWidth = svgElement.viewBox.baseVal.width
+                }
+              }
+            }
+            
+            if (ambiguousWidth > 0) {
+              requiredWidth = 450 + ambiguousWidth + 12
+            } else {
+              // Last resort: estimate based on a reasonable size (SVGs are often around 200-400px wide)
+              requiredWidth = 450 + 300 + 12 // 300px estimate + 12px border
+            }
+          }
+          
+          // Also check if Andrew image or words extend beyond
+          const andrewRect = andrewImg.getBoundingClientRect()
+          if (andrewRect.width > 0) {
+            requiredWidth = Math.max(requiredWidth, andrewRect.width + 12)
+          } else if (andrewImg.naturalWidth && andrewImg.naturalHeight > 0) {
+            const andrewAspectRatio = andrewImg.naturalWidth / andrewImg.naturalHeight
+            const estimatedAndrewWidth = targetHeight * andrewAspectRatio
+            requiredWidth = Math.max(requiredWidth, estimatedAndrewWidth + 12)
+          }
+          
+          // Ensure minimum width (at least enough for ambiguous image at 500px + estimated width)
+          requiredWidth = Math.max(requiredWidth, 1000)
+          
+          // Force the width with !important via setProperty
+          panel.style.setProperty('width', `${requiredWidth}px`, 'important')
+          panel.style.setProperty('min-width', `${requiredWidth}px`, 'important')
+          
+          console.log('Nav panel width calculated:', requiredWidth, 'ambiguous width:', ambiguousImg ? (ambiguousImg.getBoundingClientRect().width || ambiguousImg.offsetWidth || 'unknown') : 'no img', 'ambiguous left:', ambiguousImg ? ambiguousImg.getBoundingClientRect().left : 'no img')
+        })
+      }, 100) // Small delay to ensure images are rendered
+    }
+
+    // Set up load listeners for both images
+    const handleAndrewLoad = () => {
+      calculatePanelWidth()
+    }
+    
+    const handleAmbiguousLoad = () => {
+      calculatePanelWidth()
+    }
+
+    // Try to calculate immediately if images are loaded
+    if (andrewImg.complete && andrewImg.naturalHeight > 0) {
+      handleAndrewLoad()
+    } else {
+      andrewImg.addEventListener('load', handleAndrewLoad, { once: true })
+    }
+
+    if (ambiguousImg) {
+      if (ambiguousImg.complete) {
+        handleAmbiguousLoad()
+      } else {
+        ambiguousImg.addEventListener('load', handleAmbiguousLoad, { once: true })
       }
     }
 
-    // Try to set immediately if already loaded
-    if (img.complete && img.naturalHeight > 0) {
-      setImageHeight()
-    } else {
-      // Wait for image to load
-      img.addEventListener('load', setImageHeight, { once: true })
-      // Also check if it loads after we attach the listener
-      if (img.complete) {
-        setImageHeight()
-      }
+    // Also recalculate on window resize
+    const handleResize = () => {
+      calculatePanelWidth()
     }
+    window.addEventListener('resize', handleResize)
 
     return () => {
-      // Cleanup is handled by { once: true }
+      andrewImg.removeEventListener('load', handleAndrewLoad)
+      if (ambiguousImg) {
+        ambiguousImg.removeEventListener('load', handleAmbiguousLoad)
+      }
+      window.removeEventListener('resize', handleResize)
     }
   }, [])
 
@@ -105,7 +183,7 @@ function CheggNav() {
         ref={andrewImageRef}
         src="/img/chegg/chegg-andrew.jpg"
         alt="Andrew"
-        className={`chegg-nav-andrew ${isVisible ? 'animate' : ''}`}
+        className="chegg-nav-andrew"
         onError={(e) => console.error('Failed to load chegg-andrew.jpg', e)}
       />
       <img
@@ -113,6 +191,13 @@ function CheggNav() {
         alt="Andrew words"
         className={`chegg-nav-words ${showWords ? 'visible' : ''}`}
         onError={(e) => console.error('Failed to load chegg-andrew-words.svg', e)}
+      />
+      <img
+        ref={ambiguousImageRef}
+        src="/img/me/me-ambiguous-problem.svg"
+        alt="Ambiguous problem"
+        className={`chegg-nav-ambiguous ${isVisible ? 'animate' : ''}`}
+        onError={(e) => console.error('Failed to load me-ambiguous-problem.svg', e)}
       />
     </div>
   )

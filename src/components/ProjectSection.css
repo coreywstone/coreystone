@@ -22,10 +22,6 @@
   padding: 0;
 }
 
-.project-section > .chegg-nav-panel {
-  width: auto !important;
-}
-
 .project-section > .chegg-intro {
   position: absolute;
   top: 0;
@@ -39,7 +35,7 @@
 }
 
 .project-section > .chegg-nav-panel {
-  width: fit-content;
+  width: auto !important;
   height: 100%;
 }
 
