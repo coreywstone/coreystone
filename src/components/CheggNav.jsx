@@ -7,6 +7,7 @@ function CheggNav() {
   const [isVisible, setIsVisible] = useState(false)
   const [hasAnimated, setHasAnimated] = useState(false)
   const [showWords, setShowWords] = useState(false)
+  const [showAmbiguous, setShowAmbiguous] = useState(false)
   const andrewImageRef = useRef(null)
   const ambiguousImageRef = useRef(null)
 
@@ -40,10 +41,14 @@ function CheggNav() {
         setIsVisible(true)
         setHasAnimated(true)
         
-        // Show words 1 second later
+        // Show words 700ms later
         setTimeout(() => {
           setShowWords(true)
-        }, 1000)
+          // Show ambiguous image 750ms after words appear
+          setTimeout(() => {
+            setShowAmbiguous(true)
+          }, 750)
+        }, 700)
       }
     }
 
@@ -196,7 +201,7 @@ function CheggNav() {
         ref={ambiguousImageRef}
         src="/img/me/me-ambiguous-problem.svg"
         alt="Ambiguous problem"
-        className={`chegg-nav-ambiguous ${isVisible ? 'animate' : ''}`}
+        className={`chegg-nav-ambiguous ${showAmbiguous ? 'animate' : ''}`}
         onError={(e) => console.error('Failed to load me-ambiguous-problem.svg', e)}
       />
     </div>
