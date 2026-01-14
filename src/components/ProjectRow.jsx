@@ -175,7 +175,14 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
               >
                 {section.content || (
                   <div className="project-section-placeholder">
-                    <p>[ Section {index + 1}: {section.label} ]</p>
+                    <p>
+                      Section {index + 1} placeholder for {section.label}.<br />
+                      (for full content, view my{' '}
+                      <a href="https://coreystone.com" target="_blank" rel="noopener noreferrer">
+                        current/old site
+                      </a>
+                      )
+                    </p>
                   </div>
                 )}
               </ProjectSection>

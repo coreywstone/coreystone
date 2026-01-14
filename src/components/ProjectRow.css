@@ -68,3 +68,8 @@
   text-align: center;
   width: 100%;
 }
+
+.project-section-placeholder a {
+  color: var(--color-slate-blue);
+  text-decoration: underline;
+}
