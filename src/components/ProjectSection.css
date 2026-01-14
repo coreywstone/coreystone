@@ -65,3 +65,21 @@
 .project-section.custom-background {
   background-color: var(--custom-bg-color, var(--color-white-ish)) !important;
 }
+
+/* Other Projects section styling */
+.other-projects-row .project-panel-scroll {
+  width: 100% !important;
+  min-width: 100% !important;
+}
+
+.other-projects-row .project-section {
+  width: 100% !important;
+  min-width: 1200px !important;
+  max-width: 100% !important;
+  flex: 1 1 100% !important;
+  background-image: url('/img/me/me-vortex.jpg');
+  background-position: bottom left;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}

@@ -5,7 +5,7 @@
   height: 100%;
   min-height: 600px;
   background-color: var(--color-white-ish);
-  overflow: visible;
+  overflow: hidden;
 }
 
 .chegg-nav-andrew {

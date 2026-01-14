@@ -6,6 +6,7 @@ import StarrySky from '../components/StarrySky'
 import CheggIntro from '../components/CheggIntro'
 import CheggStaffAI from '../components/CheggStaffAI'
 import CheggNav from '../components/CheggNav'
+import OtherProjects from '../components/OtherProjects'
 import quotesConfig from '../data/quotes.json'
 import { getQuoteAssets, getQuoteAlignment, getQuoteLinkedInUrl } from '../utils/quoteData'
 import './Home.css'
@@ -31,35 +32,6 @@ function Home() {
     { id: 'delight', label: 'DELIGHT' }
   ]
 
-  const owlSections = [
-    { id: 'intro', label: 'INTRO' },
-    { id: 'section-2', label: 'SECTION 2' },
-    { id: 'section-3', label: 'SECTION 3' }
-  ]
-
-  const eightCountsSections = [
-    { id: 'intro', label: 'INTRO' },
-    { id: 'section-2', label: 'SECTION 2' },
-    { id: 'section-3', label: 'SECTION 3' }
-  ]
-
-  const actSections = [
-    { id: 'intro', label: 'INTRO' },
-    { id: 'section-2', label: 'SECTION 2' },
-    { id: 'section-3', label: 'SECTION 3' }
-  ]
-
-  const heroKeyboardSections = [
-    { id: 'intro', label: 'INTRO' },
-    { id: 'section-2', label: 'SECTION 2' },
-    { id: 'section-3', label: 'SECTION 3' }
-  ]
-
-  const kleinfelderSections = [
-    { id: 'intro', label: 'INTRO' },
-    { id: 'section-2', label: 'SECTION 2' },
-    { id: 'section-3', label: 'SECTION 3' }
-  ]
 
 
   // Convert quotes config to quote data structure
@@ -131,50 +103,33 @@ function Home() {
       )}
 
       <ProjectRow 
-        title="Owl Health:" 
-        sections={owlSections}
-        color="#F5EFE7"
-        backstoryBgColor="#B2F5EA"
+        title="Other projects" 
+        sections={[{ id: 'other', label: 'OTHER', content: <OtherProjects /> }]}
+        showNavTabs={false}
+        className="other-projects-row"
       />
-      {quoteRows.length > 2 && quoteRows[2] && (
-        <QuotesRow key={quoteRows[2].id} quotes={quoteRows[2].quotes} />
-      )}
-
-      <ProjectRow 
-        title="Founding 8counts:" 
-        sections={eightCountsSections}
-        color="#F5EFE7"
-      />
-      {quoteRows.length > 3 && quoteRows[3] && (
-        <QuotesRow key={quoteRows[3].id} quotes={quoteRows[3].quotes} />
-      )}
-
-      <ProjectRow 
-        title="ACT:" 
-        sections={actSections}
-      />
-      {quoteRows.length > 4 && quoteRows[4] && (
-        <QuotesRow key={quoteRows[4].id} quotes={quoteRows[4].quotes} />
-      )}
-
-      <ProjectRow 
-        title="Founding HERO Keyboard:" 
-        sections={heroKeyboardSections}
-      />
-      {quoteRows.length > 5 && quoteRows[5] && (
-        <QuotesRow key={quoteRows[5].id} quotes={quoteRows[5].quotes} />
-      )}
-
-      <ProjectRow 
-        title="Kleinfelder:" 
-        sections={kleinfelderSections}
-      />
-      {quoteRows.length > 6 && quoteRows[6] && (
-        <QuotesRow key={quoteRows[6].id} quotes={quoteRows[6].quotes} />
+      {quoteRows.length > 1 && quoteRows[1] && (
+        <QuotesRow key={quoteRows[1].id} quotes={quoteRows[1].quotes} />
       )}
 
       <SketchesRow />
+      {quoteRows.length > 2 && quoteRows[2] && (
+        <QuotesRow key={quoteRows[2].id} quotes={quoteRows[2].quotes} />
+      )}
       <MuralsRow />
+      
+      {quoteRows.length > 3 && quoteRows[3] && (
+        <QuotesRow key={quoteRows[3].id} quotes={quoteRows[3].quotes} />
+      )}
+      {quoteRows.length > 4 && quoteRows[4] && (
+        <QuotesRow key={quoteRows[4].id} quotes={quoteRows[4].quotes} />
+      )}
+      {quoteRows.length > 5 && quoteRows[5] && (
+        <QuotesRow key={quoteRows[5].id} quotes={quoteRows[5].quotes} />
+      )}
+      {quoteRows.length > 6 && quoteRows[6] && (
+        <QuotesRow key={quoteRows[6].id} quotes={quoteRows[6].quotes} />
+      )}
     </div>
   )
 }

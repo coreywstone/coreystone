@@ -1,0 +1,75 @@
+.vortex-travel-effect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+  overflow: hidden;
+}
+
+.vortex-spiral {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200vw;
+  height: 200vh;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.vortex-spiral-1 {
+  background: radial-gradient(circle, rgba(26, 26, 62, 1) 0%, rgba(45, 45, 94, 0.91) 30%, rgba(74, 44, 94, 0.65) 60%, rgba(127, 179, 255, 0.39) 100%);
+  animation: vortex-expand-1 6s ease-out forwards;
+}
+
+.vortex-spiral-2 {
+  background: radial-gradient(circle, rgba(45, 45, 94, 1) 0%, rgba(127, 179, 255, 0.65) 40%, rgba(176, 212, 255, 0.39) 100%);
+  animation: vortex-expand-2 6s ease-out 0.1s forwards;
+}
+
+.vortex-spiral-3 {
+  background: radial-gradient(circle, rgba(74, 44, 94, 0.91) 0%, rgba(127, 179, 255, 0.52) 50%, transparent 100%);
+  animation: vortex-expand-3 6s ease-out 0.2s forwards;
+}
+
+@keyframes vortex-expand-1 {
+  0% {
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    opacity: 1; /* Increased by 30% (capped at 1.0) */
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2) rotate(720deg);
+    opacity: 0.52; /* Increased by 30% */
+  }
+}
+
+@keyframes vortex-expand-2 {
+  0% {
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    opacity: 1; /* Increased by 30% (capped at 1.0) */
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.5) rotate(-720deg);
+    opacity: 0.39; /* Increased by 30% */
+  }
+}
+
+@keyframes vortex-expand-3 {
+  0% {
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    opacity: 0.91; /* Increased by 30% */
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3) rotate(1080deg);
+    opacity: 0.26; /* Increased by 30% */
+  }
+}
+
+.vortex-travel-effect.fading {
+  opacity: 0;
+}

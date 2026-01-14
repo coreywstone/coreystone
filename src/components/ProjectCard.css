@@ -1,0 +1,73 @@
+.project-card {
+  position: absolute;
+  width: 240px;
+  border-radius: 2px;
+  overflow: hidden;
+  background-color: transparent;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(129, 153, 233, 0.8);
+  transform-origin: center;
+  transform: rotate(var(--rotation, 0deg));
+  transition: box-shadow 0.2s ease-out, transform 0.3s ease-out, opacity 0.2s ease-out;
+  opacity: 1 !important;
+  z-index: 1;
+  will-change: transform;
+}
+
+.project-card-image {
+  width: 100%;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.project-card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.project-card-image.tall {
+  background-color: var(--color-charcoal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 140px;
+}
+
+.project-card-image.tall img {
+  width: auto;
+  height: 140px;
+  object-fit: contain;
+}
+
+.project-card-text {
+  padding: 8px;
+  background-color: var(--color-near-black);
+  color: var(--color-blue);
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.project-card.hovered {
+  box-shadow: 0 0 40px rgba(129, 153, 233, 1);
+  transform: rotate(var(--rotation, 0deg));
+  opacity: 1 !important;
+  z-index: 10;
+}
+
+.project-card.clicked {
+  transform: rotate(var(--rotation, 0deg)) scale(0.98) !important;
+  animation: none !important;
+}
+
+.project-card.pressed {
+  transform: rotate(var(--rotation, 0deg)) scale(0.98) !important;
+}
+

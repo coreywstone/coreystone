@@ -3,7 +3,7 @@ import ProjectNav from './ProjectNav'
 import ProjectSection from './ProjectSection'
 import './ProjectRow.css'
 
-function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = true, backgroundColor = null, backstoryBgColor = null }) {
+function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = true, backgroundColor = null, backstoryBgColor = null, className = '' }) {
   const [activeSectionId, setActiveSectionId] = useState(sections[0]?.id || null)
   const [isNavSticky, setIsNavSticky] = useState(false)
   const scrollContainerRef = useRef(null)
@@ -150,7 +150,7 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
   }
 
   return (
-    <section ref={rowRef} className="project-row">
+    <section ref={rowRef} className={`project-row ${className}`.trim()}>
       <ProjectNav
         title={title}
         sections={sections}
