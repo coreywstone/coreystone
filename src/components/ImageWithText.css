@@ -1,0 +1,37 @@
+.image-with-text {
+  width: 400px;
+  border: 12px solid var(--color-near-black);
+  border-radius: 2px;
+  background-color: var(--color-near-black);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 12px;
+}
+
+.image-with-text.text-top {
+  padding-top: 0;
+}
+
+.image-with-text-text {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--color-white-ish);
+  text-align: center;
+  padding: 0;
+  line-height: 1.4;
+  white-space: pre-line;
+  box-sizing: border-box;
+}
+
+.image-with-text-image-container {
+  width: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.image-with-text-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}

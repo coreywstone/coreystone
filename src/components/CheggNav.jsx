@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Backstory from './Backstory'
+import ImageWithText from './ImageWithText'
 import './CheggNav.css'
 
 function CheggNav() {
@@ -127,8 +128,47 @@ function CheggNav() {
             requiredWidth = Math.max(requiredWidth, estimatedAndrewWidth + 12)
           }
           
-          // Ensure minimum width (at least enough for ambiguous image at 500px + estimated width)
-          requiredWidth = Math.max(requiredWidth, 1000)
+          // Account for the rightmost image at left: 1700px
+          // Need to check all images to find the rightmost edge
+          const stakeholdersContainer = panel.querySelector('.chegg-nav-stakeholders')
+          const userPanelContainer = panel.querySelector('.chegg-nav-user-panel')
+          const iDiscoveredImg = panel.querySelector('.chegg-nav-i-discovered')
+          
+          // Check stakeholders container (left: 850px)
+          if (stakeholdersContainer) {
+            const stakeholdersRect = stakeholdersContainer.getBoundingClientRect()
+            if (stakeholdersRect.width > 0) {
+              requiredWidth = Math.max(requiredWidth, 850 + stakeholdersRect.width + 12)
+            }
+          }
+          
+          // Check user panel container (left: 1238px)
+          if (userPanelContainer) {
+            const userPanelRect = userPanelContainer.getBoundingClientRect()
+            if (userPanelRect.width > 0) {
+              requiredWidth = Math.max(requiredWidth, 1238 + userPanelRect.width + 12)
+            }
+          }
+          
+          // Check i-discovered image (left: 1626px) - this is likely the rightmost
+          if (iDiscoveredImg) {
+            const iDiscoveredRect = iDiscoveredImg.getBoundingClientRect()
+            if (iDiscoveredRect.width > 0) {
+              requiredWidth = Math.max(requiredWidth, 1626 + iDiscoveredRect.width + 12)
+            } else if (iDiscoveredImg.naturalWidth && iDiscoveredImg.naturalWidth > 0) {
+              // Estimate for SVG
+              const iDiscoveredAspectRatio = iDiscoveredImg.naturalWidth / iDiscoveredImg.naturalHeight
+              const estimatedHeight = iDiscoveredImg.offsetHeight || 200
+              const estimatedWidth = estimatedHeight * iDiscoveredAspectRatio
+              requiredWidth = Math.max(requiredWidth, 1626 + estimatedWidth + 12)
+            } else {
+              // Fallback estimate
+              requiredWidth = Math.max(requiredWidth, 1626 + 300 + 12)
+            }
+          }
+          
+          // Ensure minimum width (at least enough for i-discovered image at 1700px + estimated width)
+          requiredWidth = Math.max(requiredWidth, 2000)
           
           // Force the width with !important via setProperty
           panel.style.setProperty('width', `${requiredWidth}px`, 'important')
@@ -139,29 +179,63 @@ function CheggNav() {
       }, 100) // Small delay to ensure images are rendered
     }
 
-    // Set up load listeners for both images
-    const handleAndrewLoad = () => {
-      calculatePanelWidth()
-    }
-    
-    const handleAmbiguousLoad = () => {
+    // Set up load listeners for all images
+    const handleImageLoad = () => {
       calculatePanelWidth()
     }
 
     // Try to calculate immediately if images are loaded
     if (andrewImg.complete && andrewImg.naturalHeight > 0) {
-      handleAndrewLoad()
+      handleImageLoad()
     } else {
-      andrewImg.addEventListener('load', handleAndrewLoad, { once: true })
+      andrewImg.addEventListener('load', handleImageLoad, { once: true })
     }
 
     if (ambiguousImg) {
       if (ambiguousImg.complete) {
-        handleAmbiguousLoad()
+        handleImageLoad()
       } else {
-        ambiguousImg.addEventListener('load', handleAmbiguousLoad, { once: true })
+        ambiguousImg.addEventListener('load', handleImageLoad, { once: true })
       }
     }
+    
+    // Add load listeners for new images - use setTimeout to ensure DOM is ready
+    setTimeout(() => {
+      const stakeholdersContainer = panel.querySelector('.chegg-nav-stakeholders')
+      const userPanelContainer = panel.querySelector('.chegg-nav-user-panel')
+      const iDiscoveredImg = panel.querySelector('.chegg-nav-i-discovered')
+      
+      // For ImageWithText components, find the img inside
+      if (stakeholdersContainer) {
+        const stakeholdersImg = stakeholdersContainer.querySelector('img')
+        if (stakeholdersImg) {
+          if (stakeholdersImg.complete) {
+            handleImageLoad()
+          } else {
+            stakeholdersImg.addEventListener('load', handleImageLoad, { once: true })
+          }
+        }
+      }
+      
+      if (userPanelContainer) {
+        const userPanelImg = userPanelContainer.querySelector('img')
+        if (userPanelImg) {
+          if (userPanelImg.complete) {
+            handleImageLoad()
+          } else {
+            userPanelImg.addEventListener('load', handleImageLoad, { once: true })
+          }
+        }
+      }
+      
+      if (iDiscoveredImg) {
+        if (iDiscoveredImg.complete) {
+          handleImageLoad()
+        } else {
+          iDiscoveredImg.addEventListener('load', handleImageLoad, { once: true })
+        }
+      }
+    }, 0)
 
     // Also recalculate on window resize
     const handleResize = () => {
@@ -170,9 +244,9 @@ function CheggNav() {
     window.addEventListener('resize', handleResize)
 
     return () => {
-      andrewImg.removeEventListener('load', handleAndrewLoad)
+      andrewImg.removeEventListener('load', handleImageLoad)
       if (ambiguousImg) {
-        ambiguousImg.removeEventListener('load', handleAmbiguousLoad)
+        ambiguousImg.removeEventListener('load', handleImageLoad)
       }
       window.removeEventListener('resize', handleResize)
     }
@@ -203,6 +277,29 @@ function CheggNav() {
         alt="Ambiguous problem"
         className={`chegg-nav-ambiguous ${showAmbiguous ? 'animate' : ''}`}
         onError={(e) => console.error('Failed to load me-ambiguous-problem.svg', e)}
+      />
+      <div className="chegg-nav-stakeholders">
+        <ImageWithText
+          imageSrc="/img/chegg/chegg-nav-stakeholders.jpg"
+          text="First, I met with our Support & success-coach managers who know the problem best."
+          textPosition="top"
+          alt="Stakeholders"
+        />
+      </div>
+      <div className="chegg-nav-user-panel">
+        <ImageWithText
+          imageSrc="/img/chegg/chegg-user-panel.jpg"
+          text="I talked to our students via UserTesting 
+and weekly student panel Zooms."
+          textPosition="top"
+          alt="User panel"
+        />
+      </div>
+      <img
+        src="/img/chegg/chegg-nav-i-discovered.svg"
+        alt="I discovered"
+        className="chegg-nav-i-discovered"
+        onError={(e) => console.error('Failed to load chegg-nav-i-discovered.svg', e)}
       />
     </div>
   )
