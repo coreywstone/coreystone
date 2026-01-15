@@ -11,6 +11,7 @@ function CheggNav() {
   const [showAmbiguous, setShowAmbiguous] = useState(false)
   const andrewImageRef = useRef(null)
   const ambiguousImageRef = useRef(null)
+  const iterationFigmasRef = useRef(null)
 
   useEffect(() => {
     const containerElement = containerRef.current
@@ -150,21 +151,27 @@ function CheggNav() {
             }
           }
           
-          // Check i-discovered image (left: 1626px) - this is likely the rightmost
+          // Check i-discovered image (left: 1626px)
+          const iterationImg = panel.querySelector('.chegg-nav-iteration-figmas')
           if (iDiscoveredImg) {
             const iDiscoveredRect = iDiscoveredImg.getBoundingClientRect()
-            if (iDiscoveredRect.width > 0) {
-              requiredWidth = Math.max(requiredWidth, 1626 + iDiscoveredRect.width + 12)
-            } else if (iDiscoveredImg.naturalWidth && iDiscoveredImg.naturalWidth > 0) {
-              // Estimate for SVG
-              const iDiscoveredAspectRatio = iDiscoveredImg.naturalWidth / iDiscoveredImg.naturalHeight
-              const estimatedHeight = iDiscoveredImg.offsetHeight || 200
-              const estimatedWidth = estimatedHeight * iDiscoveredAspectRatio
-              requiredWidth = Math.max(requiredWidth, 1626 + estimatedWidth + 12)
+            const iDiscoveredWidth = iDiscoveredRect.width > 0 ? iDiscoveredRect.width : (iDiscoveredImg.naturalWidth || 300)
+            const iDiscoveredRight = 1626 + iDiscoveredWidth
+            
+            // Iteration-figmas left edge is at -12px from I-discovered's right edge
+            // It's 1238px wide, so its right edge extends to iDiscoveredRight - 12 + 1238
+            if (iterationImg) {
+              const iterationRight = iDiscoveredRight - 12 + 1238
+              requiredWidth = Math.max(requiredWidth, iterationRight + 12)
             } else {
-              // Fallback estimate
-              requiredWidth = Math.max(requiredWidth, 1626 + 300 + 12)
+              // If iteration image not loaded yet, just account for I-discovered
+              requiredWidth = Math.max(requiredWidth, 1626 + iDiscoveredWidth + 12)
             }
+          } else if (iterationImg) {
+            // If I-discovered not loaded but iteration is, use fallback
+            const iDiscoveredRight = 1626 + 300 // Estimate I-discovered width as 300px
+            const iterationRight = iDiscoveredRight - 12 + 1238
+            requiredWidth = Math.max(requiredWidth, iterationRight + 12)
           }
           
           // Ensure minimum width (at least enough for i-discovered image at 1700px + estimated width)
@@ -235,6 +242,15 @@ function CheggNav() {
           iDiscoveredImg.addEventListener('load', handleImageLoad, { once: true })
         }
       }
+      
+      const iterationImg = panel.querySelector('.chegg-nav-iteration-figmas')
+      if (iterationImg) {
+        if (iterationImg.complete) {
+          handleImageLoad()
+        } else {
+          iterationImg.addEventListener('load', handleImageLoad, { once: true })
+        }
+      }
     }, 0)
 
     // Also recalculate on window resize
@@ -249,6 +265,51 @@ function CheggNav() {
         ambiguousImg.removeEventListener('load', handleImageLoad)
       }
       window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
+  // Position iteration-figmas image at -12px from I-discovered's right edge
+  useEffect(() => {
+    const panel = containerRef.current
+    if (!panel) return
+    
+    const iDiscoveredImg = panel.querySelector('.chegg-nav-i-discovered')
+    const iterationImg = iterationFigmasRef.current
+    if (!iDiscoveredImg || !iterationImg) return
+
+    const updatePosition = () => {
+      const iDiscoveredRect = iDiscoveredImg.getBoundingClientRect()
+      const panelRect = panel.getBoundingClientRect()
+      if (iDiscoveredRect && panelRect) {
+        const iDiscoveredRight = iDiscoveredRect.right - panelRect.left
+        // Position left edge at -12px from i-discovered's right edge
+        iterationImg.style.left = `${iDiscoveredRight - 12}px`
+      }
+    }
+
+    // Update position when images load
+    const handleLoad = () => {
+      setTimeout(updatePosition, 50)
+    }
+
+    if (iDiscoveredImg.complete) {
+      handleLoad()
+    } else {
+      iDiscoveredImg.addEventListener('load', handleLoad, { once: true })
+    }
+
+    if (iterationImg.complete) {
+      handleLoad()
+    } else {
+      iterationImg.addEventListener('load', handleLoad, { once: true })
+    }
+
+    window.addEventListener('resize', updatePosition)
+    
+    return () => {
+      iDiscoveredImg.removeEventListener('load', handleLoad)
+      iterationImg.removeEventListener('load', handleLoad)
+      window.removeEventListener('resize', updatePosition)
     }
   }, [])
 
@@ -277,6 +338,13 @@ function CheggNav() {
         alt="Ambiguous problem"
         className={`chegg-nav-ambiguous ${showAmbiguous ? 'animate' : ''}`}
         onError={(e) => console.error('Failed to load me-ambiguous-problem.svg', e)}
+      />
+      <img
+        ref={iterationFigmasRef}
+        src="/img/chegg/chegg-nav-iteration-figmas.jpg"
+        alt="Iteration figmas"
+        className="chegg-nav-iteration-figmas"
+        onError={(e) => console.error('Failed to load chegg-nav-iteration-figmas.jpg', e)}
       />
       <div className="chegg-nav-stakeholders">
         <ImageWithText

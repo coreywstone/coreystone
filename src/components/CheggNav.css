@@ -101,3 +101,16 @@
   pointer-events: none;
   display: block;
 }
+
+.chegg-nav-iteration-figmas {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1238px;
+  height: 637px;
+  border: 12px solid var(--color-near-black);
+  z-index: 4;
+  pointer-events: none;
+  display: block;
+  object-fit: cover;
+}
