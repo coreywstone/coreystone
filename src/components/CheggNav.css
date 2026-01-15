@@ -43,15 +43,17 @@
   bottom: 48px;
   width: auto;
   height: auto;
-  z-index: 3;
+  z-index: 5;
   opacity: 0;
   transform: translate(-100%, 100%);
   transition: none;
   pointer-events: none;
   display: block;
+  visibility: hidden;
 }
 
 .chegg-nav-ambiguous.animate {
+  visibility: visible;
   opacity: 1;
   animation: jump-in-from-lower-left 800ms ease-out forwards;
 }

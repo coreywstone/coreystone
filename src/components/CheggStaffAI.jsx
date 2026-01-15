@@ -69,22 +69,22 @@ function CheggStaffAI() {
     }
   }, [isVisible])
 
-  // Show ask image after 3 seconds
+  // Show ask image after 1.7 seconds
   useEffect(() => {
     if (isVisible) {
       const timer = setTimeout(() => {
         setShowAsk(true)
-      }, 3000)
+      }, 1700)
       return () => clearTimeout(timer)
     }
   }, [isVisible])
 
-  // Show hmm image at 5 seconds
+  // Show hmm image at 2.5 seconds
   useEffect(() => {
     if (isVisible) {
       const timer = setTimeout(() => {
         setShowHmm(true)
-      }, 5000)
+      }, 2500)
       return () => clearTimeout(timer)
     }
   }, [isVisible])

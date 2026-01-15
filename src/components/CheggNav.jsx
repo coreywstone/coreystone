@@ -35,19 +35,39 @@ function CheggNav() {
       const visibleLeft = Math.max(containerLeft, scrollLeft)
       const visibleRight = Math.min(containerRight, scrollRight)
       const visibleWidth = Math.max(0, visibleRight - visibleLeft)
-      const containerWidth = containerRect.width
+      // Use offsetWidth for actual rendered width, fallback to getBoundingClientRect
+      const containerWidth = containerElement.offsetWidth || containerRect.width
       
-      // Trigger when 50% of the panel is visible
-      const visibleRatio = visibleWidth / containerWidth
-      if (visibleRatio >= 0.5 && !hasAnimated) {
+      // Trigger when 50% of the panel is visible OR when panel width > 0 and some portion is visible
+      const visibleRatio = containerWidth > 0 ? visibleWidth / containerWidth : 0
+      
+      // Also check if panel has any visible width at all (might be calculating before width is set)
+      const hasAnyVisibility = visibleWidth > 100 // At least 100px visible
+      const shouldTrigger = (visibleRatio >= 0.5 || hasAnyVisibility) && containerWidth > 500
+      
+      console.log('Nav panel visibility check:', { 
+        visibleRatio, 
+        visibleWidth, 
+        containerWidth, 
+        offsetWidth: containerElement.offsetWidth,
+        hasAnimated,
+        shouldTrigger,
+        containerRect: { left: containerLeft, right: containerRight, width: containerRect.width },
+        scrollRect: { left: scrollLeft, right: scrollRight }
+      })
+      
+      if (shouldTrigger && !hasAnimated) {
+        console.log('Nav panel triggering animations!')
         setIsVisible(true)
         setHasAnimated(true)
         
         // Show words 700ms later
         setTimeout(() => {
+          console.log('Setting showWords to true')
           setShowWords(true)
           // Show ambiguous image 750ms after words appear
           setTimeout(() => {
+            console.log('Setting showAmbiguous to true')
             setShowAmbiguous(true)
           }, 750)
         }, 700)
@@ -338,6 +358,9 @@ function CheggNav() {
         alt="Ambiguous problem"
         className={`chegg-nav-ambiguous ${showAmbiguous ? 'animate' : ''}`}
         onError={(e) => console.error('Failed to load me-ambiguous-problem.svg', e)}
+        onLoad={() => {
+          console.log('me-ambiguous-problem.svg loaded, showAmbiguous:', showAmbiguous, 'element:', ambiguousImageRef.current?.getBoundingClientRect())
+        }}
       />
       <img
         ref={iterationFigmasRef}
