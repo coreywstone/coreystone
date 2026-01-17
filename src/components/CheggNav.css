@@ -40,7 +40,7 @@
 .chegg-nav-ambiguous {
   position: absolute;
   left: 450px;
-  bottom: 48px;
+  top: 32px;
   width: auto;
   height: auto;
   z-index: 5;
@@ -76,43 +76,80 @@
   }
 }
 
-.chegg-nav-stakeholders {
+.chegg-nav-bottom-stack {
   position: absolute;
-  left: 850px;
-  bottom: 24px;
+  left: 600px;
+  bottom: 0;
   z-index: 4;
   pointer-events: none;
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  align-items: flex-end;
+  line-height: 0;
+  font-size: 0;
+}
+
+.chegg-nav-steps-wrapper {
+  flex-shrink: 0;
+  display: inline-block;
+  width: fit-content;
+  height: fit-content;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  vertical-align: bottom;
+}
+
+.chegg-nav-steps {
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 0;
+  padding: 0;
+  vertical-align: bottom;
+}
+
+.chegg-nav-stakeholders {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  margin-left: -2px; /* Overlap to close any gap */
+}
+
+.chegg-nav-stakeholders .image-with-text {
+  border-top-right-radius: 0;
+  margin: 0;
 }
 
 .chegg-nav-user-panel {
-  position: absolute;
-  left: 1238px;
-  bottom: 64px;
-  z-index: 4;
-  pointer-events: none;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+
+.chegg-nav-user-panel .image-with-text {
+  border-top-left-radius: 0;
 }
 
 .chegg-nav-i-discovered {
   position: absolute;
-  left: 1626px;
-  top: 50%;
-  transform: translateY(-50%);
+  z-index: 5;
+  pointer-events: none;
+  display: block;
   width: auto;
   height: auto;
-  z-index: 4;
-  pointer-events: none;
-  display: block;
 }
 
-.chegg-nav-iteration-figmas {
+.chegg-nav-iteration {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1238px;
-  height: 637px;
-  border: 12px solid var(--color-near-black);
+  bottom: 0;
   z-index: 4;
   pointer-events: none;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
+  border-left: 12px solid var(--color-near-black);
+  border-right: 12px solid var(--color-near-black);
 }

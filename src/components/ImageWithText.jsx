@@ -5,11 +5,12 @@ function ImageWithText({
   text, 
   width = '400px', 
   textPosition = 'top',
-  alt = '' 
+  alt = '',
+  className = ''
 }) {
   return (
     <div 
-      className={`image-with-text ${textPosition === 'top' ? 'text-top' : 'text-bottom'}`}
+      className={`image-with-text ${textPosition === 'top' ? 'text-top' : 'text-bottom'} ${className}`}
       style={{ width }}
     >
       {textPosition === 'top' && (

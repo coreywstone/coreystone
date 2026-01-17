@@ -149,49 +149,47 @@ function CheggNav() {
             requiredWidth = Math.max(requiredWidth, estimatedAndrewWidth + 12)
           }
           
-          // Account for the rightmost image at left: 1700px
-          // Need to check all images to find the rightmost edge
-          const stakeholdersContainer = panel.querySelector('.chegg-nav-stakeholders')
-          const userPanelContainer = panel.querySelector('.chegg-nav-user-panel')
+          // Check bottom stack container (left: 600px, flexbox with steps, stakeholders, user-panel)
+          const bottomStack = panel.querySelector('.chegg-nav-bottom-stack')
           const iDiscoveredImg = panel.querySelector('.chegg-nav-i-discovered')
+          const iterationImg = panel.querySelector('.chegg-nav-iteration')
+          let stackRightEdge = 0
           
-          // Check stakeholders container (left: 850px)
-          if (stakeholdersContainer) {
-            const stakeholdersRect = stakeholdersContainer.getBoundingClientRect()
-            if (stakeholdersRect.width > 0) {
-              requiredWidth = Math.max(requiredWidth, 850 + stakeholdersRect.width + 12)
+          if (bottomStack) {
+            const stackRect = bottomStack.getBoundingClientRect()
+            if (stackRect.width > 0) {
+              stackRightEdge = 600 + stackRect.width
+              requiredWidth = Math.max(requiredWidth, stackRightEdge + 12)
             }
           }
           
-          // Check user panel container (left: 1238px)
-          if (userPanelContainer) {
-            const userPanelRect = userPanelContainer.getBoundingClientRect()
-            if (userPanelRect.width > 0) {
-              requiredWidth = Math.max(requiredWidth, 1238 + userPanelRect.width + 12)
-            }
-          }
-          
-          // Check i-discovered image (left: 1626px)
-          const iterationImg = panel.querySelector('.chegg-nav-iteration-figmas')
-          if (iDiscoveredImg) {
+          // Check i-discovered image - now positioned relative to bottom stack right edge
+          // I-discovered's right edge aligns with stack's right edge
+          if (stackRightEdge > 0 && iDiscoveredImg) {
             const iDiscoveredRect = iDiscoveredImg.getBoundingClientRect()
             const iDiscoveredWidth = iDiscoveredRect.width > 0 ? iDiscoveredRect.width : (iDiscoveredImg.naturalWidth || 300)
-            const iDiscoveredRight = 1626 + iDiscoveredWidth
+            const iDiscoveredRight = stackRightEdge // I-discovered right edge aligns with stack right edge
             
-            // Iteration-figmas left edge is at -12px from I-discovered's right edge
-            // It's 1238px wide, so its right edge extends to iDiscoveredRight - 12 + 1238
-            if (iterationImg) {
-              const iterationRight = iDiscoveredRight - 12 + 1238
+            // If iteration image not loaded yet, just account for I-discovered
+            requiredWidth = Math.max(requiredWidth, iDiscoveredRight + 12)
+          }
+          
+          // Check iteration image - positioned immediately to the right of the stack
+          if (stackRightEdge > 0 && iterationImg) {
+            const iterationRect = iterationImg.getBoundingClientRect()
+            if (iterationRect.width > 0) {
+              // Iteration image starts at stackRightEdge, has left and right borders (12px each)
+              const iterationRight = stackRightEdge + iterationRect.width + 24 // 12px left border + 12px right border
               requiredWidth = Math.max(requiredWidth, iterationRight + 12)
-            } else {
-              // If iteration image not loaded yet, just account for I-discovered
-              requiredWidth = Math.max(requiredWidth, 1626 + iDiscoveredWidth + 12)
+            } else if (iterationImg.naturalWidth > 0) {
+              // Estimate based on natural width and panel height
+              const panelRect = panel.getBoundingClientRect()
+              const panelHeight = panelRect.height || 600
+              const aspectRatio = iterationImg.naturalWidth / iterationImg.naturalHeight
+              const estimatedIterationWidth = panelHeight * aspectRatio
+              const iterationRight = stackRightEdge + estimatedIterationWidth + 24
+              requiredWidth = Math.max(requiredWidth, iterationRight + 12)
             }
-          } else if (iterationImg) {
-            // If I-discovered not loaded but iteration is, use fallback
-            const iDiscoveredRight = 1626 + 300 // Estimate I-discovered width as 300px
-            const iterationRight = iDiscoveredRight - 12 + 1238
-            requiredWidth = Math.max(requiredWidth, iterationRight + 12)
           }
           
           // Ensure minimum width (at least enough for i-discovered image at 1700px + estimated width)
@@ -228,42 +226,171 @@ function CheggNav() {
     
     // Add load listeners for new images - use setTimeout to ensure DOM is ready
     setTimeout(() => {
-      const stakeholdersContainer = panel.querySelector('.chegg-nav-stakeholders')
-      const userPanelContainer = panel.querySelector('.chegg-nav-user-panel')
+      const bottomStack = panel.querySelector('.chegg-nav-bottom-stack')
       const iDiscoveredImg = panel.querySelector('.chegg-nav-i-discovered')
       
-      // For ImageWithText components, find the img inside
-      if (stakeholdersContainer) {
-        const stakeholdersImg = stakeholdersContainer.querySelector('img')
-        if (stakeholdersImg) {
-          if (stakeholdersImg.complete) {
-            handleImageLoad()
-          } else {
-            stakeholdersImg.addEventListener('load', handleImageLoad, { once: true })
+      // Match user-panel height to stakeholders height
+      const matchHeights = () => {
+        const stakeholdersContainer = bottomStack?.querySelector('.chegg-nav-stakeholders .image-with-text')
+        const userPanelContainer = bottomStack?.querySelector('.chegg-nav-user-panel .image-with-text')
+        if (stakeholdersContainer && userPanelContainer) {
+          const stakeholdersHeight = stakeholdersContainer.offsetHeight
+          if (stakeholdersHeight > 0) {
+            userPanelContainer.style.height = `${stakeholdersHeight}px`
           }
         }
       }
       
-      if (userPanelContainer) {
-        const userPanelImg = userPanelContainer.querySelector('img')
-        if (userPanelImg) {
-          if (userPanelImg.complete) {
-            handleImageLoad()
+      // Position I-discovered SVG right-aligned with bottom stack, sitting on top of it
+      const positionIDiscovered = () => {
+        if (!bottomStack || !iDiscoveredImg || !panel) return
+        
+        const stackRect = bottomStack.getBoundingClientRect()
+        const panelRect = panel.getBoundingClientRect()
+        
+        // Ensure we have valid dimensions
+        if (!stackRect || !panelRect || stackRect.width <= 0 || panelRect.width <= 0) {
+          console.log('i-discovered positioning: invalid dimensions', { stackRect, panelRect })
+          // Retry after a short delay
+          setTimeout(positionIDiscovered, 100)
+          return
+        }
+        
+        try {
+          // Calculate right edge of stack relative to panel (left: 600px + width)
+          const stackRightRelative = 600 + stackRect.width
+          
+          // Calculate right position for I-discovered
+          const rightPosition = panelRect.width - stackRightRelative
+          
+          // Position I-discovered so its right edge aligns with stack's right edge
+          iDiscoveredImg.style.right = `${Math.max(0, rightPosition)}px`
+          
+          // Position I-discovered on top of the flexbox
+          // The flexbox is at bottom: 0, so we need to position I-discovered's bottom at the flexbox's top
+          // Move down 4px to close the gap
+          if (stackRect.height > 0) {
+            iDiscoveredImg.style.bottom = `${stackRect.height - 4}px`
           } else {
-            userPanelImg.addEventListener('load', handleImageLoad, { once: true })
+            // Fallback: use offsetHeight if getBoundingClientRect height is 0
+            const stackHeight = bottomStack.offsetHeight || 200
+            iDiscoveredImg.style.bottom = `${stackHeight - 4}px`
+          }
+          
+          // Ensure image is visible
+          iDiscoveredImg.style.display = 'block'
+          iDiscoveredImg.style.opacity = '1'
+        } catch (error) {
+          console.error('Error positioning i-discovered:', error)
+        }
+      }
+      
+      // Check steps image in bottom stack and set scaled width
+      if (bottomStack) {
+        const stepsWrapper = bottomStack.querySelector('.chegg-nav-steps-wrapper')
+        const stepsImg = bottomStack.querySelector('.chegg-nav-steps')
+        const setStepsWidth = () => {
+          if (stepsImg && stepsWrapper) {
+            // Set image dimensions to 80% of natural size
+            if (stepsImg.naturalWidth > 0 && stepsImg.naturalHeight > 0) {
+              stepsImg.style.width = `${stepsImg.naturalWidth * 0.8}px`
+              stepsImg.style.height = `${stepsImg.naturalHeight * 0.8}px`
+              positionIDiscovered()
+            } else {
+              // Fallback: wait for natural dimensions
+              const checkDimensions = () => {
+                if (stepsImg.naturalWidth > 0 && stepsImg.naturalHeight > 0) {
+                  stepsImg.style.width = `${stepsImg.naturalWidth * 0.8}px`
+                  stepsImg.style.height = `${stepsImg.naturalHeight * 0.8}px`
+                  positionIDiscovered()
+                } else {
+                  setTimeout(checkDimensions, 50)
+                }
+              }
+              checkDimensions()
+            }
           }
         }
-      }
-      
-      if (iDiscoveredImg) {
-        if (iDiscoveredImg.complete) {
-          handleImageLoad()
-        } else {
-          iDiscoveredImg.addEventListener('load', handleImageLoad, { once: true })
+        
+        if (stepsImg) {
+          if (stepsImg.complete) {
+            setTimeout(setStepsWidth, 50)
+            handleImageLoad()
+            matchHeights()
+          } else {
+            stepsImg.addEventListener('load', () => {
+              setTimeout(setStepsWidth, 50)
+              handleImageLoad()
+              matchHeights()
+            }, { once: true })
+          }
         }
+        
+        // For ImageWithText components, find the img inside
+        const stakeholdersContainer = bottomStack.querySelector('.chegg-nav-stakeholders')
+        const userPanelContainer = bottomStack.querySelector('.chegg-nav-user-panel')
+        
+        if (stakeholdersContainer) {
+          const stakeholdersImg = stakeholdersContainer.querySelector('img')
+          if (stakeholdersImg) {
+            if (stakeholdersImg.complete) {
+              handleImageLoad()
+              matchHeights()
+            } else {
+              stakeholdersImg.addEventListener('load', () => {
+                handleImageLoad()
+                matchHeights()
+              }, { once: true })
+            }
+          }
+        }
+        
+        if (userPanelContainer) {
+          const userPanelImg = userPanelContainer.querySelector('img')
+          if (userPanelImg) {
+            if (userPanelImg.complete) {
+              handleImageLoad()
+              matchHeights()
+            } else {
+              userPanelImg.addEventListener('load', () => {
+                handleImageLoad()
+                matchHeights()
+              }, { once: true })
+            }
+          }
+        }
+        
+        // Also try to match heights after a short delay
+        setTimeout(matchHeights, 200)
       }
       
-      const iterationImg = panel.querySelector('.chegg-nav-iteration-figmas')
+        if (iDiscoveredImg) {
+          const handleIDiscoveredLoad = () => {
+            handleImageLoad()
+            // Position multiple times to ensure it works
+            setTimeout(positionIDiscovered, 50)
+            setTimeout(positionIDiscovered, 200)
+            setTimeout(positionIDiscovered, 500)
+          }
+          if (iDiscoveredImg.complete) {
+            handleIDiscoveredLoad()
+          } else {
+            iDiscoveredImg.addEventListener('load', handleIDiscoveredLoad, { once: true })
+          }
+        }
+        
+        // Also position after all images load, with multiple retries
+        setTimeout(() => {
+          positionIDiscovered()
+        }, 300)
+        setTimeout(() => {
+          positionIDiscovered()
+        }, 600)
+        setTimeout(() => {
+          positionIDiscovered()
+        }, 1000)
+      
+      const iterationImg = panel.querySelector('.chegg-nav-iteration')
       if (iterationImg) {
         if (iterationImg.complete) {
           handleImageLoad()
@@ -288,22 +415,25 @@ function CheggNav() {
     }
   }, [])
 
-  // Position iteration-figmas image at -12px from I-discovered's right edge
+  // Position iteration image immediately to the right of the bottom stack
   useEffect(() => {
     const panel = containerRef.current
     if (!panel) return
     
-    const iDiscoveredImg = panel.querySelector('.chegg-nav-i-discovered')
+    const bottomStack = panel.querySelector('.chegg-nav-bottom-stack')
     const iterationImg = iterationFigmasRef.current
-    if (!iDiscoveredImg || !iterationImg) return
+    if (!bottomStack || !iterationImg) return
 
     const updatePosition = () => {
-      const iDiscoveredRect = iDiscoveredImg.getBoundingClientRect()
+      const stackRect = bottomStack.getBoundingClientRect()
       const panelRect = panel.getBoundingClientRect()
-      if (iDiscoveredRect && panelRect) {
-        const iDiscoveredRight = iDiscoveredRect.right - panelRect.left
-        // Position left edge at -12px from i-discovered's right edge
-        iterationImg.style.left = `${iDiscoveredRight - 12}px`
+      if (stackRect && panelRect && stackRect.width > 0) {
+        // Position immediately to the right of the stack (left: 600px + stack width)
+        const stackRight = 600 + stackRect.width
+        iterationImg.style.left = `${stackRight}px`
+        // Set height to fill panel height
+        iterationImg.style.height = `${panelRect.height}px`
+        iterationImg.style.width = 'auto'
       }
     }
 
@@ -312,24 +442,26 @@ function CheggNav() {
       setTimeout(updatePosition, 50)
     }
 
-    if (iDiscoveredImg.complete) {
-      handleLoad()
-    } else {
-      iDiscoveredImg.addEventListener('load', handleLoad, { once: true })
-    }
+    if (bottomStack) {
+      // Use ResizeObserver to watch for stack size changes
+      const resizeObserver = new ResizeObserver(() => {
+        updatePosition()
+      })
+      resizeObserver.observe(bottomStack)
+      
+      if (iterationImg.complete) {
+        handleLoad()
+      } else {
+        iterationImg.addEventListener('load', handleLoad, { once: true })
+      }
 
-    if (iterationImg.complete) {
-      handleLoad()
-    } else {
-      iterationImg.addEventListener('load', handleLoad, { once: true })
-    }
-
-    window.addEventListener('resize', updatePosition)
-    
-    return () => {
-      iDiscoveredImg.removeEventListener('load', handleLoad)
-      iterationImg.removeEventListener('load', handleLoad)
-      window.removeEventListener('resize', updatePosition)
+      window.addEventListener('resize', updatePosition)
+      
+      return () => {
+        resizeObserver.disconnect()
+        iterationImg.removeEventListener('load', handleLoad)
+        window.removeEventListener('resize', updatePosition)
+      }
     }
   }, [])
 
@@ -364,27 +496,38 @@ function CheggNav() {
       />
       <img
         ref={iterationFigmasRef}
-        src="/img/chegg/chegg-nav-iteration-figmas.jpg"
-        alt="Iteration figmas"
-        className="chegg-nav-iteration-figmas"
-        onError={(e) => console.error('Failed to load chegg-nav-iteration-figmas.jpg', e)}
+        src="/img/chegg/chegg-nav-iteration.png"
+        alt="Iteration"
+        className="chegg-nav-iteration"
+        onError={(e) => console.error('Failed to load chegg-nav-iteration.png', e)}
       />
-      <div className="chegg-nav-stakeholders">
-        <ImageWithText
-          imageSrc="/img/chegg/chegg-nav-stakeholders.jpg"
-          text="First, I met with our Support & success-coach managers who know the problem best."
-          textPosition="top"
-          alt="Stakeholders"
-        />
-      </div>
-      <div className="chegg-nav-user-panel">
-        <ImageWithText
-          imageSrc="/img/chegg/chegg-user-panel.jpg"
-          text="I talked to our students via UserTesting 
+      <div className="chegg-nav-bottom-stack">
+        <div className="chegg-nav-steps-wrapper">
+          <img
+            src="/img/me/steps.svg"
+            alt="Steps"
+            className="chegg-nav-steps"
+            onError={(e) => console.error('Failed to load me/steps.svg', e)}
+          />
+        </div>
+        <div className="chegg-nav-stakeholders">
+          <ImageWithText
+            imageSrc="/img/chegg/chegg-nav-stakeholders.jpg"
+            text="First, I met with our Support & success-coach managers who know the problem best."
+            textPosition="top"
+            alt="Stakeholders"
+          />
+        </div>
+        <div className="chegg-nav-user-panel">
+          <ImageWithText
+            imageSrc="/img/chegg/chegg-user-panel.jpg"
+            text="I talked to our students via UserTesting 
 and weekly student panel Zooms."
-          textPosition="top"
-          alt="User panel"
-        />
+            textPosition="top"
+            alt="User panel"
+            className="no-left-border same-height-as-stakeholders"
+          />
+        </div>
       </div>
       <img
         src="/img/chegg/chegg-nav-i-discovered.svg"
