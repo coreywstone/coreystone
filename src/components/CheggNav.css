@@ -123,6 +123,10 @@
   margin: 0;
 }
 
+.chegg-nav-stakeholders .image-with-text-text {
+  padding-top: 4px;
+}
+
 .chegg-nav-user-panel {
   flex-shrink: 0;
   margin: 0;
@@ -132,6 +136,10 @@
 
 .chegg-nav-user-panel .image-with-text {
   border-top-left-radius: 0;
+}
+
+.chegg-nav-user-panel .image-with-text-text {
+  padding-top: 4px;
 }
 
 .chegg-nav-i-discovered {

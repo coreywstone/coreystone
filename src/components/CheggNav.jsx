@@ -473,10 +473,10 @@ function CheggNav() {
       </Backstory>
       <img
         ref={andrewImageRef}
-        src="/img/chegg/chegg-andrew.jpg"
+        src="/img/chegg/chegg-andrew.png"
         alt="Andrew"
         className="chegg-nav-andrew"
-        onError={(e) => console.error('Failed to load chegg-andrew.jpg', e)}
+        onError={(e) => console.error('Failed to load chegg-andrew.png', e)}
       />
       <img
         src="/img/chegg/chegg-andrew-words.svg"
