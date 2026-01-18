@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Backstory from './Backstory'
 import ImageWithText from './ImageWithText'
+import CheggNavResult from './CheggNavResult'
 import './CheggNav.css'
 
 function CheggNav() {
@@ -175,12 +176,13 @@ function CheggNav() {
           }
           
           // Check iteration image - positioned immediately to the right of the stack
+          // Don't add padding after iteration image since nav-result panel starts immediately after
           if (stackRightEdge > 0 && iterationImg) {
             const iterationRect = iterationImg.getBoundingClientRect()
             if (iterationRect.width > 0) {
               // Iteration image starts at stackRightEdge, has left and right borders (12px each)
               const iterationRight = stackRightEdge + iterationRect.width + 24 // 12px left border + 12px right border
-              requiredWidth = Math.max(requiredWidth, iterationRight + 12)
+              requiredWidth = Math.max(requiredWidth, iterationRight)
             } else if (iterationImg.naturalWidth > 0) {
               // Estimate based on natural width and panel height
               const panelRect = panel.getBoundingClientRect()
@@ -188,7 +190,7 @@ function CheggNav() {
               const aspectRatio = iterationImg.naturalWidth / iterationImg.naturalHeight
               const estimatedIterationWidth = panelHeight * aspectRatio
               const iterationRight = stackRightEdge + estimatedIterationWidth + 24
-              requiredWidth = Math.max(requiredWidth, iterationRight + 12)
+              requiredWidth = Math.max(requiredWidth, iterationRight)
             }
           }
           
@@ -466,6 +468,7 @@ function CheggNav() {
   }, [])
 
   return (
+    <>
     <div ref={containerRef} className="chegg-nav-panel">
       {/* Nav-problem panel */}
       <Backstory top={0} left={0}>
@@ -536,6 +539,8 @@ and weekly student panel Zooms."
         onError={(e) => console.error('Failed to load chegg-nav-i-discovered.svg', e)}
       />
     </div>
+    <CheggNavResult />
+    </>
   )
 }
 

@@ -7,6 +7,7 @@
   justify-content: flex-start;
   padding: 0 !important;
   margin: 0;
+  gap: 0;
   box-sizing: border-box;
   background-color: var(--color-white-ish) !important;
   width: auto;
@@ -37,6 +38,22 @@
 .project-section > .chegg-nav-panel {
   width: auto !important;
   height: 100%;
+}
+
+.project-section > .chegg-nav-result-panel {
+  width: auto !important;
+  height: 100%;
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Remove gap between nav panel and nav-result panel - they're siblings in the same section */
+.project-section:has(.chegg-nav-panel):has(.chegg-nav-result-panel) {
+  gap: 0 !important;
+}
+
+.project-section > .chegg-nav-panel + .chegg-nav-result-panel {
+  margin-left: -24px !important; /* Remove gap between nav panel and nav-result panel */
 }
 
 /* Ensure staff-ai section stretches to full height */

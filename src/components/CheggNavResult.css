@@ -1,0 +1,42 @@
+.chegg-nav-result-panel {
+  position: relative;
+  width: auto;
+  min-width: 800px;
+  height: 100%;
+  min-height: 600px;
+  background: linear-gradient(180deg, #C4D5FF 56.91%, #CED4E0 80.14%);
+  overflow: hidden;
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+}
+
+.chegg-nav-oldnav {
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  z-index: 1;
+  pointer-events: none;
+  display: block;
+}
+
+.chegg-nav-newnav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+  display: block;
+  height: 100%;
+  width: auto;
+}
+
+.chegg-nav-result {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+  display: block;
+  height: 100%;
+  width: auto;
+}
