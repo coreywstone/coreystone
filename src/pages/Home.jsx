@@ -76,7 +76,7 @@ function Home() {
               <p className="introtext">
                 👋 Hello! I'm Corey, an AI-savvy action-biased ambiguity-loving Super-IC Product Designer 
                 and dad of 4 kids and many animals (<a href="/bio">dog pic in bio</a>).
-               I don't really look like this, because the C on my chest stands for 🍪.
+               I don't really look like this, because the "C" on my chest stands for 🍪.
               </p>
               <p className="introtext">
                 I'm also a 0-1 thinker with experience at 4 startups plus solo-founding 7 apps. 
