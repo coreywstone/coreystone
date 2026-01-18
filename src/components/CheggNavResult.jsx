@@ -66,16 +66,16 @@ function CheggNavResult() {
           const newNavLeft = oldNavRight + 48
           const newNavRight = newNavLeft + newNavWidth
           
-          // Panel width = newnav right edge + 32px gap + result width (no padding on right)
+          // Panel width = newnav right edge + 32px gap - 112px (result moved left) + result width (no padding on right)
           // The panel's right edge should touch the container edge, so no extra padding
-          const requiredWidth = newNavRight + 32 + resultWidth
+          const requiredWidth = newNavRight + 32 - 112 + resultWidth
 
           panel.style.setProperty('width', `${requiredWidth}px`, 'important')
           panel.style.setProperty('min-width', `${requiredWidth}px`, 'important')
           
-          // Also position result svg 32px after newnav's right edge
+          // Position result png 32px after newnav's right edge, then move 112px left (80px + 32px)
           if (resultRef.current) {
-            resultRef.current.style.left = `${newNavRight + 32}px`
+            resultRef.current.style.left = `${newNavRight + 32 - 112}px`
           }
         } else if (oldNavWidth > 0) {
           // If only oldnav is loaded, estimate minimum width
@@ -110,10 +110,10 @@ function CheggNavResult() {
               newNavRef.current.style.height = `${panelHeight}px`
               newNavRef.current.style.width = `${calculatedWidth}px`
               
-              // Position result svg 32px after newnav's right edge
+              // Position result png 32px after newnav's right edge, then move 112px left (80px + 32px)
               if (resultRef.current) {
                 const newNavRight = oldNavRight + 48 + calculatedWidth
-                resultRef.current.style.left = `${newNavRight + 32}px`
+                resultRef.current.style.left = `${newNavRight + 32 - 112}px`
                 
                 // Set result svg to fill panel height
                 if (resultRef.current.naturalWidth > 0) {
@@ -196,10 +196,10 @@ function CheggNavResult() {
       />
       <img
         ref={resultRef}
-        src="/img/chegg/chegg-nav-result.svg"
+        src="/img/chegg/chegg-nav-result.png"
         alt="Result"
         className="chegg-nav-result"
-        onError={(e) => console.error('Failed to load chegg-nav-result.svg', e)}
+        onError={(e) => console.error('Failed to load chegg-nav-result.png', e)}
       />
     </div>
   )
