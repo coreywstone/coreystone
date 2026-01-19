@@ -67,6 +67,8 @@
   opacity: 1 !important;
   text-align: center;
   width: 100%;
+  padding: 0 24px;
+  box-sizing: border-box;
 }
 
 .project-section-placeholder a {

@@ -28,8 +28,7 @@ function Home() {
       label: 'NAV',
       content: <CheggNav />
     },
-    { id: 'dashboard', label: 'DASHBOARD' },
-    { id: 'delight', label: 'DELIGHT' }
+    { id: 'dashboard', label: 'DASHBOARD' }
   ]
 
 

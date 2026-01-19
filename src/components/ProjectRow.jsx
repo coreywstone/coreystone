@@ -176,12 +176,24 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
                 {section.content || (
                   <div className="project-section-placeholder">
                     <p>
-                      Section {index + 1} placeholder for {section.label}.<br />
-                      (for full content, view my{' '}
-                      <a href="https://coreystone.com" target="_blank" rel="noopener noreferrer">
-                        current/old site
-                      </a>
-                      )
+                      {section.id === 'dashboard' ? (
+                        <>
+                          Sorry – this section isn't done yet. <br />For full content, view my{' '}
+                          <a href="https://coreystone.com" target="_blank" rel="noopener noreferrer">
+                            current/old site
+                          </a>
+                          .
+                        </>
+                      ) : (
+                        <>
+                          Section {index + 1} placeholder for {section.label}.<br />
+                          (for full content, view my{' '}
+                          <a href="https://coreystone.com" target="_blank" rel="noopener noreferrer">
+                            current/old site
+                          </a>
+                          )
+                        </>
+                      )}
                     </p>
                   </div>
                 )}
