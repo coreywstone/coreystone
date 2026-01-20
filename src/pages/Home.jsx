@@ -74,7 +74,7 @@ function Home() {
                 <a href="/Corey-Stone-Resume.pdf" target="_blank" rel="noopener noreferrer">
                   résumé <i className="fa fa-file-pdf-o"></i>
                 </a>{' '}
-                if you need it.Thanks! <i className="fa fa-smile-o"></i>
+                if you need it. Thanks! <i className="fa fa-smile-o"></i>
               </p>
             </div>
           </div>

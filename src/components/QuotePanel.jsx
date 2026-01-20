@@ -517,9 +517,9 @@ function QuotePanel({
             particle.slideStartTime = Date.now()
             particle.slideStartY = particle.currentY
           } else if (particle.sliding) {
-            // Slide down over 2 seconds with ease-in
+            // Slide down over 500ms with ease-in (50% faster than 1000ms)
             const slideElapsed = Date.now() - particle.slideStartTime
-            const slideProgress = Math.min(slideElapsed / 2000, 1)
+            const slideProgress = Math.min(slideElapsed / 500, 1)
             // Ease-in: progress^2
             const easedProgress = slideProgress * slideProgress
             particle.currentY = particle.slideStartY + (window.innerHeight + 100 - particle.slideStartY) * easedProgress
@@ -689,8 +689,8 @@ function QuotePanel({
       }
       
       update(elapsed) {
-        // Stop updating if effect is complete (1750ms)
-        if (elapsed >= 1750) {
+        // Stop updating if effect is complete (1375ms = 875ms + 500ms extension)
+        if (elapsed >= 1375) {
           this.currentSize = 0
           this.opacity = 0
           return
@@ -707,9 +707,9 @@ function QuotePanel({
           return
         }
         
-        // Opacity fade-out for last 700ms of effect (from 1050ms to 1750ms)
-        if (elapsed >= 1050) {
-          const fadeProgress = (elapsed - 1050) / 700 // 0 to 1 over 700ms
+        // Opacity fade-out for last 500ms of effect (from 875ms to 1375ms for smoother outro)
+        if (elapsed >= 875) {
+          const fadeProgress = (elapsed - 875) / 500 // 0 to 1 over 500ms
           this.opacity = this.baseOpacity * (1 - fadeProgress) // Linear fade to transparent
         } else {
           this.opacity = this.baseOpacity
@@ -789,7 +789,7 @@ function QuotePanel({
     
     let isComplete = false
     
-    // Animation loop - runs once for 1750ms
+    // Animation loop - runs once for 875ms (twice as fast)
     const animate = () => {
       if (!showParticles || isComplete) {
         // Clear canvas when done
@@ -801,8 +801,8 @@ function QuotePanel({
       
       const elapsed = Date.now() - startTime
       
-      // Stop after 1750ms and hide particles
-      if (elapsed >= 1750) {
+      // Stop after 1375ms (875ms + 500ms extension for yellow particles outro)
+      if (elapsed >= 1375) {
         isComplete = true
         setShowParticles(false)
         ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -836,20 +836,20 @@ function QuotePanel({
     if (isVisible && !hasPlayedEffect) {
       setHasPlayedEffect(true) // Mark as played to prevent looping
       
-      // Start particles immediately (runs for 1750ms)
+      // Start particles immediately (runs for 875ms - twice as fast)
       setShowParticles(true)
       
-      // Start character flicker fade-in after 500ms delay, lasts 1250ms
-      // Character completes at 500ms + 1250ms = 1750ms
+      // Start character flicker fade-in after 250ms delay, lasts 625ms
+      // Character completes at 250ms + 625ms = 875ms
       teleporterTimeoutRef.current = setTimeout(() => {
         setShowCharacter(true)
-      }, 500)
+      }, 250)
       
-      // Start words animation 500ms after character completes flicker fade-in
-      // Character completes at 1750ms, so first bubble appears at 2250ms
+      // Start words animation when character completes flicker fade-in
+      // Character completes at 875ms, so first bubble appears at 875ms
       wordsDelayTimeoutRef.current = setTimeout(() => {
         setCanStartWords(true)
-      }, 2250) // 500ms delay + 1250ms flicker + 500ms after completion
+      }, 875) // 250ms delay + 625ms flicker
     }
   }, [isVisible, hasPlayedEffect])
 
@@ -1182,7 +1182,7 @@ function QuotePanel({
                 
                 startParticleEmission()
               }, 1000) // 1 second delay after gun is raised
-            }, 600) // After gun raise animation completes
+            }, 100) // After gun raise animation completes (reduced by 500ms from 600ms)
           }, 1000)
         } else if (willBounce) {
           // Calculate bounce physics
