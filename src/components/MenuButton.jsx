@@ -61,7 +61,7 @@ function MenuButton() {
   }, [isModalOpen])
 
   const handleButtonClick = () => {
-    setIsOpen(!isOpen)
+    setIsModalOpen(true)
   }
 
   const handleAboutSiteClick = () => {
@@ -172,9 +172,70 @@ function MenuButton() {
             >
               <InlineSVG src="/img/ui/close.svg" alt="Close" />
             </button>
-            <div className="modal-text-container">
-              <p>I wondered, how might I make my portfolio engaging and easy to read? Comics! And after years of hand-coding HTML/CSS, I built this in <a href="https://cursor.sh" target="_blank" rel="noopener noreferrer">Cursor</a>, used <a href="https://recraft.ai" target="_blank" rel="noopener noreferrer">Recraft.ai</a> for image gen, <a href="https://getsoundly.com/" target="_blank" rel="noopener noreferrer">Soundly</a>, and <a href="https://perplexity.ai" target="_blank" rel="noopener noreferrer">Perplexity</a> for research. It's been fun! 🤠</p>
+            
+            <div className="modal-header">
+              <div className="modal-nav-items">
+                <Link 
+                  to="/" 
+                  className="modal-nav-item"
+                  onClick={() => {
+                    handleNavLinkClick()
+                    handleCloseModal()
+                  }}
+                >
+                  <div className="modal-nav-icon">
+                    <InlineSVG src="/img/menu/home-icon.svg" alt="Home" />
+                  </div>
+                  <span className="modal-nav-label">HOME</span>
+                </Link>
+                <a 
+                  href="https://coreystone.com/Corey-Stone-Resume.pdf" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="modal-nav-item"
+                  onClick={handleCloseModal}
+                >
+                  <div className="modal-nav-icon">
+                    <InlineSVG src="/img/menu/resume-icon.svg" alt="Resume" />
+                  </div>
+                  <span className="modal-nav-label">RESUME</span>
+                </a>
+                <a 
+                  href="mailto:coreywstone@gmail.com" 
+                  className="modal-nav-item"
+                  onClick={handleCloseModal}
+                >
+                  <div className="modal-nav-icon">
+                    <InlineSVG src="/img/menu/email-icon.svg" alt="Email" />
+                  </div>
+                  <span className="modal-nav-label">EMAIL</span>
+                </a>
+                <Link 
+                  to="/bio" 
+                  className="modal-nav-item"
+                  onClick={() => {
+                    handleNavLinkClick()
+                    handleCloseModal()
+                  }}
+                >
+                  <div className="modal-nav-icon">
+                    <InlineSVG src="/img/menu/about-icon.svg" alt="Bio" />
+                  </div>
+                  <span className="modal-nav-label">BIO</span>
+                </Link>
+              </div>
             </div>
+            
+            <div className="modal-bubble-separator">
+              <img src="/img/menu/about-this-site-bubble-top.svg" alt="" />
+            </div>
+            
+            <div className="modal-speech-bubble">
+              <div className="modal-text-container">
+                <p>I WONDERED, HOW MIGHT I MAKE MY PORTFOLIO FUN AND DIGESTIBLE? <strong><em>COMICS!</em></strong> SO I'M BUILDING THIS IN <a href="https://cursor.sh" target="_blank" rel="noopener noreferrer">CURSOR</a>, <a href="https://recraft.ai" target="_blank" rel="noopener noreferrer">RECRAFT</a>, <a href="https://getsoundly.com/" target="_blank" rel="noopener noreferrer">SOUNDLY</a>, & <a href="https://perplexity.ai" target="_blank" rel="noopener noreferrer">PERPLEXITY</a>. IT'S BEEN FUN! 🤠</p>
+              </div>
+            </div>
+            
             <div className="modal-image-container">
               <img src="/img/me/about-this-site-bg-50.jpg" alt="" />
             </div>

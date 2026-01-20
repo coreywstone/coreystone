@@ -174,13 +174,13 @@
   right: 0;
   width: 400px;
   height: 100vh;
-  background-color: #FAFCFF;
+  background-color: #A3B0F5;
   display: flex;
   flex-direction: column;
-  border-left: 2px solid var(--color-near-white);
   box-shadow: 0 0 30px rgba(206, 212, 224, 0.5), 0 0 60px rgba(206, 212, 224, 0.3);
   animation: drawer-slide-in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .modal-content.closing {
@@ -230,39 +230,133 @@
   fill: var(--color-near-black);
 }
 
-.modal-text-container {
-  flex: 1;
-  width: 100%;
-  padding: 16px 24px;
-  font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 135%;
-  text-align: center;
+.modal-header {
+  background-color: #A3B0F5;
+  padding: 24px 32px 24px 16px;
+  flex-shrink: 0;
+}
+
+.modal-nav-items {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
   color: var(--color-near-black);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.modal-nav-item:hover {
+  transform: translateY(-2px);
+}
+
+.modal-nav-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 160px;
+  margin-bottom: 8px;
+  filter: drop-shadow(1px 2px 0 var(--color-charcoal));
+}
+
+.modal-nav-icon svg {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+.modal-nav-label {
+  font-family: 'Anime Ace', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--color-near-black);
+  letter-spacing: 0.02em;
+}
+
+.modal-bubble-separator {
+  width: 100%;
+  flex-shrink: 0;
+  margin-top: -1px;
+  position: relative;
+  z-index: 1;
+}
+
+.modal-bubble-separator img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.modal-speech-bubble {
+  background-color: var(--color-white-ish);
+  padding: 0;
+  margin: 0;
+  position: relative;
+  flex: 1;
+  margin-top: -2px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-title {
+  font-family: 'Anime Ace', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--color-near-black);
+  margin: 0 0 16px 0;
+  text-shadow: 1px 1px 0 var(--color-near-black);
+  letter-spacing: 0.02em;
+}
+
+.modal-text-container {
+  width: 100%;
+  flex: 1;
+  padding: 16px 16px 8px 16px;
+  font-family: 'Anime Ace', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+  color: var(--color-near-black);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: var(--color-white-ish);
+  box-sizing: border-box;
 }
 
 .modal-text-container p {
   font-size: 14px;
   margin: 0;
+  text-transform: uppercase;
+}
+
+.modal-text-container strong em {
+  font-weight: bold;
+  font-style: italic;
 }
 
 .modal-text-container a {
-  color: var(--color-slate-blue);
+  color: var(--color-near-black);
   text-decoration: underline;
 }
 
 .modal-text-container a:hover {
-  color: var(--color-link-hover);
-  text-decoration: underline;
+  opacity: 0.7;
 }
 
 .modal-image-container {
   width: 100%;
   flex-shrink: 0;
+  margin-top: auto;
 }
 
 .modal-image-container img {
