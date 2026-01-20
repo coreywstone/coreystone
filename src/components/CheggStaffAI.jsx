@@ -18,6 +18,9 @@ function CheggStaffAI() {
     const wireElement = wireRef.current
     if (!wireElement) return
 
+    let hasScrolled = false
+    let initialLayoutStable = false
+
     const checkVisibility = () => {
       const wireRect = wireElement.getBoundingClientRect()
       const viewportHeight = window.innerHeight
@@ -34,21 +37,36 @@ function CheggStaffAI() {
       
       // Trigger when section comes into vertical view (e.g., when any part is visible)
       const visibleRatio = visibleHeight / wireHeight
-      if (visibleRatio > 0 && !isVisible) {
+      
+      // Only trigger if user has scrolled (to avoid false positives from initial layout changes)
+      // This prevents the animation from triggering when the Intro section grows on initial load
+      if (visibleRatio > 0 && !isVisible && hasScrolled) {
         console.log('Wire panel vertically visible, triggering animation', { visibleRatio, visibleHeight, wireHeight })
         setIsVisible(true)
       }
     }
 
-    // Check initially
-    checkVisibility()
+    const handleScroll = () => {
+      if (!hasScrolled) {
+        hasScrolled = true
+      }
+      checkVisibility()
+    }
+
+    // Wait for layout to stabilize before allowing scroll detection
+    // This gives the Intro section time to grow to its final height
+    // After this delay, we'll only trigger on actual user scroll
+    const layoutStableTimer = setTimeout(() => {
+      initialLayoutStable = true
+    }, 1000) // 1 second delay to allow layout to fully stabilize
 
     // Listen to window scroll events for vertical scrolling
-    window.addEventListener('scroll', checkVisibility, { passive: true })
+    window.addEventListener('scroll', handleScroll, { passive: true })
     window.addEventListener('resize', checkVisibility, { passive: true })
 
     return () => {
-      window.removeEventListener('scroll', checkVisibility)
+      clearTimeout(layoutStableTimer)
+      window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', checkVisibility)
     }
   }, [isVisible])
