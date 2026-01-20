@@ -153,7 +153,7 @@ function MenuButton() {
               className="menu-item"
               onClick={() => setIsOpen(false)}
             >
-              <i className="fa fa-arrow-left"></i> Serious version
+              Serious version <InlineSVG src="/img/ui/external-link.svg" alt="" className="menu-item-icon" />
             </a>
           </div>
         )}
