@@ -250,11 +250,11 @@
   text-decoration: none;
   color: var(--color-near-black);
   cursor: pointer;
-  transition: transform 0.2s ease;
+  opacity: 1;
 }
 
 .modal-nav-item:hover {
-  transform: translateY(-2px);
+  opacity: 1;
 }
 
 .modal-nav-icon {
@@ -263,6 +263,32 @@
   justify-content: center;
   margin-bottom: 8px;
   filter: drop-shadow(1px 2px 0 var(--color-charcoal));
+  transition: transform 0.3s ease-out, filter 0.3s ease-out;
+  opacity: 1;
+}
+
+@keyframes playful-lift {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-6px) scale(1.13) rotate(-5deg);
+  }
+}
+
+@keyframes playful-rotate {
+  0%, 100% {
+    transform: translateY(-6px) scale(1.13) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-6px) scale(1.13) rotate(5deg);
+  }
+}
+
+.modal-nav-item:hover .modal-nav-icon {
+  filter: drop-shadow(0 0 8px var(--color-slate-blue)) drop-shadow(1px 3px 4px rgba(74, 107, 164, 0.4));
+  opacity: 1;
+  animation: playful-lift 0.3s ease-out forwards, playful-rotate 1s ease-in-out 0.3s infinite;
 }
 
 .modal-nav-icon svg {
@@ -277,6 +303,12 @@
   text-transform: uppercase;
   color: var(--color-near-black);
   letter-spacing: 0.02em;
+  opacity: 1;
+  font-weight: normal;
+}
+
+.modal-nav-item:hover .modal-nav-label {
+  opacity: 1;
 }
 
 .modal-bubble-separator {
