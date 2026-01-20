@@ -11,6 +11,13 @@ import { getQuoteAssets, getQuoteAlignment, getQuoteLinkedInUrl } from '../utils
 import './Home.css'
 
 function Home() {
+  const handlePhogClick = () => {
+    const audio = new Audio('/img/me/phog-meow.mp3')
+    audio.play().catch(err => {
+      console.error('Error playing cat sound:', err)
+    })
+  }
+
   const cheggSections = [
     { 
       id: 'staffs-ai', 
@@ -58,24 +65,25 @@ function Home() {
         </div>
         <div className="container">
           <div className="about-content">
-            <div className="about-image">
+            <div className="about-image-group">
+              <div className="about-image">
+                <img 
+                  src="/img/me/corey-arms-at-side.svg" 
+                  alt="Corey Stone"
+                  className="profile-image"
+                />
+                <img 
+                  src="/img/me/intro-words.svg" 
+                  alt="Intro text"
+                  className="intro-words"
+                />
+              </div>
               <img 
-                src="/img/me/corey-arms-at-side.svg" 
-                alt="Corey Stone"
-                className="profile-image"
+                src="/img/me/phog-lying-on-side.png" 
+                alt="Phog the cat"
+                className="phog-image"
+                onClick={handlePhogClick}
               />
-            </div>
-            <div className="about-text">
-              <p className="introtext">
-                👋 Hi, I'm Corey, a Super-IC Product Designer and dad of 4 kids and 4 dogs (<a href="/bio">dog pic in bio</a>).
-              </p>
-              <p className="introtext">
-                I'm a 0-1 thinker from 4 startups plus solo-founding 7 apps. See my work below or grab my{' '}
-                <a href="/Corey-Stone-Resume.pdf" target="_blank" rel="noopener noreferrer">
-                  résumé <i className="fa fa-file-pdf-o"></i>
-                </a>{' '}
-                if you need it. Thanks! <i className="fa fa-smile-o"></i>
-              </p>
             </div>
           </div>
         </div>

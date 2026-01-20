@@ -34,38 +34,40 @@
   position: relative;
   z-index: 2;
   display: flex;
-  gap: 3rem;
   align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
 }
 
+.about-image-group {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+  justify-content: center;
+}
+
 /* Tablet and below - prevent stacking, reduce character size */
 @media (max-width: 1024px) and (min-width: 769px) {
-  .about-content {
-    flex-wrap: nowrap;
-    gap: 24px;
-  }
-  
-  .about-image {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: flex-end;
-  }
-  
   .profile-image {
     max-width: 128px;
     width: 128px;
   }
   
-  .about-text {
-    min-width: 220px;
-    flex: 1 1 auto;
+  .intro-words {
+    max-width: 200px;
+    transform: translate(calc(10% + 165px), calc(-15% + 24px));
+  }
+  
+  .phog-image {
+    max-width: 150px;
+    margin-left: -15px;
   }
 }
 
 .about-image {
-  flex: 0 0 300px;
+  position: relative;
+  flex: 0 0 auto;
 }
 
 .profile-image {
@@ -75,40 +77,30 @@
   display: block;
 }
 
-.about-text {
-  flex: 0 1 auto;
-  min-width: 300px;
-  max-width: 480px;
+.intro-words {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(calc(20% + 165px), calc(-20% + 24px));
+  max-width: 300px;
+  height: auto;
+  z-index: 10;
 }
 
-.introtext {
-  font-family: var(--font-body);
-  font-size: 1.125rem;
-  line-height: 1.6;
-  color: var(--color-near-white);
-  margin-bottom: 1.5rem;
+.phog-image {
+  position: relative;
+  max-width: 225px;
+  height: auto;
+  cursor: pointer;
+  margin-left: -20px;
+  transform: translateY(20px);
 }
 
-.introtext a {
-  color: var(--color-blue);
-}
 
 /* Mobile specific adjustments */
 @media (max-width: 768px) {
   .about-content {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: flex-end;
-    gap: 24px;
-    justify-content: flex-start;
-  }
-  
-  .about-image {
-    flex: 0 0 auto;
-    width: auto;
-    min-width: 0;
-    display: flex;
-    align-items: flex-end;
+    justify-content: center;
   }
   
   .profile-image {
@@ -117,15 +109,14 @@
     flex-shrink: 0;
   }
   
-  .about-text {
-    text-align: left;
-    padding-bottom: 100px;
-    min-width: 200px;
-    flex: 1 1 auto;
+  .intro-words {
+    max-width: 150px;
+    transform: translate(calc(5% + 165px), calc(-10% + 24px));
   }
   
-  .introtext {
-    font-size: 12px;
+  .phog-image {
+    max-width: 120px;
+    margin-left: -10px;
   }
 }
 
