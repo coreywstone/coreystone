@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { BackstoryContext } from './ProjectSection'
 import './Backstory.css'
 
-function Backstory({ children, backgroundColor, width, top, left }) {
+function Backstory({ children, backgroundColor, width, top, left, className = '' }) {
   const contextBgColor = useContext(BackstoryContext)
   
   const style = {
@@ -20,7 +20,7 @@ function Backstory({ children, backgroundColor, width, top, left }) {
   })
 
   return (
-    <div className="backstory" style={Object.keys(style).length > 0 ? style : undefined}>
+    <div className={`backstory ${className}`.trim()} style={Object.keys(style).length > 0 ? style : undefined}>
       {children}
     </div>
   )

@@ -18,30 +18,24 @@ function CheggStaffAI() {
     const wireElement = wireRef.current
     if (!wireElement) return
 
-    // Find the scrollable container (project-panel-container)
-    const scrollContainer = wireElement.closest('.project-panel-container')
-    if (!scrollContainer) return
-
     const checkVisibility = () => {
       const wireRect = wireElement.getBoundingClientRect()
-      const containerRect = scrollContainer.getBoundingClientRect()
+      const viewportHeight = window.innerHeight
       
-      // Calculate how much of the Wire panel is visible horizontally
-      const wireLeft = wireRect.left
-      const wireRight = wireRect.right
-      const containerLeft = containerRect.left
-      const containerRight = containerRect.right
+      // Calculate how much of the Wire panel is visible vertically
+      const wireTop = wireRect.top
+      const wireBottom = wireRect.bottom
       
-      // Calculate visible width of Wire panel
-      const visibleLeft = Math.max(wireLeft, containerLeft)
-      const visibleRight = Math.min(wireRight, containerRight)
-      const visibleWidth = Math.max(0, visibleRight - visibleLeft)
-      const wireWidth = wireRect.width
+      // Calculate visible height of Wire panel
+      const visibleTop = Math.max(wireTop, 0)
+      const visibleBottom = Math.min(wireBottom, viewportHeight)
+      const visibleHeight = Math.max(0, visibleBottom - visibleTop)
+      const wireHeight = wireRect.height
       
-      // Trigger when 1/3 (33%) of the Wire panel is visible
-      const visibleRatio = visibleWidth / wireWidth
-      if (visibleRatio >= 0.33 && !isVisible) {
-        console.log('Wire panel 1/3 visible, triggering animation', { visibleRatio, visibleWidth, wireWidth })
+      // Trigger when section comes into vertical view (e.g., when any part is visible)
+      const visibleRatio = visibleHeight / wireHeight
+      if (visibleRatio > 0 && !isVisible) {
+        console.log('Wire panel vertically visible, triggering animation', { visibleRatio, visibleHeight, wireHeight })
         setIsVisible(true)
       }
     }
@@ -49,12 +43,12 @@ function CheggStaffAI() {
     // Check initially
     checkVisibility()
 
-    // Listen to scroll events on the container
-    scrollContainer.addEventListener('scroll', checkVisibility, { passive: true })
+    // Listen to window scroll events for vertical scrolling
+    window.addEventListener('scroll', checkVisibility, { passive: true })
     window.addEventListener('resize', checkVisibility, { passive: true })
 
     return () => {
-      scrollContainer.removeEventListener('scroll', checkVisibility)
+      window.removeEventListener('scroll', checkVisibility)
       window.removeEventListener('resize', checkVisibility)
     }
   }, [isVisible])
@@ -147,6 +141,9 @@ function CheggStaffAI() {
 
   return (
     <div className="chegg-staff-ai-panel">
+      <Backstory width="340px" className="chegg-staff-ai-backstory">
+        Chegg's "Skills" division (fka Thinkful) has 75 staff and sells a B2B2C async adult upskilling SaaS with human coaches.
+      </Backstory>
       <div ref={wireRef} className="chegg-staff-ai-wire">
         {/* Wire panel content will go here */}
         <img

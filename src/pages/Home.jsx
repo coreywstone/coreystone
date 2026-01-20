@@ -3,7 +3,6 @@ import QuotesRow from '../components/QuotesRow'
 import SketchesRow from '../components/SketchesRow'
 import MuralsRow from '../components/MuralsRow'
 import StarrySky from '../components/StarrySky'
-import CheggIntro from '../components/CheggIntro'
 import CheggStaffAI from '../components/CheggStaffAI'
 import CheggNav from '../components/CheggNav'
 import OtherProjects from '../components/OtherProjects'
@@ -13,11 +12,6 @@ import './Home.css'
 
 function Home() {
   const cheggSections = [
-    { 
-      id: 'intro', 
-      label: 'INTRO',
-      content: <CheggIntro />
-    },
     { 
       id: 'staffs-ai', 
       label: "STAFF'S AI",
@@ -76,11 +70,11 @@ function Home() {
                 👋 Hi, I'm Corey, a Super-IC Product Designer and dad of 4 kids and 4 dogs (<a href="/bio">dog pic in bio</a>).
               </p>
               <p className="introtext">
-                I'm also a 0-1 thinker from 4 startups plus solo-founding 7 apps. See my work below or grab my{' '}
+                I'm a 0-1 thinker from 4 startups plus solo-founding 7 apps. See my work below or grab my{' '}
                 <a href="/Corey-Stone-Resume.pdf" target="_blank" rel="noopener noreferrer">
                   résumé <i className="fa fa-file-pdf-o"></i>
                 </a>{' '}
-                if you need it. Thanks! <i className="fa fa-smile-o"></i>
+                if you need it.Thanks! <i className="fa fa-smile-o"></i>
               </p>
             </div>
           </div>
