@@ -265,6 +265,8 @@
   filter: drop-shadow(1px 2px 0 var(--color-charcoal));
   transition: transform 0.3s ease-out, filter 0.3s ease-out;
   opacity: 1;
+  transform: translateY(0) scale(1) rotate(0deg);
+  will-change: transform, filter;
 }
 
 @keyframes playful-lift {
@@ -285,10 +287,23 @@
   }
 }
 
+@keyframes playful-return {
+  0% {
+    transform: translateY(-6px) scale(1.13) rotate(-5deg);
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
 .modal-nav-item:hover .modal-nav-icon {
   filter: drop-shadow(0 0 8px var(--color-slate-blue)) drop-shadow(1px 3px 4px rgba(74, 107, 164, 0.4));
   opacity: 1;
   animation: playful-lift 0.3s ease-out forwards, playful-rotate 1s ease-in-out 0.3s infinite;
+}
+
+.modal-nav-item:not(:hover) .modal-nav-icon {
+  animation: playful-return 0.3s ease-out forwards;
 }
 
 .modal-nav-icon svg {
