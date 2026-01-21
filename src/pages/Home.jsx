@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import ProjectRow from '../components/ProjectRow'
 import QuotesRow from '../components/QuotesRow'
 import SketchesRow from '../components/SketchesRow'
@@ -11,11 +12,21 @@ import { getQuoteAssets, getQuoteAlignment, getQuoteLinkedInUrl } from '../utils
 import './Home.css'
 
 function Home() {
+  const [phogImage, setPhogImage] = useState('/img/me/phog-lying-on-side.png')
+
   const handlePhogClick = () => {
     const audio = new Audio('/img/me/phog-meow.mp3')
     audio.play().catch(err => {
       console.error('Error playing cat sound:', err)
     })
+    
+    // Swap to poked image
+    setPhogImage('/img/me/phog-lying-on-side-poked.png')
+    
+    // Return to original image after brief pause
+    setTimeout(() => {
+      setPhogImage('/img/me/phog-lying-on-side.png')
+    }, 500)
   }
 
   const cheggSections = [
@@ -79,7 +90,7 @@ function Home() {
                 />
               </div>
               <img 
-                src="/img/me/phog-lying-on-side.png" 
+                src={phogImage}
                 alt="Phog the cat"
                 className="phog-image"
                 onClick={handlePhogClick}
