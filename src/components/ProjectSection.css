@@ -83,6 +83,13 @@
   background-color: var(--custom-bg-color, var(--color-white-ish)) !important;
 }
 
+/* Dashboard section styling */
+.project-section#dashboard {
+  width: 800px !important;
+  min-width: 800px !important;
+  max-width: 800px !important;
+}
+
 /* Other Projects section styling */
 .other-projects-row .project-panel-scroll {
   width: 100% !important;

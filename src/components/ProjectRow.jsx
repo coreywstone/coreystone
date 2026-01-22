@@ -170,7 +170,7 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
                 ref={el => sectionRefs.current[index] = el}
                 id={section.id}
                 isLast={index === sections.length - 1}
-                backgroundColor={backgroundColor}
+                backgroundColor={section.backgroundColor || backgroundColor}
                 backstoryBgColor={backstoryBgColor}
               >
                 {section.content || (

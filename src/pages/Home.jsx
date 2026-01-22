@@ -40,7 +40,37 @@ function Home() {
       label: 'NAV',
       content: <CheggNav />
     },
-    { id: 'dashboard', label: 'DASHBOARD' }
+    { 
+      id: 'dashboard', 
+      label: 'DASHBOARD',
+      backgroundColor: '#CED4E0', // Marble
+      content: (
+        <div style={{ 
+          display: 'flex', 
+          flexDirection: 'column', 
+          alignItems: 'center', 
+          justifyContent: 'center', 
+          height: '100%', 
+          width: '100%', 
+          gap: '1rem' 
+        }}>
+          <p style={{ 
+            fontFamily: 'var(--font-anime-ace)', 
+            fontSize: '18px', 
+            fontWeight: 'bold', 
+            textAlign: 'center',
+            margin: 0
+          }}>
+            The Dashboard section is...
+          </p>
+          <img 
+            src="/img/me/under-construction.png" 
+            alt="Under construction" 
+            style={{ width: '450px', height: 'auto' }}
+          />
+        </div>
+      )
+    }
   ]
 
 
