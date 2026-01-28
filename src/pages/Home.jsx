@@ -66,7 +66,7 @@ function Home() {
           <img 
             src="/img/me/under-construction.png" 
             alt="Under construction" 
-            style={{ width: '540px', height: 'auto' }}
+            style={{ height: '70%', width: 'auto' }}
           />
         </div>
       )
