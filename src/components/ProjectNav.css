@@ -36,6 +36,10 @@
   flex-shrink: 0;
 }
 
+.project-nav-title-clickable {
+  cursor: pointer;
+}
+
 .project-nav-title img {
   height: 32px;
   width: auto;

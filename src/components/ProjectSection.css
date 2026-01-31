@@ -83,11 +83,44 @@
   background-color: var(--custom-bg-color, var(--color-white-ish)) !important;
 }
 
+.project-section.custom-background-image {
+  background: var(--custom-bg) !important;
+}
+
+.project-section:has(.under-construction-panel) {
+  min-width: 800px;
+}
+
+.project-section#8counts,
+.project-section#8counts p {
+  color: var(--color-white-ish) !important;
+}
+
 /* Dashboard section styling */
 .project-section#dashboard {
   width: 800px !important;
   min-width: 800px !important;
   max-width: 800px !important;
+}
+
+/* Apps I Founded – panel width matches image, image fills height */
+.project-section:has(.founding-intro-panel) {
+  width: fit-content;
+  min-width: 0;
+}
+
+.project-section:has(.founding-intro-panel) > .founding-intro-panel {
+  width: auto !important;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.project-section:has(.founding-intro-panel) .founding-intro-panel img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 /* Other Projects section styling */

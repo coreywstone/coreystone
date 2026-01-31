@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import './ProjectNav.css'
 
-function ProjectNav({ title, sections = [], activeSectionId, onTabClick, scrollContainerRef, isSticky, color = '#F5EFE7', showTabs = true }) {
+function ProjectNav({ title, sections = [], activeSectionId, onTabClick, scrollContainerRef, isSticky, color = '#F5EFE7', showTabs = true, hiddenTabIds = [] }) {
+  const visibleSections = sections.filter(s => !hiddenTabIds.includes(s.id))
   const [indicatorStyle, setIndicatorStyle] = useState({
     opacity: 0,
     left: '0px',
@@ -18,15 +19,18 @@ function ProjectNav({ title, sections = [], activeSectionId, onTabClick, scrollC
 
   // Update indicator position when active section changes
   useEffect(() => {
-    if (sections.length === 0 || !navRef.current) return
+    if (visibleSections.length === 0 || !navRef.current) return
 
     const currentActiveId = activeSectionId || sections[0]?.id
     if (!currentActiveId) return
 
-    const activeIndex = sections.findIndex(section => section.id === currentActiveId)
-    if (activeIndex === -1) return
+    const activeVisibleIndex = visibleSections.findIndex(s => s.id === currentActiveId)
+    if (activeVisibleIndex === -1) {
+      setIndicatorStyle(prev => ({ ...prev, opacity: 0 }))
+      return
+    }
 
-    const activeTab = tabsRef.current[activeIndex]
+    const activeTab = tabsRef.current[activeVisibleIndex]
     if (!activeTab || !tabsContainerRef.current) return
 
     const updateIndicatorPosition = () => {
@@ -73,7 +77,7 @@ function ProjectNav({ title, sections = [], activeSectionId, onTabClick, scrollC
     requestAnimationFrame(() => {
       requestAnimationFrame(updateIndicatorPosition)
     })
-  }, [activeSectionId, sections])
+  }, [activeSectionId, sections, visibleSections])
 
   const handleTabClick = (sectionId, index) => {
     if (onTabClick) {
@@ -81,10 +85,23 @@ function ProjectNav({ title, sections = [], activeSectionId, onTabClick, scrollC
     }
   }
 
+  const handleTitleClick = () => {
+    if (sections.length > 0 && scrollContainerRef?.current) {
+      scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' })
+      onTabClick?.(sections[0].id, 0)
+    }
+  }
+
   return (
     <nav ref={navRef} className={`project-nav ${isSticky ? 'sticky' : ''}`}>
       {title && (
-        <h2 className="project-nav-title" style={{ color }}>
+        <h2
+          className={`project-nav-title ${sections.length > 0 ? 'project-nav-title-clickable' : ''}`.trim()}
+          style={{ color }}
+          onClick={sections.length > 0 ? handleTitleClick : undefined}
+          role={sections.length > 0 ? 'button' : undefined}
+          tabIndex={sections.length > 0 ? 0 : undefined}
+        >
           {title === 'Chegg Skills:' ? (
             <img src="/img/chegg/chegg-logo.svg" alt="Chegg Skills" />
           ) : (
@@ -92,19 +109,19 @@ function ProjectNav({ title, sections = [], activeSectionId, onTabClick, scrollC
           )}
         </h2>
       )}
-      {showTabs && sections.length > 0 && (
+      {showTabs && visibleSections.length > 0 && (
         <div ref={tabsContainerRef} className="project-nav-tabs">
           <div 
             ref={indicatorRef}
             className={`project-nav-indicator ${isAnimating ? 'animating' : ''}`}
             style={{ ...indicatorStyle, backgroundColor: color }}
           />
-          {sections.map((section, index) => (
+          {visibleSections.map((section, visibleIndex) => (
             <button
               key={section.id}
-              ref={el => tabsRef.current[index] = el}
+              ref={el => tabsRef.current[visibleIndex] = el}
               className={`project-nav-tab ${activeSectionId === section.id ? 'active' : ''}`}
-              onClick={() => handleTabClick(section.id, index)}
+              onClick={() => handleTabClick(section.id, sections.findIndex(s => s.id === section.id))}
             >
               {section.label}
             </button>

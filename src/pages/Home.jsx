@@ -73,7 +73,60 @@ function Home() {
     }
   ]
 
+  const underConstructionContent = (text, textColor) => (
+    <div className="under-construction-panel" style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '100%',
+      width: '100%',
+      gap: '1rem'
+    }}>
+      <p style={{
+        fontFamily: 'var(--font-body)',
+        fontSize: '18px',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        margin: 0,
+        ...(textColor && { color: textColor })
+      }}>
+        {text}
+      </p>
+      <img
+        src="/img/me/under-construction.png"
+        alt="Under construction"
+        style={{ height: '70%', width: 'auto' }}
+      />
+    </div>
+  )
 
+  const foundingSections = [
+    {
+      id: 'founding',
+      label: 'FOUNDING',
+      content: (
+        <div className="founding-intro-panel">
+          <img
+            src="/img/8counts/founding-intro.svg"
+            alt="Solo-founding forces me to wear all the hats, helping me think holistically about the product and its systems, including branding, marketing and writing, adoption, engagement, monetization, dev/time trade-offs, and support."
+          />
+        </div>
+      )
+    },
+    {
+      id: '8counts',
+      label: '8COUNTS',
+      background: 'radial-gradient(146.35% 100% at 50% 0%, #263E5B 0%, #030E20 100%)',
+      content: underConstructionContent('The 8counts section is...', 'var(--color-white-ish)')
+    },
+    {
+      id: 'keyboard',
+      label: 'KEYBOARD',
+      backgroundColor: '#CED4E0',
+      content: underConstructionContent('The HERO Keyboard section is...')
+    }
+  ]
 
   // Convert quotes config to quote data structure
   const buildQuotesForRow = (rowConfig) => {
@@ -140,25 +193,31 @@ function Home() {
         <QuotesRow key={quoteRows[0].id} quotes={quoteRows[0].quotes} />
       )}
 
+      <ProjectRow
+        title="Solo-founding"
+        sections={foundingSections}
+        hiddenTabIds={['founding']}
+      />
+      {quoteRows.length > 1 && quoteRows[1] && (
+        <QuotesRow key={quoteRows[1].id} quotes={quoteRows[1].quotes} />
+      )}
+
       <ProjectRow 
         title="Other projects" 
         sections={[{ id: 'other', label: 'OTHER', content: <OtherProjects /> }]}
         showNavTabs={false}
         className="other-projects-row"
       />
-      {quoteRows.length > 1 && quoteRows[1] && (
-        <QuotesRow key={quoteRows[1].id} quotes={quoteRows[1].quotes} />
-      )}
-
-      <SketchesRow />
       {quoteRows.length > 2 && quoteRows[2] && (
         <QuotesRow key={quoteRows[2].id} quotes={quoteRows[2].quotes} />
       )}
-      <MuralsRow />
-      
+
+      <SketchesRow />
       {quoteRows.length > 3 && quoteRows[3] && (
         <QuotesRow key={quoteRows[3].id} quotes={quoteRows[3].quotes} />
       )}
+      <MuralsRow />
+      
       {quoteRows.length > 4 && quoteRows[4] && (
         <QuotesRow key={quoteRows[4].id} quotes={quoteRows[4].quotes} />
       )}

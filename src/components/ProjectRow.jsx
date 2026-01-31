@@ -3,7 +3,7 @@ import ProjectNav from './ProjectNav'
 import ProjectSection from './ProjectSection'
 import './ProjectRow.css'
 
-function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = true, backgroundColor = null, backstoryBgColor = null, className = '' }) {
+function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = true, backgroundColor = null, backstoryBgColor = null, className = '', hiddenTabIds = [] }) {
   const [activeSectionId, setActiveSectionId] = useState(sections[0]?.id || null)
   const [isNavSticky, setIsNavSticky] = useState(false)
   const scrollContainerRef = useRef(null)
@@ -104,16 +104,19 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
     return () => container.removeEventListener('scroll', handleScroll)
   }, [sections])
 
-  // Calculate and set section heights based on viewport
+  // Calculate and set section heights from the row's actual height (so min-height: 700px fills the panel)
+  const NAV_AND_BORDER = 84 // 72px nav + 12px border
+
   useEffect(() => {
     const calculateSectionHeight = () => {
-      const viewportHeight = window.innerHeight
-      const sectionHeight = viewportHeight - 84 // 72px nav + 12px border
-      return sectionHeight
+      if (!rowRef.current) return 0
+      const rowHeight = rowRef.current.getBoundingClientRect().height
+      return rowHeight - NAV_AND_BORDER
     }
 
     const setSectionHeights = () => {
       const height = calculateSectionHeight()
+      if (height <= 0) return
       // Use setTimeout to ensure refs are populated after render
       setTimeout(() => {
         sectionRefs.current.forEach((ref) => {
@@ -128,13 +131,25 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
     // Set initial height
     setSectionHeights()
 
-    // Handle resize
+    // Update when window resizes (row height may change, e.g. min-height kicking in)
     const handleResize = () => {
       setSectionHeights()
     }
 
+    // Also observe the row so we react when its height changes (e.g. min-height)
+    const rowEl = rowRef.current
+    const resizeObserver = rowEl
+      ? new ResizeObserver(() => {
+          setSectionHeights()
+        })
+      : null
+    if (resizeObserver && rowEl) resizeObserver.observe(rowEl)
+
     window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      if (resizeObserver && rowEl) resizeObserver.unobserve(rowEl)
+    }
   }, [sections])
 
   const handleTabClick = (sectionId, index) => {
@@ -160,6 +175,7 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
         isSticky={isNavSticky}
         color={color}
         showTabs={showNavTabs}
+        hiddenTabIds={hiddenTabIds}
       />
       <div ref={scrollContainerRef} className="project-panel-container">
         <div className="project-panel-scroll">
@@ -171,6 +187,7 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
                 id={section.id}
                 isLast={index === sections.length - 1}
                 backgroundColor={section.backgroundColor || backgroundColor}
+                background={section.background}
                 backstoryBgColor={backstoryBgColor}
               >
                 {section.content || (
