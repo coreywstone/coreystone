@@ -118,7 +118,7 @@ function Home() {
       id: '8counts',
       label: '8COUNTS',
       background: "url('/img/8counts/8counts-gym-bg-image.svg') 0 0 / auto 100% no-repeat, linear-gradient(270deg, #18365C 57.79%, #030E20 100%), #030E20",
-      sectionStyle: { width: 2340, minWidth: 2340 },
+      sectionStyle: { width: 3710, minWidth: 3710 },
       content: (
         <div className="eightcounts-panel">
           <img
@@ -165,6 +165,19 @@ function Home() {
               style={{ width: '100%', height: '100%', objectFit: 'contain' }}
             />
           </div>
+          <img
+            className="eightcounts-pm"
+            src="/img/8counts/8counts-pm.png"
+            alt="8counts PM"
+            style={{
+              position: 'absolute',
+              left: 2106,
+              top: 0,
+              height: '100%',
+              width: 'auto',
+              objectFit: 'contain',
+            }}
+          />
         </div>
       )
     },
