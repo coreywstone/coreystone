@@ -5,7 +5,7 @@ import './OtherProjects.css'
 
 const CARD_WIDTH = 240
 const LEFT_BOUNDARY = 500
-const NUM_CARDS = 5
+const NUM_CARDS = 4
 const MIN_ROTATION = -10
 const MAX_ROTATION = 10
 const FERRIS_WHEEL_SPEED = 0.00015 // Speed of rotation (radians per ms) - clockwise
@@ -70,39 +70,17 @@ function OtherProjects() {
         text: 'Saved millions in enterprise billing delays',
         url: 'https://coreystone.com/projects/klf.shtml'
       },
-      // Card 2: 8counts
-      {
-        image: '/img/8counts/8counts-thumb.png',
-        text: 'Founding 8counts, a prosumer hybrid app',
-        url: 'https://coreystone.com/index.shtml#8counts',
-        isTall: true
-      },
-      // Card 3: ACT
+      // Card 2: ACT
       {
         image: '/img/act/act-test-selection-top.jpg',
         text: 'Reduced ACT test reg from 30 to 7 minutes',
         url: 'https://coreystone.com/projects/myact.shtml'
       },
-      // Card 4: HERO Keyboard
+      // Card 3: HERO Keyboard
       {
         image: '/img/hero/hero-thumb.png',
         text: 'Founded HERO Keyboard',
         url: 'https://coreystone.com/projects/hero.shtml'
-      },
-      {
-        image: '/img/owl/owl-thumb.png',
-        text: 'Sole designer at mental health B2B SaaS startup',
-        url: 'https://coreystone.com/projects/owl.shtml'
-      },
-      {
-        image: '/img/owl/owl-thumb.png',
-        text: 'Sole designer at mental health B2B SaaS startup',
-        url: 'https://coreystone.com/projects/owl.shtml'
-      },
-      {
-        image: '/img/owl/owl-thumb.png',
-        text: 'Sole designer at mental health B2B SaaS startup',
-        url: 'https://coreystone.com/projects/owl.shtml'
       },
     ]
     
