@@ -189,6 +189,7 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
                 backgroundColor={section.backgroundColor || backgroundColor}
                 background={section.background}
                 backstoryBgColor={backstoryBgColor}
+                sectionStyle={section.sectionStyle}
               >
                 {section.content || (
                   <div className="project-section-placeholder">

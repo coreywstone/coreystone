@@ -3,12 +3,11 @@ import './ProjectSection.css'
 
 export const BackstoryContext = createContext(null)
 
-const ProjectSection = forwardRef(({ id, children, isLast, backgroundColor = null, background = null, backstoryBgColor = null }, ref) => {
-  const sectionStyle = background
-    ? { '--custom-bg': background }
-    : backgroundColor
-      ? { '--custom-bg-color': backgroundColor }
-      : undefined
+const ProjectSection = forwardRef(({ id, children, isLast, backgroundColor = null, background = null, backstoryBgColor = null, sectionStyle: sectionStyleOverride = null }, ref) => {
+  const sectionStyle = {
+    ...(background ? { '--custom-bg': background } : backgroundColor ? { '--custom-bg-color': backgroundColor } : {}),
+    ...sectionStyleOverride
+  }
   const className = [
     'project-section',
     isLast ? 'last' : '',
@@ -22,7 +21,7 @@ const ProjectSection = forwardRef(({ id, children, isLast, backgroundColor = nul
         ref={ref}
         id={id}
         className={className}
-        style={sectionStyle}
+        style={Object.keys(sectionStyle).length ? sectionStyle : undefined}
       >
         {children}
       </section>

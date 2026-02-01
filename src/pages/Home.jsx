@@ -117,8 +117,56 @@ function Home() {
     {
       id: '8counts',
       label: '8COUNTS',
-      background: 'radial-gradient(146.35% 100% at 50% 0%, #263E5B 0%, #030E20 100%)',
-      content: underConstructionContent('The 8counts section is...', 'var(--color-white-ish)')
+      background: "url('/img/8counts/8counts-gym-bg-image.svg') 0 0 / auto 100% no-repeat, linear-gradient(270deg, #18365C 57.79%, #030E20 100%), #030E20",
+      sectionStyle: { width: 2340, minWidth: 2340 },
+      content: (
+        <div className="eightcounts-panel">
+          <img
+            className="eightcounts-header"
+            src="/img/8counts/8counts-header.png"
+            alt="8counts"
+            style={{ height: '96px', width: 'auto' }}
+          />
+          <div
+            className="eightcounts-intro-wrapper"
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 148,
+              width: 795,
+              height: 510,
+              overflow: 'hidden',
+            }}
+          >
+            <img
+              className="eightcounts-intro"
+              src="/img/8counts/8counts-intro.png"
+              alt="8counts intro"
+              style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'bottom left' }}
+            />
+          </div>
+          <div
+            className="eightcounts-screenshots-wrapper"
+            style={{
+              position: 'absolute',
+              left: 920,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              height: '100%',
+              maxHeight: 831,
+              aspectRatio: '2295/1608',
+              overflow: 'hidden',
+            }}
+          >
+            <img
+              className="eightcounts-screenshots"
+              src="/img/8counts/8counts-screenshots.png"
+              alt="8counts screenshots"
+              style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+            />
+          </div>
+        </div>
+      )
     },
     {
       id: 'keyboard',
