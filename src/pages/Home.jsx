@@ -256,7 +256,7 @@ function Home() {
 
       <ProjectRow
         title="Solo-founding"
-        sections={foundingSections}
+        sections={foundingSections.filter(s => s.id !== 'keyboard')}
         hiddenTabIds={['founding']}
       />
       {quoteRows.length > 1 && quoteRows[1] && (
