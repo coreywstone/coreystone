@@ -91,31 +91,54 @@
   min-width: 800px;
 }
 
-/* 8counts panel – positioned elements (background passed via section.background) */
-/* Width: pm at left 2106px (screenshots end) + max pm width ~1572px + 32px = 3710px */
-.project-section#8counts {
-  width: 3710px !important;
-  min-width: 3710px !important;
-  max-width: none !important;
-  flex: 0 0 3710px !important;
-  padding-right: 32px !important;
+/* 8counts panels – 3 horizontally stacked panels with charcoal borders */
+
+/* Base styles for all 8counts panels */
+.project-section[id^="8counts-"] {
+  color: var(--color-white-ish) !important;
+  border-right: 12px solid var(--color-near-black) !important;
   box-sizing: border-box;
+  background-color: transparent !important;
 }
 
-.project-section#8counts > .eightcounts-panel {
+/* Remove gap between consecutive 8counts panels */
+.project-section[id^="8counts-"] + .project-section[id^="8counts-"] {
+  margin-left: -12px;
+}
+
+.project-section[id^="8counts-"] p {
+  color: var(--color-white-ish) !important;
+}
+
+.project-section[id^="8counts-"] > .eightcounts-panel {
   position: relative;
   width: 100%;
   height: 100%;
   min-height: 100%;
-  padding-right: 32px;
   box-sizing: border-box;
   isolation: isolate;
   overflow: visible;
 }
 
-.project-section#8counts .eightcounts-header {
+/* Panel 1: Intro + Screenshots */
+.project-section[id="8counts-intro"] {
+  width: auto !important;
+  min-width: 0 !important;
+  flex: 0 0 auto !important;
+}
+
+.project-section[id="8counts-intro"] .eightcounts-panel-intro {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-left: 100px; /* Space for gym background (shifted 48px left) */
+  gap: 48px;
+  position: relative;
+}
+
+.project-section[id="8counts-intro"] .eightcounts-header {
   position: absolute;
-  top: 48px;
+  top: 12px;
   left: 0;
   height: 96px !important;
   max-height: 96px !important;
@@ -125,42 +148,93 @@
   display: block;
 }
 
-.project-section#8counts .eightcounts-intro-wrapper {
+.project-section[id="8counts-intro"] .eightcounts-intro-wrapper {
   position: absolute;
   bottom: 0;
-  left: 148px;
-  width: 795px;
+  left: 100px; /* Shifted 48px left from 148px */
   height: 510px;
+  width: auto;
   overflow: hidden;
   z-index: 1;
 }
 
-.project-section#8counts .eightcounts-intro {
-  width: 100%;
+.project-section[id="8counts-intro"] .eightcounts-intro {
   height: 100%;
+  width: auto;
   object-fit: contain;
   object-position: bottom left;
   display: block;
 }
 
-.project-section#8counts .eightcounts-screenshots {
-  display: block;
+.project-section[id="8counts-intro"] .eightcounts-screenshots-wrapper {
+  /* Use margin-left to account for intro image width (795px) since intro is absolute */
+  margin-left: 795px;
+  height: 100%;
+  max-height: 800px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
-.project-section#8counts .eightcounts-pm {
-  position: absolute;
-  left: 2106px;
-  top: 0;
+.project-section[id="8counts-intro"] .eightcounts-screenshots {
   height: 100%;
   width: auto;
   object-fit: contain;
-  z-index: 1;
   display: block;
 }
 
-.project-section#8counts,
-.project-section#8counts p {
-  color: var(--color-white-ish) !important;
+/* Panel 2: Flow */
+.project-section[id="8counts-flow"] {
+  width: auto !important;
+  min-width: 0 !important;
+  flex: 0 0 auto !important;
+}
+
+.project-section[id="8counts-flow"] .eightcounts-panel-flow {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+}
+
+.project-section[id="8counts-flow"] .eightcounts-flow {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Panel 3: Figma designs */
+.project-section[id="8counts-figma"] {
+  width: auto !important;
+  min-width: 0 !important;
+  flex: 0 0 auto !important;
+  border-right: none; /* No border on the last panel */
+}
+
+.project-section[id="8counts-figma"] .eightcounts-panel-figma {
+  display: flex;
+  align-items: flex-end; /* Align to bottom */
+  height: 100%;
+  padding: 32px 32px 0 0; /* top, right spacing; no bottom padding */
+  box-sizing: border-box;
+}
+
+.project-section[id="8counts-figma"] .eightcounts-me-painting {
+  /* Natural size, aligned to bottom (handled by parent flex) */
+  flex-shrink: 0;
+  z-index: 1; /* On top to overlap figma and panel 2 */
+  position: relative;
+  margin-left: -48px; /* Overlap into panel 2 */
+}
+
+.project-section[id="8counts-figma"] .eightcounts-figma {
+  height: calc(100% - 32px); /* Full height minus top padding */
+  width: auto;
+  object-fit: contain;
+  margin-left: -50px; /* Overlap with me-painting */
+  border: 8px solid var(--color-near-black);
+  border-bottom: none; /* No bottom border - sits on panel edge */
+  box-sizing: border-box;
 }
 
 /* Dashboard section styling */

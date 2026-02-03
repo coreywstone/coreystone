@@ -101,6 +101,8 @@ function Home() {
     </div>
   )
 
+  const eightcountsBackground = "linear-gradient(270deg, #18365C 57.79%, #030E20 100%), #030E20"
+
   const foundingSections = [
     {
       id: 'founding',
@@ -115,68 +117,62 @@ function Home() {
       )
     },
     {
-      id: '8counts',
+      id: '8counts-intro',
       label: '8COUNTS',
-      background: "url('/img/8counts/8counts-gym-bg-image.svg') 0 0 / auto 100% no-repeat, linear-gradient(270deg, #18365C 57.79%, #030E20 100%), #030E20",
-      sectionStyle: { width: 3710, minWidth: 3710 },
+      background: `url('/img/8counts/8counts-gym-bg-image.svg') 0 0 / auto 100% no-repeat, ${eightcountsBackground}`,
       content: (
-        <div className="eightcounts-panel">
+        <div className="eightcounts-panel eightcounts-panel-intro">
           <img
             className="eightcounts-header"
             src="/img/8counts/8counts-header.png"
             alt="8counts"
-            style={{ height: '96px', width: 'auto' }}
           />
-          <div
-            className="eightcounts-intro-wrapper"
-            style={{
-              position: 'absolute',
-              bottom: 0,
-              left: 148,
-              width: 795,
-              height: 510,
-              overflow: 'hidden',
-            }}
-          >
+          <div className="eightcounts-intro-wrapper">
             <img
               className="eightcounts-intro"
               src="/img/8counts/8counts-intro.png"
               alt="8counts intro"
-              style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'bottom left' }}
             />
           </div>
-          <div
-            className="eightcounts-screenshots-wrapper"
-            style={{
-              position: 'absolute',
-              left: 920,
-              top: '50%',
-              transform: 'translateY(-50%)',
-              height: '100%',
-              maxHeight: 831,
-              aspectRatio: '2295/1608',
-              overflow: 'hidden',
-            }}
-          >
+          <div className="eightcounts-screenshots-wrapper">
             <img
               className="eightcounts-screenshots"
               src="/img/8counts/8counts-screenshots.png"
               alt="8counts screenshots"
-              style={{ width: '100%', height: '100%', objectFit: 'contain' }}
             />
           </div>
+        </div>
+      )
+    },
+    {
+      id: '8counts-flow',
+      label: '8COUNTS',
+      background: eightcountsBackground,
+      content: (
+        <div className="eightcounts-panel eightcounts-panel-flow">
           <img
-            className="eightcounts-pm"
+            className="eightcounts-flow"
             src="/img/8counts/8counts-pm.png"
-            alt="8counts PM"
-            style={{
-              position: 'absolute',
-              left: 2106,
-              top: 0,
-              height: '100%',
-              width: 'auto',
-              objectFit: 'contain',
-            }}
+            alt="8counts flow"
+          />
+        </div>
+      )
+    },
+    {
+      id: '8counts-figma',
+      label: '8COUNTS',
+      background: eightcountsBackground,
+      content: (
+        <div className="eightcounts-panel eightcounts-panel-figma">
+          <img
+            className="eightcounts-me-painting"
+            src="/img/8counts/me-painting.svg"
+            alt="Me painting"
+          />
+          <img
+            className="eightcounts-figma"
+            src="/img/8counts/8counts-figma.png"
+            alt="8counts Figma designs"
           />
         </div>
       )
@@ -257,7 +253,7 @@ function Home() {
       <ProjectRow
         title="Solo-founding"
         sections={foundingSections.filter(s => s.id !== 'keyboard')}
-        hiddenTabIds={['founding']}
+        hiddenTabIds={['founding', '8counts-flow', '8counts-figma']}
       />
       {quoteRows.length > 1 && quoteRows[1] && (
         <QuotesRow key={quoteRows[1].id} quotes={quoteRows[1].quotes} />

@@ -150,7 +150,7 @@
 <path d="M99.6725 582.221C96.335 583.873 91.9355 589.048 92.2087 592.875L93.9936 593.219L104.4 593.651C102.878 589.127 102.08 586.316 99.6725 582.221Z" fill="#203A61"/>
 <path d="M194.426 633.56C195.382 633.497 196.274 632.86 197.198 632.37C198.704 629.888 198.338 631.203 198.306 628.274C196.166 624.769 193.033 623.258 189.368 625.475C187.846 629.036 188.438 628.77 188.848 633.061C190.627 633.192 192.698 633.287 194.426 633.56Z" fill="#2F5282"/>
 <path d="M130.714 209.241C125.017 211.881 127.318 216.085 128.958 220.974C131.946 218.509 130.377 214.059 130.656 210.004L130.714 209.241Z" fill="#403429"/>
-<rect x="0.389893" width="1104.61" height="853.467" fill="url(#paint7_linear_1615_12232)"/>
+<rect x="0.389893" width="905.44" height="853.467" fill="url(#paint7_linear_1615_12232)"/>
 </g>
 <defs>
 <linearGradient id="paint0_linear_1615_12232" x1="510.999" y1="265.957" x2="961.999" y2="265.957" gradientUnits="userSpaceOnUse">
@@ -181,7 +181,7 @@
 <stop stop-color="#314A5E"/>
 <stop offset="1" stop-color="#587698"/>
 </linearGradient>
-<linearGradient id="paint7_linear_1615_12232" x1="0.389893" y1="426.734" x2="1105" y2="426.734" gradientUnits="userSpaceOnUse">
+<linearGradient id="paint7_linear_1615_12232" x1="0.389893" y1="426.734" x2="905.83" y2="426.734" gradientUnits="userSpaceOnUse">
 <stop stop-opacity="0.4"/>
 <stop offset="1" stop-opacity="0"/>
 </linearGradient>
