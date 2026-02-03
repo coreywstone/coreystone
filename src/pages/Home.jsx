@@ -7,6 +7,7 @@ import StarrySky from '../components/StarrySky'
 import CheggStaffAI from '../components/CheggStaffAI'
 import CheggNav from '../components/CheggNav'
 import OtherProjects from '../components/OtherProjects'
+import EightcountsVideos from '../components/EightcountsVideos'
 import quotesConfig from '../data/quotes.json'
 import { getQuoteAssets, getQuoteAlignment, getQuoteLinkedInUrl } from '../utils/quoteData'
 import './Home.css'
@@ -178,6 +179,12 @@ function Home() {
       )
     },
     {
+      id: '8counts-videos',
+      label: '8COUNTS',
+      background: eightcountsBackground,
+      content: <EightcountsVideos />
+    },
+    {
       id: 'keyboard',
       label: 'KEYBOARD',
       backgroundColor: '#CED4E0',
@@ -253,7 +260,7 @@ function Home() {
       <ProjectRow
         title="Solo-founding"
         sections={foundingSections.filter(s => s.id !== 'keyboard')}
-        hiddenTabIds={['founding', '8counts-flow', '8counts-figma']}
+        hiddenTabIds={['founding', '8counts-flow', '8counts-figma', '8counts-videos']}
       />
       {quoteRows.length > 1 && quoteRows[1] && (
         <QuotesRow key={quoteRows[1].id} quotes={quoteRows[1].quotes} />

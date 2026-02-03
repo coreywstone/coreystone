@@ -208,6 +208,13 @@
   width: auto !important;
   min-width: 0 !important;
   flex: 0 0 auto !important;
+}
+
+/* Panel 4: Videos */
+.project-section[id="8counts-videos"] {
+  width: auto !important;
+  min-width: 0 !important;
+  flex: 0 0 auto !important;
   border-right: none; /* No border on the last panel */
 }
 

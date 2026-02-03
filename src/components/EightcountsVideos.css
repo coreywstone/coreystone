@@ -1,0 +1,49 @@
+.eightcounts-videos-panel {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 32px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Label styling */
+.eightcounts-video-label {
+  display: block;
+  font-family: var(--font-anime-ace);
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--color-white-ish);
+  margin-bottom: 12px;
+}
+
+/* Wrapper for videos with labels */
+.eightcounts-video-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.eightcounts-video-wrapper .eightcounts-video-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.eightcounts-video-wrapper .eightcounts-video {
+  height: 600px;
+  width: auto;
+  display: block;
+}
+
+/* Standalone video container (no label) */
+.eightcounts-video-container.eightcounts-video-natural {
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.eightcounts-video-natural .eightcounts-video {
+  display: block;
+}
