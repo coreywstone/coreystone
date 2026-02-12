@@ -41,9 +41,9 @@ function Home() {
       label: 'NAV',
       content: <CheggNav />
     },
-    { 
-      id: 'dashboard', 
-      label: 'DASHBOARD',
+    {
+      id: 'delight',
+      label: 'Delight',
       backgroundColor: '#CED4E0', // Marble
       content: (
         <div style={{ 
@@ -62,7 +62,7 @@ function Home() {
             textAlign: 'center',
             margin: 0
           }}>
-            The Dashboard section is...
+            The Delight section is...
           </p>
           <img
             src="/img/me/under-construction.png"
