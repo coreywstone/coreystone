@@ -246,9 +246,15 @@
 
 /* Delight section styling */
 .project-section#delight {
-  width: 800px !important;
-  min-width: 800px !important;
-  max-width: 800px !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  flex: 0 0 auto !important;
+}
+
+.project-section#delight > .chegg-delight-panel {
+  width: max-content !important;
+  max-width: 100% !important;
 }
 
 /* Apps I Founded – panel width matches image, image fills height */

@@ -1,0 +1,100 @@
+.chegg-delight-panel {
+  display: flex;
+  height: 100%;
+}
+
+/* Panel 1: Problem */
+.chegg-delight-problem {
+  height: 100%;
+  border-right: 12px solid var(--color-near-black);
+}
+
+.chegg-delight-problem img {
+  height: 100%;
+  width: auto;
+  display: block;
+}
+
+/* Panel 2: Thinking */
+.chegg-delight-thinking {
+  height: 100%;
+  border-right: 12px solid var(--color-near-black);
+}
+
+.chegg-delight-thinking img {
+  height: 100%;
+  width: auto;
+  display: block;
+}
+
+/* Panel 3: Presentation */
+.chegg-delight-presentation {
+  height: 100%;
+  padding: 16px 32px;
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+  background-color: var(--color-charcoal);
+  min-height: 0;
+}
+
+.chegg-delight-me {
+  height: 500px;
+  width: auto;
+  flex-shrink: 0;
+  align-self: flex-end;
+}
+
+.chegg-delight-dashboard-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 0 0 auto;
+  min-height: 0;
+  min-width: 0;
+  width: 892px;
+}
+
+.chegg-delight-dashboard-stack + .chegg-delight-dashboard-stack {
+  margin-left: 48px;
+}
+
+.chegg-delight-dashboards-container {
+  display: flex;
+  align-items: stretch;
+  flex: 0 0 auto;
+  min-height: 0;
+  min-width: 0;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.chegg-delight-dashboard-title {
+  font-family: var(--font-blowhole);
+  font-size: 40px;
+  font-weight: normal;
+  font-style: normal;
+  color: var(--color-white-ish);
+  text-shadow: 1.5px 3px 0 var(--color-near-black);
+  margin: 0;
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+
+.chegg-delight-dashboard-wrapper {
+  width: 892px;
+  height: 580px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.chegg-delight-dashboard {
+  width: 892px;
+  height: 580px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 8px;
+  filter: drop-shadow(1.5px 3px 0 var(--color-near-black));
+}

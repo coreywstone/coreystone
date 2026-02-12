@@ -6,6 +6,7 @@ import MuralsRow from '../components/MuralsRow'
 import StarrySky from '../components/StarrySky'
 import CheggStaffAI from '../components/CheggStaffAI'
 import CheggNav from '../components/CheggNav'
+import CheggDelight from '../components/CheggDelight'
 import OtherProjects from '../components/OtherProjects'
 import EightcountsVideos from '../components/EightcountsVideos'
 import quotesConfig from '../data/quotes.json'
@@ -44,34 +45,7 @@ function Home() {
     {
       id: 'delight',
       label: 'Delight',
-      backgroundColor: '#CED4E0', // Marble
-      content: (
-        <div style={{ 
-          display: 'flex', 
-          flexDirection: 'column', 
-          alignItems: 'center', 
-          justifyContent: 'center', 
-          height: '100%', 
-          width: '100%', 
-          gap: '1rem' 
-        }}>
-          <p style={{ 
-            fontFamily: 'var(--font-anime-ace)', 
-            fontSize: '18px', 
-            fontWeight: 'bold', 
-            textAlign: 'center',
-            margin: 0
-          }}>
-            The Delight section is...
-          </p>
-          <img
-            src="/img/me/under-construction.png"
-            alt="Under construction"
-            loading="lazy"
-            style={{ height: '70%', width: 'auto' }}
-          />
-        </div>
-      )
+      content: <CheggDelight />
     }
   ]
 
