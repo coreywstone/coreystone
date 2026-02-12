@@ -19,7 +19,6 @@ function OtherProjects() {
   const [cards, setCards] = useState([])
   const [hoveredCardId, setHoveredCardId] = useState(null)
   const [clickedCardId, setClickedCardId] = useState(null)
-  const [frameCount, setFrameCount] = useState(0)
   
   const animationFrameRef = useRef(null)
   const cardsDataRef = useRef([])
@@ -278,7 +277,7 @@ function OtherProjects() {
       })
 
       cardsDataRef.current = updatedCards
-      setFrameCount(prev => prev + 1) // Trigger re-render
+      setCards([...updatedCards])
       
       animationFrameRef.current = requestAnimationFrame(animate)
     }
@@ -290,11 +289,6 @@ function OtherProjects() {
       }
     }
   }, [hoveredCardId, clickedCardId])
-
-  // Update cards from ref when frameCount changes
-  useEffect(() => {
-    setCards([...cardsDataRef.current])
-  }, [frameCount])
 
   // Intersection observer for words animation
   useEffect(() => {

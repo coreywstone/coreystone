@@ -227,7 +227,7 @@ function MenuButton() {
             </div>
             
             <div className="modal-bubble-separator">
-              <img src="/img/menu/about-this-site-bubble-top.svg" alt="" />
+              <img src="/img/menu/about-this-site-bubble-top.svg" alt="" loading="lazy" />
             </div>
             
             <div className="modal-speech-bubble">
@@ -237,7 +237,7 @@ function MenuButton() {
             </div>
             
             <div className="modal-image-container">
-              <img src="/img/me/about-this-site-bg-50.jpg" alt="" />
+              <img src="/img/me/about-this-site-bg-50.jpg" alt="" loading="lazy" />
             </div>
           </div>
         </div>

@@ -17,10 +17,11 @@ function ImageWithText({
         <div className="image-with-text-text">{text}</div>
       )}
       <div className="image-with-text-image-container">
-        <img 
-          src={imageSrc} 
+        <img
+          src={imageSrc}
           alt={alt}
           className="image-with-text-image"
+          loading="lazy"
         />
       </div>
       {textPosition === 'bottom' && (

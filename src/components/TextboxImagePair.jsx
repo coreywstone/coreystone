@@ -30,10 +30,11 @@ function TextboxImagePair({
         )}
       </div>
       <div className="textbox-image-pair-image-container">
-        <img 
-          src={image} 
+        <img
+          src={image}
           alt={imageAlt || 'Project sketch'}
           className="textbox-image-pair-image"
+          loading="lazy"
         />
       </div>
     </div>

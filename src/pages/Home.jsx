@@ -64,9 +64,10 @@ function Home() {
           }}>
             The Dashboard section is...
           </p>
-          <img 
-            src="/img/me/under-construction.png" 
-            alt="Under construction" 
+          <img
+            src="/img/me/under-construction.png"
+            alt="Under construction"
+            loading="lazy"
             style={{ height: '70%', width: 'auto' }}
           />
         </div>
@@ -97,6 +98,7 @@ function Home() {
       <img
         src="/img/me/under-construction.png"
         alt="Under construction"
+        loading="lazy"
         style={{ height: '70%', width: 'auto' }}
       />
     </div>
@@ -113,6 +115,7 @@ function Home() {
           <img
             src="/img/8counts/founding-intro.svg"
             alt="Solo-founding forces me to wear all the hats, helping me think holistically about the product and its systems, including branding, marketing and writing, adoption, engagement, monetization, dev/time trade-offs, and support."
+            loading="lazy"
           />
         </div>
       )
@@ -127,12 +130,14 @@ function Home() {
             className="eightcounts-header"
             src="/img/8counts/8counts-header.png"
             alt="8counts"
+            loading="lazy"
           />
           <div className="eightcounts-intro-wrapper">
             <img
               className="eightcounts-intro"
               src="/img/8counts/8counts-intro.png"
               alt="8counts intro"
+              loading="lazy"
             />
           </div>
           <div className="eightcounts-screenshots-wrapper">
@@ -140,6 +145,7 @@ function Home() {
               className="eightcounts-screenshots"
               src="/img/8counts/8counts-screenshots.png"
               alt="8counts screenshots"
+              loading="lazy"
             />
           </div>
         </div>
@@ -155,6 +161,7 @@ function Home() {
             className="eightcounts-flow"
             src="/img/8counts/8counts-pm.png"
             alt="8counts flow"
+            loading="lazy"
           />
         </div>
       )
@@ -169,11 +176,13 @@ function Home() {
             className="eightcounts-me-painting"
             src="/img/8counts/me-painting.svg"
             alt="Me painting"
+            loading="lazy"
           />
           <img
             className="eightcounts-figma"
             src="/img/8counts/8counts-figma.png"
             alt="8counts Figma designs"
+            loading="lazy"
           />
         </div>
       )

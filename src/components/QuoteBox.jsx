@@ -53,7 +53,7 @@ function QuoteBox({ illustration, quote, author, canStart = false, onComplete })
     <div className={`quote-box ${isActive ? 'active' : ''} ${isComplete ? 'complete' : ''}`}>
       <div className="quote-box-illustration">
         {illustration ? (
-          <img src={illustration} alt={author || 'Quote author'} />
+          <img src={illustration} alt={author || 'Quote author'} loading="lazy" />
         ) : (
           <div className="quote-box-placeholder">Illustration</div>
         )}

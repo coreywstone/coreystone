@@ -55,7 +55,7 @@ function ProjectCard({ image, text, url, onTriggerVortex, style, rotation = 0, i
       rel="noopener noreferrer"
     >
       <div className={`project-card-image ${isTall ? 'tall' : ''}`}>
-        <img src={image} alt="" />
+        <img src={image} alt="" loading="lazy" />
       </div>
       <div className="project-card-text">
         {text}

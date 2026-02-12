@@ -11,6 +11,7 @@ function StarrySky() {
   const containerRef = useRef(null)
   const particlesRef = useRef([])
   const mousePosRef = useRef({ x: 0, y: 0, prevX: 0, prevY: 0, prevTime: Date.now() })
+  const isVisibleRef = useRef(true)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -315,8 +316,26 @@ function StarrySky() {
       ctx.restore()
     }
 
+    // Start/restart the animation loop
+    const startAnimation = () => {
+      if (animationFrameRef.current) return // Already running
+      animate()
+    }
+
+    const stopAnimation = () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current)
+        animationFrameRef.current = null
+      }
+    }
+
     // Animation loop
     const animate = () => {
+      if (!isVisibleRef.current) {
+        animationFrameRef.current = null
+        return
+      }
+
       ctx.clearRect(0, 0, width, height)
 
       const currentTime = Date.now()
@@ -388,6 +407,20 @@ function StarrySky() {
       init()
     }, 10)
 
+    // Pause animation when off-screen
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting
+        if (entry.isIntersecting) {
+          startAnimation()
+        } else {
+          stopAnimation()
+        }
+      },
+      { threshold: 0 }
+    )
+    visibilityObserver.observe(container)
+
     // Use ResizeObserver for better size tracking
     const resizeObserver = new ResizeObserver(() => {
       handleResize()
@@ -443,15 +476,14 @@ function StarrySky() {
     // Cleanup
     return () => {
       clearTimeout(initTimeout)
+      visibilityObserver.disconnect()
       resizeObserver.disconnect()
       window.removeEventListener('resize', resizeHandler)
       const aboutSectionForCleanup = container?.closest('.about-section')
       if (aboutSectionForCleanup) {
         aboutSectionForCleanup.removeEventListener('mousemove', handleMouseMove)
       }
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current)
-      }
+      stopAnimation()
     }
   }, [])
 

@@ -17,14 +17,16 @@ function MuralsRow() {
             </p>
           </div>
           <div className="textbox-image-pair-image-container" style={{ flexDirection: 'row', gap: '32px', padding: '0 32px 0 0' }}>
-            <img 
-              src="/img/murals/nemo-panorama-upscaled.jpg" 
+            <img
+              src="/img/murals/nemo-panorama-upscaled.jpg"
               alt="Eli's Nemo painted mural room"
+              loading="lazy"
               style={{ width: 'auto', height: '100%', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)' }}
             />
-            <img 
-              src="/img/murals/CT-room-murals.jpg" 
+            <img
+              src="/img/murals/CT-room-murals.jpg"
               alt="Christopher's Tarzan/Jungle Book painted mural room"
+              loading="lazy"
               style={{ width: 'auto', height: '100%', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)' }}
             />
           </div>

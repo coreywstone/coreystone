@@ -28,7 +28,7 @@ function Bio() {
             </div>
             <div className="bio-image">
               <div className="polaroid" style={{ transform: 'rotate(-2deg)' }}>
-                <img src="/img/bio/mom-and-dad.jpg" alt="An old photo of my mom, dad, and brother." />
+                <img src="/img/bio/mom-and-dad.jpg" alt="An old photo of my mom, dad, and brother." loading="lazy" />
                 <p>My brother's expression FTW!</p>
               </div>
             </div>
@@ -43,7 +43,7 @@ function Bio() {
             </div>
             <div className="bio-image">
               <div className="polaroid" style={{ transform: 'rotate(1deg)' }}>
-                <img src="/img/bio/baby-blue-chair.jpg" alt="Me in our cool blue chair." />
+                <img src="/img/bio/baby-blue-chair.jpg" alt="Me in our cool blue chair." loading="lazy" />
                 <p>Ignore the baby; admire the timeless chair design!</p>
               </div>
             </div>
@@ -62,7 +62,7 @@ function Bio() {
             </div>
             <div className="bio-image">
               <div className="polaroid" style={{ transform: 'rotate(3deg)' }}>
-                <img src="/img/bio/me-in-a-pipe.jpg" alt="Me as a kid, standing in a pipe for some reason." />
+                <img src="/img/bio/me-in-a-pipe.jpg" alt="Me as a kid, standing in a pipe for some reason." loading="lazy" />
                 <p>Hopefully not a sewage pipe.</p>
               </div>
             </div>
@@ -83,7 +83,7 @@ function Bio() {
             </div>
             <div className="bio-image">
               <div className="polaroid" style={{ transform: 'rotate(-2deg)' }}>
-                <img src="/img/bio/old-mac.jpg" alt="Our second computer." />
+                <img src="/img/bio/old-mac.jpg" alt="Our second computer." loading="lazy" />
                 <p>My childhood Mac Plus.</p>
               </div>
             </div>
@@ -104,7 +104,7 @@ function Bio() {
             </div>
             <div className="bio-image">
               <div className="polaroid" style={{ transform: 'rotate(4deg)', maxWidth: '380px' }}>
-                <img src="/img/bio/high-school-yearbook.jpg" alt="Boring high school yearbook photo." />
+                <img src="/img/bio/high-school-yearbook.jpg" alt="Boring high school yearbook photo." loading="lazy" />
                 <p>I can't find any fun high school photos. 😞</p>
               </div>
             </div>
@@ -141,7 +141,7 @@ function Bio() {
             </div>
             <div className="bio-image">
               <div className="polaroid" style={{ transform: 'rotate(-1deg)' }}>
-                <img src="/img/bio/cheer-front-flip.jpg" alt="Newspaper photo of little Greg and me front-flipping over some people while cheerleading at a KU football game." />
+                <img src="/img/bio/cheer-front-flip.jpg" alt="Newspaper photo of little Greg and me front-flipping over some people while cheerleading at a KU football game." loading="lazy" />
                 <p>I also cheered at KU – that's Greg and me flipping over girls. Our record was 8, and we never landed on any! 😅</p>
               </div>
             </div>
@@ -158,7 +158,7 @@ function Bio() {
             </div>
             <div className="bio-image">
               <div className="polaroid" style={{ transform: 'rotate(2deg)' }}>
-                <img src="/img/bio/wedding.jpg" alt="Wedding photo." />
+                <img src="/img/bio/wedding.jpg" alt="Wedding photo." loading="lazy" />
                 <p></p>
               </div>
             </div>
@@ -170,7 +170,7 @@ function Bio() {
             </div>
             <div className="bio-image">
               <div className="polaroid" style={{ transform: 'rotate(-2deg)' }}>
-                <img src="/img/bio/family-in-big-chair.jpg" alt="The whole family in the big wooden chair at Silver Dollar City." />
+                <img src="/img/bio/family-in-big-chair.jpg" alt="The whole family in the big wooden chair at Silver Dollar City." loading="lazy" />
                 <p>In the big wooden chair at Silver Dollar City, 2015ish.</p>
               </div>
             </div>
@@ -190,7 +190,7 @@ function Bio() {
             </div>
             <div className="bio-image">
               <div className="polaroid" style={{ transform: 'rotate(3deg)' }}>
-                <img src="/img/bio/cheer-nationals-trophy.jpg" alt="The whole family in the big wooden chair at Silver Dollar City." />
+                <img src="/img/bio/cheer-nationals-trophy.jpg" alt="The whole family in the big wooden chair at Silver Dollar City." loading="lazy" />
                 <p>4th at UCA nationals in the toughest division. 🙌</p>
               </div>
             </div>
@@ -207,7 +207,7 @@ function Bio() {
             </div>
             <div className="bio-image">
               <div className="polaroid" style={{ transform: 'rotate(-1deg)' }}>
-                <img src="/img/bio/dogs.jpg" alt="Our four dogs in a dogpile." />
+                <img src="/img/bio/dogs.jpg" alt="Our four dogs in a dogpile." loading="lazy" />
                 <p>Too many dogs! By head, from left: Ghost, Namor,<br />Jamie Lee Curtis, and Frazier. 🐕</p>
               </div>
             </div>

@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import VideoControls from './VideoControls'
 import './EightcountsVideos.css'
 
@@ -6,10 +6,36 @@ function EightcountsVideos() {
   const video1Ref = useRef(null)
   const video2Ref = useRef(null)
   const video3Ref = useRef(null)
+  const containerRef = useRef(null)
 
   const [showControls1, setShowControls1] = useState(false)
   const [showControls2, setShowControls2] = useState(false)
   const [showControls3, setShowControls3] = useState(false)
+
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    const videos = [video1Ref, video2Ref, video3Ref]
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        videos.forEach(ref => {
+          if (ref.current) {
+            if (entry.isIntersecting) {
+              ref.current.play().catch(() => {})
+            } else {
+              ref.current.pause()
+            }
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    observer.observe(container)
+    return () => observer.disconnect()
+  }, [])
 
   const handleVideoClick = (videoRef) => (e) => {
     if (e.target.tagName === 'BUTTON' || e.target.closest('.video-controls')) return
@@ -24,7 +50,7 @@ function EightcountsVideos() {
   }
 
   return (
-    <div className="eightcounts-panel eightcounts-videos-panel">
+    <div ref={containerRef} className="eightcounts-panel eightcounts-videos-panel">
       {/* Video 1: Big-counts-demo.mov - fills panel height */}
       <div className="eightcounts-video-wrapper">
         <span className="eightcounts-video-label">Animating in Rive.app:</span>
@@ -41,7 +67,7 @@ function EightcountsVideos() {
             muted
             loop
             playsInline
-            autoPlay
+            preload="none"
           />
           <VideoControls videoRef={video1Ref} visible={showControls1} />
         </div>
@@ -82,7 +108,7 @@ function EightcountsVideos() {
             muted
             loop
             playsInline
-            autoPlay
+            preload="none"
           />
           <VideoControls videoRef={video3Ref} visible={showControls3} />
         </div>

@@ -167,21 +167,25 @@ function CheggStaffAI() {
         <img
           src="/img/me/me-on-wire.svg"
           alt="Corey on wire"
+          loading="lazy"
           className={`chegg-staff-ai-me-on-wire ${isVisible ? 'animate' : ''}`}
         />
         <img
           src="/img/chegg/chegg-wire-words.svg"
           alt=""
+          loading="lazy"
           className={`chegg-staff-ai-wire-words ${showWords ? 'visible' : ''}`}
         />
         <img
           src="/img/chegg/chegg-wire-ask.svg"
           alt=""
+          loading="lazy"
           className={`chegg-staff-ai-wire-ask ${showAsk ? 'visible' : ''}`}
         />
         <img
           src="/img/chegg/chegg-hmm-get-up-to-speed.svg"
           alt=""
+          loading="lazy"
           className={`chegg-staff-ai-hmm ${showHmm ? 'visible' : ''}`}
         />
       </div>
@@ -206,10 +210,10 @@ function CheggStaffAI() {
                 transform: `translateY(calc(-8px - ${currentPersona} * 356px))` 
               }}
             >
-              <img src="/img/chegg/chegg-persona1.jpg" alt="Persona 1" />
-              <img src="/img/chegg/chegg-persona2.jpg" alt="Persona 2" />
-              <img src="/img/chegg/chegg-persona3.jpg" alt="Persona 3" />
-              <img src="/img/chegg/chegg-persona4.jpg" alt="Persona 4" />
+              <img src="/img/chegg/chegg-persona1.jpg" alt="Persona 1" loading="lazy" />
+              <img src="/img/chegg/chegg-persona2.jpg" alt="Persona 2" loading="lazy" />
+              <img src="/img/chegg/chegg-persona3.jpg" alt="Persona 3" loading="lazy" />
+              <img src="/img/chegg/chegg-persona4.jpg" alt="Persona 4" loading="lazy" />
             </div>
             <div className="chegg-staff-ai-persona-carousel-dots">
               {[0, 1, 2, 3].map((index) => (
@@ -232,23 +236,26 @@ function CheggStaffAI() {
       <div ref={resultsPanelRef} className="chegg-staff-ai-results">
         <img 
           ref={resultsSvgRef}
-          src="/img/chegg/chegg-staff-ai-result.png" 
-          alt="AI result" 
+          src="/img/chegg/chegg-staff-ai-result.png"
+          alt="AI result"
           className="chegg-staff-ai-results-bg"
+          loading="lazy"
         />
         <img 
-          src="/img/chegg/chegg-staffai-result-burst.svg" 
-          alt="Burst" 
+          src="/img/chegg/chegg-staffai-result-burst.svg"
+          alt="Burst"
           className="chegg-staff-ai-results-burst"
+          loading="lazy"
         />
         <div className="chegg-staff-ai-results-container">
           <Backstory top={0} left={0} backgroundColor="#262629">
             So, I worked with PM Jordan and two of our AI-savvy data analysts (Ben & Victor) to create this AI-powered consolidated student detail page...
           </Backstory>
           <img 
-            src="/img/chegg/chegg-staff-ai-team.jpg" 
-            alt="AI team" 
+            src="/img/chegg/chegg-staff-ai-team.jpg"
+            alt="AI team"
             className="chegg-staff-ai-results-image"
+            loading="lazy"
           />
         </div>
       </div>

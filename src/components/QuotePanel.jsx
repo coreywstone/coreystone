@@ -1368,9 +1368,10 @@ function QuotePanel({
       {/* Background */}
       {bgSrc && (
         <div className="quote-panel-bg" ref={bgRef}>
-          <img 
-            src={bgSrc} 
-            alt="" 
+          <img
+            src={bgSrc}
+            alt=""
+            loading="lazy"
             style={{ transform: `scale(${parallaxOffset})` }}
           />
         </div>
@@ -1419,10 +1420,11 @@ function QuotePanel({
           onMouseEnter={() => setIsCharacterHovered(true)}
           onMouseLeave={() => setIsCharacterHovered(false)}
         >
-          <img 
+          <img
             ref={characterImageRef}
-            src={picSrc} 
+            src={picSrc}
             alt={name || 'Character'}
+            loading="lazy"
             className={showCharacter ? 'character-materializing' : ''}
           />
         </div>

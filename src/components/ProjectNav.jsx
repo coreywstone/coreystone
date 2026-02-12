@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import './ProjectNav.css'
 
 function ProjectNav({ title, sections = [], activeSectionId, onTabClick, scrollContainerRef, isSticky, color = '#F5EFE7', showTabs = true, hiddenTabIds = [] }) {
-  const visibleSections = sections.filter(s => !hiddenTabIds.includes(s.id))
+  const visibleSections = useMemo(() => sections.filter(s => !hiddenTabIds.includes(s.id)), [sections, hiddenTabIds])
   const [indicatorStyle, setIndicatorStyle] = useState({
     opacity: 0,
     left: '0px',
@@ -26,7 +26,7 @@ function ProjectNav({ title, sections = [], activeSectionId, onTabClick, scrollC
 
     const activeVisibleIndex = visibleSections.findIndex(s => s.id === currentActiveId)
     if (activeVisibleIndex === -1) {
-      setIndicatorStyle(prev => ({ ...prev, opacity: 0 }))
+      setIndicatorStyle(prev => prev.opacity === 0 ? prev : { ...prev, opacity: 0 })
       return
     }
 
@@ -77,7 +77,7 @@ function ProjectNav({ title, sections = [], activeSectionId, onTabClick, scrollC
     requestAnimationFrame(() => {
       requestAnimationFrame(updateIndicatorPosition)
     })
-  }, [activeSectionId, sections, visibleSections])
+  }, [activeSectionId])
 
   const handleTabClick = (sectionId, index) => {
     if (onTabClick) {
@@ -103,7 +103,7 @@ function ProjectNav({ title, sections = [], activeSectionId, onTabClick, scrollC
           tabIndex={sections.length > 0 ? 0 : undefined}
         >
           {title === 'Chegg Skills:' ? (
-            <img src="/img/chegg/chegg-logo.svg" alt="Chegg Skills" />
+            <img src="/img/chegg/chegg-logo.svg" alt="Chegg Skills" loading="lazy" />
           ) : (
             title
           )}

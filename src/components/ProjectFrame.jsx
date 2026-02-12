@@ -5,7 +5,7 @@ function ProjectFrame({ image, imageAlt, text, title }) {
     <div className="project-frame">
       {image && (
         <div className="project-frame-image">
-          <img src={image} alt={imageAlt || ''} />
+          <img src={image} alt={imageAlt || ''} loading="lazy" />
         </div>
       )}
       <div className="project-frame-content">
