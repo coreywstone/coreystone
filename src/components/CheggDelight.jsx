@@ -47,6 +47,15 @@ function CheggDelight() {
           </div>
         </div>
       </div>
+
+      {/* Panel 4: Confetti */}
+      <div className="chegg-delight-confetti">
+        <iframe
+          src="/files/confetti.html"
+          title="Confetti animation"
+          className="chegg-delight-confetti-iframe"
+        />
+      </div>
     </div>
   )
 }

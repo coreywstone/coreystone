@@ -98,3 +98,30 @@
   border-radius: 8px;
   filter: drop-shadow(1.5px 3px 0 var(--color-near-black));
 }
+
+/* Panel 4: Confetti */
+.chegg-delight-confetti {
+  width: 680px;
+  flex-shrink: 0;
+  height: 100%;
+  border-left: 12px solid var(--color-near-black);
+  overflow: visible;
+  position: relative;
+  background-image: url('/img/chegg/chegg-delight-confetti.svg'),
+    linear-gradient(to bottom, var(--color-near-white), var(--color-white-ish));
+  background-position: bottom center, 0 0;
+  background-repeat: no-repeat;
+  background-size: 604px 560px, auto;
+}
+
+/* Iframe full height so confetti explosion isn't clipped; button + script inside */
+.chegg-delight-confetti-iframe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
