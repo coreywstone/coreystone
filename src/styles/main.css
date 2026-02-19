@@ -1,8 +1,6 @@
 /* Comic Book Portfolio Styles */
 
 /* Import Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Badaboom&display=swap');
 @import url('https://fonts.cdnfonts.com/css/anime-ace');
 
 /* BlowholeBB webfonts */
@@ -43,7 +41,7 @@
   --color-green: #49C478; /* Green - vegetation */
   
   --border-radius: 2px;
-  --font-header: 'Bangers', sans-serif;
+  --font-header: 'BlowholeBB', sans-serif;
   --font-body: 'Anime Ace', sans-serif;
   --font-blowhole: 'BlowholeBB', sans-serif;
 }

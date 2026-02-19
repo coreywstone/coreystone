@@ -213,7 +213,7 @@
 
 .chegg-staff-ai-persona-carousel-header {
   width: 100%;
-  font-family: 'Bangers', sans-serif;
+  font-family: var(--font-header);
   font-size: 20px;
   color: var(--color-white-ish);
   background-color: var(--color-near-black);
@@ -277,7 +277,7 @@
 
 .chegg-staff-ai-persona-carousel-footer {
   width: 100%;
-  font-family: 'Bangers', sans-serif;
+  font-family: var(--font-header);
   font-size: 20px;
   line-height: 150%;
   color: #FCC192;
