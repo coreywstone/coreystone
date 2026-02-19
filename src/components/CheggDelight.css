@@ -125,3 +125,45 @@
   height: 100%;
   border: none;
 }
+
+/* Panel 5: Lo-fi */
+.chegg-delight-lofi {
+  flex-shrink: 0;
+  height: 100%;
+  padding: 32px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-end;
+  background-color: var(--color-charcoal);
+  border-left: 12px solid var(--color-near-black);
+}
+
+.chegg-delight-lofi-left {
+  width: 340px;
+  flex-shrink: 0;
+}
+
+.chegg-delight-lofi-text {
+  font-family: var(--font-blowhole);
+  font-size: 40px;
+  font-weight: normal;
+  font-style: normal;
+  color: var(--color-white-ish);
+  text-shadow: 1.5px 3px 0 var(--color-near-black);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.chegg-delight-lofi-right {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.chegg-delight-lofi-img {
+  height: 516px;
+  width: auto;
+  display: block;
+}

@@ -35,7 +35,7 @@ function CheggDelight() {
           </div>
           <div className="chegg-delight-dashboard-stack">
             <h3 className="chegg-delight-dashboard-title">
-              For the ikea effect, dark mode & unsplash options.
+              For the ikea effect, dark mode & unsplash options:
             </h3>
             <div className="chegg-delight-dashboard-wrapper">
               <img
@@ -55,6 +55,22 @@ function CheggDelight() {
           title="Confetti animation"
           className="chegg-delight-confetti-iframe"
         />
+      </div>
+
+      {/* Panel 5: Lo-fi */}
+      <div className="chegg-delight-lofi">
+        <div className="chegg-delight-lofi-left">
+          <p className="chegg-delight-lofi-text">
+            To further help learners, I added lo-fi study music and a 'Today' micro-display.
+          </p>
+        </div>
+        <div className="chegg-delight-lofi-right">
+          <img
+            className="chegg-delight-lofi-img"
+            src="/img/chegg/chegg-delight-lo-fi.png"
+            alt="Lo-fi study music and Today micro-display"
+          />
+        </div>
       </div>
     </div>
   )
