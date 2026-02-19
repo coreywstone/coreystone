@@ -94,7 +94,7 @@
 
 .project-nav-indicator {
   position: absolute;
-  background-color: var(--color-blue);
+  background-color: var(--color-cream);
   border-radius: 4px;
   z-index: 1;
   pointer-events: none;
@@ -102,6 +102,19 @@
   transition: opacity 200ms ease-out, left 300ms cubic-bezier(0.4, 0, 0.2, 1), width 300ms cubic-bezier(0.4, 0, 0.2, 1), height 300ms cubic-bezier(0.4, 0, 0.2, 1);
   top: 0;
   min-height: 2rem;
+}
+
+.project-nav-progress-fill {
+  position: absolute;
+  background-color: var(--color-near-white);
+  border-radius: 4px 0 0 4px;
+  z-index: 1;
+  pointer-events: none;
+  transition: width 100ms ease-out, left 300ms cubic-bezier(0.4, 0, 0.2, 1), height 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-nav-progress-fill--full {
+  border-radius: 4px;
 }
 
 .project-nav-indicator.animating {

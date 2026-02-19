@@ -6,6 +6,7 @@ import './ProjectRow.css'
 function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = true, backgroundColor = null, backstoryBgColor = null, className = '', hiddenTabIds = [] }) {
   const [activeSectionId, setActiveSectionId] = useState(sections[0]?.id || null)
   const [isNavSticky, setIsNavSticky] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
   const scrollContainerRef = useRef(null)
   const sectionRefs = useRef([])
   const rowRef = useRef(null)
@@ -65,6 +66,33 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
     }
   }, [sections])
 
+  // Update scroll progress when active section changes
+  useEffect(() => {
+    const container = scrollContainerRef.current
+    if (!activeSectionId || !container) {
+      setScrollProgress(0)
+      return
+    }
+
+    const activeSectionIndex = sections.findIndex(s => s.id === activeSectionId)
+    const activeSection = activeSectionIndex >= 0 ? sectionRefs.current[activeSectionIndex] : null
+    
+    if (activeSection) {
+      const sectionStart = activeSection.offsetLeft
+      const sectionWidth = activeSection.offsetWidth
+      const containerWidth = container.clientWidth
+      const scrollLeft = container.scrollLeft
+      
+      const maxScroll = sectionStart + sectionWidth - containerWidth
+      const progress = maxScroll > sectionStart 
+        ? Math.max(0, Math.min(1, (scrollLeft - sectionStart) / (maxScroll - sectionStart)))
+        : 0
+      setScrollProgress(progress)
+    } else {
+      setScrollProgress(0)
+    }
+  }, [activeSectionId, sections])
+
   // Also listen to scroll events for more responsive updates
   useEffect(() => {
     const container = scrollContainerRef.current
@@ -95,8 +123,32 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
         }
       })
 
-      if (closestSection) {
-        setActiveSectionId(closestSection)
+      const currentActiveSection = closestSection || activeSectionId
+      
+      if (currentActiveSection) {
+        setActiveSectionId(currentActiveSection)
+      }
+
+      // Calculate scroll progress for the active section
+      const activeSectionIndex = sections.findIndex(s => s.id === currentActiveSection)
+      const activeSection = activeSectionIndex >= 0 ? sectionRefs.current[activeSectionIndex] : null
+      
+      if (activeSection && container) {
+        const sectionStart = activeSection.offsetLeft
+        const sectionWidth = activeSection.offsetWidth
+        const containerWidth = container.clientWidth
+        const scrollLeft = container.scrollLeft
+        
+        // Progress is how much of the section has been scrolled past
+        // When scrollLeft = sectionStart, progress = 0
+        // When scrollLeft = sectionStart + sectionWidth - containerWidth, progress = 1
+        const maxScroll = sectionStart + sectionWidth - containerWidth
+        const progress = maxScroll > sectionStart 
+          ? Math.max(0, Math.min(1, (scrollLeft - sectionStart) / (maxScroll - sectionStart)))
+          : 0
+        setScrollProgress(progress)
+      } else {
+        setScrollProgress(0)
       }
     }
 
@@ -176,6 +228,7 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
         color={color}
         showTabs={showNavTabs}
         hiddenTabIds={hiddenTabIds}
+        scrollProgress={scrollProgress}
       />
       <div ref={scrollContainerRef} className="project-panel-container">
         <div className="project-panel-scroll">
