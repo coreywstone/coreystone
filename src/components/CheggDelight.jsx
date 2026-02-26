@@ -69,6 +69,18 @@ function CheggDelight() {
               />
             </div>
           </div>
+          <div className="chegg-delight-dashboard-stack chegg-delight-dashboard-stack--dark-theme">
+            <h3 className="chegg-delight-dashboard-title">
+              Dark variables with Anthony & dev Katie:
+            </h3>
+            <div className="chegg-delight-dashboard-wrapper chegg-delight-dashboard-wrapper--dark-theme">
+              <img
+                className="chegg-delight-dashboard chegg-delight-dashboard--dark-theme"
+                src="/img/chegg/chegg-delight-dark-theme.png"
+                alt="Dark theme variables"
+              />
+            </div>
+          </div>
         </div>
       </div>
 
