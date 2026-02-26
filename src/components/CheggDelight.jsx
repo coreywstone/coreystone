@@ -1,6 +1,117 @@
+import { useRef, useEffect } from 'react'
+import confetti from 'canvas-confetti'
 import './CheggDelight.css'
 
+const CHEGG_ORANGES_YELLOWS = [
+  '#D65F00',
+  '#EB7100',
+  '#E87A1A',
+  '#FF8C42',
+  '#FFA366',
+  '#FFC496',
+  '#FFD54F',
+  '#FFEB3B',
+  '#FFF176'
+]
+
+function runPanelConfettiRain(instance, isActiveRef) {
+  if (!instance) return
+
+  const baseOptions = {
+    particleCount: 150,
+    spread: 120,
+    startVelocity: 45,
+    gravity: 1.1,
+    decay: 0.9,
+    ticks: 450,
+    colors: CHEGG_ORANGES_YELLOWS
+  }
+
+  const bursts = 10
+  for (let i = 0; i < bursts; i++) {
+    const delay = i * 180
+    window.setTimeout(() => {
+      if (!isActiveRef.current) return
+      const originX = Math.random()
+      instance({
+        ...baseOptions,
+        origin: { x: originX, y: 0.05 },
+        particleCount:
+          baseOptions.particleCount + Math.round(Math.random() * 40),
+        scalar: 0.9 + Math.random() * 0.3
+      })
+    }, delay)
+  }
+}
+
+function startPanelConfettiLoop(panelConfettiRef, isActiveRef) {
+  const loop = () => {
+    const instance = panelConfettiRef.current
+    if (!isActiveRef.current || !instance) return
+
+    runPanelConfettiRain(instance, isActiveRef)
+
+    const nextDelay = 2600 + Math.random() * 1200
+    window.setTimeout(loop, nextDelay)
+  }
+
+  loop()
+}
+
 function CheggDelight() {
+  const scrollDownRef = useRef(null)
+  const panelCanvasRef = useRef(null)
+  const panelConfettiRef = useRef(null)
+  const confettiActiveRef = useRef(false)
+
+  useEffect(() => {
+    const canvas = panelCanvasRef.current
+    if (!canvas) return
+
+    const instance = confetti.create(canvas, {
+      resize: true,
+      useWorker: true,
+      disableForReducedMotion: true
+    })
+    panelConfettiRef.current = instance
+
+    return () => {
+      panelConfettiRef.current = null
+    }
+  }, [])
+
+  useEffect(() => {
+    const el = scrollDownRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries
+        if (!entry) return
+        const isVisible =
+          entry.isIntersecting && entry.intersectionRatio >= 0.25
+
+        if (isVisible) {
+          if (!confettiActiveRef.current && panelConfettiRef.current) {
+            const reduceMotion =
+              typeof window !== 'undefined' &&
+              window.matchMedia &&
+              window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+            if (reduceMotion) return
+
+            confettiActiveRef.current = true
+            startPanelConfettiLoop(panelConfettiRef, confettiActiveRef)
+          }
+        } else {
+          confettiActiveRef.current = false
+        }
+      },
+      { threshold: [0, 0.25, 0.5, 1], rootMargin: '0px' }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="chegg-delight-panel">
       {/* Panel 1: Problem */}
@@ -105,6 +216,22 @@ function CheggDelight() {
             className="chegg-delight-lofi-img"
             src="/img/chegg/chegg-delight-lo-fi.png"
             alt="Lo-fi study music and Today micro-display"
+          />
+        </div>
+      </div>
+
+      {/* Panel 6: Scroll down */}
+      <div ref={scrollDownRef} className="chegg-delight-scroll-down">
+        <canvas
+          ref={panelCanvasRef}
+          className="chegg-delight-scroll-down-canvas"
+        />
+        <div className="chegg-delight-scroll-down-content">
+          <h3 className="chegg-delight-scroll-down-title">That&apos;s it – scroll down!</h3>
+          <img
+            className="chegg-delight-scroll-down-img"
+            src="/img/me/me-scroll-down.svg"
+            alt=""
           />
         </div>
       </div>
