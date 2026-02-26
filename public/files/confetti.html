@@ -214,6 +214,10 @@
         button.addEventListener('click', function() {
             stopChargingEffect();
             createExplosionEffect(this);
+            // Same click sound as video buttons, at 60% volume
+            const clickSound = new Audio('/img/ui/buttonclick.mp3');
+            clickSound.volume = 0.35;
+            clickSound.play().catch(function() {});
         });
         
         function startChargingEffect(button) {
