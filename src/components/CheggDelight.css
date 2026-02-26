@@ -99,6 +99,11 @@
   filter: drop-shadow(1.5px 3px 0 var(--color-near-black));
 }
 
+.chegg-delight-dashboard--iterations {
+  object-fit: contain;
+  border-radius: 0;
+}
+
 /* Panel 4: Confetti */
 .chegg-delight-confetti {
   width: 680px;

@@ -23,6 +23,18 @@ function CheggDelight() {
         <div className="chegg-delight-dashboards-container">
           <div className="chegg-delight-dashboard-stack">
             <h3 className="chegg-delight-dashboard-title">
+              Iterating on journey-based dashboards:
+            </h3>
+            <div className="chegg-delight-dashboard-wrapper chegg-delight-dashboard-wrapper--iterations">
+              <img
+                className="chegg-delight-dashboard chegg-delight-dashboard--iterations"
+                src="/img/chegg/chegg-dashboard-iterations.png"
+                alt="Dashboard iterations"
+              />
+            </div>
+          </div>
+          <div className="chegg-delight-dashboard-stack">
+            <h3 className="chegg-delight-dashboard-title">
               My new hyper-personalized coach-focused dashboard:
             </h3>
             <div className="chegg-delight-dashboard-wrapper">
