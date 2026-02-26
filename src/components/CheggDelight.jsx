@@ -97,7 +97,7 @@ function CheggDelight() {
       <div className="chegg-delight-lofi">
         <div className="chegg-delight-lofi-left">
           <p className="chegg-delight-lofi-text">
-            To further help learners, I added lo-fi study music and a 'Today' micro-display.
+            To further help learners, I proposed <span className="chegg-delight-nowrap">lo-fi</span> study music and a &apos;Today&apos; micro-display.
           </p>
         </div>
         <div className="chegg-delight-lofi-right">

@@ -195,6 +195,10 @@
   line-height: 1.2;
 }
 
+.chegg-delight-nowrap {
+  white-space: nowrap;
+}
+
 .chegg-delight-lofi-right {
   flex: 1;
   min-width: 0;
