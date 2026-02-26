@@ -11,6 +11,28 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
   const sectionRefs = useRef([])
   const rowRef = useRef(null)
 
+  const visibleSections = sections.filter(s => !hiddenTabIds.includes(s.id))
+
+  function getDisplayActiveSectionId(activeId) {
+    if (!activeId) return null
+    if (visibleSections.some(s => s.id === activeId)) return activeId
+    const activeIndex = sections.findIndex(s => s.id === activeId)
+    if (activeIndex < 0) return null
+    for (let i = activeIndex; i >= 0; i--) {
+      if (visibleSections.some(s => s.id === sections[i].id)) return sections[i].id
+    }
+    return null
+  }
+
+  function getGroupRange(displayActiveId) {
+    if (!displayActiveId) return { startIndex: -1, endIndex: -1 }
+    const startIndex = sections.findIndex(s => s.id === displayActiveId)
+    if (startIndex < 0) return { startIndex: -1, endIndex: -1 }
+    const nextVisibleIndex = sections.findIndex((s, i) => i > startIndex && visibleSections.some(v => v.id === s.id))
+    const endIndex = nextVisibleIndex >= 0 ? nextVisibleIndex - 1 : sections.length - 1
+    return { startIndex, endIndex }
+  }
+
   // Set up IntersectionObserver to detect when ProjectRow is in view (for sticky nav)
   useEffect(() => {
     if (!rowRef.current) return
@@ -69,29 +91,34 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
   // Update scroll progress when active section changes
   useEffect(() => {
     const container = scrollContainerRef.current
-    if (!activeSectionId || !container) {
+    const displayActiveId = getDisplayActiveSectionId(activeSectionId)
+    if (!displayActiveId || !container) {
       setScrollProgress(0)
       return
     }
 
-    const activeSectionIndex = sections.findIndex(s => s.id === activeSectionId)
-    const activeSection = activeSectionIndex >= 0 ? sectionRefs.current[activeSectionIndex] : null
-    
-    if (activeSection) {
-      const sectionStart = activeSection.offsetLeft
-      const sectionWidth = activeSection.offsetWidth
-      const containerWidth = container.clientWidth
-      const scrollLeft = container.scrollLeft
-      
-      const maxScroll = sectionStart + sectionWidth - containerWidth
-      const progress = maxScroll > sectionStart 
-        ? Math.max(0, Math.min(1, (scrollLeft - sectionStart) / (maxScroll - sectionStart)))
-        : 0
-      setScrollProgress(progress)
-    } else {
+    const { startIndex, endIndex } = getGroupRange(displayActiveId)
+    if (startIndex < 0 || endIndex < 0) {
       setScrollProgress(0)
+      return
     }
-  }, [activeSectionId, sections])
+
+    const startSection = sectionRefs.current[startIndex]
+    const endSection = sectionRefs.current[endIndex]
+    if (!startSection || !endSection) {
+      setScrollProgress(0)
+      return
+    }
+
+    const containerWidth = container.clientWidth
+    const scrollLeft = container.scrollLeft
+    const groupStart = startSection.offsetLeft
+    const groupEnd = endSection.offsetLeft + endSection.offsetWidth - containerWidth
+    const progress = groupEnd > groupStart
+      ? Math.max(0, Math.min(1, (scrollLeft - groupStart) / (groupEnd - groupStart)))
+      : 0
+    setScrollProgress(progress)
+  }, [activeSectionId, sections, hiddenTabIds])
 
   // Also listen to scroll events for more responsive updates
   useEffect(() => {
@@ -129,24 +156,24 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
         setActiveSectionId(currentActiveSection)
       }
 
-      // Calculate scroll progress for the active section
-      const activeSectionIndex = sections.findIndex(s => s.id === currentActiveSection)
-      const activeSection = activeSectionIndex >= 0 ? sectionRefs.current[activeSectionIndex] : null
-      
-      if (activeSection && container) {
-        const sectionStart = activeSection.offsetLeft
-        const sectionWidth = activeSection.offsetWidth
-        const containerWidth = container.clientWidth
-        const scrollLeft = container.scrollLeft
-        
-        // Progress is how much of the section has been scrolled past
-        // When scrollLeft = sectionStart, progress = 0
-        // When scrollLeft = sectionStart + sectionWidth - containerWidth, progress = 1
-        const maxScroll = sectionStart + sectionWidth - containerWidth
-        const progress = maxScroll > sectionStart 
-          ? Math.max(0, Math.min(1, (scrollLeft - sectionStart) / (maxScroll - sectionStart)))
-          : 0
-        setScrollProgress(progress)
+      // Calculate scroll progress for the display active section (or its group)
+      const displayActiveId = getDisplayActiveSectionId(currentActiveSection)
+      if (displayActiveId && container) {
+        const { startIndex, endIndex } = getGroupRange(displayActiveId)
+        const startSection = startIndex >= 0 ? sectionRefs.current[startIndex] : null
+        const endSection = endIndex >= 0 ? sectionRefs.current[endIndex] : null
+        if (startSection && endSection) {
+          const containerWidth = container.clientWidth
+          const scrollLeft = container.scrollLeft
+          const groupStart = startSection.offsetLeft
+          const groupEnd = endSection.offsetLeft + endSection.offsetWidth - containerWidth
+          const progress = groupEnd > groupStart
+            ? Math.max(0, Math.min(1, (scrollLeft - groupStart) / (groupEnd - groupStart)))
+            : 0
+          setScrollProgress(progress)
+        } else {
+          setScrollProgress(0)
+        }
       } else {
         setScrollProgress(0)
       }
@@ -154,7 +181,7 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
 
     container.addEventListener('scroll', handleScroll, { passive: true })
     return () => container.removeEventListener('scroll', handleScroll)
-  }, [sections])
+  }, [sections, hiddenTabIds])
 
   // Calculate and set section heights from the row's actual height (so min-height: 700px fills the panel)
   const NAV_AND_BORDER = 84 // 72px nav + 12px border
@@ -221,7 +248,7 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
       <ProjectNav
         title={title}
         sections={sections}
-        activeSectionId={activeSectionId}
+        activeSectionId={getDisplayActiveSectionId(activeSectionId) || activeSectionId}
         onTabClick={handleTabClick}
         scrollContainerRef={scrollContainerRef}
         isSticky={isNavSticky}
