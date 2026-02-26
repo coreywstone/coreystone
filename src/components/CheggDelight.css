@@ -59,6 +59,10 @@
   margin-left: 48px;
 }
 
+.chegg-delight-dashboard-stack--figma-make {
+  width: fit-content;
+}
+
 .chegg-delight-dashboards-container {
   display: flex;
   align-items: stretch;
@@ -102,6 +106,22 @@
 .chegg-delight-dashboard--iterations {
   object-fit: contain;
   border-radius: 0;
+}
+
+.chegg-delight-dashboard-wrapper--figma-make {
+  width: max-content;
+  max-width: 100%;
+  height: 350px;
+  align-self: flex-start;
+}
+
+.chegg-delight-dashboard--figma-make {
+  width: auto;
+  height: 350px;
+  display: block;
+  object-fit: contain;
+  border-radius: 8px;
+  filter: drop-shadow(1.5px 3px 0 var(--color-near-black));
 }
 
 /* Panel 4: Confetti */

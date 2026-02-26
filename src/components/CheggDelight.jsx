@@ -45,6 +45,18 @@ function CheggDelight() {
               />
             </div>
           </div>
+          <div className="chegg-delight-dashboard-stack chegg-delight-dashboard-stack--figma-make">
+            <h3 className="chegg-delight-dashboard-title">
+              Figma 'Make' for RAG prompt testing:
+            </h3>
+            <div className="chegg-delight-dashboard-wrapper chegg-delight-dashboard-wrapper--figma-make">
+              <img
+                className="chegg-delight-dashboard chegg-delight-dashboard--figma-make"
+                src="/img/chegg/chegg-delight-figma-make.png"
+                alt="Figma Make RAG simulation"
+              />
+            </div>
+          </div>
           <div className="chegg-delight-dashboard-stack">
             <h3 className="chegg-delight-dashboard-title">
               For the ikea effect, dark mode & unsplash options:
