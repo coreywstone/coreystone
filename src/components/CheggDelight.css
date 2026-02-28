@@ -175,7 +175,7 @@
   display: flex;
   gap: 24px;
   align-items: flex-end;
-  background-color: var(--color-charcoal);
+  background: linear-gradient(to bottom, var(--color-near-white), var(--color-white-ish));
   border-left: 12px solid var(--color-near-black);
 }
 
@@ -189,8 +189,7 @@
   font-size: 40px;
   font-weight: normal;
   font-style: normal;
-  color: var(--color-white-ish);
-  text-shadow: 1.5px 3px 0 var(--color-near-black);
+  color: var(--color-charcoal);
   margin: 0;
   line-height: 1.2;
 }
