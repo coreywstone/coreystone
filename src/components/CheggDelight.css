@@ -213,19 +213,30 @@
   display: block;
 }
 
-/* Panel 6: Scroll down */
+/* Panel 6: Party / Scroll down - width set dynamically from video aspect ratio */
 .chegg-delight-scroll-down {
   flex-shrink: 0;
-  width: 700px;
+  min-width: 700px;
   height: 100%;
   padding: 32px 32px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--color-charcoal);
+  background-color: var(--color-near-white);
   border-left: 12px solid var(--color-near-black);
   position: relative;
   overflow: hidden;
+}
+
+.chegg-delight-scroll-down-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  object-position: center;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .chegg-delight-scroll-down-canvas {
@@ -235,33 +246,21 @@
   height: 100%;
   display: block;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 
 .chegg-delight-scroll-down-content {
-  position: relative;
-  z-index: 1;
-  margin-top: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 48px;
-}
-
-.chegg-delight-scroll-down-title {
-  font-family: var(--font-blowhole);
-  font-size: 60px;
-  font-weight: normal;
-  font-style: normal;
-  color: var(--color-white-ish);
-  text-shadow: 1.5px 3px 0 var(--color-near-black);
-  margin: 0;
-  line-height: 1.2;
-  text-align: center;
+  justify-content: center;
 }
 
 .chegg-delight-scroll-down-img {
   display: block;
+  height: 580px;
   width: auto;
-  height: auto;
 }

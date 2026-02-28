@@ -62,6 +62,7 @@ function CheggDelight() {
   const scrollDownRef = useRef(null)
   const panelCanvasRef = useRef(null)
   const panelConfettiRef = useRef(null)
+  const panelVideoRef = useRef(null)
   const confettiActiveRef = useRef(false)
 
   useEffect(() => {
@@ -81,6 +82,33 @@ function CheggDelight() {
   }, [])
 
   useEffect(() => {
+    const panel = scrollDownRef.current
+    const video = panelVideoRef.current
+    if (!panel || !video) return
+
+    const updatePanelWidth = () => {
+      const vw = video.videoWidth
+      const vh = video.videoHeight
+      if (!vw || !vh) return
+      const panelHeight = panel.getBoundingClientRect().height
+      if (!panelHeight) return
+      panel.style.width = `${Math.round(panelHeight * (vw / vh))}px`
+    }
+
+    const onLoadedMetadata = () => updatePanelWidth()
+    video.addEventListener('loadedmetadata', onLoadedMetadata)
+    if (video.readyState >= 1) updatePanelWidth()
+
+    const ro = new ResizeObserver(updatePanelWidth)
+    ro.observe(panel)
+
+    return () => {
+      video.removeEventListener('loadedmetadata', onLoadedMetadata)
+      ro.disconnect()
+    }
+  }, [])
+
+  useEffect(() => {
     const el = scrollDownRef.current
     if (!el) return
     const observer = new IntersectionObserver(
@@ -91,6 +119,11 @@ function CheggDelight() {
           entry.isIntersecting && entry.intersectionRatio >= 0.25
 
         if (isVisible) {
+          const v = panelVideoRef.current
+          if (v) {
+            v.playbackRate = 0.7
+            v.play().catch(() => {})
+          }
           if (!confettiActiveRef.current && panelConfettiRef.current) {
             const reduceMotion =
               typeof window !== 'undefined' &&
@@ -103,6 +136,7 @@ function CheggDelight() {
             startPanelConfettiLoop(panelConfettiRef, confettiActiveRef)
           }
         } else {
+          panelVideoRef.current?.pause()
           confettiActiveRef.current = false
         }
       },
@@ -220,14 +254,22 @@ function CheggDelight() {
         </div>
       </div>
 
-      {/* Panel 6: Scroll down */}
+      {/* Panel 6: Party / Scroll down */}
       <div ref={scrollDownRef} className="chegg-delight-scroll-down">
+        <video
+          ref={panelVideoRef}
+          className="chegg-delight-scroll-down-video"
+          src="/img/chegg/chegg-dance-party.mp4"
+          loop
+          muted
+          playsInline
+          aria-hidden
+        />
         <canvas
           ref={panelCanvasRef}
           className="chegg-delight-scroll-down-canvas"
         />
         <div className="chegg-delight-scroll-down-content">
-          <h3 className="chegg-delight-scroll-down-title">That&apos;s it – scroll down!</h3>
           <img
             className="chegg-delight-scroll-down-img"
             src="/img/me/me-scroll-down.svg"
