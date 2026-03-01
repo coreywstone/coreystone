@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import confetti from 'canvas-confetti'
 import './CheggDelight.css'
 
@@ -88,6 +88,7 @@ function CheggDelight() {
   const spotlightPosRef = useRef({ x: 0, y: 0 })
   const spotlightFrameIdRef = useRef(null)
   const spotlightLoopRef = useRef(null)
+  const [phogImage, setPhogImage] = useState('/img/me/phog-lying-on-side.png')
 
   useEffect(() => {
     const canvas = panelCanvasRef.current
@@ -205,8 +206,13 @@ function CheggDelight() {
         const j = (i + 1) % 3
         const t = seg - Math.floor(seg)
         const rgb = lerpRgb(PARTY_SPOTLIGHT_COLORS[i], PARTY_SPOTLIGHT_COLORS[j], t)
+        const rClear = 36 * 1.3
+        const rTintFeather = 110
+        const rTintStart = rClear + rTintFeather
         const tintGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, rOuter)
-        tintGrad.addColorStop(0, `rgba(${rgb.r},${rgb.g},${rgb.b},0.45)`)
+        tintGrad.addColorStop(0, 'rgba(255,255,255,0)')
+        tintGrad.addColorStop(rClear / rOuter, 'rgba(255,255,255,0)')
+        tintGrad.addColorStop(rTintStart / rOuter, `rgba(${rgb.r},${rgb.g},${rgb.b},0.45)`)
         tintGrad.addColorStop(0.7, `rgba(${rgb.r},${rgb.g},${rgb.b},0.2)`)
         tintGrad.addColorStop(1, 'rgba(255,255,255,0)')
         ctx.fillStyle = tintGrad
@@ -430,6 +436,19 @@ function CheggDelight() {
             className="chegg-delight-scroll-down-img"
             src="/img/me/me-scroll-down.svg"
             alt=""
+          />
+        </div>
+        <div className="chegg-delight-scroll-down-phog">
+          <img
+            src={phogImage}
+            alt="Phog the cat"
+            className="chegg-delight-scroll-down-phog-img"
+            onClick={() => {
+              const audio = new Audio('/img/me/phog-meow.mp3')
+              audio.play().catch(() => {})
+              setPhogImage('/img/me/phog-lying-on-side-poked.png')
+              setTimeout(() => setPhogImage('/img/me/phog-lying-on-side.png'), 500)
+            }}
           />
         </div>
       </div>

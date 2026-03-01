@@ -265,10 +265,32 @@
   z-index: 3;
   display: flex;
   justify-content: center;
+  pointer-events: none;
+}
+
+.chegg-delight-scroll-down-content > * {
+  pointer-events: auto;
 }
 
 .chegg-delight-scroll-down-img {
   display: block;
   height: 580px;
   width: auto;
+}
+
+.chegg-delight-scroll-down-phog {
+  position: absolute;
+  bottom: -24px;
+  left: 30%;
+  transform: translateX(-50%);
+  z-index: 0.5;
+  pointer-events: auto;
+}
+
+.chegg-delight-scroll-down-phog-img {
+  display: block;
+  max-width: 225px;
+  height: auto;
+  cursor: pointer;
+  transform: scale(0.85);
 }
