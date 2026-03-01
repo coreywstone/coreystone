@@ -113,6 +113,11 @@
   transition: width 250ms cubic-bezier(0.25, 0.1, 0.25, 1), left 300ms cubic-bezier(0.4, 0, 0.2, 1), height 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Track scroll 1:1 while user is scrolling; no transition lag */
+.project-nav-progress-fill--scrolling {
+  transition: none;
+}
+
 .project-nav-progress-fill--full {
   border-radius: 4px;
 }

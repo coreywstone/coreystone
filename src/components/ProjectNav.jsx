@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import './ProjectNav.css'
 
-function ProjectNav({ title, sections = [], activeSectionId, onTabClick, scrollContainerRef, isSticky, color = '#F5EFE7', showTabs = true, hiddenTabIds = [], scrollProgress = 0 }) {
+function ProjectNav({ title, sections = [], activeSectionId, onTabClick, scrollContainerRef, isSticky, color = '#F5EFE7', showTabs = true, hiddenTabIds = [], scrollProgress = 0, isScrolling = false }) {
   const visibleSections = useMemo(() => sections.filter(s => !hiddenTabIds.includes(s.id)), [sections, hiddenTabIds])
   const [indicatorStyle, setIndicatorStyle] = useState({
     opacity: 0,
@@ -118,7 +118,7 @@ function ProjectNav({ title, sections = [], activeSectionId, onTabClick, scrollC
           />
           {indicatorStyle.width !== '0px' && (
             <div
-              className={`project-nav-progress-fill ${scrollProgress >= 1 ? 'project-nav-progress-fill--full' : ''}`}
+              className={`project-nav-progress-fill ${scrollProgress >= 1 ? 'project-nav-progress-fill--full' : ''} ${isScrolling ? 'project-nav-progress-fill--scrolling' : ''}`}
               style={{
                 left: indicatorStyle.left,
                 width: `${parseFloat(indicatorStyle.width) * scrollProgress}px`,

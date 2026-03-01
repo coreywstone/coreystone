@@ -7,9 +7,15 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
   const [activeSectionId, setActiveSectionId] = useState(sections[0]?.id || null)
   const [isNavSticky, setIsNavSticky] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
+  const [isScrolling, setIsScrolling] = useState(false)
   const scrollContainerRef = useRef(null)
   const sectionRefs = useRef([])
   const rowRef = useRef(null)
+  const scrollProgressRef = useRef(0)
+  const rafIdRef = useRef(null)
+  const scrollEndTimeoutRef = useRef(null)
+  const scrollingRef = useRef(false)
+  const activeSectionIdRef = useRef(activeSectionId)
 
   const visibleSections = sections.filter(s => !hiddenTabIds.includes(s.id))
 
@@ -120,12 +126,24 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
     setScrollProgress(progress)
   }, [activeSectionId, sections, hiddenTabIds])
 
-  // Also listen to scroll events for more responsive updates
+  activeSectionIdRef.current = activeSectionId
+
+  // Scroll: mark scrolling, debounced scroll-end, rAF-batched progress, active section only when changed
   useEffect(() => {
     const container = scrollContainerRef.current
     if (!container) return
 
     const handleScroll = () => {
+      if (!scrollingRef.current) {
+        scrollingRef.current = true
+        setIsScrolling(true)
+      }
+      clearTimeout(scrollEndTimeoutRef.current)
+      scrollEndTimeoutRef.current = setTimeout(() => {
+        scrollingRef.current = false
+        setIsScrolling(false)
+      }, 120)
+
       const containerRect = container.getBoundingClientRect()
       const containerLeft = containerRect.left
       const containerWidth = containerRect.width
@@ -150,37 +168,57 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
         }
       })
 
-      const currentActiveSection = closestSection || activeSectionId
-      
-      if (currentActiveSection) {
+      const currentActiveSection = closestSection || activeSectionIdRef.current
+      if (currentActiveSection && currentActiveSection !== activeSectionIdRef.current) {
         setActiveSectionId(currentActiveSection)
       }
 
-      // Calculate scroll progress for the display active section (or its group)
       const displayActiveId = getDisplayActiveSectionId(currentActiveSection)
       if (displayActiveId && container) {
         const { startIndex, endIndex } = getGroupRange(displayActiveId)
         const startSection = startIndex >= 0 ? sectionRefs.current[startIndex] : null
         const endSection = endIndex >= 0 ? sectionRefs.current[endIndex] : null
         if (startSection && endSection) {
-          const containerWidth = container.clientWidth
+          const cw = container.clientWidth
           const scrollLeft = container.scrollLeft
           const groupStart = startSection.offsetLeft
-          const groupEnd = endSection.offsetLeft + endSection.offsetWidth - containerWidth
+          const groupEnd = endSection.offsetLeft + endSection.offsetWidth - cw
           const progress = groupEnd > groupStart
             ? Math.max(0, Math.min(1, (scrollLeft - groupStart) / (groupEnd - groupStart)))
             : 0
-          setScrollProgress(progress)
+          scrollProgressRef.current = progress
+          if (rafIdRef.current == null) {
+            rafIdRef.current = requestAnimationFrame(() => {
+              setScrollProgress(scrollProgressRef.current)
+              rafIdRef.current = null
+            })
+          }
         } else {
-          setScrollProgress(0)
+          scrollProgressRef.current = 0
+          if (rafIdRef.current == null) {
+            rafIdRef.current = requestAnimationFrame(() => {
+              setScrollProgress(0)
+              rafIdRef.current = null
+            })
+          }
         }
       } else {
-        setScrollProgress(0)
+        scrollProgressRef.current = 0
+        if (rafIdRef.current == null) {
+          rafIdRef.current = requestAnimationFrame(() => {
+            setScrollProgress(0)
+            rafIdRef.current = null
+          })
+        }
       }
     }
 
     container.addEventListener('scroll', handleScroll, { passive: true })
-    return () => container.removeEventListener('scroll', handleScroll)
+    return () => {
+      container.removeEventListener('scroll', handleScroll)
+      clearTimeout(scrollEndTimeoutRef.current)
+      if (rafIdRef.current != null) cancelAnimationFrame(rafIdRef.current)
+    }
   }, [sections, hiddenTabIds])
 
   // Calculate and set section heights from the row's actual height (so min-height: 700px fills the panel)
@@ -256,6 +294,7 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
         showTabs={showNavTabs}
         hiddenTabIds={hiddenTabIds}
         scrollProgress={scrollProgress}
+        isScrolling={isScrolling}
       />
       <div ref={scrollContainerRef} className="project-panel-container">
         <div className="project-panel-scroll">
