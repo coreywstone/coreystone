@@ -88,7 +88,14 @@ function CheggDelight() {
   const spotlightPosRef = useRef({ x: 0, y: 0 })
   const spotlightFrameIdRef = useRef(null)
   const spotlightLoopRef = useRef(null)
+  const spotlightRevealRef = useRef(0)
+  const spotlightRevealFromRef = useRef(0)
+  const spotlightRevealToRef = useRef(0)
+  const spotlightRevealStartTimeRef = useRef(0)
   const [phogImage, setPhogImage] = useState('/img/me/phog-lying-on-side.png')
+
+  const SPOTLIGHT_REVEAL_DURATION = 200
+  const easeOutQuad = (t) => 1 - (1 - t) ** 2
 
   useEffect(() => {
     const canvas = panelCanvasRef.current
@@ -139,10 +146,6 @@ function CheggDelight() {
     if (!canvas || !panel) return
 
     const loop = () => {
-      if (!spotlightActiveRef.current) {
-        spotlightFrameIdRef.current = null
-        return
-      }
       const c = spotlightCanvasRef.current
       const p = scrollDownRef.current
       if (!c || !p) {
@@ -171,6 +174,16 @@ function CheggDelight() {
       ctx.setTransform(1, 0, 0, 1, 0, 0)
       ctx.scale(dpr, dpr)
       ctx.clearRect(0, 0, w, h)
+      /* Dark overlay always visible; hole/tint only when panel in view and cursor in panel */
+      ctx.globalAlpha = 0.8
+      ctx.fillStyle = '#000'
+      ctx.fillRect(0, 0, w, h)
+      ctx.globalAlpha = 1
+
+      if (!spotlightActiveRef.current) {
+        spotlightFrameIdRef.current = requestAnimationFrame(loop)
+        return
+      }
       const reduceMotion =
         typeof window !== 'undefined' &&
         window.matchMedia &&
@@ -182,16 +195,21 @@ function CheggDelight() {
       spot.x += (cursor.x - spot.x) * 0.12
       spot.y += (cursor.y - spot.y) * 0.12
 
-      ctx.globalAlpha = 0.8
-      ctx.fillStyle = '#000'
-      ctx.fillRect(0, 0, w, h)
-      ctx.globalAlpha = 1
+      /* Update reveal (0→1 on enter, 1→0 on leave) with 200ms ease-out */
+      const now = Date.now()
+      const from = spotlightRevealFromRef.current
+      const to = spotlightRevealToRef.current
+      const startTime = spotlightRevealStartTimeRef.current
+      const elapsed = now - startTime
+      const progress = Math.min(elapsed / SPOTLIGHT_REVEAL_DURATION, 1)
+      spotlightRevealRef.current = from + (to - from) * easeOutQuad(progress)
 
-      if (showSpotlight) {
+      const reveal = spotlightRevealRef.current
+      if (reveal > 0.001) {
         const cx = spot.x
         const cy = spot.y
-        const rInner = 75
-        const rOuter = 188
+        const rInner = 75 * reveal
+        const rOuter = 188 * reveal
         const grad = ctx.createRadialGradient(cx, cy, rInner, cx, cy, rOuter)
         grad.addColorStop(0, 'rgba(255,255,255,1)')
         grad.addColorStop(1, 'rgba(255,255,255,0)')
@@ -206,8 +224,8 @@ function CheggDelight() {
         const j = (i + 1) % 3
         const t = seg - Math.floor(seg)
         const rgb = lerpRgb(PARTY_SPOTLIGHT_COLORS[i], PARTY_SPOTLIGHT_COLORS[j], t)
-        const rClear = 36 * 1.3
-        const rTintFeather = 110
+        const rClear = 36 * 1.3 * reveal
+        const rTintFeather = 110 * reveal
         const rTintStart = rClear + rTintFeather
         const tintGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, rOuter)
         tintGrad.addColorStop(0, 'rgba(255,255,255,0)')
@@ -222,6 +240,10 @@ function CheggDelight() {
       spotlightFrameIdRef.current = requestAnimationFrame(loop)
     }
     spotlightLoopRef.current = loop
+    /* Start loop so dark overlay is always visible, even when panel not in view */
+    if (!spotlightFrameIdRef.current) {
+      spotlightFrameIdRef.current = requestAnimationFrame(loop)
+    }
 
     return () => {
       spotlightLoopRef.current = null
@@ -245,11 +267,21 @@ function CheggDelight() {
         if (!cursorInPanelRef.current) {
           cursorInPanelRef.current = true
           spotlightPosRef.current = { x, y }
+          const reduceMotion =
+            typeof window !== 'undefined' &&
+            window.matchMedia &&
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          spotlightRevealFromRef.current = spotlightRevealRef.current
+          spotlightRevealToRef.current = reduceMotion ? 0 : 1
+          spotlightRevealStartTimeRef.current = Date.now()
         }
       }
     }
     const onMouseLeave = () => {
       cursorInPanelRef.current = false
+      spotlightRevealFromRef.current = spotlightRevealRef.current
+      spotlightRevealToRef.current = 0
+      spotlightRevealStartTimeRef.current = Date.now()
     }
 
     panel.addEventListener('mousemove', onMouseMove, { passive: true })
@@ -397,17 +429,19 @@ function CheggDelight() {
 
       {/* Panel 5: Lo-fi */}
       <div className="chegg-delight-lofi">
-        <div className="chegg-delight-lofi-left">
-          <p className="chegg-delight-lofi-text">
-            To further help learners, I proposed <span className="chegg-delight-nowrap">lo-fi</span> study music and a &apos;Today&apos; micro-display:
-          </p>
-        </div>
-        <div className="chegg-delight-lofi-right">
-          <img
-            className="chegg-delight-lofi-img"
-            src="/img/chegg/chegg-delight-lo-fi.png"
-            alt="Lo-fi study music and Today micro-display"
-          />
+        <div className="chegg-delight-lofi-inner">
+          <div className="chegg-delight-lofi-left">
+            <p className="chegg-delight-lofi-text">
+              To further help learners, I proposed <span className="chegg-delight-nowrap">lo-fi</span> study music and a &apos;Today&apos; micro-display:
+            </p>
+          </div>
+          <div className="chegg-delight-lofi-right">
+            <img
+              className="chegg-delight-lofi-img"
+              src="/img/chegg/chegg-delight-lo-fi.png"
+              alt="Lo-fi study music and Today micro-display"
+            />
+          </div>
         </div>
       </div>
 

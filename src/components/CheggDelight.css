@@ -173,10 +173,15 @@
   height: 100%;
   padding: 32px;
   display: flex;
-  gap: 24px;
-  align-items: flex-end;
-  background: linear-gradient(to bottom, var(--color-near-white), var(--color-white-ish));
+  align-items: center;
+  background: linear-gradient(to right, var(--color-near-white), var(--color-charcoal));
   border-left: 12px solid var(--color-near-black);
+}
+
+.chegg-delight-lofi-inner {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
 }
 
 .chegg-delight-lofi-left {
@@ -189,7 +194,7 @@
   font-size: 40px;
   font-weight: normal;
   font-style: normal;
-  color: var(--color-charcoal);
+  color: var(--color-near-black);
   margin: 0;
   line-height: 1.2;
 }
