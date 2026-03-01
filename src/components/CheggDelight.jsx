@@ -14,6 +14,23 @@ const CHEGG_ORANGES_YELLOWS = [
   '#FFF176'
 ]
 
+const PARTY_SPOTLIGHT_COLORS = ['#E6D5F5', '#FFF9C4', '#FFE0B2']
+
+function hexToRgb(hex) {
+  const n = parseInt(hex.slice(1), 16)
+  return { r: (n >> 16) & 0xff, g: (n >> 8) & 0xff, b: n & 0xff }
+}
+
+function lerpRgb(hex1, hex2, t) {
+  const a = hexToRgb(hex1)
+  const b = hexToRgb(hex2)
+  return {
+    r: Math.round(a.r + (b.r - a.r) * t),
+    g: Math.round(a.g + (b.g - a.g) * t),
+    b: Math.round(a.b + (b.b - a.b) * t)
+  }
+}
+
 function runPanelConfettiRain(instance, isActiveRef) {
   if (!instance) return
 
@@ -64,6 +81,13 @@ function CheggDelight() {
   const panelConfettiRef = useRef(null)
   const panelVideoRef = useRef(null)
   const confettiActiveRef = useRef(false)
+  const spotlightCanvasRef = useRef(null)
+  const spotlightActiveRef = useRef(false)
+  const cursorPosRef = useRef({ x: 0, y: 0 })
+  const cursorInPanelRef = useRef(false)
+  const spotlightPosRef = useRef({ x: 0, y: 0 })
+  const spotlightFrameIdRef = useRef(null)
+  const spotlightLoopRef = useRef(null)
 
   useEffect(() => {
     const canvas = panelCanvasRef.current
@@ -109,6 +133,128 @@ function CheggDelight() {
   }, [])
 
   useEffect(() => {
+    const canvas = spotlightCanvasRef.current
+    const panel = scrollDownRef.current
+    if (!canvas || !panel) return
+
+    const loop = () => {
+      if (!spotlightActiveRef.current) {
+        spotlightFrameIdRef.current = null
+        return
+      }
+      const c = spotlightCanvasRef.current
+      const p = scrollDownRef.current
+      if (!c || !p) {
+        spotlightFrameIdRef.current = requestAnimationFrame(loop)
+        return
+      }
+      const rect = p.getBoundingClientRect()
+      const w = rect.width
+      const h = rect.height
+      if (w <= 0 || h <= 0) {
+        spotlightFrameIdRef.current = requestAnimationFrame(loop)
+        return
+      }
+      const dpr = typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1
+      if (c.width !== w * dpr || c.height !== h * dpr) {
+        c.width = w * dpr
+        c.height = h * dpr
+        c.style.width = `${w}px`
+        c.style.height = `${h}px`
+      }
+      const ctx = c.getContext('2d', { alpha: true })
+      if (!ctx) {
+        spotlightFrameIdRef.current = requestAnimationFrame(loop)
+        return
+      }
+      ctx.setTransform(1, 0, 0, 1, 0, 0)
+      ctx.scale(dpr, dpr)
+      ctx.clearRect(0, 0, w, h)
+      const reduceMotion =
+        typeof window !== 'undefined' &&
+        window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      const showSpotlight = cursorInPanelRef.current && !reduceMotion
+
+      const cursor = cursorPosRef.current
+      const spot = spotlightPosRef.current
+      spot.x += (cursor.x - spot.x) * 0.12
+      spot.y += (cursor.y - spot.y) * 0.12
+
+      ctx.globalAlpha = 0.8
+      ctx.fillStyle = '#000'
+      ctx.fillRect(0, 0, w, h)
+      ctx.globalAlpha = 1
+
+      if (showSpotlight) {
+        const cx = spot.x
+        const cy = spot.y
+        const rInner = 75
+        const rOuter = 188
+        const grad = ctx.createRadialGradient(cx, cy, rInner, cx, cy, rOuter)
+        grad.addColorStop(0, 'rgba(255,255,255,1)')
+        grad.addColorStop(1, 'rgba(255,255,255,0)')
+        ctx.globalCompositeOperation = 'destination-out'
+        ctx.fillStyle = grad
+        ctx.fillRect(0, 0, w, h)
+        ctx.globalCompositeOperation = 'source-over'
+
+        const phase = (Date.now() / 2500) % 1
+        const seg = phase * 3
+        const i = Math.floor(seg) % 3
+        const j = (i + 1) % 3
+        const t = seg - Math.floor(seg)
+        const rgb = lerpRgb(PARTY_SPOTLIGHT_COLORS[i], PARTY_SPOTLIGHT_COLORS[j], t)
+        const tintGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, rOuter)
+        tintGrad.addColorStop(0, `rgba(${rgb.r},${rgb.g},${rgb.b},0.45)`)
+        tintGrad.addColorStop(0.7, `rgba(${rgb.r},${rgb.g},${rgb.b},0.2)`)
+        tintGrad.addColorStop(1, 'rgba(255,255,255,0)')
+        ctx.fillStyle = tintGrad
+        ctx.fillRect(0, 0, w, h)
+      }
+
+      spotlightFrameIdRef.current = requestAnimationFrame(loop)
+    }
+    spotlightLoopRef.current = loop
+
+    return () => {
+      spotlightLoopRef.current = null
+      if (spotlightFrameIdRef.current) {
+        cancelAnimationFrame(spotlightFrameIdRef.current)
+        spotlightFrameIdRef.current = null
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    const panel = scrollDownRef.current
+    if (!panel) return
+
+    const onMouseMove = (e) => {
+      const rect = panel.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+      if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+        cursorPosRef.current = { x, y }
+        if (!cursorInPanelRef.current) {
+          cursorInPanelRef.current = true
+          spotlightPosRef.current = { x, y }
+        }
+      }
+    }
+    const onMouseLeave = () => {
+      cursorInPanelRef.current = false
+    }
+
+    panel.addEventListener('mousemove', onMouseMove, { passive: true })
+    panel.addEventListener('mouseleave', onMouseLeave)
+    return () => {
+      panel.removeEventListener('mousemove', onMouseMove)
+      panel.removeEventListener('mouseleave', onMouseLeave)
+    }
+  }, [])
+
+  useEffect(() => {
     const el = scrollDownRef.current
     if (!el) return
     const observer = new IntersectionObserver(
@@ -124,6 +270,10 @@ function CheggDelight() {
             v.playbackRate = 0.7
             v.play().catch(() => {})
           }
+          spotlightActiveRef.current = true
+          if (spotlightLoopRef.current && !spotlightFrameIdRef.current) {
+            spotlightFrameIdRef.current = requestAnimationFrame(spotlightLoopRef.current)
+          }
           if (!confettiActiveRef.current && panelConfettiRef.current) {
             const reduceMotion =
               typeof window !== 'undefined' &&
@@ -138,6 +288,7 @@ function CheggDelight() {
         } else {
           panelVideoRef.current?.pause()
           confettiActiveRef.current = false
+          spotlightActiveRef.current = false
         }
       },
       { threshold: [0, 0.25, 0.5, 1], rootMargin: '0px' }
@@ -263,6 +414,11 @@ function CheggDelight() {
           loop
           muted
           playsInline
+          aria-hidden
+        />
+        <canvas
+          ref={spotlightCanvasRef}
+          className="chegg-delight-scroll-down-spotlight"
           aria-hidden
         />
         <canvas
