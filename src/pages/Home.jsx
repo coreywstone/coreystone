@@ -261,7 +261,7 @@ function Home() {
       )}
 
       <ProjectRow
-        title="Always learning..."
+        title="I'm always learning..."
         sections={[{ id: 'learning', label: 'Learning', content: <LearningPanel /> }]}
         showNavTabs={false}
         className="learning-row"

@@ -29,6 +29,48 @@
   pointer-events: none;
 }
 
+/* ----- Sound waves: ribbon of 5 strands per card, cyan/blue, glow ----- */
+.learning-panel-waves {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.learning-panel-waves-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.learning-wave {
+  opacity: 1;
+  animation: learning-wave-travel 3.5s linear infinite;
+}
+
+/* Stagger the 3 strands by timing for layered ribbon look */
+.learning-wave--wave-0 { animation-delay: 0s; }
+.learning-wave--wave-1 { animation-delay: 0.25s; }
+.learning-wave--wave-2 { animation-delay: 0.5s; }
+
+.learning-panel:not(.learning-panel--in-view) .learning-wave {
+  animation-play-state: paused;
+}
+
+.learning-particle {
+  opacity: 1;
+}
+
+/* Motion: wave comes from behind card and moves toward ears at 50%, 20% (reversed offset = correct direction) */
+@keyframes learning-wave-travel {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 /* ----- Cards: left and right columns, 32px from edges, space-evenly ----- */
 .learning-panel-cards-left {
   position: absolute;
