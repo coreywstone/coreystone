@@ -129,11 +129,6 @@ p {
 a {
   color: var(--color-blue);
   text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-a:hover {
-  opacity: 0.8;
 }
 
 /* Buttons */

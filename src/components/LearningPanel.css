@@ -1,0 +1,144 @@
+/* Learning panel: full-width aspect-ratio bg carousel + two-column podcast cards */
+:root {
+  --learning-shadow: 0 12px 40px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+.learning-panel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1854 / 912;
+  overflow: hidden;
+  isolation: isolate;
+  flex-shrink: 0;
+  border: none;
+  outline: none;
+  container-type: inline-size;
+  container-name: learning-panel;
+}
+
+/* ----- Background carousel (4 slides, cross-dissolve) ----- */
+.learning-panel-carousel {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.learning-panel-slide {
+  position: absolute;
+  inset: 0;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* ----- Cards: left and right columns, 32px from edges, space-evenly ----- */
+.learning-panel-cards-left {
+  position: absolute;
+  left: 32px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.learning-panel-cards-right {
+  position: absolute;
+  right: 32px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.learning-panel-cards-left .learning-podcast-card,
+.learning-panel-cards-right .learning-podcast-card {
+  pointer-events: auto;
+}
+
+.learning-podcast-card {
+  width: 174px;
+  height: 174px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  box-shadow: var(--learning-shadow);
+  transform-origin: center center;
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out, box-shadow 0.15s ease-out;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+}
+
+.learning-podcast-card--hovered {
+  animation-play-state: paused;
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+.learning-podcast-card:focus,
+.learning-podcast-card:focus-visible {
+  outline: none;
+  border: none;
+}
+
+/* Pause all motion when panel is out of view */
+.learning-panel:not(.learning-panel--in-view) .learning-podcast-card {
+  animation: none;
+}
+
+.learning-panel--in-view .learning-podcast-card {
+  animation: learning-breeze 8s ease-in-out infinite;
+}
+
+@keyframes learning-breeze {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg) skewX(0deg);
+  }
+  25% {
+    transform: translate(6px, -8px) rotate(1.5deg) skewX(0.5deg);
+  }
+  50% {
+    transform: translate(-4px, 6px) rotate(-1deg) skewX(-0.3deg);
+  }
+  75% {
+    transform: translate(8px, 4px) rotate(0.8deg) skewX(0.2deg);
+  }
+}
+
+.learning-podcast-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+  display: block;
+}
+
+/* When panel width < 900px: smaller cards, 16px from edges */
+@container learning-panel (max-width: 1050px) {
+  .learning-panel-cards-left {
+    left: 16px;
+  }
+
+  .learning-panel-cards-right {
+    right: 16px;
+  }
+
+  .learning-podcast-card {
+    width: 88px;
+    height: 88px;
+  }
+
+  .learning-podcast-card-image {
+    border-radius: 12px;
+  }
+}

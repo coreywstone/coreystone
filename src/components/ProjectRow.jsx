@@ -237,10 +237,9 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
       // Use setTimeout to ensure refs are populated after render
       setTimeout(() => {
         sectionRefs.current.forEach((ref) => {
-          if (ref) {
-            ref.style.setProperty('height', `${height}px`, 'important')
-            ref.style.setProperty('min-height', `${height}px`, 'important')
-          }
+          if (!ref || ref.id === 'learning') return
+          ref.style.setProperty('height', `${height}px`, 'important')
+          ref.style.setProperty('min-height', `${height}px`, 'important')
         })
       }, 0)
     }

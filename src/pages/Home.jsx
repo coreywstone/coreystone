@@ -8,6 +8,7 @@ import CheggStaffAI from '../components/CheggStaffAI'
 import CheggNav from '../components/CheggNav'
 import CheggDelight from '../components/CheggDelight'
 import OtherProjects from '../components/OtherProjects'
+import LearningPanel from '../components/LearningPanel'
 import EightcountsVideos from '../components/EightcountsVideos'
 import quotesConfig from '../data/quotes.json'
 import { getQuoteAssets, getQuoteAlignment, getQuoteLinkedInUrl } from '../utils/quoteData'
@@ -258,6 +259,13 @@ function Home() {
       {quoteRows.length > 2 && quoteRows[2] && (
         <QuotesRow key={quoteRows[2].id} quotes={quoteRows[2].quotes} />
       )}
+
+      <ProjectRow
+        title="Always learning..."
+        sections={[{ id: 'learning', label: 'Learning', content: <LearningPanel /> }]}
+        showNavTabs={false}
+        className="learning-row"
+      />
 
       <SketchesRow />
       {quoteRows.length > 3 && quoteRows[3] && (
