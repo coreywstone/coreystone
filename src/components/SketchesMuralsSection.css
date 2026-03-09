@@ -44,9 +44,9 @@
   color: var(--color-white-ish) !important;
 }
 
-/* Make intro panel text 17px and width 420px */
+/* Make intro panel width (image ~334px at 600px height + half of previous right space) */
 .sketches-murals-section#intro {
-  width: 420px !important;
+  width: 377px !important;
   color: #F5EFE7;
   margin-right: 0 !important;
 }

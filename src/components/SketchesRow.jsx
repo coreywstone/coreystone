@@ -11,12 +11,12 @@ function SketchesRow() {
       id: 'intro', 
       label: 'INTRO',
       content: (
-        <div className="textbox-image-pair">
-          <div className="textbox-image-pair-textbox" style={{ width: '100%', maxWidth: '600px', padding: '24px 24px 24px 0', boxSizing: 'border-box' }}>
-            <p className="textbox-image-pair-text" style={{ margin: 0 }}>
-              I like to solve my life's little annoyances, at least theoretically. Sometimes I actually make them into products (I'm working on some new ones now), but the ideas at right languish in my sketchbook graveyard. Many are non-digital products (remember I'm an Industrial Design grad) but hopefully they shed some light on how I think.
-            </p>
-          </div>
+        <div className="textbox-image-pair" style={{ display: 'flex', alignItems: 'flex-end', minHeight: '600px' }}>
+          <img
+            src="/img/me/me-sketching.png"
+            alt="Sketches intro"
+            style={{ height: '600px', width: 'auto', objectFit: 'contain', display: 'block' }}
+          />
         </div>
       )
     },
