@@ -3,7 +3,7 @@ import ProjectNav from './ProjectNav'
 import ProjectSection from './ProjectSection'
 import './ProjectRow.css'
 
-function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = true, backgroundColor = null, backstoryBgColor = null, className = '', hiddenTabIds = [] }) {
+function ProjectRow({ id: rowId, title, sections = [], color = '#F5EFE7', showNavTabs = true, backgroundColor = null, backstoryBgColor = null, className = '', hiddenTabIds = [] }) {
   const [activeSectionId, setActiveSectionId] = useState(sections[0]?.id || null)
   const [isNavSticky, setIsNavSticky] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
@@ -237,7 +237,7 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
       // Use setTimeout to ensure refs are populated after render
       setTimeout(() => {
         sectionRefs.current.forEach((ref) => {
-          if (!ref || ref.id === 'learning') return
+          if (!ref || ref.id === 'learning-panel') return
           ref.style.setProperty('height', `${height}px`, 'important')
           ref.style.setProperty('min-height', `${height}px`, 'important')
         })
@@ -281,7 +281,7 @@ function ProjectRow({ title, sections = [], color = '#F5EFE7', showNavTabs = tru
   }
 
   return (
-    <section ref={rowRef} className={`project-row ${className}`.trim()}>
+    <section ref={rowRef} id={rowId} className={`project-row ${className}`.trim()}>
       <ProjectNav
         title={title}
         sections={sections}

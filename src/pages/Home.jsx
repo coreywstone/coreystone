@@ -83,7 +83,7 @@ function Home() {
 
   const foundingSections = [
     {
-      id: 'founding',
+      id: 'founding-intro',
       label: 'FOUNDING',
       content: (
         <div className="founding-intro-panel">
@@ -231,8 +231,9 @@ function Home() {
         </div>
       </section>
 
-      <ProjectRow 
-        title="Chegg Skills:" 
+      <ProjectRow
+        id="chegg"
+        title="Chegg Skills:"
         sections={cheggSections}
         color="#F5EFE7"
         backstoryBgColor="#FCC192"
@@ -242,17 +243,19 @@ function Home() {
       )}
 
       <ProjectRow
+        id="founding"
         title="Solo-founding"
         sections={foundingSections.filter(s => s.id !== 'keyboard')}
-        hiddenTabIds={['founding', '8counts-flow', '8counts-figma', '8counts-videos']}
+        hiddenTabIds={['founding-intro', '8counts-flow', '8counts-figma', '8counts-videos']}
       />
       {quoteRows.length > 1 && quoteRows[1] && (
         <QuotesRow key={quoteRows[1].id} quotes={quoteRows[1].quotes} />
       )}
 
-      <ProjectRow 
-        title="Other projects" 
-        sections={[{ id: 'other', label: 'OTHER', content: <OtherProjects /> }]}
+      <ProjectRow
+        id="other"
+        title="Other projects"
+        sections={[{ id: 'other-projects', label: 'OTHER', content: <OtherProjects /> }]}
         showNavTabs={false}
         className="other-projects-row"
       />
@@ -261,8 +264,9 @@ function Home() {
       )}
 
       <ProjectRow
+        id="learning"
         title="Here's how I'm always learning..."
-        sections={[{ id: 'learning', label: 'Learning', content: <LearningPanel /> }]}
+        sections={[{ id: 'learning-panel', label: 'Learning', content: <LearningPanel /> }]}
         showNavTabs={false}
         className="learning-row"
       />
