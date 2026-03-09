@@ -3,14 +3,13 @@
 .learning-panel {
   position: relative;
   width: 100%;
+  min-width: 1150px;
   aspect-ratio: 1854 / 912;
   overflow: hidden;
   isolation: isolate;
   flex-shrink: 0;
   border: none;
   outline: none;
-  container-type: inline-size;
-  container-name: learning-panel;
 }
 
 /* ----- Background carousel (4 slides, cross-dissolve) ----- */
@@ -216,38 +215,3 @@
   display: block;
 }
 
-/* When panel width < 900px: smaller cards, 16px from edges */
-@container learning-panel (max-width: 1050px) {
-  .learning-panel-cards-left {
-    left: 16px;
-  }
-
-  .learning-panel-cards-right {
-    right: 16px;
-  }
-
-  .learning-podcast-card {
-    width: 96px;
-    height: 96px;
-  }
-
-  .learning-podcast-card-inner {
-    border-radius: 12px;
-  }
-
-  .learning-podcast-card-image {
-    border-radius: 12px;
-  }
-
-  .learning-podcast-card-face {
-    border-radius: 12px;
-  }
-
-  .learning-podcast-card-back {
-    padding: 8px;
-  }
-
-  .learning-podcast-card-back .learning-podcast-card-description {
-    font-size: 9px;
-  }
-}

@@ -309,7 +309,7 @@
 
 .learning-row .project-section {
   width: 100% !important;
-  min-width: 100% !important;
+  min-width: 1150px !important;
   flex: 1 1 100% !important;
   background-color: transparent !important;
   justify-content: flex-start;
