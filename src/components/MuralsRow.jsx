@@ -11,23 +11,29 @@ function MuralsRow() {
       label: 'MURALS',
       content: (
         <div className="textbox-image-pair">
-          <div className="textbox-image-pair-textbox murals-intro-textbox" style={{ width: '432px', flex: '0 0 432px', padding: '24px 24px 24px 0', boxSizing: 'border-box' }}>
-            <p className="textbox-image-pair-text" style={{ margin: 0, fontSize: '17px', color: '#F5EFE7' }}>
-              Everyone paints floor-to-ceiling murals on their kids' rooms, right? No? Hmmm. Since we moved a couple times, I ended up free-hand painting 4 rooms – here's two:
-            </p>
-          </div>
-          <div className="textbox-image-pair-image-container" style={{ flexDirection: 'row', gap: '32px', padding: '0 32px 0 0' }}>
+          <div
+            className="textbox-image-pair-image-container"
+            style={{ flexDirection: 'row', gap: '32px', padding: '0 32px 0 32px', position: 'relative' }}
+          >
+            <img
+              src="/img/me/me-painting.png"
+              alt="Everyone paints floor-to-ceiling murals on their kids' rooms, right? No? Hmmm. Since we moved a couple times, I ended up free-hand painting 4 rooms – here's two:"
+              className="textbox-image-pair-image"
+              style={{ marginRight: '-90px', position: 'relative', zIndex: 2, boxShadow: 'none' }}
+            />
             <img
               src="/img/murals/nemo-panorama-upscaled.jpg"
               alt="Eli's Nemo painted mural room"
               loading="lazy"
-              style={{ width: 'auto', height: '100%', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)' }}
+              className="textbox-image-pair-image"
+              style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)' }}
             />
             <img
               src="/img/murals/CT-room-murals.jpg"
               alt="Christopher's Tarzan/Jungle Book painted mural room"
               loading="lazy"
-              style={{ width: 'auto', height: '100%', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)' }}
+              className="textbox-image-pair-image"
+              style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)' }}
             />
           </div>
         </div>
