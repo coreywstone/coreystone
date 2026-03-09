@@ -95,6 +95,9 @@ function CheggNav() {
     const panel = containerRef.current
     if (!andrewImg || !panel) return
 
+    let bottomStack = null
+    let resizeObserver = null
+
     const calculatePanelWidth = () => {
       // Set Andrew image height to 400px
       const targetHeight = 400
@@ -151,13 +154,13 @@ function CheggNav() {
           }
           
           // Check bottom stack container (left: 600px, flexbox with steps, stakeholders, user-panel)
-          const bottomStack = panel.querySelector('.chegg-nav-bottom-stack')
+          const localBottomStack = panel.querySelector('.chegg-nav-bottom-stack')
           const iDiscoveredImg = panel.querySelector('.chegg-nav-i-discovered')
           const iterationImg = panel.querySelector('.chegg-nav-iteration')
           let stackRightEdge = 0
           
-          if (bottomStack) {
-            const stackRect = bottomStack.getBoundingClientRect()
+          if (localBottomStack) {
+            const stackRect = localBottomStack.getBoundingClientRect()
             if (stackRect.width > 0) {
               stackRightEdge = 600 + stackRect.width
               requiredWidth = Math.max(requiredWidth, stackRightEdge + 12)
@@ -228,7 +231,7 @@ function CheggNav() {
     
     // Add load listeners for new images - use setTimeout to ensure DOM is ready
     setTimeout(() => {
-      const bottomStack = panel.querySelector('.chegg-nav-bottom-stack')
+      bottomStack = panel.querySelector('.chegg-nav-bottom-stack')
       const iDiscoveredImg = panel.querySelector('.chegg-nav-i-discovered')
       
       // Match user-panel height to stakeholders height
@@ -271,13 +274,8 @@ function CheggNav() {
           // Position I-discovered on top of the flexbox
           // The flexbox is at bottom: 0, so we need to position I-discovered's bottom at the flexbox's top
           // Move down 4px to close the gap
-          if (stackRect.height > 0) {
-            iDiscoveredImg.style.bottom = `${stackRect.height - 4}px`
-          } else {
-            // Fallback: use offsetHeight if getBoundingClientRect height is 0
-            const stackHeight = bottomStack.offsetHeight || 200
-            iDiscoveredImg.style.bottom = `${stackHeight - 4}px`
-          }
+          const stackHeight = stackRect.height > 0 ? stackRect.height : (bottomStack.offsetHeight || 200)
+          iDiscoveredImg.style.bottom = `${stackHeight - 4}px`
           
           // Ensure image is visible
           iDiscoveredImg.style.display = 'block'
@@ -364,33 +362,42 @@ function CheggNav() {
         
         // Also try to match heights after a short delay
         setTimeout(matchHeights, 200)
+
+        // Observe bottom stack for size changes so we can keep I-discovered aligned
+        if (typeof ResizeObserver !== 'undefined') {
+          resizeObserver = new ResizeObserver(() => {
+            positionIDiscovered()
+            matchHeights()
+          })
+          resizeObserver.observe(bottomStack)
+        }
       }
       
-        if (iDiscoveredImg) {
-          const handleIDiscoveredLoad = () => {
-            handleImageLoad()
-            // Position multiple times to ensure it works
-            setTimeout(positionIDiscovered, 50)
-            setTimeout(positionIDiscovered, 200)
-            setTimeout(positionIDiscovered, 500)
-          }
-          if (iDiscoveredImg.complete) {
-            handleIDiscoveredLoad()
-          } else {
-            iDiscoveredImg.addEventListener('load', handleIDiscoveredLoad, { once: true })
-          }
+      if (iDiscoveredImg) {
+        const handleIDiscoveredLoad = () => {
+          handleImageLoad()
+          // Position multiple times to ensure it works
+          setTimeout(positionIDiscovered, 50)
+          setTimeout(positionIDiscovered, 200)
+          setTimeout(positionIDiscovered, 500)
         }
-        
-        // Also position after all images load, with multiple retries
-        setTimeout(() => {
-          positionIDiscovered()
-        }, 300)
-        setTimeout(() => {
-          positionIDiscovered()
-        }, 600)
-        setTimeout(() => {
-          positionIDiscovered()
-        }, 1000)
+        if (iDiscoveredImg.complete) {
+          handleIDiscoveredLoad()
+        } else {
+          iDiscoveredImg.addEventListener('load', handleIDiscoveredLoad, { once: true })
+        }
+      }
+      
+      // Also position after all images load, with multiple retries
+      setTimeout(() => {
+        positionIDiscovered()
+      }, 300)
+      setTimeout(() => {
+        positionIDiscovered()
+      }, 600)
+      setTimeout(() => {
+        positionIDiscovered()
+      }, 1000)
       
       const iterationImg = panel.querySelector('.chegg-nav-iteration')
       if (iterationImg) {
@@ -414,6 +421,9 @@ function CheggNav() {
         ambiguousImg.removeEventListener('load', handleImageLoad)
       }
       window.removeEventListener('resize', handleResize)
+      if (resizeObserver && bottomStack) {
+        resizeObserver.disconnect()
+      }
     }
   }, [])
 
