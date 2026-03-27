@@ -134,7 +134,7 @@ function MenuButton() {
               Email
             </a>
             <a 
-              href="https://coreystone.com/Corey-Stone-Resume.pdf" 
+              href="/Corey-Stone-Resume.pdf" 
               target="_blank" 
               rel="noopener noreferrer"
               className="menu-item"
@@ -189,7 +189,7 @@ function MenuButton() {
                   <span className="modal-nav-label">HOME</span>
                 </Link>
                 <a 
-                  href="https://coreystone.com/Corey-Stone-Resume.pdf" 
+                  href="/Corey-Stone-Resume.pdf" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="modal-nav-item"
