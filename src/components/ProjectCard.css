@@ -7,7 +7,7 @@
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  cursor: pointer;
+  cursor: default;
   box-shadow: 0 0 20px rgba(129, 153, 233, 0.8);
   transform-origin: center;
   transform: rotate(var(--rotation, 0deg));
@@ -60,14 +60,5 @@
   transform: rotate(var(--rotation, 0deg));
   opacity: 1 !important;
   z-index: 10;
-}
-
-.project-card.clicked {
-  transform: rotate(var(--rotation, 0deg)) scale(0.98) !important;
-  animation: none !important;
-}
-
-.project-card.pressed {
-  transform: rotate(var(--rotation, 0deg)) scale(0.98) !important;
 }
 

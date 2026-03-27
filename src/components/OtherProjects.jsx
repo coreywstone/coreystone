@@ -10,12 +10,16 @@ const MIN_ROTATION = -10
 const MAX_ROTATION = 10
 const FERRIS_WHEEL_SPEED = 0.00015 // Speed of rotation (radians per ms) - clockwise
 
+/**
+ * Vortex travel + window.open flow is kept below for future use (e.g. project links).
+ * Project cards are non-clickable for now — wire `onTriggerVortex` + optional `url` on
+ * ProjectCard when you want to enable it again.
+ */
 function OtherProjects() {
   const containerRef = useRef(null)
   const [hasAnimated, setHasAnimated] = useState(false)
   const [showWords, setShowWords] = useState(false)
   const [showVortex, setShowVortex] = useState(false)
-  const [pendingUrl, setPendingUrl] = useState(null)
   const [cards, setCards] = useState([])
   const [hoveredCardId, setHoveredCardId] = useState(null)
   const [clickedCardId, setClickedCardId] = useState(null)
@@ -61,25 +65,21 @@ function OtherProjects() {
       {
         image: '/img/owl/owl-thumb.png',
         text: 'Sole designer at mental health B2B SaaS startup',
-        url: 'https://coreystone.com/projects/owl.shtml'
       },
       // Card 1: KLF
       {
         image: '/img/klf/klf-thumb.png',
         text: 'Saved millions in enterprise billing delays',
-        url: 'https://coreystone.com/projects/klf.shtml'
       },
       // Card 2: ACT
       {
         image: '/img/act/act-test-selection-top.jpg',
         text: 'Reduced ACT test reg from 30 to 7 minutes',
-        url: 'https://coreystone.com/projects/myact.shtml'
       },
       // Card 3: HERO Keyboard
       {
         image: '/img/hero/hero-thumb.png',
         text: 'Founded HERO Keyboard',
-        url: 'https://coreystone.com/projects/hero.shtml'
       },
     ]
     
@@ -118,7 +118,7 @@ function OtherProjects() {
         vx: vx, // Small random velocity
         vy: vy,
         vr: vr,
-        ...allCardData[i], // Add card data (image, text, url)
+        ...allCardData[i], // Add card data (image, text)
       }
     })
     
@@ -182,7 +182,7 @@ function OtherProjects() {
       const updatedCards = [...cardsDataRef.current]
 
       updatedCards.forEach((card, index) => {
-        // Skip animation for clicked cards
+        // Skip animation for clicked cards (during vortex — reserved for future click + vortex)
         if (clickedCardId === card.id) return
 
         // Handle hovered cards - smoothly rotate to 0, but don't update position
@@ -334,21 +334,19 @@ function OtherProjects() {
 
   const handleCardTriggerVortex = useCallback((url) => {
     setClickedCardId(hoveredCardId)
-    setPendingUrl(url)
     setShowVortex(true)
-    
+
     setTimeout(() => {
       if (url) {
         window.open(url, '_blank', 'noopener,noreferrer')
       }
-    }, 2500) // Decreased by 500ms from 3000ms
+    }, 2500)
   }, [hoveredCardId])
 
   const handleVortexComplete = useCallback(() => {
     setShowVortex(false)
     setClickedCardId(null)
     setHoveredCardId(null)
-    setPendingUrl(null)
   }, [])
 
   return (
@@ -364,16 +362,13 @@ function OtherProjects() {
           key={card.id}
           image={card.image}
           text={card.text}
-          url={card.url}
           style={{
             left: `${card.x - CARD_WIDTH / 2}px`,
             top: `${card.y - CARD_WIDTH / 2}px`,
           }}
           rotation={card.rotation}
           isHovered={hoveredCardId === card.id}
-          isClicked={clickedCardId === card.id}
           isTall={card.isTall || false}
-          onTriggerVortex={handleCardTriggerVortex}
           onMouseEnter={() => handleCardMouseEnter(card.id)}
           onMouseLeave={() => handleCardMouseLeave(card.id)}
         />
