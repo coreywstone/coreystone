@@ -20,8 +20,8 @@ const CROSSFADE_DURATION_MS = 1500
 const CYCLE_MS = DISPLAY_MS + CROSSFADE_DURATION_MS
 
 const PODCAST_CARDS = [
-  { id: 'dive-club', src: '/img/podcasts/dive-club.webp', alt: 'Dive Club', url: 'https://www.dive.club/', baseZ: 2, description: "Ridd's Dive Club is 'where designers never stop learning' – inspiring stuff!", name: "Ridd's Dive Club", backBg: '#142C2F' },
-  { id: 'lenny', src: '/img/podcasts/lenny.webp', alt: "Lenny's Podcast", url: 'https://www.lennysnewsletter.com/podcast', baseZ: 6, description: "Lenny interviews the best product people in the world – it's gold, Jerry, gold!", name: 'Lenny', backBg: '#FCD3B6', backText: 'dark' },
+  { id: 'dive-club', src: '/img/podcasts/dive-club.webp', alt: 'Dive Club', url: 'https://dive-club.beehiiv.com/subscribe?ref=Pgv3HwwBGT&_bhlid=bf7a73b936aab597b0df9777ef50b28c5a049d32', baseZ: 2, description: "Ridd's Dive Club is 'where designers never stop learning' – inspiring stuff!", name: "Ridd's Dive Club", backBg: '#142C2F' },
+  { id: 'lenny', src: '/img/podcasts/lenny.webp', alt: "Lenny's Podcast", url: 'https://www.lennysnewsletter.com?r=57it2', baseZ: 6, description: "Lenny interviews the best product people in the world – it's gold, Jerry, gold!", name: 'Lenny', backBg: '#FCD3B6', backText: 'dark' },
   { id: 'founders', src: '/img/podcasts/founders.webp', alt: 'Founders', url: 'https://www.founderspodcast.com/', baseZ: 1, description: 'Founders takes deep dives into how the best founders think.', name: 'Founders', backBg: '#0a0a0a' },
   { id: 'state-of-play', src: '/img/podcasts/state-of-play.webp', alt: 'State of Play Podcast', url: 'https://uxtools.beehiiv.com/subscribe?ref=Pgv3HwwBGT&_bhlid=bf7a73b936aab597b0df9777ef50b28c5a049d32', baseZ: 5, description: 'State of Play has convos with limit-pushing designers & builders.', name: 'State of Play', backBg: '#161E20' },
   { id: 'how-i-ai', src: '/img/podcasts/how-i-ai.webp', alt: 'How I AI', url: 'https://www.lennysnewsletter.com/s/how-i-ai', baseZ: 3, description: 'How I AI shows practical AI usage with Claire Vo.', name: 'How I AI', backBg: '#5e35b1', noWrapInDescription: 'Claire Vo' },
