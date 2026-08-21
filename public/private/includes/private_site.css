@@ -54,3 +54,8 @@ font-size: 12px; font-family: arial;
 padding: 3px 5px 1px 5px }
 
 .float { float:left; margin-right: 20px; }
+
+.page_content {
+  max-width: 760px;
+  margin: 15px auto;
+}

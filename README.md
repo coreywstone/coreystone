@@ -1,6 +1,6 @@
 # Corey Stone Portfolio
 
-Modern React-based portfolio site with comic book aesthetic, built with Vite and deployed on Vercel.
+Modern React-based portfolio site with comic book aesthetic, built with Vite and deployed on Cloudflare Pages.
 
 ## Tech Stack
 
@@ -67,11 +67,12 @@ coreystone/
 │   └── main.jsx          # React entry point
 ├── public/                # Static assets
 │   ├── img/              # Images
-│   └── animations/       # Rive animation files
+│   ├── animations/       # Rive animation files
+│   ├── private/          # Static /private archive
+│   └── _redirects        # Cloudflare Pages routing (SPA + /private)
 ├── dist/                 # Build output (gitignored)
 ├── package.json
-├── vite.config.js
-└── vercel.json           # Vercel deployment config
+└── vite.config.js
 ```
 
 ## Design System
@@ -97,13 +98,21 @@ coreystone/
 
 ## Deployment
 
-This site is configured for deployment on Vercel:
+This site is deployed on **Cloudflare Pages**, connected to the GitHub repository. A push to `main` builds with Vite and publishes the `dist/` folder.
 
-1. Connect your GitHub repository to Vercel
-2. Vercel will automatically detect the Vite configuration
-3. Deployments happen automatically on push to main branch
+### Cloudflare Pages settings
 
-The `vercel.json` file configures the build settings.
+- **Production branch:** `main`
+- **Build command:** `npm run build`
+- **Build output directory:** `dist`
+
+`public/_redirects` handles client-side routes (`/bio`, `/projects/...`) and keeps `/private` on the static archive instead of the React app.
+
+### Shipping a change
+
+1. Commit your updates
+2. Push to `main`
+3. Cloudflare Pages builds and deploys automatically to [coreystone.com](https://coreystone.com)
 
 ## Manual Editing
 
