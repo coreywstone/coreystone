@@ -1,5 +1,17 @@
 body { background-color: white; color: black; font-family: arial; font-size: .8em; margin: 0px; }
 h1 { text-align: center; }
+html { -webkit-text-size-adjust: 100%; }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+table {
+  max-width: 100%;
+}
 
 a:link { text-decoration: none; color: #0000cc; font-weight: bold }
 a:visited { text-decoration: none; color: #0000cc; font-weight: bold }
@@ -19,7 +31,7 @@ a:hover { text-decoration: none; color: #cc0000; font-weight: bold }
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: end;
-  height: 31px;
+  min-height: 31px;
   background: url(../images/header_tile.gif) repeat-x left top;
 }
 
@@ -58,4 +70,96 @@ padding: 3px 5px 1px 5px }
 .page_content {
   max-width: 760px;
   margin: 15px auto;
+  padding: 0 16px;
+}
+
+.home_layout {
+  width: 100%;
+  max-width: 760px;
+  font-size: 10pt;
+}
+
+.home_rule {
+  color: #ccc;
+  max-width: 100%;
+  width: 600px;
+}
+
+body > div[style*="50px"] {
+  max-width: 760px;
+  margin: 15px auto !important;
+  padding: 0 16px;
+}
+
+@media (max-width: 700px) {
+  body { font-size: 16px; }
+
+  .site_header {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    background-size: auto 31px;
+  }
+
+  .site_title {
+    text-align: center;
+    line-height: 28px;
+    padding: 6px 8px 2px;
+  }
+
+  .site_header > div:last-child {
+    display: none;
+  }
+
+  .site_nav {
+    margin: 0 auto 2px;
+  }
+
+  .site_nav tr {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    padding: 0 6px 4px;
+  }
+
+  .site_nav td img {
+    display: none;
+  }
+
+  .on_tab, .off_tab {
+    padding: 8px 10px;
+  }
+
+  .home_layout,
+  .home_layout tbody,
+  .home_layout tr,
+  .home_layout td {
+    display: block;
+    width: 100% !important;
+  }
+
+  .home_layout td {
+    border-right: none !important;
+    box-sizing: border-box;
+  }
+
+  nobr {
+    white-space: normal;
+  }
+
+  .home_rule {
+    width: 100%;
+  }
+
+  .basketbox {
+    float: none;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .spacerbox {
+    display: none;
+  }
 }
