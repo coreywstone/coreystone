@@ -2,7 +2,18 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
+  "redirects": [
+    {
+      "source": "/private",
+      "destination": "/private/",
+      "permanent": false
+    }
+  ],
   "rewrites": [
+    {
+      "source": "/private/",
+      "destination": "/private/index.html"
+    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
